@@ -1,0 +1,13 @@
+C:\inetpub\wwwroot\wss\VirtualDirectories\8207\bin\TD.QLDC.Library.dll.config
+C:\inetpub\wwwroot\wss\VirtualDirectories\8207\bin\TD.QLDC.Library.dll
+C:\inetpub\wwwroot\wss\VirtualDirectories\8207\bin\TD.QLDC.Library.pdb
+C:\Users\hieupm\Desktop\QLDC\TD.QLDC.Library\obj\Debug\TD.QLDC.Library.csprojAssemblyReference.cache
+C:\Users\hieupm\Desktop\QLDC\TD.QLDC.Library\obj\Debug\TD.QLDC.Library.csproj.CoreCompileInputs.cache
+C:\Users\hieupm\Desktop\QLDC\TD.QLDC.Library\obj\Debug\TD.QLDC.Library.csproj.CopyComplete
+C:\Users\hieupm\Desktop\QLDC\TD.QLDC.Library\obj\Debug\TD.QLDC.Library.dll
+C:\Users\hieupm\Desktop\QLDC\TD.QLDC.Library\obj\Debug\TD.QLDC.Library.pdb
+C:\Users\hieupm\Desktop\QLDC\TD.QLDC.Library\obj\Debug\TD.QLDC.Library.Migrations.Db_init.resources
+C:\Users\hieupm\Desktop\QLDC\TD.QLDC.Library\obj\Debug\TD.QLDC.Library.csproj.GenerateResource.cache
+C:\inetpub\wwwroot\wss\VirtualDirectories\7778\bin\TD.QLDC.Library.dll.config
+C:\inetpub\wwwroot\wss\VirtualDirectories\7778\bin\TD.QLDC.Library.dll
+C:\inetpub\wwwroot\wss\VirtualDirectories\7778\bin\TD.QLDC.Library.pdb

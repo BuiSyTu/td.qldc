@@ -1,0 +1,68 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Elements xmlns="http://schemas.microsoft.com/sharepoint/">
+  <ListInstance Title="Permissions"
+                OnQuickLaunch="TRUE"
+                TemplateType="10002"
+                FeatureId="d88694fe-fa0e-4186-b2e9-2655e90c9153"
+                Url="Lists/Permissions"
+                Description="Permissions">
+    <Data>
+      <Rows>
+        <!--<Row>
+          <Field Name="ID">1</Field>
+          <Field Name="Title">Xem thông tin</Field>
+          <Field Name="PermissionCode">QLDC-View</Field>
+          <Field Name="PermissionName">Xem thông tin</Field>
+          <Field Name="GroupSP">0;#QLDC - Xem thông tin</Field>
+          <Field Name="Active">1</Field>
+          <Field Name="Order">1</Field>
+        </Row>
+        <Row>
+          <Field Name="ID">2</Field>
+          <Field Name="Title">Quản trị danh mục chung</Field>
+          <Field Name="PermissionCode">QLDC-DanhMuc</Field>
+          <Field Name="PermissionName">Quản trị danh mục chung</Field>
+          <Field Name="GroupSP">0;#QLDC - Quản trị danh mục chung</Field>
+          <Field Name="Active">1</Field>
+          <Field Name="Order">2</Field>
+        </Row>
+        <Row>
+          <Field Name="ID">3</Field>
+          <Field Name="Title">Quản lý hướng dẫn viên</Field>
+          <Field Name="PermissionCode">QLDC-QuanLyHuongDanVien</Field>
+          <Field Name="PermissionName">Quản lý hướng dẫn viên</Field>
+          <Field Name="GroupSP">0;#QLDC - Quản lý hướng dẫn viên</Field>
+          <Field Name="Active">1</Field>
+          <Field Name="Order">3</Field>
+        </Row>
+        <Row>
+          <Field Name="ID">4</Field>
+          <Field Name="Title">Quản lý danh sách cơ sở lưu trú</Field>
+          <Field Name="PermissionCode">QLDC-QuanLyDanhSachCoSoLuuTru</Field>
+          <Field Name="PermissionName">Quản lý danh sách cơ sở lưu trú</Field>
+          <Field Name="GroupSP">0;#QLDC - Quản lý danh sách cơ sở lưu trú</Field>
+          <Field Name="Active">1</Field>
+          <Field Name="Order">4</Field>
+        </Row>
+        <Row>
+          <Field Name="ID">5</Field>
+          <Field Name="Title">Quản lý đơn hàng cơ sở lưu trú</Field>
+          <Field Name="PermissionCode">QLDC-QuanLyDonHangCoSoLuuTru</Field>
+          <Field Name="PermissionName">Quản lý đơn hàng cơ sở lưu trú</Field>
+          <Field Name="GroupSP">0;#QLDC - Quản lý đơn hàng cơ sở lưu trú</Field>
+          <Field Name="Active">1</Field>
+          <Field Name="Order">5</Field>
+        </Row>
+        <Row>
+          <Field Name="ID">6</Field>
+          <Field Name="Title">Phương tiện vận chuyển đường bộ</Field>
+          <Field Name="PermissionCode">QLDC-QuanLyPhuongTienVanChuyenDuongBo</Field>
+          <Field Name="PermissionName">Phương tiện vận chuyển đường bộ</Field>
+          <Field Name="GroupSP">0;#QLDC - Phương tiện vận chuyển đường bộ</Field>
+          <Field Name="Active">1</Field>
+          <Field Name="Order">6</Field>
+        </Row>-->
+      </Rows>
+    </Data>
+  </ListInstance>
+</Elements>

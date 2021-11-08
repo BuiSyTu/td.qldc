@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" dslVersion="1.0.0.0" Id="07a09678-1336-462b-a9b6-72da25accb76" solutionId="07a09678-1336-462b-a9b6-72da25accb76" resetWebServer="false" sharePointProductVersion="15.0" name="TD.QLDC" xmlns="http://schemas.microsoft.com/VisualStudio/2008/SharePointTools/PackageModel">
+  <features>
+    <featureReference itemId="e68a8edf-752c-424e-a02b-525e6e714623" />
+    <featureReference itemId="24d0b35c-fbcc-4634-af5f-dd84fec7574e" />
+  </features>
+  <projectItems>
+    <projectItemReference itemId="79a6d4bd-ef84-41da-bb45-f98eff93ab55" />
+    <projectItemReference itemId="a350454c-bddd-4504-bc4c-2d8b6b7a40b7" />
+    <projectItemReference itemId="52049de5-16ed-45f3-a542-fb0e6b180ef5" />
+  </projectItems>
+</package>

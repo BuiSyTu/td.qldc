@@ -1,0 +1,11 @@
+C:\inetpub\wwwroot\wss\VirtualDirectories\8207\bin\TD.QLDC.API.dll.config
+C:\inetpub\wwwroot\wss\VirtualDirectories\8207\bin\TD.QLDC.API.dll
+C:\inetpub\wwwroot\wss\VirtualDirectories\8207\bin\TD.QLDC.API.pdb
+C:\Users\hieupm\Desktop\QLDC\TD.QLDC.API\obj\Debug\TD.QLDC.API.csprojAssemblyReference.cache
+C:\Users\hieupm\Desktop\QLDC\TD.QLDC.API\obj\Debug\TD.QLDC.API.csproj.CoreCompileInputs.cache
+C:\Users\hieupm\Desktop\QLDC\TD.QLDC.API\obj\Debug\TD.QLDC.API.csproj.CopyComplete
+C:\Users\hieupm\Desktop\QLDC\TD.QLDC.API\obj\Debug\TD.QLDC.API.dll
+C:\Users\hieupm\Desktop\QLDC\TD.QLDC.API\obj\Debug\TD.QLDC.API.pdb
+C:\inetpub\wwwroot\wss\VirtualDirectories\7778\bin\TD.QLDC.API.dll.config
+C:\inetpub\wwwroot\wss\VirtualDirectories\7778\bin\TD.QLDC.API.dll
+C:\inetpub\wwwroot\wss\VirtualDirectories\7778\bin\TD.QLDC.API.pdb

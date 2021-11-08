@@ -1,0 +1,24 @@
+{
+    
+    "compilerOptions": {
+        "module": "es2015",
+        "moduleResolution": "node",
+        "target": "es5",
+        "outDir": "lib/",
+        "sourceMap": true,
+        "downlevelIteration": false,
+        "noImplicitAny": false,
+        "removeComments": false,
+        "noEmitHelpers": false,
+        "importHelpers": false,
+		    "experimentalDecorators": true,
+        "suppressImplicitAnyIndexErrors": true,
+        "lib": [ "es6", "es2015", "es2016", "es2017", "dom"],
+        "declaration": true,
+        "allowSyntheticDefaultImports": true,
+        "typeRoots": ["./node_modules/@types", "./src/types", "./node_modules/ckeditor"]
+    },
+    "include":[
+        "./src/**/*.ts", "../../Shared/ts/**/*/ts"
+    ]
+}

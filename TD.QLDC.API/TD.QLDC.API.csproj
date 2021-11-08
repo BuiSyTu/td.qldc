@@ -1,0 +1,243 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{14D619AD-C5DA-4C27-8B0A-59F7E7DCC537}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>TD.QLDC.API</RootNamespace>
+    <AssemblyName>TD.QLDC.API</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\..\..\..\..\inetpub\wwwroot\wss\VirtualDirectories\7778\bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>true</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>key.snk</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.SharePoint, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL" />
+    <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.11.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Net.Http.Formatting, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.7\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=4.0.4.1, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.4.5.2\lib\netstandard1.0\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Http, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.2.7\lib\net45\System.Web.Http.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.5.2.7\lib\net45\System.Web.Http.WebHost.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+    <Reference Include="TD.Core.Api.Common">
+      <HintPath>..\Libs\TD.Core.Api.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="TD.Core.Api.Common.Http">
+      <HintPath>..\Libs\TD.Core.Api.Common.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="TD.Core.Api.Mvc">
+      <HintPath>..\Libs\TD.Core.Api.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="TD.Core.Api.Mvc.Integration">
+      <HintPath>..\Libs\TD.Core.Api.Mvc.Integration.dll</HintPath>
+    </Reference>
+    <Reference Include="TD.Core.Api.Service">
+      <HintPath>..\Libs\TD.Core.Api.Service.dll</HintPath>
+    </Reference>
+    <Reference Include="TD.Core.Api.SP">
+      <HintPath>..\Libs\TD.Core.Api.SP.dll</HintPath>
+    </Reference>
+    <Reference Include="TD.Core.Areas">
+      <HintPath>..\Libs\TD.Core.Areas.dll</HintPath>
+    </Reference>
+    <Reference Include="TD.Core.Areas.ListDefinitions">
+      <HintPath>..\Libs\TD.Core.Areas.ListDefinitions.dll</HintPath>
+    </Reference>
+    <Reference Include="TD.Core.Areas.Services">
+      <HintPath>..\Libs\TD.Core.Areas.Services.dll</HintPath>
+    </Reference>
+    <Reference Include="TD.Core.Common">
+      <HintPath>..\Libs\TD.Core.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="TD.Core.CommonServices">
+      <HintPath>..\Libs\TD.Core.CommonServices.dll</HintPath>
+    </Reference>
+    <Reference Include="TD.Core.Groups">
+      <HintPath>..\Libs\TD.Core.Groups.dll</HintPath>
+    </Reference>
+    <Reference Include="TD.Core.Groups.ListDefinitions">
+      <HintPath>..\Libs\TD.Core.Groups.ListDefinitions.dll</HintPath>
+    </Reference>
+    <Reference Include="TD.Core.Groups.Services">
+      <HintPath>..\Libs\TD.Core.Groups.Services.dll</HintPath>
+    </Reference>
+    <Reference Include="TD.Core.Layouts">
+      <HintPath>..\Libs\TD.Core.Layouts.dll</HintPath>
+    </Reference>
+    <Reference Include="TD.Core.Layouts.Controls">
+      <HintPath>..\Libs\TD.Core.Layouts.Controls.dll</HintPath>
+    </Reference>
+    <Reference Include="TD.Core.Layouts.DefaultLayout">
+      <HintPath>..\Libs\TD.Core.Layouts.DefaultLayout.dll</HintPath>
+    </Reference>
+    <Reference Include="TD.Core.Layouts.Menus">
+      <HintPath>..\Libs\TD.Core.Layouts.Menus.dll</HintPath>
+    </Reference>
+    <Reference Include="TD.Core.Logging">
+      <HintPath>..\Libs\TD.Core.Logging.dll</HintPath>
+    </Reference>
+    <Reference Include="TD.Core.Logging.SP">
+      <HintPath>..\Libs\TD.Core.Logging.SP.dll</HintPath>
+    </Reference>
+    <Reference Include="TD.Core.Login">
+      <HintPath>..\Libs\TD.Core.Login.dll</HintPath>
+    </Reference>
+    <Reference Include="TD.Core.Modules">
+      <HintPath>..\Libs\TD.Core.Modules.dll</HintPath>
+    </Reference>
+    <Reference Include="TD.Core.Modules.Extensions">
+      <HintPath>..\Libs\TD.Core.Modules.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="TD.Core.Modules.RedirectHandlers">
+      <HintPath>..\Libs\TD.Core.Modules.RedirectHandlers.dll</HintPath>
+    </Reference>
+    <Reference Include="TD.Core.Modules.Services">
+      <HintPath>..\Libs\TD.Core.Modules.Services.dll</HintPath>
+    </Reference>
+    <Reference Include="TD.Core.PermissionHelpers">
+      <HintPath>..\Libs\TD.Core.PermissionHelpers.dll</HintPath>
+    </Reference>
+    <Reference Include="TD.Core.UserManagement">
+      <HintPath>..\Libs\TD.Core.UserManagement.dll</HintPath>
+    </Reference>
+    <Reference Include="TD.Core.UserManagement.Extensions">
+      <HintPath>..\Libs\TD.Core.UserManagement.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="TD.Core.UserManagement.ListDefinitions">
+      <HintPath>..\Libs\TD.Core.UserManagement.ListDefinitions.dll</HintPath>
+    </Reference>
+    <Reference Include="TD.Core.UserManagement.Services">
+      <HintPath>..\Libs\TD.Core.UserManagement.Services.dll</HintPath>
+    </Reference>
+    <Reference Include="TD.Core.UserPositions">
+      <HintPath>..\Libs\TD.Core.UserPositions.dll</HintPath>
+    </Reference>
+    <Reference Include="TD.Core.UserPositions.Extensions">
+      <HintPath>..\Libs\TD.Core.UserPositions.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="TD.Core.UserPositions.ListDefinitions">
+      <HintPath>..\Libs\TD.Core.UserPositions.ListDefinitions.dll</HintPath>
+    </Reference>
+    <Reference Include="TD.Core.UserPositions.Services">
+      <HintPath>..\Libs\TD.Core.UserPositions.Services.dll</HintPath>
+    </Reference>
+    <Reference Include="TD.Core.UserProfiles">
+      <HintPath>..\Libs\TD.Core.UserProfiles.dll</HintPath>
+    </Reference>
+    <Reference Include="TD.Core.UserProfiles.Extensions">
+      <HintPath>..\Libs\TD.Core.UserProfiles.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="TD.Core.UserProfiles.ListDefinitions">
+      <HintPath>..\Libs\TD.Core.UserProfiles.ListDefinitions.dll</HintPath>
+    </Reference>
+    <Reference Include="TD.Core.UserProfiles.Services">
+      <HintPath>..\Libs\TD.Core.UserProfiles.Services.dll</HintPath>
+    </Reference>
+    <Reference Include="TD.Core.Utilities">
+      <HintPath>..\Libs\TD.Core.Utilities.dll</HintPath>
+    </Reference>
+    <Reference Include="TD.Core.Utilities.AspNet">
+      <HintPath>..\Libs\TD.Core.Utilities.AspNet.dll</HintPath>
+    </Reference>
+    <Reference Include="TD.Core.Utilities.Caching.AspNet">
+      <HintPath>..\Libs\TD.Core.Utilities.Caching.AspNet.dll</HintPath>
+    </Reference>
+    <Reference Include="TD.Core.Utilities.SP">
+      <HintPath>..\Libs\TD.Core.Utilities.SP.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Abstractions, Version=4.1.1.0, Culture=neutral, PublicKeyToken=489b6accfaf20ef0, processorArchitecture=MSIL">
+      <HintPath>..\packages\Unity.5.10.0\lib\net45\Unity.Abstractions.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Unity.Container, Version=5.10.0.0, Culture=neutral, PublicKeyToken=489b6accfaf20ef0, processorArchitecture=MSIL">
+      <HintPath>..\packages\Unity.5.10.0\lib\net45\Unity.Container.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Controllers\CategoriesController.cs" />
+    <Compile Include="Controllers\HoKhausControllers.cs" />
+    <Compile Include="Controllers\NhanKhausController.cs" />
+    <Compile Include="Controllers\NhomDanhMucsController.cs" />
+    <Compile Include="Integration\QLDCApiModule.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="key.snk" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Models\" />
+    <Folder Include="Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\TD.QLDC.Library\TD.QLDC.Library.csproj">
+      <Project>{cc837f67-485a-4d01-a992-ed7cf6323584}</Project>
+      <Name>TD.QLDC.Library</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

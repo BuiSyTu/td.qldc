@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ProjectItem Type="Microsoft.VisualStudio.SharePoint.Module" DefaultFile="Elements.xml" SupportedTrustLevels="All" SupportedDeploymentScopes="Web, Site" xmlns="http://schemas.microsoft.com/VisualStudio/2010/SharePointTools/SharePointProjectItemModel">
+  <Files>
+    <ProjectItemFile Source="Elements.xml" Target="SitePages\" Type="ElementManifest" />
+    <ProjectItemFile Source="default.aspx" Target="SitePages\" Type="ElementFile" />
+    <ProjectItemFile Source="css\fix.css" Target="SitePages\css\" Type="ElementFile" />
+    <ProjectItemFile Source="hokhau\default.aspx" Target="SitePages\hokhau\" Type="ElementFile" />
+    <ProjectItemFile Source="hokhau\default.js" Target="SitePages\hokhau\" Type="ElementFile" />
+    <ProjectItemFile Source="hokhau\modal\add-ho-khau.aspx" Target="SitePages\hokhau\modal\" Type="ElementFile" />
+    <ProjectItemFile Source="hokhau\modal\add-nhan-khau.aspx" Target="SitePages\hokhau\modal\" Type="ElementFile" />
+    <ProjectItemFile Source="hokhau\modal\danh-sach-nhan-khau.aspx" Target="SitePages\hokhau\modal\" Type="ElementFile" />
+    <ProjectItemFile Source="hokhau\modal\danh-sach-nhan-khau.js" Target="SitePages\hokhau\modal\" Type="ElementFile" />
+    <ProjectItemFile Source="js\common.js" Target="SitePages\js\" Type="ElementFile" />
+    <ProjectItemFile Source="nhom-danh-muc\chuyen-mon.aspx" Target="SitePages\nhom-danh-muc\" Type="ElementFile" />
+    <ProjectItemFile Source="nhom-danh-muc\chuyen-mon.js" Target="SitePages\nhom-danh-muc\" Type="ElementFile" />
+    <ProjectItemFile Source="nhom-danh-muc\common.js" Target="SitePages\nhom-danh-muc\" Type="ElementFile" />
+    <ProjectItemFile Source="nhom-danh-muc\dan-toc.aspx" Target="SitePages\nhom-danh-muc\" Type="ElementFile" />
+    <ProjectItemFile Source="nhom-danh-muc\dan-toc.js" Target="SitePages\nhom-danh-muc\" Type="ElementFile" />
+    <ProjectItemFile Source="nhom-danh-muc\default.aspx" Target="SitePages\nhom-danh-muc\" Type="ElementFile" />
+    <ProjectItemFile Source="nhom-danh-muc\default.js" Target="SitePages\nhom-danh-muc\" Type="ElementFile" />
+    <ProjectItemFile Source="nhom-danh-muc\doi-tuong.aspx" Target="SitePages\nhom-danh-muc\" Type="ElementFile" />
+    <ProjectItemFile Source="nhom-danh-muc\doi-tuong.js" Target="SitePages\nhom-danh-muc\" Type="ElementFile" />
+    <ProjectItemFile Source="nhom-danh-muc\hon-nhan.js" Target="SitePages\nhom-danh-muc\" Type="ElementFile" />
+    <ProjectItemFile Source="nhom-danh-muc\loai-doi-tuong.aspx" Target="SitePages\nhom-danh-muc\" Type="ElementFile" />
+    <ProjectItemFile Source="nhom-danh-muc\loai-doi-tuong.js" Target="SitePages\nhom-danh-muc\" Type="ElementFile" />
+    <ProjectItemFile Source="nhom-danh-muc\quan-he-voi-chu-ho.aspx" Target="SitePages\nhom-danh-muc\" Type="ElementFile" />
+    <ProjectItemFile Source="nhom-danh-muc\quan-he-voi-chu-ho.js" Target="SitePages\nhom-danh-muc\" Type="ElementFile" />
+    <ProjectItemFile Source="nhom-danh-muc\quoc-tich.aspx" Target="SitePages\nhom-danh-muc\" Type="ElementFile" />
+    <ProjectItemFile Source="nhom-danh-muc\quoc-tich.js" Target="SitePages\nhom-danh-muc\" Type="ElementFile" />
+    <ProjectItemFile Source="nhom-danh-muc\tinh-trang-cu-tru.aspx" Target="SitePages\nhom-danh-muc\" Type="ElementFile" />
+    <ProjectItemFile Source="nhom-danh-muc\tinh-trang-cu-tru.js" Target="SitePages\nhom-danh-muc\" Type="ElementFile" />
+    <ProjectItemFile Source="nhom-danh-muc\tinh-trang-hon-nhan.aspx" Target="SitePages\nhom-danh-muc\" Type="ElementFile" />
+    <ProjectItemFile Source="nhom-danh-muc\ton-giao.aspx" Target="SitePages\nhom-danh-muc\" Type="ElementFile" />
+    <ProjectItemFile Source="nhom-danh-muc\ton-giao.js" Target="SitePages\nhom-danh-muc\" Type="ElementFile" />
+    <ProjectItemFile Source="nhom-danh-muc\van-hoa.aspx" Target="SitePages\nhom-danh-muc\" Type="ElementFile" />
+    <ProjectItemFile Source="nhom-danh-muc\van-hoa.js" Target="SitePages\nhom-danh-muc\" Type="ElementFile" />
+    <ProjectItemFile Source="nhom-danh-muc\modal\add-chuyen-mon.aspx" Target="SitePages\nhom-danh-muc\modal\" Type="ElementFile" />
+    <ProjectItemFile Source="nhom-danh-muc\modal\add-dan-toc.aspx" Target="SitePages\nhom-danh-muc\modal\" Type="ElementFile" />
+    <ProjectItemFile Source="nhom-danh-muc\modal\add-doi-tuong.aspx" Target="SitePages\nhom-danh-muc\modal\" Type="ElementFile" />
+    <ProjectItemFile Source="nhom-danh-muc\modal\add-hon-nhan.aspx" Target="SitePages\nhom-danh-muc\modal\" Type="ElementFile" />
+    <ProjectItemFile Source="nhom-danh-muc\modal\add-loai-doi-tuong.aspx" Target="SitePages\nhom-danh-muc\modal\" Type="ElementFile" />
+    <ProjectItemFile Source="nhom-danh-muc\modal\add-quan-he.aspx" Target="SitePages\nhom-danh-muc\modal\" Type="ElementFile" />
+    <ProjectItemFile Source="nhom-danh-muc\modal\add-quoc-tich.aspx" Target="SitePages\nhom-danh-muc\modal\" Type="ElementFile" />
+    <ProjectItemFile Source="nhom-danh-muc\modal\add-tinh-trang-cu-tru.aspx" Target="SitePages\nhom-danh-muc\modal\" Type="ElementFile" />
+    <ProjectItemFile Source="nhom-danh-muc\modal\add-ton-giao.aspx" Target="SitePages\nhom-danh-muc\modal\" Type="ElementFile" />
+    <ProjectItemFile Source="nhom-danh-muc\modal\add-van-hoa.aspx" Target="SitePages\nhom-danh-muc\modal\" Type="ElementFile" />
+    <ProjectItemFile Source="nhom-danh-muc\modal\adddanhmuc.aspx" Target="SitePages\nhom-danh-muc\modal\" Type="ElementFile" />
+  </Files>
+  <ExtensionData>
+    <ExtensionDataItem Key="DeploymentConflictResolutionBehavior" Value="None" />
+  </ExtensionData>
+</ProjectItem>

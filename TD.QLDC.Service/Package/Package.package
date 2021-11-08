@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" dslVersion="1.0.0.0" Id="e395079e-671b-4e27-8a5d-a735b3616cc3" solutionId="e395079e-671b-4e27-8a5d-a735b3616cc3" resetWebServer="false" sharePointProductVersion="15.0" name="TD.QLDC.Service" xmlns="http://schemas.microsoft.com/VisualStudio/2008/SharePointTools/PackageModel">
+  <projectItems>
+    <projectItemReference itemId="ac3997b6-ab51-4660-a4fa-ead269ae9cde" />
+  </projectItems>
+</package>

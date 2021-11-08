@@ -1,0 +1,376 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{B916092E-B62A-43AB-B438-293C594BAEED}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>TD.QLDC</RootNamespace>
+    <AssemblyName>TD.QLDC</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetOfficeVersion>15.0</TargetOfficeVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{C1CDDADD-2546-481F-9697-4EA41081F2FC};{14822709-B5A1-4724-98CA-57A101D1B079};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <ActiveDeploymentConfiguration>No Activation</ActiveDeploymentConfiguration>
+    <IncludeAssemblyInPackage>True</IncludeAssemblyInPackage>
+    <SandboxedSolution>False</SandboxedSolution>
+    <AssemblyDeploymentTarget>WebApplication</AssemblyDeploymentTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\..\..\..\..\inetpub\wwwroot\wss\VirtualDirectories\7778\bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>true</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>TD.QLDC.snk</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="Microsoft.SharePoint" />
+    <Reference Include="Microsoft.SharePoint.Client.ServerRuntime" />
+    <Reference Include="TD.Core.Utilities">
+      <HintPath>..\Libs\TD.Core.Utilities.dll</HintPath>
+    </Reference>
+    <Reference Include="TD.Core.Utilities.AspNet">
+      <HintPath>..\Libs\TD.Core.Utilities.AspNet.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="CONTROLTEMPLATES\TD.QLDC\Footer.ascx.cs">
+      <DependentUpon>Footer.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CONTROLTEMPLATES\TD.QLDC\Footer.ascx.designer.cs">
+      <DependentUpon>Footer.ascx.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CONTROLTEMPLATES\TD.QLDC\FooterMenuItems.ascx.cs">
+      <DependentUpon>FooterMenuItems.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CONTROLTEMPLATES\TD.QLDC\FooterMenuItems.ascx.designer.cs">
+      <DependentUpon>FooterMenuItems.ascx.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CONTROLTEMPLATES\TD.QLDC\SettingsMenu.ascx.cs">
+      <DependentUpon>SettingsMenu.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CONTROLTEMPLATES\TD.QLDC\SettingsMenu.ascx.designer.cs">
+      <DependentUpon>SettingsMenu.ascx.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Features\QLDCApi\QLDCApi.EventReceiver.cs">
+      <DependentUpon>QLDCApi.feature</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="CONTROLTEMPLATES\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{79a6d4bd-ef84-41da-bb45-f98eff93ab55}</SharePointProjectItemId>
+    </None>
+    <None Include="Features\QLDCApi\QLDCApi.feature">
+      <FeatureId>{24d0b35c-fbcc-4634-af5f-dd84fec7574e}</FeatureId>
+    </None>
+    <None Include="Features\QLDCApplication\QLDCApplication.feature">
+      <FeatureId>{e68a8edf-752c-424e-a02b-525e6e714623}</FeatureId>
+    </None>
+    <None Include="Layouts\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{a350454c-bddd-4504-bc4c-2d8b6b7a40b7}</SharePointProjectItemId>
+    </None>
+    <None Include="Layouts\TD.QLDC\assets\js\QLDC.lib.js.map" />
+    <None Include="MasterPages\default.master" />
+    <None Include="MasterPages\dialog-form.master" />
+    <None Include="MasterPages\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{78a79067-4f60-49a2-a26e-02a0ad194550}</SharePointProjectItemId>
+    </None>
+    <None Include="Menu\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{9102f286-91f5-4012-8ebd-99044263f52b}</SharePointProjectItemId>
+    </None>
+    <None Include="Module\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{52049de5-16ed-45f3-a542-fb0e6b180ef5}</SharePointProjectItemId>
+    </None>
+    <None Include="Package\Package.package">
+      <PackageId>{ec6fbc17-c4f7-4dc7-9ffc-1a340fe58fb7}</PackageId>
+    </None>
+    <None Include="Permissions\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{3658b13b-46c0-40d5-9ec6-23243b0672fd}</SharePointProjectItemId>
+    </None>
+    <None Include="Roles\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{25fd5d22-c36a-402d-9220-be94af2c38f6}</SharePointProjectItemId>
+    </None>
+    <None Include="SitePages\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{02fcefa2-fd67-4939-96db-102e5baf2f3a}</SharePointProjectItemId>
+    </None>
+    <None Include="TD.QLDC.snk" />
+    <None Include="ts\.babelrc" />
+    <None Include="ts\.eslintignore" />
+    <None Include="ts\.eslintrc.json" />
+    <None Include="ts\package.json" />
+    <None Include="ts\tsconfig.json" />
+    <None Include="ts\tslint.json" />
+    <None Include="ts\vendors\amcharts3\amcharts\plugins\export\libs\pdfmake\pdfmake.min.js.map" />
+    <None Include="ts\vendors\amcharts3\amcharts\plugins\export\libs\xlsx\LICENSE" />
+    <None Include="ts\vendors\amcharts3\amcharts\plugins\export\libs\xlsx\xlsx.min.map" />
+    <None Include="ts\vendors\handsontable\handsontable.css.map" />
+    <None Include="ts\vendors\handsontable\handsontable.js.map" />
+    <None Include="ts\vendors\handsontable\hot-formula-parser\LICENSE" />
+    <None Include="ts\vendors\handsontable\numbro\LICENSE" />
+    <None Include="ts\vendors\handsontable\numbro\LICENSE-Numeraljs" />
+    <None Include="ts\vendors\handsontable\pikaday\LICENSE" />
+    <TypeScriptCompile Include="ts\src\apis\NhomDanhMucs.ts" />
+    <TypeScriptCompile Include="ts\src\apis\NhanKhaus.ts" />
+    <TypeScriptCompile Include="ts\src\apis\HoKhaus.ts" />
+    <TypeScriptCompile Include="ts\src\apis\Categories.ts" />
+    <TypeScriptCompile Include="ts\src\apis\DataService.ts" />
+    <TypeScriptCompile Include="ts\src\apis\ServicesConfig.ts" />
+    <TypeScriptCompile Include="ts\src\html.d.ts" />
+    <TypeScriptCompile Include="ts\src\main.ts" />
+    <TypeScriptCompile Include="ts\src\models.ts" />
+    <TypeScriptCompile Include="ts\src\typing.d.ts" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="CONTROLTEMPLATES\TD.QLDC\Footer.ascx" />
+    <Content Include="CONTROLTEMPLATES\TD.QLDC\FooterMenuItems.ascx" />
+    <Content Include="CONTROLTEMPLATES\TD.QLDC\SettingsMenu.ascx" />
+    <Content Include="Features\QLDCApi\QLDCApi.Template.xml">
+      <DependentUpon>QLDCApi.feature</DependentUpon>
+    </Content>
+    <Content Include="Features\QLDCApplication\QLDCApplication.Template.xml">
+      <DependentUpon>QLDCApplication.feature</DependentUpon>
+    </Content>
+    <Content Include="Layouts\TD.QLDC\assets\css\QLDC.lib.css" />
+    <Content Include="Layouts\TD.QLDC\assets\css\vendors.css" />
+    <Content Include="Layouts\TD.QLDC\assets\css\vendors.min.css" />
+    <Content Include="Layouts\TD.QLDC\assets\js\QLDC.lib.js" />
+    <Content Include="Layouts\TD.QLDC\assets\js\vendors.js" />
+    <Content Include="Layouts\TD.QLDC\assets\js\vendors.min.js" />
+    <Content Include="MasterPages\Elements.xml" />
+    <Content Include="Menu\Elements.xml">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Module\Manifest.xml" />
+    <Content Include="Package\Package.Template.xml">
+      <DependentUpon>Package.package</DependentUpon>
+    </Content>
+    <Content Include="Permissions\Elements.xml" />
+    <Content Include="Roles\Elements.xml" />
+    <Content Include="SitePages\css\fix.css" />
+    <Content Include="SitePages\default.aspx" />
+    <Content Include="SitePages\Elements.xml" />
+    <Content Include="SitePages\hokhau\default.aspx" />
+    <Content Include="SitePages\hokhau\default.js" />
+    <Content Include="SitePages\hokhau\modal\add-ho-khau.aspx" />
+    <Content Include="SitePages\hokhau\modal\add-nhan-khau.aspx" />
+    <Content Include="SitePages\hokhau\modal\danh-sach-nhan-khau.aspx" />
+    <Content Include="SitePages\hokhau\modal\danh-sach-nhan-khau.js" />
+    <Content Include="SitePages\js\common.js" />
+    <Content Include="SitePages\nhom-danh-muc\chuyen-mon.aspx" />
+    <Content Include="SitePages\nhom-danh-muc\chuyen-mon.js" />
+    <Content Include="SitePages\nhom-danh-muc\common.js" />
+    <Content Include="SitePages\nhom-danh-muc\dan-toc.aspx" />
+    <Content Include="SitePages\nhom-danh-muc\dan-toc.js" />
+    <Content Include="SitePages\nhom-danh-muc\default.aspx" />
+    <Content Include="SitePages\nhom-danh-muc\default.js" />
+    <Content Include="SitePages\nhom-danh-muc\doi-tuong.aspx" />
+    <Content Include="SitePages\nhom-danh-muc\doi-tuong.js" />
+    <Content Include="SitePages\nhom-danh-muc\hon-nhan.js" />
+    <Content Include="SitePages\nhom-danh-muc\loai-doi-tuong.aspx" />
+    <Content Include="SitePages\nhom-danh-muc\loai-doi-tuong.js" />
+    <Content Include="SitePages\nhom-danh-muc\modal\add-chuyen-mon.aspx" />
+    <Content Include="SitePages\nhom-danh-muc\modal\add-dan-toc.aspx" />
+    <Content Include="SitePages\nhom-danh-muc\modal\add-doi-tuong.aspx" />
+    <Content Include="SitePages\nhom-danh-muc\modal\add-hon-nhan.aspx" />
+    <Content Include="SitePages\nhom-danh-muc\modal\add-loai-doi-tuong.aspx" />
+    <Content Include="SitePages\nhom-danh-muc\modal\add-quan-he.aspx" />
+    <Content Include="SitePages\nhom-danh-muc\modal\add-quoc-tich.aspx" />
+    <Content Include="SitePages\nhom-danh-muc\modal\add-tinh-trang-cu-tru.aspx" />
+    <Content Include="SitePages\nhom-danh-muc\modal\add-ton-giao.aspx" />
+    <Content Include="SitePages\nhom-danh-muc\modal\add-van-hoa.aspx" />
+    <Content Include="SitePages\nhom-danh-muc\modal\adddanhmuc.aspx" />
+    <Content Include="SitePages\nhom-danh-muc\quan-he-voi-chu-ho.aspx" />
+    <Content Include="SitePages\nhom-danh-muc\quan-he-voi-chu-ho.js" />
+    <Content Include="SitePages\nhom-danh-muc\quoc-tich.aspx" />
+    <Content Include="SitePages\nhom-danh-muc\quoc-tich.js" />
+    <Content Include="SitePages\nhom-danh-muc\tinh-trang-cu-tru.aspx" />
+    <Content Include="SitePages\nhom-danh-muc\tinh-trang-cu-tru.js" />
+    <Content Include="SitePages\nhom-danh-muc\tinh-trang-hon-nhan.aspx" />
+    <Content Include="SitePages\nhom-danh-muc\ton-giao.aspx" />
+    <Content Include="SitePages\nhom-danh-muc\ton-giao.js" />
+    <Content Include="SitePages\nhom-danh-muc\van-hoa.aspx" />
+    <Content Include="SitePages\nhom-danh-muc\van-hoa.js" />
+    <Content Include="ts\gruntfile.js" />
+    <Content Include="ts\rollup.config.js" />
+    <Content Include="ts\vendors\amcharts3\amcharts\amcharts.js" />
+    <Content Include="ts\vendors\amcharts3\amcharts\funnel.js" />
+    <Content Include="ts\vendors\amcharts3\amcharts\gantt.js" />
+    <Content Include="ts\vendors\amcharts3\amcharts\gauge.js" />
+    <Content Include="ts\vendors\amcharts3\amcharts\lang\az.js" />
+    <Content Include="ts\vendors\amcharts3\amcharts\lang\bg.js" />
+    <Content Include="ts\vendors\amcharts3\amcharts\lang\cs.js" />
+    <Content Include="ts\vendors\amcharts3\amcharts\lang\de.js" />
+    <Content Include="ts\vendors\amcharts3\amcharts\lang\es.js" />
+    <Content Include="ts\vendors\amcharts3\amcharts\lang\fi.js" />
+    <Content Include="ts\vendors\amcharts3\amcharts\lang\fo.js" />
+    <Content Include="ts\vendors\amcharts3\amcharts\lang\fr.js" />
+    <Content Include="ts\vendors\amcharts3\amcharts\lang\hr.js" />
+    <Content Include="ts\vendors\amcharts3\amcharts\lang\hu.js" />
+    <Content Include="ts\vendors\amcharts3\amcharts\lang\id.js" />
+    <Content Include="ts\vendors\amcharts3\amcharts\lang\is.js" />
+    <Content Include="ts\vendors\amcharts3\amcharts\lang\it.js" />
+    <Content Include="ts\vendors\amcharts3\amcharts\lang\ja.js" />
+    <Content Include="ts\vendors\amcharts3\amcharts\lang\ko.js" />
+    <Content Include="ts\vendors\amcharts3\amcharts\lang\lt.js" />
+    <Content Include="ts\vendors\amcharts3\amcharts\lang\lv.js" />
+    <Content Include="ts\vendors\amcharts3\amcharts\lang\mk.js" />
+    <Content Include="ts\vendors\amcharts3\amcharts\lang\mn.js" />
+    <Content Include="ts\vendors\amcharts3\amcharts\lang\mt.js" />
+    <Content Include="ts\vendors\amcharts3\amcharts\lang\nl.js" />
+    <Content Include="ts\vendors\amcharts3\amcharts\lang\no.js" />
+    <Content Include="ts\vendors\amcharts3\amcharts\lang\pl.js" />
+    <Content Include="ts\vendors\amcharts3\amcharts\lang\pt.js" />
+    <Content Include="ts\vendors\amcharts3\amcharts\lang\ro.js" />
+    <Content Include="ts\vendors\amcharts3\amcharts\lang\ru.js" />
+    <Content Include="ts\vendors\amcharts3\amcharts\lang\rw.js" />
+    <Content Include="ts\vendors\amcharts3\amcharts\lang\sk.js" />
+    <Content Include="ts\vendors\amcharts3\amcharts\lang\sl.js" />
+    <Content Include="ts\vendors\amcharts3\amcharts\lang\so.js" />
+    <Content Include="ts\vendors\amcharts3\amcharts\lang\th.js" />
+    <Content Include="ts\vendors\amcharts3\amcharts\lang\tr.js" />
+    <Content Include="ts\vendors\amcharts3\amcharts\lang\uk.js" />
+    <Content Include="ts\vendors\amcharts3\amcharts\lang\zh.js" />
+    <Content Include="ts\vendors\amcharts3\amcharts\pie.js" />
+    <Content Include="ts\vendors\amcharts3\amcharts\plugins\animate\animate.min.js" />
+    <Content Include="ts\vendors\amcharts3\amcharts\plugins\dataloader\dataloader.js" />
+    <Content Include="ts\vendors\amcharts3\amcharts\plugins\dataloader\dataloader.min.js" />
+    <Content Include="ts\vendors\amcharts3\amcharts\plugins\dataloader\lang\cs.js" />
+    <Content Include="ts\vendors\amcharts3\amcharts\plugins\dataloader\lang\en.js" />
+    <Content Include="ts\vendors\amcharts3\amcharts\plugins\dataloader\lang\fr.js" />
+    <Content Include="ts\vendors\amcharts3\amcharts\plugins\dataloader\lang\lt.js" />
+    <Content Include="ts\vendors\amcharts3\amcharts\plugins\export\export.css" />
+    <Content Include="ts\vendors\amcharts3\amcharts\plugins\export\export.js" />
+    <Content Include="ts\vendors\amcharts3\amcharts\plugins\export\export.min.js" />
+    <Content Include="ts\vendors\amcharts3\amcharts\plugins\export\index.js" />
+    <Content Include="ts\vendors\amcharts3\amcharts\plugins\export\lang\cs.js" />
+    <Content Include="ts\vendors\amcharts3\amcharts\plugins\export\lang\de.js" />
+    <Content Include="ts\vendors\amcharts3\amcharts\plugins\export\lang\en.js" />
+    <Content Include="ts\vendors\amcharts3\amcharts\plugins\export\lang\es.js" />
+    <Content Include="ts\vendors\amcharts3\amcharts\plugins\export\lang\fr.js" />
+    <Content Include="ts\vendors\amcharts3\amcharts\plugins\export\lang\hu.js" />
+    <Content Include="ts\vendors\amcharts3\amcharts\plugins\export\lang\it.js" />
+    <Content Include="ts\vendors\amcharts3\amcharts\plugins\export\lang\ko.js" />
+    <Content Include="ts\vendors\amcharts3\amcharts\plugins\export\lang\lt.js" />
+    <Content Include="ts\vendors\amcharts3\amcharts\plugins\export\lang\pl.js" />
+    <Content Include="ts\vendors\amcharts3\amcharts\plugins\export\lang\pt.js" />
+    <Content Include="ts\vendors\amcharts3\amcharts\plugins\export\lang\tr.js" />
+    <Content Include="ts\vendors\amcharts3\amcharts\plugins\export\lang\zh.js" />
+    <Content Include="ts\vendors\amcharts3\amcharts\plugins\export\libs\blob.js\blob.js" />
+    <Content Include="ts\vendors\amcharts3\amcharts\plugins\export\libs\classList.js\classList.js" />
+    <Content Include="ts\vendors\amcharts3\amcharts\plugins\export\libs\classList.js\classList.min.js" />
+    <Content Include="ts\vendors\amcharts3\amcharts\plugins\export\libs\fabric.js\fabric.js" />
+    <Content Include="ts\vendors\amcharts3\amcharts\plugins\export\libs\fabric.js\fabric.min.js" />
+    <Content Include="ts\vendors\amcharts3\amcharts\plugins\export\libs\FileSaver.js\FileSaver.js" />
+    <Content Include="ts\vendors\amcharts3\amcharts\plugins\export\libs\FileSaver.js\FileSaver.min.js" />
+    <Content Include="ts\vendors\amcharts3\amcharts\plugins\export\libs\jszip\jszip.js" />
+    <Content Include="ts\vendors\amcharts3\amcharts\plugins\export\libs\jszip\jszip.min.js" />
+    <Content Include="ts\vendors\amcharts3\amcharts\plugins\export\libs\pdfmake\pdfmake.js" />
+    <Content Include="ts\vendors\amcharts3\amcharts\plugins\export\libs\pdfmake\pdfmake.min.js" />
+    <Content Include="ts\vendors\amcharts3\amcharts\plugins\export\libs\pdfmake\vfs_fonts.js" />
+    <Content Include="ts\vendors\amcharts3\amcharts\plugins\export\libs\xlsx\xlsx.js" />
+    <Content Include="ts\vendors\amcharts3\amcharts\plugins\export\libs\xlsx\xlsx.min.js" />
+    <Content Include="ts\vendors\amcharts3\amcharts\plugins\export\shapes\1.svg" />
+    <Content Include="ts\vendors\amcharts3\amcharts\plugins\export\shapes\10.svg" />
+    <Content Include="ts\vendors\amcharts3\amcharts\plugins\export\shapes\11.svg" />
+    <Content Include="ts\vendors\amcharts3\amcharts\plugins\export\shapes\12.svg" />
+    <Content Include="ts\vendors\amcharts3\amcharts\plugins\export\shapes\13.svg" />
+    <Content Include="ts\vendors\amcharts3\amcharts\plugins\export\shapes\14.svg" />
+    <Content Include="ts\vendors\amcharts3\amcharts\plugins\export\shapes\15.svg" />
+    <Content Include="ts\vendors\amcharts3\amcharts\plugins\export\shapes\16.svg" />
+    <Content Include="ts\vendors\amcharts3\amcharts\plugins\export\shapes\17.svg" />
+    <Content Include="ts\vendors\amcharts3\amcharts\plugins\export\shapes\18.svg" />
+    <Content Include="ts\vendors\amcharts3\amcharts\plugins\export\shapes\19.svg" />
+    <Content Include="ts\vendors\amcharts3\amcharts\plugins\export\shapes\2.svg" />
+    <Content Include="ts\vendors\amcharts3\amcharts\plugins\export\shapes\20.svg" />
+    <Content Include="ts\vendors\amcharts3\amcharts\plugins\export\shapes\21.svg" />
+    <Content Include="ts\vendors\amcharts3\amcharts\plugins\export\shapes\22.svg" />
+    <Content Include="ts\vendors\amcharts3\amcharts\plugins\export\shapes\23.svg" />
+    <Content Include="ts\vendors\amcharts3\amcharts\plugins\export\shapes\24.svg" />
+    <Content Include="ts\vendors\amcharts3\amcharts\plugins\export\shapes\25.svg" />
+    <Content Include="ts\vendors\amcharts3\amcharts\plugins\export\shapes\26.svg" />
+    <Content Include="ts\vendors\amcharts3\amcharts\plugins\export\shapes\27.svg" />
+    <Content Include="ts\vendors\amcharts3\amcharts\plugins\export\shapes\28.svg" />
+    <Content Include="ts\vendors\amcharts3\amcharts\plugins\export\shapes\29.svg" />
+    <Content Include="ts\vendors\amcharts3\amcharts\plugins\export\shapes\3.svg" />
+    <Content Include="ts\vendors\amcharts3\amcharts\plugins\export\shapes\30.svg" />
+    <Content Include="ts\vendors\amcharts3\amcharts\plugins\export\shapes\31.svg" />
+    <Content Include="ts\vendors\amcharts3\amcharts\plugins\export\shapes\4.svg" />
+    <Content Include="ts\vendors\amcharts3\amcharts\plugins\export\shapes\5.svg" />
+    <Content Include="ts\vendors\amcharts3\amcharts\plugins\export\shapes\6.svg" />
+    <Content Include="ts\vendors\amcharts3\amcharts\plugins\export\shapes\7.svg" />
+    <Content Include="ts\vendors\amcharts3\amcharts\plugins\export\shapes\8.svg" />
+    <Content Include="ts\vendors\amcharts3\amcharts\plugins\export\shapes\9.svg" />
+    <Content Include="ts\vendors\amcharts3\amcharts\plugins\responsive\responsive.js" />
+    <Content Include="ts\vendors\amcharts3\amcharts\plugins\responsive\responsive.min.js" />
+    <Content Include="ts\vendors\amcharts3\amcharts\radar.js" />
+    <Content Include="ts\vendors\amcharts3\amcharts\serial.js" />
+    <Content Include="ts\vendors\amcharts3\amcharts\themes\black.js" />
+    <Content Include="ts\vendors\amcharts3\amcharts\themes\chalk.js" />
+    <Content Include="ts\vendors\amcharts3\amcharts\themes\dark.js" />
+    <Content Include="ts\vendors\amcharts3\amcharts\themes\light.js" />
+    <Content Include="ts\vendors\amcharts3\amcharts\themes\patterns.js" />
+    <Content Include="ts\vendors\amcharts3\amcharts\xy.js" />
+    <Content Include="ts\vendors\handsontable-chosen-editor\handsontable-chosen-editor.js" />
+    <Content Include="ts\vendors\handsontable\handsontable.css" />
+    <Content Include="ts\vendors\handsontable\handsontable.full.css" />
+    <Content Include="ts\vendors\handsontable\handsontable.full.js" />
+    <Content Include="ts\vendors\handsontable\handsontable.full.min.css" />
+    <Content Include="ts\vendors\handsontable\handsontable.full.min.js" />
+    <Content Include="ts\vendors\handsontable\handsontable.js" />
+    <Content Include="ts\vendors\handsontable\handsontable.min.css" />
+    <Content Include="ts\vendors\handsontable\handsontable.min.js" />
+    <Content Include="ts\vendors\handsontable\hot-formula-parser\formula-parser.js" />
+    <Content Include="ts\vendors\handsontable\languages\all.js" />
+    <Content Include="ts\vendors\handsontable\languages\all.min.js" />
+    <Content Include="ts\vendors\handsontable\languages\en-US.js" />
+    <Content Include="ts\vendors\handsontable\languages\en-US.min.js" />
+    <Content Include="ts\vendors\handsontable\numbro\languages.min.js" />
+    <Content Include="ts\vendors\handsontable\numbro\numbro.js" />
+    <Content Include="ts\vendors\handsontable\pikaday\pikaday.css" />
+    <Content Include="ts\vendors\handsontable\pikaday\pikaday.js" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="ts\lib\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(VSToolsPath)\SharePointTools\Microsoft.VisualStudio.SharePoint.targets" Condition="'$(VSToolsPath)' != ''" />
+</Project>

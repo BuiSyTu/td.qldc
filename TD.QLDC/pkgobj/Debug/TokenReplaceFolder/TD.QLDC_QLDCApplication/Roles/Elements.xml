@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Elements xmlns="http://schemas.microsoft.com/sharepoint/">
+  <ListInstance Title="Roles"
+                OnQuickLaunch="TRUE"
+                TemplateType="10003"
+                FeatureId="d88694fe-fa0e-4186-b2e9-2655e90c9153"
+                Url="Lists/Roles"
+                Description="Roles">
+    <Data>
+      <Rows>
+        <!--<Row>
+          <Field Name="ID">1</Field>
+          <Field Name="Title">Quản trị phần mềm</Field>
+          <Field Name="RoleName">Quản trị phần mềm</Field>
+          <Field Name="RoleCode">QLDC-ADMIN</Field>
+          <Field Name="Permissions">12;#12;#3;#3;#4;#4;#5;#5;#13;#13;#14;#14;#21;#21</Field>
+          <Field Name="Active">1</Field>
+          <Field Name="Order">1</Field>
+        </Row>
+        <Row>
+          <Field Name="ID">2</Field>
+          <Field Name="Title">Cán bộ quản lý</Field>
+          <Field Name="RoleName">Cán bộ quản lý</Field>
+          <Field Name="RoleCode">QLDC-CanBoQuanLy</Field>
+          <Field Name="Permissions">6;#6;#7;#7;#8;#8;#9;#9;#10;#10;#11;#11</Field>
+          <Field Name="Active">1</Field>
+          <Field Name="Order">2</Field>
+        </Row>
+        <Row>
+          <Field Name="ID">3</Field>
+          <Field Name="Title">Lãnh đạo</Field>
+          <Field Name="RoleName">Lãnh đạo</Field>
+          <Field Name="RoleCode">QLDC-LanhDao</Field>
+          <Field Name="Permissions">6;#6;#7;#7;#8;#8;#9;#9;#10;#10;#11;#11</Field>
+          <Field Name="Active">1</Field>
+          <Field Name="Order">3</Field>
+        </Row>
+        <Row>
+          <Field Name="ID">4</Field>
+          <Field Name="Title">Doanh nghiệp</Field>
+          <Field Name="RoleName">Doanh nghiệp</Field>
+          <Field Name="RoleCode">QLDC-DoanhNghiep</Field>
+          <Field Name="Permissions">6;#6;#7;#7;#8;#8;#9;#9;#10;#10;#11;#11</Field>
+          <Field Name="Active">1</Field>
+          <Field Name="Order">4</Field>
+        </Row>-->
+      </Rows>
+    </Data>
+  </ListInstance>
+</Elements>

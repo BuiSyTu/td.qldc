@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Solution xmlns="http://schemas.microsoft.com/sharepoint/" SolutionId="07a09678-1336-462b-a9b6-72da25accb76" SharePointProductVersion="15.0">
+  <Assemblies>
+    <Assembly Location="TD.QLDC.dll" DeploymentTarget="WebApplication" />
+  </Assemblies>
+  <TemplateFiles>
+    <TemplateFile Location="CONTROLTEMPLATES\TD.QLDC\Footer.ascx" />
+    <TemplateFile Location="CONTROLTEMPLATES\TD.QLDC\FooterMenuItems.ascx" />
+    <TemplateFile Location="CONTROLTEMPLATES\TD.QLDC\SettingsMenu.ascx" />
+    <TemplateFile Location="Layouts\TD.QLDC\assets\js\QLDC.lib.js.map" />
+    <TemplateFile Location="Layouts\TD.QLDC\assets\css\QLCT.lib.css" />
+    <TemplateFile Location="Layouts\TD.QLDC\assets\css\vendors.css" />
+    <TemplateFile Location="Layouts\TD.QLDC\assets\css\vendors.min.css" />
+    <TemplateFile Location="Layouts\TD.QLDC\assets\js\QLDC.lib.js" />
+    <TemplateFile Location="Layouts\TD.QLDC\assets\js\vendors.js" />
+    <TemplateFile Location="Layouts\TD.QLDC\assets\js\vendors.min.js" />
+  </TemplateFiles>
+  <FeatureManifests>
+    <FeatureManifest Location="TD.QLDC_QLDCApplication\Feature.xml" />
+    <FeatureManifest Location="TD.QLDC_QLDCApi\Feature.xml" />
+  </FeatureManifests>
+</Solution>

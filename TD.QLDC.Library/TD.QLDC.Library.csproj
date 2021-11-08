@@ -1,0 +1,174 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{CC837F67-485A-4D01-A992-ED7CF6323584}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>TD.QLDC.Library</RootNamespace>
+    <AssemblyName>TD.QLDC.Library</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\..\..\..\..\inetpub\wwwroot\wss\VirtualDirectories\7778\bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>true</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>TD.QLDC.Library.snk</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="DocumentFormat.OpenXml, Version=2.9.1.0, Culture=neutral, PublicKeyToken=8fb06cb64d019a17, processorArchitecture=MSIL">
+      <HintPath>..\packages\DocumentFormat.OpenXml.2.9.1\lib\net40\DocumentFormat.OpenXml.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.SharePoint, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL" />
+    <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.11.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Http">
+      <HintPath>..\Libs\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+    <Reference Include="TD.Core.Api.Common">
+      <HintPath>..\Libs\TD.Core.Api.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="TD.Core.Api.Common.Http">
+      <HintPath>..\Libs\TD.Core.Api.Common.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="TD.Core.Api.Mvc">
+      <HintPath>..\Libs\TD.Core.Api.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="TD.Core.Api.Mvc.Integration">
+      <HintPath>..\Libs\TD.Core.Api.Mvc.Integration.dll</HintPath>
+    </Reference>
+    <Reference Include="TD.Core.Api.Service">
+      <HintPath>..\Libs\TD.Core.Api.Service.dll</HintPath>
+    </Reference>
+    <Reference Include="TD.Core.Api.SP">
+      <HintPath>..\Libs\TD.Core.Api.SP.dll</HintPath>
+    </Reference>
+    <Reference Include="TD.Core.Areas">
+      <HintPath>..\Libs\TD.Core.Areas.dll</HintPath>
+    </Reference>
+    <Reference Include="TD.Core.Areas.ListDefinitions">
+      <HintPath>..\Libs\TD.Core.Areas.ListDefinitions.dll</HintPath>
+    </Reference>
+    <Reference Include="TD.Core.Areas.Services">
+      <HintPath>..\Libs\TD.Core.Areas.Services.dll</HintPath>
+    </Reference>
+    <Reference Include="TD.Core.Common">
+      <HintPath>..\Libs\TD.Core.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="TD.Core.CommonServices">
+      <HintPath>..\Libs\TD.Core.CommonServices.dll</HintPath>
+    </Reference>
+    <Reference Include="TD.Core.Modules">
+      <HintPath>..\Libs\TD.Core.Modules.dll</HintPath>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="Z.EntityFramework.Classic, Version=7.0.0.0, Culture=neutral, PublicKeyToken=afc61983f100d280, processorArchitecture=MSIL">
+      <HintPath>..\packages\Z.EntityFramework.Classic.Community.7.1.0\lib\net45\Z.EntityFramework.Classic.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Z.EntityFramework.Classic.SqlServer, Version=7.0.0.0, Culture=neutral, PublicKeyToken=afc61983f100d280, processorArchitecture=MSIL">
+      <HintPath>..\packages\Z.EntityFramework.Classic.Community.7.1.0\lib\net45\Z.EntityFramework.Classic.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Z.EntityFramework.Extensions.Classic, Version=3.17.1.0, Culture=neutral, PublicKeyToken=59b66d028979105b, processorArchitecture=MSIL">
+      <HintPath>..\packages\Z.EntityFramework.Extensions.Classic.3.17.1\lib\net45\Z.EntityFramework.Extensions.Classic.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Z.Expressions.Eval, Version=2.9.20.0, Culture=neutral, PublicKeyToken=59b66d028979105b, processorArchitecture=MSIL">
+      <HintPath>..\packages\Z.Expressions.Eval.2.9.20\lib\net45\Z.Expressions.Eval.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Data\EFRepository.cs" />
+    <Compile Include="Data\QLDCDbContext.cs" />
+    <Compile Include="interfaces\IRepository.cs" />
+    <Compile Include="Migrations\202111040825445_Db_init.cs" />
+    <Compile Include="Migrations\202111040825445_Db_init.Designer.cs">
+      <DependentUpon>202111040825445_Db_init.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\Category.cs" />
+    <Compile Include="Models\CategoryBase.cs" />
+    <Compile Include="Models\HoKhau.cs" />
+    <Compile Include="Models\ModelBaseExt.cs" />
+    <Compile Include="Models\NhanKhau.cs" />
+    <Compile Include="Models\NhomDanhMuc.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\CategoryRepository.cs" />
+    <Compile Include="Repositories\HoKhauRepository.cs" />
+    <Compile Include="Repositories\NhanKhauRepository.cs" />
+    <Compile Include="Repositories\NhomDanhMucRepository.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="packages.config" />
+    <None Include="TD.QLDC.Library.snk" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Models\ViewModel\" />
+    <Folder Include="ReportTemplates\" />
+    <Folder Include="Report\" />
+    <Folder Include="Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Migrations\areas.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\202111040825445_Db_init.resx">
+      <DependentUpon>202111040825445_Db_init.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

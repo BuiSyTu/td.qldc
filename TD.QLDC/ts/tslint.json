@@ -1,0 +1,21 @@
+{
+    "extends": "tslint-config-airbnb",
+    "linterOptions": {
+        "exclude": [
+            "node_modules/**"
+        ]
+    },
+    "rules": {
+        "indent": [
+            true,
+            "tabs"
+        ],
+        "ter-indent": [
+            true,
+            "tab"
+        ],
+        "ter-arrow-parens": false,
+        "no-increment-decrement": false,
+        "import-name": false
+    }
+}
