@@ -1,6 +1,0 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Feature xmlns="http://schemas.microsoft.com/sharepoint/" ActivateOnDefault="FALSE" AlwaysForceInstall="TRUE" Id="cb521562-4f2b-443b-8ea2-3a7da2fba8b0" ReceiverAssembly="TD.QLDC, Version=1.0.0.0, Culture=neutral, PublicKeyToken=c78f98c001a3d004" ReceiverClass="TD.QLDC.Features.QLDCApi.QLDCApiEventReceiver" Scope="WebApplication" Title="TD.QLDC Api">
-  <ElementManifests>
-    <ElementFile Location="Module\Manifest.xml" />
-  </ElementManifests>
-</Feature>

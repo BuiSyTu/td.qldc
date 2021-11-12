@@ -1,9 +1,0 @@
-C:\inetpub\wwwroot\wss\VirtualDirectories\8107\bin\TD.QLDC.dll
-C:\inetpub\wwwroot\wss\VirtualDirectories\8107\bin\TD.QLDC.pdb
-C:\Users\hieupm\Desktop\QLDC\TD.QLDC\obj\Debug\TD.QLDC.csproj.CoreCompileInputs.cache
-C:\Users\hieupm\Desktop\QLDC\TD.QLDC\obj\Debug\TD.QLDC.csproj.CopyComplete
-C:\Users\hieupm\Desktop\QLDC\TD.QLDC\obj\Debug\TD.QLDC.dll
-C:\Users\hieupm\Desktop\QLDC\TD.QLDC\obj\Debug\TD.QLDC.pdb
-C:\inetpub\wwwroot\wss\VirtualDirectories\7778\bin\TD.QLDC.dll
-C:\inetpub\wwwroot\wss\VirtualDirectories\7778\bin\TD.QLDC.pdb
-C:\Users\hieupm\Desktop\QLDC\TD.QLDC\obj\Debug\TD.QLDC.csprojAssemblyReference.cache

@@ -1,7 +1,0 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Elements xmlns="http://schemas.microsoft.com/sharepoint/">
-  <Module Name="MasterPages" Url="_catalogs/masterpage/QLDC">
-    <File Path="MasterPages\default.master" Url="default.master" Type="GhostableInLibrary" IgnoreIfAlreadyExists="false" ReplaceContent="true"/>
-    <File Path="MasterPages\dialog-form.master" Url="dialog-form.master" Type="GhostableInLibrary" IgnoreIfAlreadyExists="false" ReplaceContent="true"/>
-  </Module>
-</Elements>

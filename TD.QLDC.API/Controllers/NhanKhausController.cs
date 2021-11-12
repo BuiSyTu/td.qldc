@@ -26,9 +26,8 @@ namespace TD.QLDC.API.Controllers
             var data = _NhanKhauRepository.UpdateTheoSHK(shkc, shk);
             return ApiOk(data);
         }
-        // GET: QLDCapi/NhanKhaus
-        // [Route("QLDCapi/NhanKhaus")]
-        [ActionName("Index")]
+
+        [Route("QLDCapi/NhanKhaus")]
         [HttpGet]
         public IHttpActionResult GetNhanKhaus(int skip = 0, int top = 100,
             string q = null, string orderBy = null, bool count = false,
@@ -67,7 +66,6 @@ namespace TD.QLDC.API.Controllers
             return ApiOk(NhanKhau);
         }
 
-        // GET: QLDCapi/NhanKhaus/5
         [Route("QLDCapi/NhanKhaus/{id:int:min(1)}")]
         [HttpGet]
         public IHttpActionResult GetNhanKhau(int id)
@@ -80,7 +78,6 @@ namespace TD.QLDC.API.Controllers
             return ApiOk(NhanKhau);
         }
 
-        // PUT: QLDCapi/NhanKhaus/5
         [Route("QLDCapi/NhanKhaus/{id:int:min(1)}")]
         [HttpPut]
         public IHttpActionResult PutNhanKhau(int id, NhanKhau change)
@@ -98,9 +95,7 @@ namespace TD.QLDC.API.Controllers
             return ApiNoContent();
         }
 
-        // POST: QLDCapi/NhanKhaus
-        // [Route("QLDCapi/NhanKhaus")]
-        [ActionName("Index")]
+        [Route("QLDCapi/NhanKhaus")]
         [HttpPost]
         public IHttpActionResult PostNhanKhau(NhanKhau entity)
         {
@@ -112,7 +107,6 @@ namespace TD.QLDC.API.Controllers
             return ApiCreated(NhanKhau);
         }
 
-        // DELETE: QLDCapi/NhanKhaus/5
         [Route("QLDCapi/NhanKhaus/{id:int:min(1)}")]
         [HttpDelete]
         public IHttpActionResult DeleteNhanKhau(int id)
@@ -121,7 +115,6 @@ namespace TD.QLDC.API.Controllers
             return ApiOk();
         }
 
-        // GET: QLDCapi/NhanKhaus/count
         [Route("QLDCapi/NhanKhaus/count")]
         [HttpGet]
         public IHttpActionResult GetCountNhanKhau()

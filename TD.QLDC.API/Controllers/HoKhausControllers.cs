@@ -36,7 +36,6 @@ namespace TD.QLDC.API.Controllers
             return ApiOk(data);
         }
 
-        // GET: QLDCapi/HoKhaus
         [Route("QLDCapi/HoKhaus")]
         [HttpGet]
         public IHttpActionResult GetHoKhaus(int skip = 0, int top = 100, string q = null, string orderBy = null, bool count = false)
@@ -60,7 +59,6 @@ namespace TD.QLDC.API.Controllers
                         });
         }
 
-        // GET: QLDCapi/HoKhaus/5
         [Route("QLDCapi/HoKhaus/{id:int:min(1)}")]
         [HttpGet]
         public IHttpActionResult GetHoKhau(int id)
@@ -73,7 +71,6 @@ namespace TD.QLDC.API.Controllers
             return ApiOk(HoKhau);
         }
 
-        // PUT: QLDCapi/HoKhaus/5
         [Route("QLDCapi/HoKhaus/{id:int:min(1)}")]
         [HttpPut]
         public IHttpActionResult PutHoKhau(int id, HoKhau change)
@@ -91,7 +88,6 @@ namespace TD.QLDC.API.Controllers
             return ApiNoContent();
         }
 
-        // POST: QLDCapi/HoKhaus
         [Route("QLDCapi/HoKhaus")]
         [HttpPost]
         public IHttpActionResult PostHoKhau(HoKhau entity)
@@ -104,7 +100,6 @@ namespace TD.QLDC.API.Controllers
             return ApiCreated(HoKhau);
         }
         
-        // DELETE: QLDCapi/HoKhaus/5
         [Route("QLDCapi/HoKhaus/{id:int:min(1)}")]
         [HttpDelete]
         public IHttpActionResult DeleteHoKhau(int id)
@@ -114,7 +109,6 @@ namespace TD.QLDC.API.Controllers
         }
 
 
-        // GET: QLDCapi/HoKhaus/count
         [Route("QLDCapi/HoKhaus/count")]
         [HttpGet]
         public IHttpActionResult GetCountHoKhau()
@@ -126,11 +120,5 @@ namespace TD.QLDC.API.Controllers
             }
             return ApiOk(count);
         }
-        //[Route("QLDCapi/HoKhaus/GetByLoaiHo/{DMLoaiHoID}")]
-        //[HttpGet]
-        //public string GetByLoaiHo(string DMLoaiHoID = "0")
-        //{
-        //    return JsonConvert.SerializeObject(_HoKhauRepository.GetByLoaiHo(DMLoaiHoID));
-        //}
     }
 }

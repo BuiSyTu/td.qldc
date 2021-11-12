@@ -18,9 +18,7 @@ namespace TD.QLDC.API.Controllers
             _NhomDanhMucRepository = NhomDanhMucRepository;
         }
 
-        // GET: QLDCapi/NhomDanhMucs
-        // [Route("QLDCapi/NhomDanhMucs")]
-        [ActionName("Index")]
+        [Route("QLDCapi/NhomDanhMucs")]
         [HttpGet]
         public IHttpActionResult GetNhomDanhMucs(int skip = 0, int top = 100,
             string q = null, string orderBy = null, bool count = false,
@@ -50,7 +48,6 @@ namespace TD.QLDC.API.Controllers
                         });
         }
 
-        // GET: QLDCapi/NhomDanhMucs/5
         [Route("QLDCapi/NhomDanhMucs/{id:int:min(1)}")]
         [HttpGet]
         public IHttpActionResult GetNhomDanhMuc(int id)
@@ -63,7 +60,6 @@ namespace TD.QLDC.API.Controllers
             return ApiOk(NhomDanhMuc);
         }
 
-        // PUT: QLDCapi/NhomDanhMucs/5
         [Route("QLDCapi/NhomDanhMucs/{id:int:min(1)}")]
         [HttpPut]
         public IHttpActionResult PutNhomDanhMuc(int id, NhomDanhMuc change)
@@ -81,9 +77,7 @@ namespace TD.QLDC.API.Controllers
             return ApiNoContent();
         }
 
-        // POST: QLDCapi/NhomDanhMucs
-        // [Route("QLDCapi/NhomDanhMucs")]
-        [ActionName("Index")]
+        [Route("QLDCapi/NhomDanhMucs")]
         [HttpPost]
         public IHttpActionResult PostNhomDanhMuc(NhomDanhMuc entity)
         {
@@ -95,7 +89,6 @@ namespace TD.QLDC.API.Controllers
             return ApiCreated(NhomDanhMuc);
         }
 
-        // DELETE: QLDCapi/NhomDanhMucs/5
         [Route("QLDCapi/NhomDanhMucs/{id:int:min(1)}")]
         [HttpDelete]
         public IHttpActionResult DeleteNhomDanhMuc(int id)
@@ -104,7 +97,6 @@ namespace TD.QLDC.API.Controllers
             return ApiOk();
         }
 
-        // GET: QLDCapi/NhomDanhMucs/count
         [Route("QLDCapi/NhomDanhMucs/count")]
         [HttpGet]
         public IHttpActionResult GetCountNhomDanhMuc()

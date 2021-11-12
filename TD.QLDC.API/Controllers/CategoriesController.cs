@@ -18,9 +18,7 @@ namespace TD.QLDC.API.Controllers
             _categoryRepository = categoryRepository;
         }
 
-        // GET: QLDCapi/categories
-        // [Route("QLDCapi/categories")]
-        [ActionName("Index")]
+        [Route("QLDCapi/categories")]
         [HttpGet]
         public IHttpActionResult GetCategories(int skip = 0, int top = 100,
             string q = null, string orderBy = null, bool count = false,
@@ -50,14 +48,6 @@ namespace TD.QLDC.API.Controllers
                         });
         }
 
-        //[Route("QLDCapi/Catories/GetByNhomID/{NhomID}")]
-        //[HttpGet]
-        //public IHttpActionResult GetByNhomID(int NhomID)
-        //{
-        //    var DanhMuc = _categoryRepository.GetByNhomID(NhomID);
-        //    return ApiOk(DanhMuc);
-        //}
-        // GET: QLDCapi/categories/5
         [Route("QLDCapi/categories/{id:int:min(1)}")]
         [HttpGet]
         public IHttpActionResult GetCategory(int id)
@@ -70,7 +60,6 @@ namespace TD.QLDC.API.Controllers
             return ApiOk(Category);
         }
 
-        // PUT: QLDCapi/categories/5
         [Route("QLDCapi/categories/{id:int:min(1)}")]
         [HttpPut]
         public IHttpActionResult PutCategory(int id, Category change)
@@ -88,9 +77,7 @@ namespace TD.QLDC.API.Controllers
             return ApiNoContent();
         }
 
-        // POST: QLDCapi/categories
-        // [Route("QLDCapi/categories")]
-        [ActionName("Index")]
+        [Route("QLDCapi/categories")]
         [HttpPost]
         public IHttpActionResult PostCategory(Category entity)
         {
@@ -102,7 +89,6 @@ namespace TD.QLDC.API.Controllers
             return ApiCreated(Category);
         }
 
-        // DELETE: QLDCapi/categories/5
         [Route("QLDCapi/categories/{id:int:min(1)}")]
         [HttpDelete]
         public IHttpActionResult DeleteCategory(int id)
@@ -111,7 +97,6 @@ namespace TD.QLDC.API.Controllers
             return ApiOk();
         }
 
-        // GET: QLDCapi/categories/count
         [Route("QLDCapi/categories/count")]
         [HttpGet]
         public IHttpActionResult GetCountCategory()
