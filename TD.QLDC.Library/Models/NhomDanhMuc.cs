@@ -17,8 +17,9 @@ namespace TD.QLDC.Library.Models
 
         
         private string name;
-        private List<Category> danhMuc;
         public string Name { get { return name; } set { name = value; NotifyPropertyChanged(); } }
+
+        private List<Category> danhMuc;
         public virtual List<Category> DanhMuc { get { return danhMuc; } set { danhMuc = value; NotifyPropertyChanged(); } }
 
     }

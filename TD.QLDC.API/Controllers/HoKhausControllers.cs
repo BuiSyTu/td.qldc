@@ -4,14 +4,11 @@ using System.Web.Http;
 using TD.Core.Api.Mvc;
 using TD.QLDC.Library.Models;
 using TD.QLDC.Library.Repositories;
-using System.Linq;
-using Newtonsoft.Json;
-using Microsoft.SharePoint;
 
 
 namespace TD.QLDC.API.Controllers
 {
-    public sealed class HoKhausController : TDApiController
+    public class HoKhausController : TDApiController
     {
         private readonly IHoKhauRepository _HoKhauRepository;
         public HoKhausController(IHoKhauRepository HoKhauRepository)

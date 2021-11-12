@@ -12,17 +12,18 @@ namespace TD.QLDC.Library.Models
     [TextSearchColumns(nameof(Name), nameof(Description))]
     public abstract class CategoryBase : ModelBaseExt
     {
-
         public CategoryBase()
         {
             Active = true;
             Created = DateTime.Now;
         }
+
         private string name;
         private string description;
         private int order;
         private bool active;
         private int? nhomID;
+
         [FullTextIndex]
         [MaxLength(256)]
         public string Name
@@ -62,9 +63,7 @@ namespace TD.QLDC.Library.Models
                 NotifyPropertyChanged();
             }
         }
-        /// <summary>
-        /// Trạng thái sử dụng
-        /// </summary>
+
         [DefaultValue(true)]
         public bool Active
         {
@@ -78,9 +77,7 @@ namespace TD.QLDC.Library.Models
                 NotifyPropertyChanged();
             }
         }
-        /// <summary>
-        /// thứ tự
-        /// </summary>
+
         public int Order
         {
             get
@@ -93,7 +90,6 @@ namespace TD.QLDC.Library.Models
                 NotifyPropertyChanged();
             }
         }
-
 
         public virtual NhomDanhMuc Nhom
         {

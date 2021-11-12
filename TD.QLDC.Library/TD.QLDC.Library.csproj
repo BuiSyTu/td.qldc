@@ -152,13 +152,9 @@
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Models\ViewModel\" />
     <Folder Include="ReportTemplates\" />
     <Folder Include="Report\" />
     <Folder Include="Services\" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Migrations\areas.xml" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202111040825445_Db_init.resx">

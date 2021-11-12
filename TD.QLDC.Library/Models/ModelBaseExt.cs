@@ -16,9 +16,6 @@ namespace TD.QLDC.Library.Models
         private string modifiedBy;
         private DateTime? modified;
 
-        /// <summary>
-        /// Được tạo bởi
-        /// </summary>
         public string CreatedBy
         {
             get
@@ -32,9 +29,6 @@ namespace TD.QLDC.Library.Models
             }
         }
 
-        /// <summary>
-        /// Được tạo tại thời điểm
-        /// </summary>
         public DateTime? Created
         {
             get
@@ -47,9 +41,7 @@ namespace TD.QLDC.Library.Models
                 NotifyPropertyChanged();
             }
         }
-        /// <summary>
-        /// Được chỉnh sửa bởi
-        /// </summary>
+
         public string ModifiedBy
         {
             get
@@ -62,9 +54,7 @@ namespace TD.QLDC.Library.Models
                 NotifyPropertyChanged();
             }
         }
-        /// <summary>
-        /// Được chỉnh sửa tại thời điểm
-        /// </summary>
+
         public DateTime? Modified
         {
             get

@@ -4,12 +4,10 @@ using System.Web.Http;
 using TD.Core.Api.Mvc;
 using TD.QLDC.Library.Models;
 using TD.QLDC.Library.Repositories;
-using System.Linq;
-using Newtonsoft.Json;
 
 namespace TD.QLDC.API.Controllers
 {
-    public sealed class CategoriesController : TDApiController
+    public class CategoriesController : TDApiController
     {
         private readonly ICategoryRepository _categoryRepository;
 

@@ -9,7 +9,7 @@ using Newtonsoft.Json;
 
 namespace TD.QLDC.API.Controllers
 {
-    public sealed class NhanKhausController : TDApiController
+    public class NhanKhausController : TDApiController
     {
         private readonly INhanKhauRepository _NhanKhauRepository;
 
