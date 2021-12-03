@@ -24,7 +24,7 @@
             {
                 title: "Thứ tự",
                 data: "Order"
-            },            
+            },
             {
                 title: "Hôn nhân",
                 data: "Name"
@@ -91,7 +91,7 @@
         })
         .iframe(url)
         .size(450, 350)
-        .OkCancel().show()
+        .okCancel().show()
         .then(function (returnData) {
             if (returnData.result == 'OK') {
                 var data = returnData.data;
@@ -115,7 +115,7 @@ hn.Edit = function (id,name,url) {
         })
         .iframe(url+'?aid=' + id)
         .size(450, 350)
-        .OkCancel().show()
+        .okCancel().show()
         .then(function (returnData) {
             if (returnData.result == 'OK') {
                 var data = returnData.data;

@@ -6,7 +6,7 @@ danhmuc.Add = function (name,url) {
         })
         .iframe(url)
         .size(450, 350)
-        .OkCancel().show()
+        .okCancel().show()
         .then(function (returnData) {
             if (returnData.result == 'OK') {
                 var data = returnData.data;
@@ -30,7 +30,7 @@ danhmuc.Edit = function (id,name,url) {
         })
         .iframe(url+'?aid=' + id)
         .size(450, 350)
-        .OkCancel().show()
+        .okCancel().show()
         .then(function (returnData) {
             if (returnData.result == 'OK') {
                 var data = returnData.data;

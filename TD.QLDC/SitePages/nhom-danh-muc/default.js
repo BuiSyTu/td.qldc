@@ -22,22 +22,6 @@
                 title: "Tên danh mục",
                 data: "Name"
             },
-         //   {
-         //       title: "Số điện thoại",
-          //      data: "SoDienThoai",
-           // },
-           // {
-           //     title: "Địa chỉ",
-            //    data: "DiaChi",
-          //  },
-           // {
-          //      title: "Người đại diện",
-           //     data: "DaiDienPhapLuat",
-           // },
-            //{
-                //title: "Trạng thái",
-               // data: "TrangThai",
-           // },
             {
                 title: "Thao tác",
                 render: function (data, type, row, meta) {
@@ -84,7 +68,7 @@
             })
             .iframe('modal/adddanhmuc.aspx')
             .size(500, 400)
-            .OkCancel().show()
+            .okCancel().show()
             .then(function (returnData) {
                 if (returnData.result == 'OK') {
                     var data = returnData.data;
@@ -108,7 +92,7 @@
             })
             .iframe('modal/adddanhmuc.aspx?aid=' + id)
             .size(1200, 550).maximize()
-            .OkCancel().show()
+            .okCancel().show()
             .then(function (returnData) {
                 if (returnData.result == 'OK') {
                     var data = returnData.data;

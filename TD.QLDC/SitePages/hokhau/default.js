@@ -98,7 +98,7 @@
             })
             .iframe('modal/add-ho-khau.aspx')
             .size(700, 500)
-            .OkCancel().show()
+            .okCancel().show()
             .then(function (returnData) {
                 if (returnData.result == 'OK') {
                     var data = returnData.data;
@@ -121,7 +121,7 @@
             })
             .iframe('modal/add-ho-khau.aspx?aid=' + id)
             .size(700, 550)
-            .OkCancel().show()
+            .okCancel().show()
             .then(function (returnData) {
                 if (returnData.result == 'OK') {
                     var data = returnData.data;

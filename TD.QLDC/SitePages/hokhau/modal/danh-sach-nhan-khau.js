@@ -18,7 +18,7 @@
                 )
             )
             .addCheckColumn()
-            .addIndexColumn('STT')           
+            .addIndexColumn('STT')
             .addColumn(
               
             {
@@ -122,7 +122,7 @@
             })
             .iframe('modal/add-nhan-khau.aspx?shk='+shk)
             .size(1200, 550).maximize()
-            .OkCancel().show()
+            .okCancel().show()
             .then(function (returnData) {
                 if (returnData.result == 'OK') {
                     var dt = returnData.data;
@@ -143,7 +143,7 @@
             })
             .iframe('modal/add-nhan-khau.aspx?aid=' + id)
             .size(1200, 550).maximize()
-            .OkCancel().show()
+            .okCancel().show()
             .then(function (returnData) {
                 if (returnData.result == 'OK') {
                     var dt = returnData.data;

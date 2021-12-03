@@ -80,5 +80,5 @@
             var id = $(this).attr("data-id");
             danhmuc.Delete(id);
         });
-    });    
+    });
 });
