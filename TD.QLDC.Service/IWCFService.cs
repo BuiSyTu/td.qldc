@@ -14,21 +14,13 @@ namespace TD.QLDC.Service
     [ServiceContract]
     public interface IWCFService
     {
-        //[OperationContract]
-        //[WebInvoke(Method = "GET", UriTemplate = "/GetUserTokenKey/{user}/{pass}/{tokenDevice}", ResponseFormat = WebMessageFormat.Json, BodyStyle = WebMessageBodyStyle.Bare)]
         [WebInvoke(Method = "POST", ResponseFormat = WebMessageFormat.Json, BodyStyle = WebMessageBodyStyle.WrappedRequest)]
         [OperationContract]
         APIResult GetUserTokenKey(string user, string pass, string tokenDevice);
 
-        //[OperationContract]
-        //[WebInvoke(Method = "GET", UriTemplate = "/GetTokenKey/{user}/{pass}/{tokenDevice}", ResponseFormat = WebMessageFormat.Json, BodyStyle = WebMessageBodyStyle.Bare)]
         [WebInvoke(Method = "POST", ResponseFormat = WebMessageFormat.Json, BodyStyle = WebMessageBodyStyle.WrappedRequest)]
         [OperationContract]
         APIResult GetTokenKey(string user, string pass, string tokenDevice);
-
-        //[OperationContract]
-        //[WebInvoke(Method = "PUT", UriTemplate = "/CheckUserRegister", ResponseFormat = WebMessageFormat.Json, BodyStyle = WebMessageBodyStyle.Bare)]
-        //APIResult CheckUserRegister(Stream input);
 
         [OperationContract]
         [WebInvoke(Method = "GET", UriTemplate = "/CheckVerificationCode/{user}/{code}", ResponseFormat = WebMessageFormat.Json, BodyStyle = WebMessageBodyStyle.Bare)]

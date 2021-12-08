@@ -95,6 +95,7 @@ namespace TD.QLDC.Service
                 return "Error";
             }
         }
+
         public static string ValidateJWT(string token)
         {
             try
@@ -117,6 +118,7 @@ namespace TD.QLDC.Service
                 return "Token has invalid signature";
             }
         }
+
         private static string keyAES;
         public static String doEncryptAES(String plainText)
         {
@@ -125,6 +127,7 @@ namespace TD.QLDC.Service
             var plainBytes = Encoding.UTF8.GetBytes(plainText);
             return Convert.ToBase64String(Encrypt(plainBytes, getRijndaelManaged(keyAES)));
         }
+
         public static String doDecryptAES(String encryptedText)
         {
             if (string.IsNullOrEmpty(keyAES))
@@ -132,6 +135,7 @@ namespace TD.QLDC.Service
             var encryptedBytes = Convert.FromBase64String(encryptedText);
             return Encoding.UTF8.GetString(Decrypt(encryptedBytes, getRijndaelManaged(keyAES)));
         }
+
         private static RijndaelManaged getRijndaelManaged(String secretKey)
         {
             var keyBytes = new byte[16];
@@ -147,11 +151,13 @@ namespace TD.QLDC.Service
                 IV = keyBytes
             };
         }
+
         private static byte[] Encrypt(byte[] plainBytes, RijndaelManaged rijndaelManaged)
         {
             return rijndaelManaged.CreateEncryptor()
               .TransformFinalBlock(plainBytes, 0, plainBytes.Length);
         }
+
         private static byte[] Decrypt(byte[] encryptedData, RijndaelManaged rijndaelManaged)
         {
             return rijndaelManaged.CreateDecryptor()
@@ -171,6 +177,7 @@ namespace TD.QLDC.Service
     {
         public UserAPI user { get; set; }
     }
+
     public class UserAPI
     {
         public string userName { get; set; }

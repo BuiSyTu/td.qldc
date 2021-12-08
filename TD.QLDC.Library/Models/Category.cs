@@ -2,7 +2,6 @@
 
 namespace TD.QLDC.Library.Models
 {
-    [FullTextIndexedTable]
     public class Category : CategoryBase
     {
 

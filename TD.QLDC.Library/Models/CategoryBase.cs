@@ -8,23 +8,14 @@ using TD.QLDC.Library.Models;
 
 namespace TD.QLDC.Library.Models
 {
-    [FullTextIndexedTable]
-    [TextSearchColumns(nameof(Name), nameof(Description))]
     public abstract class CategoryBase : ModelBaseExt
     {
-        public CategoryBase()
-        {
-            Active = true;
-            Created = DateTime.Now;
-        }
-
         private string name;
         private string description;
         private int order;
         private bool active;
         private int? nhomID;
 
-        [FullTextIndex]
         [MaxLength(256)]
         public string Name
         {
@@ -50,7 +41,7 @@ namespace TD.QLDC.Library.Models
                 NotifyPropertyChanged();
             }
         }
-        [FullTextIndex]
+
         public virtual string Description
         {
             get

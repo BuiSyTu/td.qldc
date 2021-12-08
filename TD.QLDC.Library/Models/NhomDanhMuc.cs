@@ -10,12 +10,6 @@ namespace TD.QLDC.Library.Models
    
     public class NhomDanhMuc : ModelBaseExt
     {
-        public NhomDanhMuc()
-        {
-            Created = DateTime.Now;
-        }
-
-        
         private string name;
         public string Name { get { return name; } set { name = value; NotifyPropertyChanged(); } }
 

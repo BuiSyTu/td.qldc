@@ -1,43 +1,28 @@
 ﻿using Microsoft.SharePoint;
 using Microsoft.SharePoint.IdentityModel;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
-using System.Collections.Specialized;
-using System.Data;
 using System.Globalization;
-using System.IO;
 using System.Linq;
-using System.Net;
 using System.Net.Http;
 using System.Runtime.Serialization;
-using System.Security.Cryptography;
-using System.ServiceModel;
 using System.ServiceModel.Activation;
-using System.ServiceModel.Web;
 using System.Text;
 using System.Threading.Tasks;
-using System.Web;
-using System.Web.Http.Results;
-using System.Web.Security;
-using TD.Core.Api.Common.Http;
-using TD.Core.Api.Mvc;
 using TD.Core.UserProfiles.Controllers;
 using TD.Core.UserProfiles.Models;
 using TD.QLDC.Library.Models;
-using TD.QLDC.Library.Repositories;
 
 namespace TD.QLDC.Service
 {
-    // NOTE: You can use the "Rename" command on the "Refactor" menu to change the class name "KNTCWCFService" in code, svc and config file together.
     [AspNetCompatibilityRequirements(RequirementsMode = AspNetCompatibilityRequirementsMode.Allowed)]
     public class WCFService : IWCFService
     {
         public QLDCDbContext _dbContext;
 
         /// <summary>
-        /// Lay toke dang nhap của công dân
+        /// Lay token dang nhap của công dân
         /// </summary>
         /// <param name="user"></param>
         /// <param name="pass"></param>
@@ -64,7 +49,6 @@ namespace TD.QLDC.Service
                             _user.fullName = obj.HoTen;
                             _user.identifier = user;
                             _user.birthday = obj.NgaySinh;
-                            //.HasValue ? obj.NgaySinh.Value.ToString("dd/MM/yyyy") : "";
                             _user.sex = obj.GioiTinh;
                             _user.phoneNumber = obj.SoDienThoai;
                             _user.email = obj.Email;
@@ -146,12 +130,12 @@ namespace TD.QLDC.Service
                     internalMessage = ex.ToString()
                 };
             }
-            //return APICommon.ObjectToJson(result);
+
             return result;
         }
 
         /// <summary>
-        /// Lay toke dang nhap của cán bộ
+        /// Lay token dang nhap của cán bộ
         /// </summary>
         /// <param name="user"></param>
         /// <param name="pass"></param>
@@ -175,8 +159,6 @@ namespace TD.QLDC.Service
                                 var webApp = oSite.WebApplication;
                                 //var zone = oSite.Zone;
 
-                                //UserProfileController userProfileCtrlr = new UserProfileController(webApp, zone);
-                                //UserProfile obj = userProfileCtrlr.GetByCurrentUser();
                                 SPWeb rootWeb = oSite.RootWeb;
                                 SPList lstUser = rootWeb.Lists["UserProfiles"];
                                 SPListItem obj = GetByUser(lstUser, user);
@@ -245,7 +227,6 @@ namespace TD.QLDC.Service
                     internalMessage = ex.ToString()
                 };
             }
-            //return APICommon.ObjectToJson(result);
             return result;
         }
 
@@ -272,7 +253,7 @@ namespace TD.QLDC.Service
             if (!string.IsNullOrEmpty(user))
             {
                 var query = from hs in _dbContext.NhanKhaus.AsQueryable()
-                            where hs.SoCMT.Equals(user) || hs.SoCCCD.Equals(user)// || hs.SoDienThoai.Equals(user)
+                            where hs.SoCMT.Equals(user) || hs.SoCCCD.Equals(user)
                             select hs;
                 if (query.Any())
                 {
@@ -335,8 +316,6 @@ namespace TD.QLDC.Service
 
         public APIResult CreateNewUser(string account, string passWord, string address, string avatar, string birthday, string email, string fullName, string phone, string sex, string areaCode)
         {
-            //string response = (new StreamReader(input)).ReadToEnd();
-            //UserInfo user = JsonConvert.DeserializeObject<UserInfo>(response);
             APIResult result = new APIResult();
             if (account == null || passWord == null)
             {
@@ -415,8 +394,6 @@ namespace TD.QLDC.Service
         }
         public APIResult CreateNhanKhau(string hoten, string hktt, string birthday, string phone, string sex, string mqh, string nghenghiep, string dantoc)
         {
-            //string response = (new StreamReader(input)).ReadToEnd();
-            //UserInfo user = JsonConvert.DeserializeObject<UserInfo>(response);
             APIResult result = new APIResult();
             if (hoten == null || hktt == null)
             {
@@ -437,28 +414,21 @@ namespace TD.QLDC.Service
                 {
                     using (SPWeb oWeb = oSite.RootWeb)
                     {
-                        //   var webApp = oSite.WebApplication;
-                        // var zone = oSite.Zone;
                         NhanKhau NhanKhau = new NhanKhau();
-                        //   UserProfileController userProfileCtrlr = new UserProfileController(webApp, zone);
+
                         NhanKhau.HoTen = hoten;
 
                         if (string.IsNullOrEmpty(birthday))
                         {
                             NhanKhau.NgaySinh = birthday;
-                            //DateTime.ParseExact(birthday, "dd/MM/yyyy", CultureInfo.InvariantCulture);
                         }
 
                         NhanKhau.GioiTinh = sex;
                         NhanKhau.SoDienThoai = phone;
                         NhanKhau.NgheNghiep = nghenghiep;
-                        //  NhanKhau.DMQuanHe = mqh;
-                        // NhanKhau.DMDanToc = dantoc;
 
                         _dbContext.NhanKhaus.Add(NhanKhau);
                         _dbContext.SaveChanges();
-                        //userProfile = userProfileCtrlr.Add(userProfile);//Create user
-                        // userProfileCtrlr.ResetPassword(userProfile.Account, hktt, false);
                     }
                 }
             });
@@ -519,8 +489,7 @@ namespace TD.QLDC.Service
         public APIResult CreateUserRegister(string user, string pass)
         {
             APIResult result = new APIResult();
-            //string response = (new StreamReader(input)).ReadToEnd();
-            //Account acc = JsonConvert.DeserializeObject<Account>(response);
+
             if (string.IsNullOrEmpty(user) || string.IsNullOrEmpty(pass))
             {
                 result.error = new ErrorResult()
@@ -530,8 +499,7 @@ namespace TD.QLDC.Service
                 };
                 return result;
             }
-            //string user = acc.user;
-            //string pass = acc.pass;
+
             _dbContext = new QLDCDbContext();
 
             API_DataLogin _user = new API_DataLogin();
@@ -664,7 +632,6 @@ namespace TD.QLDC.Service
                                    identifier = qr.identifier,
                                    fullName = qr.fullName,
                                    birthday = qr.birthday,
-                                   //.HasValue ? qr.birthday.Value.ToString("dd/MM/yyyy") : "",
                                    sex = qr.sex,
                                    phoneNumber = qr.phoneNumber,
                                    email = qr.email,
@@ -918,7 +885,6 @@ namespace TD.QLDC.Service
 
     [DataContract]
     [KnownType(typeof(NhanKhau))]
-    [KnownType(typeof(UserInfo))]
     [KnownType(typeof(List<string>))]
     [KnownType(typeof(API_DataLogin))]
     [Serializable]
@@ -931,8 +897,8 @@ namespace TD.QLDC.Service
 
         public APIResult()
         {
-            this.data = null;
-            this.error = new ErrorResult();
+            data = null;
+            error = new ErrorResult();
         }
     }
 
@@ -979,37 +945,5 @@ namespace TD.QLDC.Service
             this.email = string.Empty;
             this.maXa = string.Empty;
         }
-    }
-
-    public class Account
-    {
-        public string user { get; set; }
-        public string pass { get; set; }
-    }
-
-    public class AccountDemo
-    {
-        public string __user { get; set; }
-        public string __pass { get; set; }
-    }
-
-    public class UserInfo
-    {
-        public string account { get; set; }
-        public string passWord { get; set; }
-        public string address { get; set; }
-        public string areaCode { get; set; }
-        public string avatar { get; set; }
-        public string birthday { get; set; }
-        public string email { get; set; }
-        public string fullName { get; set; }
-        public string phone { get; set; }
-        public string sex { get; set; }
-    }
-
-    public class UserRegister
-    {
-        public string token { get; set; }
-        public string userProfileData { get; set; }
     }
 }

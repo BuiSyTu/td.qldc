@@ -124,10 +124,6 @@
     <Compile Include="Data\EFRepository.cs" />
     <Compile Include="Data\QLDCDbContext.cs" />
     <Compile Include="interfaces\IRepository.cs" />
-    <Compile Include="Migrations\202111040825445_Db_init.cs" />
-    <Compile Include="Migrations\202111040825445_Db_init.Designer.cs">
-      <DependentUpon>202111040825445_Db_init.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Category.cs" />
     <Compile Include="Models\CategoryBase.cs" />
@@ -155,11 +151,6 @@
     <Folder Include="ReportTemplates\" />
     <Folder Include="Report\" />
     <Folder Include="Services\" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\202111040825445_Db_init.resx">
-      <DependentUpon>202111040825445_Db_init.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

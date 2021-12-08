@@ -6,11 +6,6 @@ namespace TD.QLDC.Library.Models
 {
     public abstract class ModelBaseExt: PartialUpdatableEntity<int>, IModificationTrackableEntity
     {
-        public ModelBaseExt()
-        {
-            Created = DateTime.Now;
-        }
-
         private string createdBy;
         private DateTime? created;
         private string modifiedBy;

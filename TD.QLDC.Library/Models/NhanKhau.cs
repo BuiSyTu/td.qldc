@@ -8,15 +8,8 @@ using TD.Core.Api.Mvc;
 
 namespace TD.QLDC.Library.Models
 {
-    [FullTextIndexedTable]
-    [TextSearchColumns(nameof(SoHoKhau), nameof(HoTen), nameof(SoCMT), nameof(SoCCCD), nameof(SoDienThoai))]
     public class NhanKhau : ModelBaseExt
     {
-        public NhanKhau()
-        {
-            Created = DateTime.Now;
-        }
-
         #region Khóa ngoài
         private int? dmHonNhanID;
         public int? DMHonNhanID { get { return dmHonNhanID; } set { dmHonNhanID = value; NotifyPropertyChanged(); } }
@@ -57,10 +50,6 @@ namespace TD.QLDC.Library.Models
 
         #region Thông tin cơ bản
         private string hoTen;
-        /// <summary>
-        /// Họ và tên
-        /// </summary>
-        [FullTextIndex]
         public string HoTen { get { return hoTen; } set { hoTen = value; NotifyPropertyChanged(); } }
 
 
@@ -68,9 +57,6 @@ namespace TD.QLDC.Library.Models
         public string TenGoiKhac { get { return tenGoiKhac; } set { tenGoiKhac = value; NotifyPropertyChanged(); } }
 
         private string ngaySinh;
-        /// <summary>
-        /// Ngày sinh, năm sinh
-        /// </summary>
         public string NgaySinh { get { return ngaySinh; } set { ngaySinh = value; NotifyPropertyChanged(); } }
 
         private string gioiTinh;
@@ -80,7 +66,6 @@ namespace TD.QLDC.Library.Models
         public string NoiSinh { get { return noiSinh; } set { noiSinh = value; NotifyPropertyChanged(); } }
 
         private string soDienThoai;
-        [FullTextIndex]
         public string SoDienThoai { get { return soDienThoai; } set { soDienThoai = value; NotifyPropertyChanged(); } }
 
         private string email;
@@ -118,7 +103,6 @@ namespace TD.QLDC.Library.Models
 
         #region Giấy tờ
         private string soHoKhau;
-        [FullTextIndex]
         public string SoHoKhau { get { return soHoKhau; } set { soHoKhau = value; NotifyPropertyChanged(); } }
 
         private string soCMT;
@@ -131,7 +115,6 @@ namespace TD.QLDC.Library.Models
         public string NoiCapCMT { get { return noicapCMT; } set { noicapCMT = value; NotifyPropertyChanged(); } }
 
         private string soCCCD;
-        [FullTextIndex]
         public string SoCCCD { get { return soCCCD; } set { soCCCD = value; NotifyPropertyChanged(); } }
 
         private DateTime? ngaycapCCCD;

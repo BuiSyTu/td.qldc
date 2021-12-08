@@ -5,17 +5,9 @@ using TD.Core.Api.Mvc;
 
 namespace TD.QLDC.Library.Models
 {
-    [FullTextIndexedTable]
-    [TextSearchColumns(nameof(SoHoKhau), nameof(SoNha))]
     public class HoKhau : ModelBaseExt
     {
-        public HoKhau()
-        {
-            Created = DateTime.Now;
-        }
-
         private string soHoKhau;
-        [FullTextIndex]
         public string SoHoKhau { get { return soHoKhau; } set { soHoKhau = value; NotifyPropertyChanged(); } }
 
         private string dmLoaiHo;
@@ -48,7 +40,6 @@ namespace TD.QLDC.Library.Models
         public string Xom { get { return xom; } set { xom = value; NotifyPropertyChanged(); } }
 
         private string soNha;
-        [FullTextIndex]
         public string SoNha { get { return soNha; } set { soNha = value; NotifyPropertyChanged(); } }
         #endregion
     }
