@@ -11,7 +11,7 @@
 					</h3>
 				</div>
 			</div>
-			<div class="m-portlet__head-tools">
+			<div class="m-portlet__head-tools" td-permission visible-only-permissions=QLDC-HoKhau td-pms-pri-siteadmin=false>
 				<ul class="m-portlet__nav">
 					<li class="m-portlet__nav-item">
 						<a href="javascript:void(0)" add

@@ -11,10 +11,7 @@
                 filter: false
             })
                 .useDataLoader(
-                    new views.TDApiDataLoader(
-                        new td.qldc.HoKhaus().items
-                        )
-                  
+                    new views.TDApiDataLoader(new td.qldc.HoKhaus().items)
                 )
                 .addCheckColumn()
                 .addIndexColumn('STT')
@@ -75,7 +72,7 @@
         };
     }();
 
-    jQuery(document).ready(function () {
+    $(document).ready(function () {
         AreaRemoteAjax.init();
         $('[tdf-type="sp-areaselect"],[tdf-type="select"],[tdf-type="combobox"]')
             .change(function () {
@@ -90,7 +87,9 @@
         });
 
     });
+
     var hokhau = {};
+
     hokhau.Add = function () {
         tdcore.modals // khởi tạo modal dialog
             .modal({
@@ -114,6 +113,7 @@
                 }
             });
     };
+
     hokhau.Edit = function (id) {
         tdcore.modals // khởi tạo modal dialog
             .modal({
@@ -136,6 +136,7 @@
                 }
             });
     };
+
     hokhau.NhanKhau = function (shk) {
         var obj = new Object();
         obj.text = "Hủy bỏ";
@@ -147,6 +148,7 @@
             .size(1200, 550).maximize()
             .btnCancel(obj, 1).show();
     };
+
     hokhau.Delete = function (id) {
         var dtApi = new td.qldc.HoKhaus();
         if (id) {
