@@ -126,7 +126,6 @@
     <Compile Include="interfaces\IRepository.cs" />
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Category.cs" />
-    <Compile Include="Models\CategoryBase.cs" />
     <Compile Include="Models\HoKhau.cs" />
     <Compile Include="Models\ModelBaseExt.cs" />
     <Compile Include="Models\NhanKhau.cs" />

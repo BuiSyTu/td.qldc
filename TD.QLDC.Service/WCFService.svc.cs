@@ -76,7 +76,6 @@ namespace TD.QLDC.Service
                                             _user.email = itemUser["Email"] + "";
                                             _user.avartar = itemUser["Account"] + "";
                                             _user.address = itemUser["Address"] + "";
-                                            //_user.soHoKhau = userProfile.SoHoKhau;
                                         }
                                     }
                                 }
@@ -283,8 +282,8 @@ namespace TD.QLDC.Service
                                     obj.HanXacThuc = DateTime.Now.AddMinutes(2);
                                     obj.MaXacThuc = APICommon.GenerateRandomNo().ToString();
                                     _dbContext.SaveChanges();
-                                    //Thực hiện gửi mã qua SMS
 
+                                    //Thực hiện gửi mã qua SMS
                                     TimeSpan time = (obj.HanXacThuc.Value - now);
                                     result.data = int.Parse(time.TotalSeconds.ToString());
                                 }

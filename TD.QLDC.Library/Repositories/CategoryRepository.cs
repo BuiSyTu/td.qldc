@@ -25,8 +25,6 @@ namespace TD.QLDC.Library.Repositories
 
         Category Get(Category entity);
 
-        //List<Category> GetByNhomID(int NhomID);
-
         int Count(
            string search = null,
            ICollection<string> orderBy = null,
@@ -120,10 +118,7 @@ namespace TD.QLDC.Library.Repositories
                 active
                 ).Count();
         }
-        //public List<Category> GetByNhomID(int NhomID)
-        //{
-        //    return _dbContext.Categories.Where(p => p.NhomID == NhomID).ToList();
-        //}
+
         public List<Category> Get(
             int skip = 0, int take = 100,
             string search = null,
@@ -148,6 +143,5 @@ namespace TD.QLDC.Library.Repositories
 
             return query.ToList();
         }
-
     }
 }
