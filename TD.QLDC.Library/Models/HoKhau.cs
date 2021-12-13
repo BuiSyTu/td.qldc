@@ -7,11 +7,12 @@ namespace TD.QLDC.Library.Models
 {
     public class HoKhau : ModelBaseExt
     {
+        private int? dmLoaiHoID;
+        public int? DMLoaiHoID { get { return dmLoaiHoID; } set { dmLoaiHoID = value; NotifyPropertyChanged(); } }
+        public Category DMLoaiHo { get; set; }
+
         private string soHoKhau;
         public string SoHoKhau { get { return soHoKhau; } set { soHoKhau = value; NotifyPropertyChanged(); } }
-
-        private string dmLoaiHo;
-        public string DMLoaiHo { get { return dmLoaiHo; } set { dmLoaiHo = value; NotifyPropertyChanged(); } }
 
         private bool sudung;
         [DefaultValue(true)]

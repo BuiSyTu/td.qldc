@@ -19,7 +19,6 @@ namespace TD.QLDC.Library.Repositories
             string search = null,
             ICollection<string> orderBy = null,
             ICollection<string> include = null);
-        HoKhau Get(HoKhau entity);
         int Count(
            string search = null,
            ICollection<string> orderBy = null,
@@ -27,6 +26,8 @@ namespace TD.QLDC.Library.Repositories
        );
         int CheckMa(string shk);
         string GetSHKByID(int id);
+
+        HoKhau GetBySoHoKhauAndCreateIfNotExist(string soHoKhau, int? loaiHoGiaDinhId = null);
     }
 
     public class HoKhauRepository : EFRepository<HoKhau>, IHoKhauRepository
@@ -39,12 +40,6 @@ namespace TD.QLDC.Library.Repositories
         ) : base(dbContext, contextAccessor)
         {
             _dbContext = dbContext;
-        }
-
-        public HoKhau Get(HoKhau entity)
-        {
-            var item = _dbContext.HoKhaus.FirstOrDefault(i => i.ID == entity.ID);
-            return item;
         }
         
         private IQueryable<HoKhau> CreateQuery(
@@ -107,14 +102,7 @@ namespace TD.QLDC.Library.Repositories
             }
              return 0;           
         }
-        //public string GetSHKByID(int id)
-        //{
-        //    var query = from hk in _dbContext.HoKhaus.AsQueryable()
-        //                where hk.ID == id
-        //                select hk.SoHoKhau;
-                        
-        //    return query.FirstOrDefault();
-        //}
+
         public string GetSHKByID(int id)
         {
             var query = _dbContext.HoKhaus.FirstOrDefault(HoKhau => HoKhau.ID == id);
@@ -139,6 +127,25 @@ namespace TD.QLDC.Library.Repositories
                 query = query.Take(take);
 
             return query.ToList();
+        }
+
+        public HoKhau GetBySoHoKhauAndCreateIfNotExist(string soHoKhau, int? loaiHoGiaDinhId = null)
+        {
+            var query = _dbContext.HoKhaus.Where(x => x.SoHoKhau == soHoKhau);
+
+            if (query.Count() > 0)
+            {
+                return query.First();
+            }
+
+            HoKhau newHoKhau = new()
+            {
+                SoHoKhau = soHoKhau,
+                DMLoaiHoID = loaiHoGiaDinhId
+            };
+
+            var entity = Add(newHoKhau);
+            return entity;
         }
     }
 }

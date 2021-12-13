@@ -41,7 +41,7 @@ namespace TD.QLDC.Service
                     {
                         _dbContext = new QLDCDbContext();
                         var query = from hs in _dbContext.NhanKhaus.AsQueryable()
-                                    where hs.SoCMT.Equals(user) || hs.SoCCCD.Equals(user)
+                                    where hs.SoCCCD.Equals(user)
                                     select hs;
                         if (query != null && query.Count() > 0)
                         {
@@ -252,7 +252,7 @@ namespace TD.QLDC.Service
             if (!string.IsNullOrEmpty(user))
             {
                 var query = from hs in _dbContext.NhanKhaus.AsQueryable()
-                            where hs.SoCMT.Equals(user) || hs.SoCCCD.Equals(user)
+                            where hs.SoCCCD.Equals(user)
                             select hs;
                 if (query.Any())
                 {
@@ -279,13 +279,13 @@ namespace TD.QLDC.Service
                                 {
                                     NhanKhau obj = query.First();
                                     DateTime now = DateTime.Now;
-                                    obj.HanXacThuc = DateTime.Now.AddMinutes(2);
-                                    obj.MaXacThuc = APICommon.GenerateRandomNo().ToString();
+                                    //obj.HanXacThuc = DateTime.Now.AddMinutes(2);
+                                    //obj.MaXacThuc = APICommon.GenerateRandomNo().ToString();
                                     _dbContext.SaveChanges();
 
                                     //Thực hiện gửi mã qua SMS
-                                    TimeSpan time = (obj.HanXacThuc.Value - now);
-                                    result.data = int.Parse(time.TotalSeconds.ToString());
+                                    //TimeSpan time = (obj.HanXacThuc.Value - now);
+                                    //result.data = int.Parse(time.TotalSeconds.ToString());
                                 }
                             }
                         }
@@ -452,24 +452,25 @@ namespace TD.QLDC.Service
             return result;
 
             var query = from hs in _dbContext.NhanKhaus.AsQueryable()
-                        where hs.MaXacThuc.Equals(code) && (hs.SoCMT.Equals(user) || hs.SoCCCD.Equals(user))
+                        //where hs.MaXacThuc.Equals(code) && (hs.SoCMT.Equals(user) || hs.SoCCCD.Equals(user))
+                        where hs.SoCCCD.Equals(user)
                         select hs;
             if (query != null && query.Count() > 0)
             {
                 NhanKhau obj = query.First();
-                if (obj.HanXacThuc.Value >= DateTime.Now)
-                {
-                    result.data = 1;
-                }
-                else
-                {
-                    result.data = 0;
-                    result.error = new ErrorResult()
-                    {
-                        code = 408,
-                        userMessage = "Hết thời gian thực hiện!"
-                    };
-                }
+                //if (obj.HanXacThuc.Value >= DateTime.Now)
+                //{
+                //    result.data = 1;
+                //}
+                //else
+                //{
+                //    result.data = 0;
+                //    result.error = new ErrorResult()
+                //    {
+                //        code = 408,
+                //        userMessage = "Hết thời gian thực hiện!"
+                //    };
+                //}
             }
             else
             {
@@ -506,7 +507,7 @@ namespace TD.QLDC.Service
             if (!string.IsNullOrEmpty(user) && !string.IsNullOrEmpty(pass))
             {
                 var query = from hs in _dbContext.NhanKhaus.AsQueryable()
-                            where hs.SoCMT.Equals(user) || hs.SoCCCD.Equals(user)
+                            where hs.SoCCCD.Equals(user)
                             select hs;
                 if (query != null && query.Count() > 0)
                 {
@@ -610,7 +611,7 @@ namespace TD.QLDC.Service
             _dbContext = new QLDCDbContext();
             APIResult result = new APIResult();
             var query = from nk in _dbContext.NhanKhaus.AsQueryable()
-                        where nk.SoCMT.Equals(code) || nk.SoCCCD.Equals(code)
+                        where nk.SoCCCD.Equals(code)
                         select new
                         {
                             identifier = code,

@@ -32,6 +32,8 @@ namespace TD.QLDC.Library.Repositories
            int? nhomid = null,
            bool? active = null
        );
+
+        Category GetByNameAndCreateIfNotExist(int nhomDanhMucId, string name);
     }
 
     public class CategoryRepository : EFRepository<Category>, ICategoryRepository
@@ -142,6 +144,25 @@ namespace TD.QLDC.Library.Repositories
                 query = query.Take(take);
 
             return query.ToList();
+        }
+
+        public Category GetByNameAndCreateIfNotExist(int nhomDanhMucId, string name)
+        {
+            var query =  _dbContext.Categories.Where(x => x.NhomID == nhomDanhMucId && x.Name == name);
+
+            if (query.Count() > 0)
+            {
+                return query.First();
+            }
+
+            Category newCategory = new()
+            {
+                NhomID = nhomDanhMucId,
+                Name = name
+            };
+
+            var entity = Add(newCategory);
+            return entity;
         }
     }
 }
