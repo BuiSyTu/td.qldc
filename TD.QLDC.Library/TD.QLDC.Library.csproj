@@ -46,24 +46,30 @@
       <HintPath>..\packages\DocumentFormat.OpenXml.2.9.1\lib\net40\DocumentFormat.OpenXml.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="JWT, Version=7.0.0.0, Culture=neutral, PublicKeyToken=6f98bca0f40f2ecf, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Libs\JWT.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.SharePoint">
       <HintPath>C:\Program Files\Common Files\microsoft shared\web server extensions\15\isapi\Microsoft.SharePoint.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.SharePoint.IdentityModel, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL" />
     <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.11.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Syncfusion.Compression.Base">
-      <HintPath>..\Libs\Syncfusion.Compression.Base.dll</HintPath>
+    <Reference Include="Syncfusion.Compression.Base, Version=19.3450.0.57, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <HintPath>..\packages\Syncfusion.Compression.Base.19.3.0.57\lib\net45\Syncfusion.Compression.Base.dll</HintPath>
     </Reference>
-    <Reference Include="Syncfusion.Licensing">
-      <HintPath>..\Libs\Syncfusion.Licensing.dll</HintPath>
+    <Reference Include="Syncfusion.Licensing, Version=19.3450.0.57, Culture=neutral, PublicKeyToken=632609b4d040f6b4, processorArchitecture=MSIL">
+      <HintPath>..\packages\Syncfusion.Licensing.19.3.0.57\lib\net45\Syncfusion.Licensing.dll</HintPath>
     </Reference>
-    <Reference Include="Syncfusion.XlsIO.Base">
-      <HintPath>..\Libs\Syncfusion.XlsIO.Base.dll</HintPath>
+    <Reference Include="Syncfusion.XlsIO.Base, Version=19.3450.0.57, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <HintPath>..\packages\Syncfusion.XlsIO.AspNet.19.3.0.57\lib\net45\Syncfusion.XlsIO.Base.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Web" />
@@ -134,6 +140,22 @@
     <Compile Include="Data\EFRepository.cs" />
     <Compile Include="Data\QLDCDbContext.cs" />
     <Compile Include="interfaces\IRepository.cs" />
+    <Compile Include="Migrations\201912240224070_fixaddnhankhau.cs" />
+    <Compile Include="Migrations\201912240224070_fixaddnhankhau.Designer.cs">
+      <DependentUpon>201912240224070_fixaddnhankhau.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202001131125431_create.cs" />
+    <Compile Include="Migrations\202001131125431_create.Designer.cs">
+      <DependentUpon>202001131125431_create.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202003250335436_create1.cs" />
+    <Compile Include="Migrations\202003250335436_create1.Designer.cs">
+      <DependentUpon>202003250335436_create1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202003260316061_update2603.cs" />
+    <Compile Include="Migrations\202003260316061_update2603.Designer.cs">
+      <DependentUpon>202003260316061_update2603.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\202112100209485_update1.cs" />
     <Compile Include="Migrations\202112100209485_update1.Designer.cs">
       <DependentUpon>202112100209485_update1.cs</DependentUpon>
@@ -152,6 +174,8 @@
     <Compile Include="Repositories\NhanKhauRepository.cs" />
     <Compile Include="Repositories\NhomDanhMucRepository.cs" />
     <Compile Include="Services\UploadService.cs" />
+    <Compile Include="Services\UserService.cs" />
+    <Compile Include="ViewModels\PayLoadJWT.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config">
@@ -163,8 +187,19 @@
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
+    <EmbeddedResource Include="Migrations\201912240224070_fixaddnhankhau.resx">
+      <DependentUpon>201912240224070_fixaddnhankhau.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202001131125431_create.resx">
+      <DependentUpon>202001131125431_create.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202003250335436_create1.resx">
+      <DependentUpon>202003250335436_create1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202003260316061_update2603.resx">
+      <DependentUpon>202003260316061_update2603.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202112100209485_update1.resx">
       <DependentUpon>202112100209485_update1.cs</DependentUpon>
     </EmbeddedResource>

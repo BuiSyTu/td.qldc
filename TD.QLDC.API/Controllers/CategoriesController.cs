@@ -10,11 +10,24 @@ namespace TD.QLDC.API.Controllers
     public class CategoriesController : TDApiController
     {
         private readonly ICategoryRepository _categoryRepository;
+        //private readonly IUserServive _userServive;
 
         public CategoriesController(ICategoryRepository categoryRepository)
         {
             _categoryRepository = categoryRepository;
         }
+
+        //[Route("QLDCapi/categories/jwt")]
+        //[HttpGet]
+        //public IHttpActionResult GetUserTokenKey()
+        //{
+        //    var Category = _categoryRepository.GetById();
+        //    if (Category == null)
+        //    {
+        //        return ApiNotFound();
+        //    }
+        //    return ApiOk(Category);
+        //}
 
         [Route("QLDCapi/categories")]
         [HttpGet]

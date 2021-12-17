@@ -8,71 +8,111 @@ using System.Data.Entity;
 using Z.Expressions;
 using System.Linq;
 using TD.Core.Api.Mvc;
-//using TD.Core.Utilities.AspNet;
-//using TD.Core.UserPositions.Extensions;
+using System.Text.RegularExpressions;
+using TD.Core.Api;
+using System.Data.Entity.Infrastructure;
 
 namespace TD.QLDC.Library.Repositories
 {
-    public abstract class GenericRepository<T> : MvcApiControler<T, int>, IGenericController<T, int> where T : ModelBaseExt, new()
+    public abstract class GenericRepository<T> : IGenericRepository<T> where T : ModelBaseExt
     {
-        private TDCoreDbContext _dbContext;
-        private ICoreContextAccessor _ctxAccessor;
+        private readonly DbContext _context;
+        private readonly ICoreContextAccessor _ctxAccessor;
 
-        public GenericRepository(
-            TDCoreDbContext dbContext,
-            ICoreContextAccessor contextAccessor
-        ) : base(dbContext)
+        public GenericRepository(DbContext context, ICoreContextAccessor ctxAccessor)
         {
-            _dbContext = dbContext;
-            _ctxAccessor = contextAccessor;
+            _context = context;
+            _ctxAccessor = ctxAccessor;
         }
 
-        public override FullTextIndex.SearchAlgorithm algorithm
+        public virtual T Add(T model)
         {
-            get;
-            set;
-        } = FullTextIndex.SearchAlgorithm.Contains;
-
-        public override List<T> Get(
-            int skip = 0, int take = 100,
-            string search = null, bool searchIsQuery = false,
-            ICollection<string> orderBy = null, IEnumerable<string> viewFields = null)
-        {
-            if (orderBy == null || orderBy.Count == 0)
+            if (model is ModelBaseExt trackable)
             {
-                orderBy = new string[] { "ID" };
+                trackable.Created = DateTime.Now;
             }
-            return base.Get(skip, take, search, false, orderBy, null);
+
+            _context.Set<T>().Add(model);
+            _context.SaveChanges();
+            return model;
         }
 
-        public List<T> Get(
-            int skip = 0, int take = 100,
-            string search = null,
-            ICollection<string> orderBy = null, ICollection<string> include = null, string field = null, object value = null)
+        public int Count() => _context.Set<T>().Count();
+
+        public virtual T GetById(int id) => _context.Set<T>().Find(id);
+
+        public virtual void Update(T model)
         {
-            if (orderBy == null || orderBy.Count == 0)
-            {
-                orderBy = new string[] { "ID" };
-            }
             try
             {
-                var query = CreateSearchQuery(_dbContext.Set<T>(), search, false);
-                if (include != null)
-                {
-                    var ids = query.Select(x => x.ID).ToList();
-                    query = _dbContext.Set<T>().AsQueryable();
+                T entity;
 
-                    foreach (var item in include)
+                // partial update
+                if (model is IPartialUpdatableEntity)
+                {
+                    entity = GetById(model.ID);
+                    var delta = (IPartialUpdatableEntity)model;
+                    var entry = _context.Entry(entity);
+                    var type = typeof(T);
+                    var fields = delta.GetChangedFields();
+
+                    foreach (var field in fields)
                     {
-                        query = query.Include(item);
+                        var member = entry.Member(field);
+                        if (member == null) continue;
+
+                        var prop = type.GetProperty(field);
+                        member.CurrentValue = prop.GetValue(model);
+
+                        if (member is DbPropertyEntry)
+                        {
+                            (member as DbPropertyEntry).IsModified = true;
+                        }
                     }
 
-                    query = query.Where(x => ids.Contains(x.ID));
+                    model = (T)entity;
                 }
-                if (!string.IsNullOrEmpty(field))
+                else
                 {
-                    query = query.Where(x => $"x.{field} == v", new { v = value });
+                    entity = model;
+                    _context.Entry(model).State = EntityState.Modified;
                 }
+
+                // track changes
+                if (entity is IModificationTrackableEntity)
+                {
+                    var trackable = (IModificationTrackableEntity)entity;
+                    trackable.Modified = DateTime.Now;
+                    trackable.ModifiedBy = _ctxAccessor.UserPositionCode;
+                }
+
+                _context.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+                throw new ApiException("Error updating item", ex);
+            }
+        }
+
+        public virtual ICollection<T> GetAll() => _context.Set<T>().ToList();
+
+        public virtual void Delete(T model)
+        {
+            _context.Set<T>().Remove(model);
+            _context.SaveChanges();
+        }
+
+        public ICollection<T> Get(
+            int skip = 0,
+            int take = 100,
+            string search = null,
+            bool searchIsQuery = false,
+            ICollection<string> orderBy = null,
+            IEnumerable<string> viewFields = null)
+        {
+            try
+            {
+                var query = CreateSearchQuery(_context.Set<T>(), search, searchIsQuery);
                 query = query.OrderBySQL(orderBy);
                 if (skip > 0)
                     query = query.Skip(skip);
@@ -85,86 +125,132 @@ namespace TD.QLDC.Library.Repositories
                 throw new ApiException("Error getting items", ex);
             }
         }
-        
-        public override T Add(T entity)
+
+        protected IQueryable<T> CreateSearchQuery(IQueryable<T> query, string search, bool searchIsQuery)
         {
-            entity.Created = DateTime.Now;
-            //var userPosition = ContextItems.Current.UserPositionController
-            //     .GetCurrentUserPosition();
-
-            //if (userPosition != null)
-            //    entity.CreatedBy = userPosition.Code;
-
-            var uposCode = _ctxAccessor.UserPositionCode;
-            entity.CreatedBy = uposCode;
-
-            return base.Add(entity);
-        }
-
-        public override void Update(int id, T change)
-        {
-            var item = GetById(id);
-            //var userPosition = ContextItems.Current.UserPositionController
-            //      .GetCurrentUserPosition();
-
-            if (item != null)
+            if (!string.IsNullOrEmpty(search))
             {
-                item.Modified = DateTime.Now;
-                //if (userPosition != null)
-                //    item.ModifiedBy = userPosition.Code;
-                item.ModifiedBy = _ctxAccessor.UserPositionCode;
-                base.Update(id, item);
+
+                if (searchIsQuery)
+                {
+                    throw new NotSupportedException("query is not supported");
+                }
+                return query;
             }
+            return query;
         }
 
-        public virtual IEnumerable<T> AddRange(IEnumerable<T> entities)
-        {
-            //var userPosition = ContextItems.Current.UserPositionController
-            //        .GetCurrentUserPosition();
-
-            var uposCode = _ctxAccessor.UserPositionCode;
-
-            foreach (var entity in entities)
-            {
-                entity.Created = DateTime.Now;
-                //if (userPosition != null)
-                //    entity.CreatedBy = userPosition.Code;
-
-                entity.CreatedBy = uposCode;
-            }
-            var listTs = _dbContext.Set<T>().AddRange(entities);
-            _dbContext.SaveChanges();
-            return listTs;
-        }
-
-        public virtual IEnumerable<T> Export()
-        {
-            var listTs = _dbContext.Set<T>().ToList();
-            return listTs;
-        }
-
-        public virtual IEnumerable<T> Import(IEnumerable<T> entities)
-        {
-            var listTs = _dbContext.Set<T>().AddRange(entities);
-            _dbContext.SaveChanges();
-            return listTs;
-        }
-
-        public virtual int CountQuery(string search = null, string field = null, object value = null)
+        public int Count(string search = null, bool searchIsQuery = false)
         {
             try
             {
-                var query = CreateSearchQuery(_dbContext.Set<T>(), search, false);
-                if(!string.IsNullOrEmpty(field))
-                {
-                    query = query.Where(x => $"x.{field} == v", new { v = value });
-                }
-                return query.Count();
+                return CreateSearchQuery(_context.Set<T>(), search, searchIsQuery).Count();
             }
             catch (Exception ex)
             {
                 throw new ApiException("Error getting count", ex);
             }
+        }
+    }
+
+    public static class RepositoryExtension
+    {
+        public static IQueryable<T> IncludeMany<T>(this IQueryable<T> queryable, string include)
+        {
+            ICollection<string> includeCollection = null;
+            if (!string.IsNullOrEmpty(include))
+            {
+                includeCollection = new Regex(@"\s*,\s*").Split(include);
+            }
+
+            if (includeCollection != null && includeCollection.Count > 0)
+            {
+                foreach (var item in includeCollection)
+                {
+                    queryable = queryable.Include(item);
+                }
+            }
+            return queryable;
+        }
+
+        public static IQueryable<T> OrderByMany<T>(this IQueryable<T> queryable, string orderBy)
+        {
+            var splitChars = new char[] { '|' };
+
+            ICollection<string> orderByCollection = null;
+            if (!string.IsNullOrEmpty(orderBy))
+            {
+                orderByCollection = new Regex(@"\s*,\s*").Split(orderBy);
+            }
+
+            var checkOrdered = false;
+            foreach (string str in orderByCollection)
+            {
+                if (string.IsNullOrEmpty(str))
+                {
+                    continue;
+                }
+
+                var spl = str.Split(splitChars);
+
+                var field = spl[0];
+                var desc = spl.Length > 1 && spl[1].ToUpper() == "DESC";
+
+                if (!checkOrdered)
+                {
+                    if (desc)
+                    {
+                        queryable = queryable.OrderByDescendingDynamic(x => $"x.{field}");
+                    }
+                    else
+                    {
+                        queryable = queryable.OrderByDynamic(x => $"x.{field}");
+                    }
+                    checkOrdered = true;
+                }
+                else
+                {
+                    if (desc)
+                    {
+                        queryable = ((IOrderedQueryable<T>)queryable).ThenByDescendingDynamic(x => $"x.{field}");
+                    }
+                    else
+                    {
+                        queryable = ((IOrderedQueryable<T>)queryable).ThenByDynamic(x => $"x.{field}");
+                    }
+                }
+
+            }
+
+            return queryable;
+        }
+
+        public static IQueryable<T> CreateSearchQuery<T>(this IQueryable<T> query, string search) where T : Entity<int>, new()
+        {
+            var FreetextFields = EfSpecificationEvaluator<T>.GetFreeTextFields();
+            if (!string.IsNullOrEmpty(search))
+            {
+                if (FreetextFields == null)
+                {
+                    throw new NotSupportedException("This modal type does not support text search");
+                }
+
+                var fieldList = string.Join(",", FreetextFields);
+                if (fieldList.Length == 0)
+                {
+                    throw new NotSupportedException("This modal type does not support text search");
+                }
+                query = query.FullTextSearch(fieldList, search, EfSpecificationEvaluator<T>.GetSearchAlgorithm());
+                return query;
+            }
+            return query;
+        }
+
+        public static IQueryable<T> Search<T>(this IQueryable<T> query, string search) where T : Entity<int>, new()
+        {
+            var ids = CreateSearchQuery(query, search).Select(x => x.ID).ToList();
+            query = query.Where(x => ids.Contains(x.ID));
+            return query;
         }
     }
 }

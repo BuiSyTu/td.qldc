@@ -15,18 +15,17 @@ namespace TD.QLDC.Library.Repositories
 
     public interface INhanKhauRepository : IRepository<NhanKhau>
     {
-
         List<NhanKhau> Get(
-            int skip = 0, int take = 100,
+            int skip = 0,
+            int take = 100,
             string search = null,
             ICollection<string> orderBy = null,
             ICollection<string> include = null,
             string shk = null
-            );
+        );
 
         List<NhanKhau> GetBySoHoKhau(string SoHoKhau);
         List<NhanKhau> UpdateTheoSHK(string shkc, string shk);
-
         NhanKhau Get(NhanKhau entity);
      
         int Count(
@@ -54,14 +53,13 @@ namespace TD.QLDC.Library.Repositories
             var item = _dbContext.NhanKhaus.FirstOrDefault(i => i.ID == entity.ID);
             return item;
         }
+
         private IQueryable<NhanKhau> CreateQuery(
             string search,
             ICollection<string> orderBy,
             ICollection<string> include,
-             string shk = null
-
-
-            )
+            string shk = null
+        )
         {
             var query = _dbContext.NhanKhaus.AsQueryable();
            
@@ -89,22 +87,15 @@ namespace TD.QLDC.Library.Repositories
                 query = query.Where(x => ids.Contains(x.ID));
             }
 
-
-            if (!string.IsNullOrEmpty(shk))
-            {
-                query = query.Where(x => x.SoHoKhau == shk);
-            }
-            
-            // return result
             return query;
         }
 
         public int Count(
-           string search = null,
-           ICollection<string> orderBy = null,
-           ICollection<string> include = null,
+            string search = null,
+            ICollection<string> orderBy = null,
+            ICollection<string> include = null,
             string shk = null
-       )
+        )
         {
             return CreateQuery(
                 search,
@@ -117,16 +108,18 @@ namespace TD.QLDC.Library.Repositories
         public List<NhanKhau> GetBySoHoKhau(string SoHoKhau)
         {
             //var quey = from p in _dbContext.NhanKhaus where p.SoHoKhau == SoHoKhau || LoaiLuuTru == "0" select p;
-            var nhankhaus = _dbContext.NhanKhaus.Where(NhanKhau => NhanKhau.SoHoKhau == SoHoKhau).ToList();
-            return nhankhaus;
+            //var nhankhaus = _dbContext.NhanKhaus.Where(NhanKhau => NhanKhau.SoHoKhau == SoHoKhau).ToList();
+            //return nhankhaus;
             //return quey.ToList();
+            return null;
         }
+
         public List<NhanKhau> UpdateTheoSHK(string shkc, string shk)
         {
             //if (shkc != shk)
             //{
                 var query = from nk in _dbContext.NhanKhaus.AsQueryable()
-                            where nk.SoHoKhau == shkc
+                            //where nk.SoHoKhau == shkc
                             select nk;
                 return query.ToList();
                 var listnk = query.ToList();
@@ -134,11 +127,12 @@ namespace TD.QLDC.Library.Repositories
                 {
                     foreach (var item in listnk)
                     {
-                        item.SoHoKhau = shk;
+                        //item.SoHoKhau = shk;
                     }
                 }
-                _dbContext.SaveChanges();                    
+                _dbContext.SaveChanges();
         }
+
         public List<NhanKhau> Get(
             int skip = 0, int take = 100,
             string search = null,
@@ -153,8 +147,6 @@ namespace TD.QLDC.Library.Repositories
                 orderBy,
                 include,
                 shk
-               
-
                 );
 
             if (skip > 0)
@@ -164,7 +156,6 @@ namespace TD.QLDC.Library.Repositories
 
             return query.ToList();
         }
-
     }
 }
 

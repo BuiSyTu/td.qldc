@@ -3,19 +3,21 @@ using TD.Core.Api.Common;
 
 namespace TD.QLDC.Library.Repositories
 {
-    public interface IGenericRepository<T>: IGenericController<T, int>
+    public interface IGenericRepository<T>
     {
-        IEnumerable<T> AddRange(IEnumerable<T> entities);
-
-        List<T> Get(
-            int skip = 0, int take = 100,
+        T Add(T model);
+        int Count();
+        int Count(string search = null, bool searchIsQuery = false);
+        T GetById(int id);
+        ICollection<T> Get(
+            int skip = 0,
+            int take = 100,
             string search = null,
-            ICollection<string> orderBy = null, ICollection<string> include = null, string field = null, object value = null);
-
-        int CountQuery(string search = null, string field = null, object value = null);
-        
-        IEnumerable<T> Export();
-
-        IEnumerable<T> Import(IEnumerable<T> entities);
+            bool searchIsQuery = false,
+            ICollection<string> orderBy = null,
+            IEnumerable<string> viewFields = null);
+        void Update(T model);
+        ICollection<T> GetAll();
+        void Delete(T entity);
     }
 }

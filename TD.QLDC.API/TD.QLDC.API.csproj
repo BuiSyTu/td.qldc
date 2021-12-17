@@ -149,18 +149,6 @@
     <Reference Include="TD.Core.PermissionHelpers">
       <HintPath>..\Libs\TD.Core.PermissionHelpers.dll</HintPath>
     </Reference>
-    <Reference Include="TD.Core.UserManagement">
-      <HintPath>..\Libs\TD.Core.UserManagement.dll</HintPath>
-    </Reference>
-    <Reference Include="TD.Core.UserManagement.Extensions">
-      <HintPath>..\Libs\TD.Core.UserManagement.Extensions.dll</HintPath>
-    </Reference>
-    <Reference Include="TD.Core.UserManagement.ListDefinitions">
-      <HintPath>..\Libs\TD.Core.UserManagement.ListDefinitions.dll</HintPath>
-    </Reference>
-    <Reference Include="TD.Core.UserManagement.Services">
-      <HintPath>..\Libs\TD.Core.UserManagement.Services.dll</HintPath>
-    </Reference>
     <Reference Include="TD.Core.UserPositions">
       <HintPath>..\Libs\TD.Core.UserPositions.dll</HintPath>
     </Reference>
