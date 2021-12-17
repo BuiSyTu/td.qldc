@@ -140,25 +140,13 @@
     <Compile Include="Data\EFRepository.cs" />
     <Compile Include="Data\QLDCDbContext.cs" />
     <Compile Include="interfaces\IRepository.cs" />
-    <Compile Include="Migrations\201912240224070_fixaddnhankhau.cs" />
-    <Compile Include="Migrations\201912240224070_fixaddnhankhau.Designer.cs">
-      <DependentUpon>201912240224070_fixaddnhankhau.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202001131125431_create.cs" />
-    <Compile Include="Migrations\202001131125431_create.Designer.cs">
-      <DependentUpon>202001131125431_create.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202003250335436_create1.cs" />
-    <Compile Include="Migrations\202003250335436_create1.Designer.cs">
-      <DependentUpon>202003250335436_create1.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202003260316061_update2603.cs" />
-    <Compile Include="Migrations\202003260316061_update2603.Designer.cs">
-      <DependentUpon>202003260316061_update2603.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\202112100209485_update1.cs" />
     <Compile Include="Migrations\202112100209485_update1.Designer.cs">
       <DependentUpon>202112100209485_update1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202112170148506_update2.cs" />
+    <Compile Include="Migrations\202112170148506_update2.Designer.cs">
+      <DependentUpon>202112170148506_update2.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Category.cs" />
@@ -188,20 +176,11 @@
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201912240224070_fixaddnhankhau.resx">
-      <DependentUpon>201912240224070_fixaddnhankhau.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202001131125431_create.resx">
-      <DependentUpon>202001131125431_create.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202003250335436_create1.resx">
-      <DependentUpon>202003250335436_create1.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202003260316061_update2603.resx">
-      <DependentUpon>202003260316061_update2603.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202112100209485_update1.resx">
       <DependentUpon>202112100209485_update1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202112170148506_update2.resx">
+      <DependentUpon>202112170148506_update2.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

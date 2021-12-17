@@ -9,9 +9,7 @@ namespace TD.QLDC.Library.Migrations
     {
         public Configuration()
         {
-            AutomaticMigrationsEnabled = true;
-            AutomaticMigrationDataLossAllowed = true;
-            MigrationsDirectory = @"Migrations";
+            AutomaticMigrationsEnabled = false;
         }
 
         protected override void Seed(TD.QLDC.Library.Models.QLDCDbContext context)

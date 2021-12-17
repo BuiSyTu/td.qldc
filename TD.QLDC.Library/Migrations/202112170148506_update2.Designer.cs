@@ -7,13 +7,13 @@ namespace TD.QLDC.Library.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "7.1.0.0")]
-    public sealed partial class create : IMigrationMetadata
+    public sealed partial class update2 : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(create));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(update2));
         
         string IMigrationMetadata.Id
         {
-            get { return "202001131125431_create"; }
+            get { return "202112170148506_update2"; }
         }
         
         string IMigrationMetadata.Source
