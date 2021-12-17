@@ -148,6 +148,18 @@
     <Compile Include="Migrations\202112170148506_update2.Designer.cs">
       <DependentUpon>202112170148506_update2.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202112170304434_update3.cs" />
+    <Compile Include="Migrations\202112170304434_update3.Designer.cs">
+      <DependentUpon>202112170304434_update3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202112170442524_update4.cs" />
+    <Compile Include="Migrations\202112170442524_update4.Designer.cs">
+      <DependentUpon>202112170442524_update4.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202112170739503_update5.cs" />
+    <Compile Include="Migrations\202112170739503_update5.Designer.cs">
+      <DependentUpon>202112170739503_update5.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Category.cs" />
     <Compile Include="Models\HoKhau.cs" />
@@ -161,8 +173,15 @@
     <Compile Include="Repositories\IGenericRepository.cs" />
     <Compile Include="Repositories\NhanKhauRepository.cs" />
     <Compile Include="Repositories\NhomDanhMucRepository.cs" />
+    <Compile Include="Services\DashboardService.cs" />
     <Compile Include="Services\UploadService.cs" />
     <Compile Include="Services\UserService.cs" />
+    <Compile Include="ViewModels\Dashboard\Chart.cs" />
+    <Compile Include="ViewModels\Dashboard\ChartColor.cs" />
+    <Compile Include="ViewModels\Dashboard\ChartItem.cs" />
+    <Compile Include="ViewModels\Dashboard\Widget.cs" />
+    <Compile Include="ViewModels\Dashboard\WidgetColor.cs" />
+    <Compile Include="ViewModels\Dashboard\WidgetItem.cs" />
     <Compile Include="ViewModels\PayLoadJWT.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -181,6 +200,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202112170148506_update2.resx">
       <DependentUpon>202112170148506_update2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202112170304434_update3.resx">
+      <DependentUpon>202112170304434_update3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202112170442524_update4.resx">
+      <DependentUpon>202112170442524_update4.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202112170739503_update5.resx">
+      <DependentUpon>202112170739503_update5.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

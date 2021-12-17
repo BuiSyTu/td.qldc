@@ -20,7 +20,7 @@ namespace TD.QLDC.Library.Repositories
             string search = null,
             ICollection<string> orderBy = null,
             ICollection<string> include = null,
-            int? nhomid = null,
+            int? nhomId = null,
             bool? active = null);
 
         Category Get(Category entity);
@@ -29,7 +29,7 @@ namespace TD.QLDC.Library.Repositories
            string search = null,
            ICollection<string> orderBy = null,
            ICollection<string> include = null,
-           int? nhomid = null,
+           int? nhomId = null,
            bool? active = null
        );
 
@@ -58,7 +58,7 @@ namespace TD.QLDC.Library.Repositories
             string search,
             ICollection<string> orderBy,
             ICollection<string> include,
-            int? nhomid,
+            int? nhomId,
             bool? active
         )
         {
@@ -88,9 +88,9 @@ namespace TD.QLDC.Library.Repositories
             }
 
             // filter by active
-            if (nhomid.HasValue)
+            if (nhomId.HasValue)
             {
-                query = query.Where(r => r.NhomID == nhomid);
+                query = query.Where(r => r.NhomID == nhomId);
             }
 
             // search
@@ -108,7 +108,7 @@ namespace TD.QLDC.Library.Repositories
            string search = null,
            ICollection<string> orderBy = null,
            ICollection<string> include = null,
-           int? nhomid = null,
+           int? nhomId = null,
            bool? active = null
        )
         {
@@ -116,7 +116,7 @@ namespace TD.QLDC.Library.Repositories
                 search,
                 orderBy,
                 include,
-                nhomid,
+                nhomId,
                 active
                 ).Count();
         }
@@ -126,7 +126,7 @@ namespace TD.QLDC.Library.Repositories
             string search = null,
             ICollection<string> orderBy = null,
             ICollection<string> include = null,
-            int? nhomid = null,
+            int? nhomId = null,
             bool? active = null)
         {
             // load data
@@ -134,7 +134,7 @@ namespace TD.QLDC.Library.Repositories
                 search,
                 orderBy,
                 include,
-                nhomid,
+                nhomId,
                 active
                 );
 

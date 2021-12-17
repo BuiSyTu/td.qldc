@@ -73,11 +73,11 @@ namespace TD.QLDC.Library.Repositories
             query = query.OrderBySQL(orderBy);
 
             // search
-            if (!string.IsNullOrEmpty(search))
-            {
-                var ids = CreateSearchQuery(_dbContext.NhomDanhMucs, search).Select(x => x.ID).ToList();
-                query = query.Where(x => ids.Contains(x.ID));
-            }
+            //if (!string.IsNullOrEmpty(search))
+            //{
+            //    var ids = CreateSearchQuery(_dbContext.NhomDanhMucs, search).Select(x => x.ID).ToList();
+            //    query = query.Where(x => ids.Contains(x.ID));
+            //}
 
             // return result
             return query;

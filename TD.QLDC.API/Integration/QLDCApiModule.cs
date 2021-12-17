@@ -5,6 +5,7 @@ using TD.Core.Api.Mvc;
 using TD.Core.Api.Mvc.Integration;
 using TD.QLDC.Library.Models;
 using TD.QLDC.Library.Repositories;
+using TD.QLDC.Library.Services;
 using Unity;
 
 namespace TD.QLDC.API.Integration
@@ -38,6 +39,8 @@ namespace TD.QLDC.API.Integration
             container.RegisterType<INhanKhauRepository, NhanKhauRepository>();
             container.RegisterType<INhomDanhMucRepository, NhomDanhMucRepository>();
             container.RegisterFactory<QLDCDbContext>(c => new QLDCDbContext());
+
+            container.RegisterType<IDashboardService, DashboardService>();
             // services
             container.RegisterFactory<ICoreServicesProvider>(c => new DefaultContextCoreServicesProvider());
             container.RegisterType<ICoreContextAccessor, AspNetCoreContextAccessor>();

@@ -7,6 +7,7 @@ using TD.Core.Api.Mvc;
 using TD.Core.Api.Mvc.Extensions;
 using TD.QLDC.Library.Interfaces;
 using TD.QLDC.Library.Models;
+using TD.QLDC.Library.ViewModels.Dashboard;
 using TD.QLGD.Library;
 
 namespace TD.QLDC.Library.Repositories
@@ -28,6 +29,7 @@ namespace TD.QLDC.Library.Repositories
         string GetSHKByID(int id);
 
         HoKhau GetBySoHoKhauAndCreateIfNotExist(string soHoKhau, int? loaiHoGiaDinhId = null);
+        ICollection<ChartItem> GroupByXom();
     }
 
     public class HoKhauRepository : EFRepository<HoKhau>, IHoKhauRepository
@@ -46,7 +48,7 @@ namespace TD.QLDC.Library.Repositories
             string search,
             ICollection<string> orderBy,
             ICollection<string> include
-            )
+        )
         {
             var query = _dbContext.HoKhaus.AsQueryable();
 
@@ -72,8 +74,13 @@ namespace TD.QLDC.Library.Repositories
             // search
             if (!string.IsNullOrEmpty(search))
             {
-                var ids = CreateSearchQuery(_dbContext.HoKhaus, search).Select(x => x.ID).ToList();
-                query = query.Where(x => ids.Contains(x.ID));
+                //var ids = CreateSearchQuery(_dbContext.HoKhaus, search).Select(x => x.ID).ToList();
+                //query = query.Where(x => ids.Contains(x.ID));
+                query = query.Where(x => x.SoHoKhau.Contains(search)
+                    || x.SoNha.Contains(search)
+                    || x.Thon.Contains(search)
+                    || x.Xom.Contains(search)
+                    || x.TenChuHo.Contains(search));
             }        
             // return result
             return query;
@@ -146,6 +153,18 @@ namespace TD.QLDC.Library.Repositories
 
             var entity = Add(newHoKhau);
             return entity;
+        }
+
+        public ICollection<ChartItem> GroupByXom()
+        {
+            return _dbContext.HoKhaus
+                .GroupBy(x => x.Xom)
+                .Select(g => new ChartItem
+                {
+                    Text = g.Key,
+                    Value = g.Count().ToString()
+                })
+                .ToList();
         }
     }
 }

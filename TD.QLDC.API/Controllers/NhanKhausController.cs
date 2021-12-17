@@ -31,7 +31,7 @@ namespace TD.QLDC.API.Controllers
         [HttpGet]
         public IHttpActionResult GetNhanKhaus(int skip = 0, int top = 100,
             string q = null, string orderBy = null, bool count = false,
-            string include = null, string shk = null)
+            string include = null, string shk = null, int? hoKhauId = null)
         {
             ICollection<string> collecionInclude = null;
             if (!string.IsNullOrEmpty(include))
@@ -44,7 +44,7 @@ namespace TD.QLDC.API.Controllers
                 collecionOrderBy = new Regex(@"\s*,\s*").Split(orderBy);
             }
             var data = _NhanKhauRepository.Get(
-                skip, top, q, collecionOrderBy, collecionInclude, shk);
+                skip, top, q, collecionOrderBy, collecionInclude, shk, hoKhauId);
             return ApiOk(data,
                         null,
                         (result) =>
@@ -53,7 +53,7 @@ namespace TD.QLDC.API.Controllers
                             {
                                 result.ExtensionData["count"] = skip == 0 && top == 0
                                     ? data.Count
-                                    : _NhanKhauRepository.Count(q, collecionOrderBy, collecionInclude, shk);
+                                    : _NhanKhauRepository.Count(q, collecionOrderBy, collecionInclude, shk, hoKhauId);
                             }
                         });
         }

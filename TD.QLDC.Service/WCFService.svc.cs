@@ -54,7 +54,7 @@ namespace TD.QLDC.Service
                             _user.email = obj.Email;
                             _user.avartar = obj.AnhDaiDien;
                             _user.address = obj.NoiOHienTai;
-                            _user.soHoKhau = obj.SoHoKhau;
+                            //_user.soHoKhau = obj.SoHoKhau;
                         }
                         else
                         {
@@ -564,7 +564,7 @@ namespace TD.QLDC.Service
                     _user.email = obj.Email;
                     _user.avartar = obj.AnhDaiDien;
                     _user.address = obj.NoiOHienTai;
-                    _user.soHoKhau = obj.SoHoKhau;
+                    //_user.soHoKhau = obj.SoHoKhau;
 
                     PayloadJWT token = new PayloadJWT()
                     {
@@ -622,7 +622,7 @@ namespace TD.QLDC.Service
                             email = nk.Email,
                             avartar = nk.AnhDaiDien,
                             address = nk.NoiOHienTai,
-                            soHoKhau = nk.SoHoKhau,
+                            //soHoKhau = nk.SoHoKhau,
                         };
             if (query != null && query.Count() > 0)
             {
@@ -637,7 +637,7 @@ namespace TD.QLDC.Service
                                    email = qr.email,
                                    avartar = qr.avartar,
                                    address = qr.address,
-                                   soHoKhau = qr.soHoKhau,
+                                   //soHoKhau = qr.soHoKhau,
                                }
                                ).First();
             }

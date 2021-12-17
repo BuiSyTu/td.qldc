@@ -8,6 +8,7 @@ using TD.Core.Api.Mvc;
 using TD.Core.Api.Mvc.Extensions;
 using TD.QLDC.Library.Interfaces;
 using TD.QLDC.Library.Models;
+using TD.QLDC.Library.ViewModels.Dashboard;
 using TD.QLGD.Library;
 
 namespace TD.QLDC.Library.Repositories
@@ -21,7 +22,8 @@ namespace TD.QLDC.Library.Repositories
             string search = null,
             ICollection<string> orderBy = null,
             ICollection<string> include = null,
-            string shk = null
+            string shk = null,
+            int? hoKhauId = null
         );
 
         List<NhanKhau> GetBySoHoKhau(string SoHoKhau);
@@ -32,8 +34,11 @@ namespace TD.QLDC.Library.Repositories
            string search = null,
            ICollection<string> orderBy = null,
            ICollection<string> include = null,
-           string shk = null
+           string shk = null,
+           int? hoKhauId = null
        );
+
+        ICollection<ChartItem> GroupByNoiThuongTru();
     }
 
     public class NhanKhauRepository : EFRepository<NhanKhau>, INhanKhauRepository
@@ -58,7 +63,8 @@ namespace TD.QLDC.Library.Repositories
             string search,
             ICollection<string> orderBy,
             ICollection<string> include,
-            string shk = null
+            string shk = null,
+            int? hoKhauId = null
         )
         {
             var query = _dbContext.NhanKhaus.AsQueryable();
@@ -83,8 +89,18 @@ namespace TD.QLDC.Library.Repositories
             // search
             if (!string.IsNullOrEmpty(search))
             {
-                var ids = CreateSearchQuery(_dbContext.NhanKhaus, search).Select(x => x.ID).ToList();
-                query = query.Where(x => ids.Contains(x.ID));
+                //var ids = CreateSearchQuery(_dbContext.NhanKhaus, search).Select(x => x.ID).ToList();
+                //query = query.Where(x => ids.Contains(x.ID));
+                query = query.Where(x =>
+                    x.HoTen.Contains(search)
+                    || x.SoCCCD.Contains(search)
+                    || x.NgheNghiep.Contains(search)
+                    || x.SoBHYT.Contains(search));
+            }
+
+            if (hoKhauId != null)
+            {
+                query = query.Where(x => x.HoKhauID == hoKhauId);
             }
 
             return query;
@@ -94,14 +110,16 @@ namespace TD.QLDC.Library.Repositories
             string search = null,
             ICollection<string> orderBy = null,
             ICollection<string> include = null,
-            string shk = null
+            string shk = null,
+            int? hoKhauId = null
         )
         {
             return CreateQuery(
                 search,
                 orderBy,
                 include, 
-                shk
+                shk,
+                hoKhauId
                 ).Count();
         }
 
@@ -138,16 +156,18 @@ namespace TD.QLDC.Library.Repositories
             string search = null,
             ICollection<string> orderBy = null,
             ICollection<string> include = null,
-             string shk = null
-            )
+            string shk = null,
+            int? hoKhauId = null
+        )
         {
             // load data
             var query = CreateQuery(
                 search,
                 orderBy,
                 include,
-                shk
-                );
+                shk,
+                hoKhauId
+             );
 
             if (skip > 0)
                 query = query.Skip(skip);
@@ -155,6 +175,18 @@ namespace TD.QLDC.Library.Repositories
                 query = query.Take(take);
 
             return query.ToList();
+        }
+
+        public ICollection<ChartItem> GroupByNoiThuongTru()
+        {
+            return _dbContext.NhanKhaus
+                .GroupBy(x => x.NoiThuongTru)
+                .Select(g => new ChartItem
+                {
+                    Text = g.Key,
+                    Value = g.Count().ToString()
+                })
+                .ToList();
         }
     }
 }

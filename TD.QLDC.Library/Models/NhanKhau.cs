@@ -70,6 +70,12 @@ namespace TD.QLDC.Library.Models
 
         private string ghiChu;
         public string GhiChu { get { return ghiChu; } set { ghiChu = value; NotifyPropertyChanged(); } }
+
+        private string loaiDoiTuongChinhSach;
+        public string LoaiDoiTuongChinhSach { get { return loaiDoiTuongChinhSach; } set { loaiDoiTuongChinhSach = value; NotifyPropertyChanged(); } }
+
+        private bool? daMat;
+        public bool? DaMat { get { return daMat; } set { daMat = value; NotifyPropertyChanged(); } }
         #endregion
 
         #region Học vấn, nghề nghiệp
@@ -98,6 +104,9 @@ namespace TD.QLDC.Library.Models
 
         private string noicapCCCD;
         public string NoiCapCCCD { get { return noicapCCCD; } set { noicapCCCD = value; NotifyPropertyChanged(); } }
+
+        private string hanSuDungCCCD;
+        public string HanSuDungCCCD { get { return hanSuDungCCCD; } set { hanSuDungCCCD = value; NotifyPropertyChanged(); } }
 
         private string soHC;
         public string SoHC { get { return soHC; } set { soHC = value; NotifyPropertyChanged(); } }

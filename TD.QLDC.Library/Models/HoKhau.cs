@@ -21,8 +21,8 @@ namespace TD.QLDC.Library.Models
         private string ghiChu;
         public string GhiChu { get { return ghiChu; } set { ghiChu = value; NotifyPropertyChanged(); } }
 
-        private string nguoiNhap;
-        public string NguoiNhap { get { return nguoiNhap; } set { nguoiNhap = value; NotifyPropertyChanged(); } }
+        private string tenChuHo;
+        public string TenChuHo { get { return tenChuHo; } set { tenChuHo = value; NotifyPropertyChanged(); } }
 
         #region Nơi ở, địa chỉ
         private string tinh;
