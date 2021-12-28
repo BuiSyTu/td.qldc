@@ -39,6 +39,16 @@ namespace TD.QLDC.Library.Repositories
        );
 
         ICollection<ChartItem> GroupByNoiThuongTru();
+
+        ICollection<ChartItem> GroupByDoiTuong();
+
+        ICollection<ChartItem> GroupByTonGiao();
+
+        ICollection<ChartItem> GroupByDanToc();
+
+        int CountDoiTuong();
+        int CountTonGiao();
+        int CountDanToc();
     }
 
     public class NhanKhauRepository : EFRepository<NhanKhau>, INhanKhauRepository
@@ -187,6 +197,58 @@ namespace TD.QLDC.Library.Repositories
                     Value = g.Count().ToString()
                 })
                 .ToList();
+        }
+
+        public int CountDoiTuong()
+        {
+            return _dbContext.NhanKhaus
+                .GroupBy(x => x.DMDoiTuongID)
+                .Count();
+        }
+
+        public int CountTonGiao()
+        {
+            return _dbContext.NhanKhaus
+                .GroupBy(x => x.DMTonGiaoID)
+                .Count();
+        }
+
+        public int CountDanToc()
+        {
+            return _dbContext.NhanKhaus
+                .GroupBy(x => x.DMDanTocID)
+                .Count();
+        }
+
+        public ICollection<ChartItem> GroupByDoiTuong()
+        {
+            return _dbContext.NhanKhaus
+                .Include(x => x.DMDoiTuong)
+                .GroupBy(x => x.DMDoiTuong.Name)
+                .Select(g => new ChartItem
+                {
+                    Text = g.Key,
+                    Value = g.Count().ToString()
+                })
+                .ToList();
+        }
+
+        public ICollection<ChartItem> GroupByTonGiao()
+        {
+            return _dbContext.NhanKhaus
+                .Include(x => x.DMTonGiao)
+                .GroupBy(x => x.DMTonGiao.Name)
+                .Select(g => new ChartItem
+                {
+                    Text = g.Key,
+                    Value = g.Count().ToString()
+                })
+                .ToList();
+        }
+
+        public ICollection<ChartItem> GroupByDanToc()
+        {
+            throw new NotImplementedException();
         }
     }
 }

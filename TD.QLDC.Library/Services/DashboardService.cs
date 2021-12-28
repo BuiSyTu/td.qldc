@@ -15,6 +15,9 @@ namespace TD.QLDC.Library.Services
         Chart GetChart1();
         Chart GetChart2();
         Chart GetChart3();
+        Chart GetChartDanToc();
+        Chart GetChartTonGiao();
+        Chart GetChartDoiTuong();
     }
 
     public class DashboardService : IDashboardService
@@ -47,12 +50,27 @@ namespace TD.QLDC.Library.Services
         {
             return new Chart
             {
-                Title = "Số lượng nhân khẩu theo xóm 1",
+                Title = "Số lượng nhân khẩu theo xóm",
                 Data = _nhanKhauRepository.GroupByNoiThuongTru()
             };
         }
 
         public Chart GetChart3()
+        {
+            throw new NotImplementedException();
+        }
+
+        public Chart GetChartDanToc()
+        {
+            throw new NotImplementedException();
+        }
+
+        public Chart GetChartDoiTuong()
+        {
+            throw new NotImplementedException();
+        }
+
+        public Chart GetChartTonGiao()
         {
             throw new NotImplementedException();
         }
@@ -81,14 +99,14 @@ namespace TD.QLDC.Library.Services
                     new WidgetItem
                     {
                         Text = "Dân tộc",
-                        Value = _categoryRepository.Count(nhomId: NhomDanhMucId.DanToc),
+                        Value = _nhanKhauRepository.CountDanToc(),
                         BackgroundColor = WidgetColor.Warning,
                         IconClass = "flaticon-twitter-logo"
                     },
                     new WidgetItem
                     {
                         Text = "Tôn giáo",
-                        Value = _categoryRepository.Count(nhomId: NhomDanhMucId.TonGiao),
+                        Value = _nhanKhauRepository.CountTonGiao(),
                         BackgroundColor = WidgetColor.Danger,
                         IconClass = "flaticon-gift"
                     }

@@ -160,13 +160,23 @@
     <Compile Include="Migrations\202112170739503_update5.Designer.cs">
       <DependentUpon>202112170739503_update5.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202112270951145_update6.cs" />
+    <Compile Include="Migrations\202112270951145_update6.Designer.cs">
+      <DependentUpon>202112270951145_update6.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202112270957425_update7.cs" />
+    <Compile Include="Migrations\202112270957425_update7.Designer.cs">
+      <DependentUpon>202112270957425_update7.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\Area.cs" />
     <Compile Include="Models\Category.cs" />
     <Compile Include="Models\HoKhau.cs" />
     <Compile Include="Models\ModelBaseExt.cs" />
     <Compile Include="Models\NhanKhau.cs" />
     <Compile Include="Models\NhomDanhMuc.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\AreaRepository.cs" />
     <Compile Include="Repositories\CategoryRepository.cs" />
     <Compile Include="Repositories\GenericRepository.cs" />
     <Compile Include="Repositories\HoKhauRepository.cs" />
@@ -209,6 +219,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202112170739503_update5.resx">
       <DependentUpon>202112170739503_update5.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202112270951145_update6.resx">
+      <DependentUpon>202112270951145_update6.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202112270957425_update7.resx">
+      <DependentUpon>202112270957425_update7.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

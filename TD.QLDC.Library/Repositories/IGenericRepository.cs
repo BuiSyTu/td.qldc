@@ -7,7 +7,6 @@ namespace TD.QLDC.Library.Repositories
     {
         T Add(T model);
         int Count();
-        int Count(string search = null, bool searchIsQuery = false);
         T GetById(int id);
         ICollection<T> Get(
             int skip = 0,

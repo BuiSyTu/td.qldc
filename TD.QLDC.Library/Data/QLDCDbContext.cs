@@ -15,10 +15,14 @@ namespace TD.QLDC.Library.Models
         public DbSet<HoKhau> HoKhaus { get; set; }
         public DbSet<NhanKhau> NhanKhaus { get; set; }
         public DbSet<NhomDanhMuc> NhomDanhMucs { get; set; }
+        public DbSet<Area> Areas { get; set; }
         #endregion
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<Area>()
+                .ToTable("Areas");
+
             modelBuilder.Entity<Category>()
                 .ToTable("Categories");
 
