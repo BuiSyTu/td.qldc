@@ -10,10 +10,10 @@ namespace TD.QLDC.API.Controllers
 {
     public class HoKhausController : TDApiController
     {
-        private readonly IHoKhauRepository _HoKhauRepository;
-        public HoKhausController(IHoKhauRepository HoKhauRepository)
+        private readonly IHoKhauRepository _repository;
+        public HoKhausController(IHoKhauRepository repository)
         {
-            _HoKhauRepository = HoKhauRepository;
+            _repository = repository;
 
         }
   
@@ -21,7 +21,7 @@ namespace TD.QLDC.API.Controllers
         [HttpGet]
         public IHttpActionResult CheckMa(string shk)
         {
-            var data = _HoKhauRepository.CheckMa(shk);
+            var data = _repository.CheckMa(shk);
             return ApiOk(data);
         }
 
@@ -36,7 +36,7 @@ namespace TD.QLDC.API.Controllers
             bool count = false
         )
         {
-            var data = _HoKhauRepository.Get(skip, top, q, orderBy, includes);
+            var data = _repository.Get(skip, top, q, orderBy, includes);
 
             return ApiOk(data,
                         null,
@@ -46,7 +46,7 @@ namespace TD.QLDC.API.Controllers
                             {
                                 result.ExtensionData["count"] = skip == 0 && top == 0
                                     ? data.Count
-                                    : _HoKhauRepository.Count(q);
+                                    : _repository.Count(q);
                             }
                         });
         }
@@ -55,7 +55,7 @@ namespace TD.QLDC.API.Controllers
         [HttpGet]
         public IHttpActionResult GetHoKhau(int id)
         {
-            var HoKhau = _HoKhauRepository.GetById(id);
+            var HoKhau = _repository.GetById(id);
             if (HoKhau == null)
             {
                 return ApiNotFound();
@@ -76,7 +76,7 @@ namespace TD.QLDC.API.Controllers
             {
                 return ApiBadRequest();
             }
-            _HoKhauRepository.Update(change);
+            _repository.Update(change);
             return ApiNoContent();
         }
 
@@ -88,7 +88,7 @@ namespace TD.QLDC.API.Controllers
             {
                 return ApiBadRequest(null, ModelState);
             }
-            var HoKhau = _HoKhauRepository.Add(entity);
+            var HoKhau = _repository.Add(entity);
             return ApiCreated(HoKhau);
         }
         
@@ -96,7 +96,7 @@ namespace TD.QLDC.API.Controllers
         [HttpDelete]
         public IHttpActionResult DeleteHoKhau(int id)
         {
-            var HoKhau = _HoKhauRepository.Delete(id);
+            var HoKhau = _repository.Delete(id);
             return ApiOk();
         }
 
@@ -105,7 +105,7 @@ namespace TD.QLDC.API.Controllers
         [HttpGet]
         public IHttpActionResult GetCountHoKhau()
         {
-            var count = _HoKhauRepository.Count();
+            var count = _repository.Count();
             return ApiOk(count);
         }
     }

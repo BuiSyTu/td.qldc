@@ -11,11 +11,11 @@ namespace TD.QLDC.API.Controllers
 {
     public class NhomDanhMucsController : TDApiController
     {
-        private readonly INhomDanhMucRepository _NhomDanhMucRepository;
+        private readonly INhomDanhMucRepository _repository;
 
-        public NhomDanhMucsController(INhomDanhMucRepository NhomDanhMucRepository)
+        public NhomDanhMucsController(INhomDanhMucRepository repository)
         {
-            _NhomDanhMucRepository = NhomDanhMucRepository;
+            _repository = repository;
         }
 
         [Route("QLDCapi/NhomDanhMucs")]
@@ -34,7 +34,7 @@ namespace TD.QLDC.API.Controllers
             {
                 collecionOrderBy = new Regex(@"\s*,\s*").Split(orderBy);
             }
-            var data = _NhomDanhMucRepository.Get(skip, top, q, collecionOrderBy, collecionInclude);
+            var data = _repository.Get(skip, top, q, collecionOrderBy, collecionInclude);
             return ApiOk(data,
                         null,
                         (result) =>
@@ -43,7 +43,7 @@ namespace TD.QLDC.API.Controllers
                             {
                                 result.ExtensionData["count"] = skip == 0 && top == 0
                                     ? data.Count
-                                    : _NhomDanhMucRepository.Count(q, collecionOrderBy, collecionInclude);
+                                    : _repository.Count(q, collecionOrderBy, collecionInclude);
                             }
                         });
         }
@@ -52,7 +52,7 @@ namespace TD.QLDC.API.Controllers
         [HttpGet]
         public IHttpActionResult GetNhomDanhMuc(int id)
         {
-            var NhomDanhMuc = _NhomDanhMucRepository.GetById(id);
+            var NhomDanhMuc = _repository.GetById(id);
             if (NhomDanhMuc == null)
             {
                 return ApiNotFound();
@@ -73,7 +73,7 @@ namespace TD.QLDC.API.Controllers
             {
                 return ApiBadRequest();
             }
-            _NhomDanhMucRepository.Update(change);
+            _repository.Update(change);
             return ApiNoContent();
         }
 
@@ -85,7 +85,7 @@ namespace TD.QLDC.API.Controllers
             {
                 return ApiBadRequest(null, ModelState);
             }
-            var NhomDanhMuc = _NhomDanhMucRepository.Add(entity);
+            var NhomDanhMuc = _repository.Add(entity);
             return ApiCreated(NhomDanhMuc);
         }
 
@@ -93,7 +93,7 @@ namespace TD.QLDC.API.Controllers
         [HttpDelete]
         public IHttpActionResult DeleteNhomDanhMuc(int id)
         {
-            var NhomDanhMuc = _NhomDanhMucRepository.Delete(id);
+            var NhomDanhMuc = _repository.Delete(id);
             return ApiOk();
         }
 
@@ -101,7 +101,7 @@ namespace TD.QLDC.API.Controllers
         [HttpGet]
         public IHttpActionResult GetCountNhomDanhMuc()
         {
-            var count = _NhomDanhMucRepository.Count();
+            var count = _repository.Count();
             if (count == 0)
             {
                 return ApiNotFound();

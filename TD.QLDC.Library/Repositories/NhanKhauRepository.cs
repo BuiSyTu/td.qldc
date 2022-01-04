@@ -8,6 +8,7 @@ using TD.Core.Api.Mvc;
 using TD.Core.Api.Mvc.Extensions;
 using TD.QLDC.Library.Interfaces;
 using TD.QLDC.Library.Models;
+using TD.QLDC.Library.Services;
 using TD.QLDC.Library.ViewModels.Dashboard;
 using TD.QLGD.Library;
 
@@ -66,6 +67,7 @@ namespace TD.QLDC.Library.Repositories
             return _dbContext.NhanKhaus
                 .FilterSoHoKhau(shk)
                 .FilterHoKhauId(hoKhauId)
+                .FilterCurrentAreaCode()
                 .FilterSearchValue(search)
                 .Count();
         }
@@ -84,6 +86,7 @@ namespace TD.QLDC.Library.Repositories
                 .IncludeMany(includes)
                 .FilterHoKhauId(hoKhauId)
                 .FilterSoHoKhau(shk)
+                .FilterCurrentAreaCode()
                 .FilterSearchValue(search)
                 .OrderByMany(orderBy)
                 .Skip(skip)
@@ -193,6 +196,20 @@ namespace TD.QLDC.Library.Repositories
 
             var newQuery = query.Where(x => x.HoKhau.SoHoKhau == soHoKhau);
 
+            return newQuery;
+        }
+
+        public static IQueryable<NhanKhau> FilterCurrentAreaCode(this IQueryable<NhanKhau> query)
+        {
+            var areaCode = AreaService.GetCurrentAreaCode();
+            if (string.IsNullOrEmpty(areaCode)) return query;
+
+            var newQuery = query.Where(x =>
+                x.HoKhau.MaTinhThanh == areaCode
+                || x.HoKhau.MaQuanHuyen == areaCode
+                || x.HoKhau.MaXaPhuong == areaCode
+                || x.HoKhau.MaThon == areaCode
+                || x.HoKhau.MaXom == areaCode);
             return newQuery;
         }
     }

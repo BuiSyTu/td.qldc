@@ -11,11 +11,11 @@ namespace TD.QLDC.API.Controllers
 {
     public class NhanKhausController : TDApiController
     {
-        private readonly INhanKhauRepository _NhanKhauRepository;
+        private readonly INhanKhauRepository _repository;
 
-        public NhanKhausController(INhanKhauRepository NhanKhauRepository)
+        public NhanKhausController(INhanKhauRepository repository)
         {
-            _NhanKhauRepository = NhanKhauRepository;
+            _repository = repository;
         }
 
         [Route("QLDCapi/NhanKhaus")]
@@ -31,7 +31,7 @@ namespace TD.QLDC.API.Controllers
             int? hoKhauId = null)
         {
 
-            var data = _NhanKhauRepository.Get(skip, top, q, orderBy, includes, shk, hoKhauId);
+            var data = _repository.Get(skip, top, q, orderBy, includes, shk, hoKhauId);
             return ApiOk(data,
                         null,
                         (result) =>
@@ -40,7 +40,7 @@ namespace TD.QLDC.API.Controllers
                             {
                                 result.ExtensionData["count"] = skip == 0 && top == 0
                                     ? data.Count
-                                    : _NhanKhauRepository.Count(q, shk, hoKhauId);
+                                    : _repository.Count(q, shk, hoKhauId);
                             }
                         });
         }
@@ -49,7 +49,7 @@ namespace TD.QLDC.API.Controllers
         [HttpGet]
         public IHttpActionResult GetNhanKhau(int id)
         {
-            var NhanKhau = _NhanKhauRepository.GetById(id);
+            var NhanKhau = _repository.GetById(id);
             if (NhanKhau == null)
             {
                 return ApiNotFound();
@@ -70,7 +70,7 @@ namespace TD.QLDC.API.Controllers
             {
                 return ApiBadRequest();
             }
-            _NhanKhauRepository.Update(change);
+            _repository.Update(change);
             return ApiNoContent();
         }
 
@@ -82,7 +82,7 @@ namespace TD.QLDC.API.Controllers
             {
                 return ApiBadRequest(null, ModelState);
             }
-            var NhanKhau = _NhanKhauRepository.Add(entity);
+            var NhanKhau = _repository.Add(entity);
             return ApiCreated(NhanKhau);
         }
 
@@ -90,7 +90,7 @@ namespace TD.QLDC.API.Controllers
         [HttpDelete]
         public IHttpActionResult DeleteNhanKhau(int id)
         {
-            var NhanKhau = _NhanKhauRepository.Delete(id);
+            var NhanKhau = _repository.Delete(id);
             return ApiOk();
         }
 
@@ -98,7 +98,7 @@ namespace TD.QLDC.API.Controllers
         [HttpGet]
         public IHttpActionResult GetCountNhanKhau()
         {
-            var count = _NhanKhauRepository.Count();
+            var count = _repository.Count();
             if (count == 0)
             {
                 return ApiNotFound();

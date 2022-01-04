@@ -118,6 +118,10 @@
     <Reference Include="TD.Core.Modules">
       <HintPath>..\Libs\TD.Core.Modules.dll</HintPath>
     </Reference>
+    <Reference Include="TD.Core.UserProfiles, Version=1.0.0.0, Culture=neutral, PublicKeyToken=7077b6065ccbcf1e, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Libs\TD.Core.UserProfiles.dll</HintPath>
+    </Reference>
     <Reference Include="WindowsBase" />
     <Reference Include="Z.EntityFramework.Classic, Version=7.0.0.0, Culture=neutral, PublicKeyToken=afc61983f100d280, processorArchitecture=MSIL">
       <HintPath>..\packages\Z.EntityFramework.Classic.Community.7.1.0\lib\net45\Z.EntityFramework.Classic.dll</HintPath>
@@ -187,6 +191,7 @@
     <Compile Include="Repositories\IGenericRepository.cs" />
     <Compile Include="Repositories\NhanKhauRepository.cs" />
     <Compile Include="Repositories\NhomDanhMucRepository.cs" />
+    <Compile Include="Services\AreaService.cs" />
     <Compile Include="Services\DashboardService.cs" />
     <Compile Include="Services\UploadService.cs" />
     <Compile Include="Services\UserService.cs" />

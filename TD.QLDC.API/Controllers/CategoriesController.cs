@@ -9,11 +9,11 @@ namespace TD.QLDC.API.Controllers
 {
     public class CategoriesController : TDApiController
     {
-        private readonly ICategoryRepository _categoryRepository;
+        private readonly ICategoryRepository _repository;
 
-        public CategoriesController(ICategoryRepository categoryRepository)
+        public CategoriesController(ICategoryRepository repository)
         {
-            _categoryRepository = categoryRepository;
+            _repository = repository;
         }
 
         [Route("QLDCapi/categories")]
@@ -29,7 +29,7 @@ namespace TD.QLDC.API.Controllers
             bool? active = null
         )
         {
-            var data = _categoryRepository.Get(skip, top, q, orderBy, includes, nhomId, active);
+            var data = _repository.Get(skip, top, q, orderBy, includes, nhomId, active);
             return ApiOk(data,
                         null,
                         (result) =>
@@ -38,7 +38,7 @@ namespace TD.QLDC.API.Controllers
                             {
                                 result.ExtensionData["count"] = skip == 0 && top == 0
                                     ? data.Count
-                                    : _categoryRepository.Count(q, nhomId, active);
+                                    : _repository.Count(q, nhomId, active);
                             }
                         });
         }
@@ -47,7 +47,7 @@ namespace TD.QLDC.API.Controllers
         [HttpGet]
         public IHttpActionResult GetCategory(int id)
         {
-            var Category = _categoryRepository.GetById(id);
+            var Category = _repository.GetById(id);
             if (Category == null)
             {
                 return ApiNotFound();
@@ -68,7 +68,7 @@ namespace TD.QLDC.API.Controllers
             {
                 return ApiBadRequest();
             }
-            _categoryRepository.Update(change);
+            _repository.Update(change);
             return ApiNoContent();
         }
 
@@ -80,7 +80,7 @@ namespace TD.QLDC.API.Controllers
             {
                 return ApiBadRequest(null, ModelState);
             }
-            var Category = _categoryRepository.Add(entity);
+            var Category = _repository.Add(entity);
             return ApiCreated(Category);
         }
 
@@ -88,7 +88,7 @@ namespace TD.QLDC.API.Controllers
         [HttpDelete]
         public IHttpActionResult DeleteCategory(int id)
         {
-            var Category = _categoryRepository.Delete(id);
+            var Category = _repository.Delete(id);
             return ApiOk();
         }
 
@@ -96,7 +96,7 @@ namespace TD.QLDC.API.Controllers
         [HttpGet]
         public IHttpActionResult GetCountCategory()
         {
-            var count = _categoryRepository.Count();
+            var count = _repository.Count();
             return ApiOk(count);
         }
     }

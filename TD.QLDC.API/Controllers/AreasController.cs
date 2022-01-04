@@ -11,11 +11,11 @@ namespace TD.QLDC.API.Controllers
 {
     public class AreasController : TDApiController
     {
-        private readonly IAreaRepository _AreaRepository;
+        private readonly IAreaRepository _repository;
 
-        public AreasController(IAreaRepository AreaRepository)
+        public AreasController(IAreaRepository repository)
         {
-            _AreaRepository = AreaRepository;
+            _repository = repository;
         }
 
         [Route("QLDCapi/Areas")]
@@ -31,7 +31,7 @@ namespace TD.QLDC.API.Controllers
             int? type = null,
             string parentCode = null)
         {
-            var data = _AreaRepository.Get(skip, top, q, includes, orderBy, areaCode, type, parentCode);
+            var data = _repository.Get(skip, top, q, includes, orderBy, areaCode, type, parentCode);
             return ApiOk(data,
                         null,
                         (result) =>
@@ -40,7 +40,7 @@ namespace TD.QLDC.API.Controllers
                             {
                                 result.ExtensionData["count"] = skip == 0 && top == 0
                                     ? data.Count
-                                    : _AreaRepository.Count(q, areaCode, type, parentCode);
+                                    : _repository.Count(q, areaCode, type, parentCode);
                             }
                         });
         }
@@ -49,7 +49,7 @@ namespace TD.QLDC.API.Controllers
         [HttpGet]
         public IHttpActionResult GetArea(int id)
         {
-            var Area = _AreaRepository.GetById(id);
+            var Area = _repository.GetById(id);
             if (Area == null)
             {
                 return ApiNotFound();
@@ -61,7 +61,7 @@ namespace TD.QLDC.API.Controllers
         [HttpGet]
         public IHttpActionResult GetSingleByCode(string code)
         {
-            var Area = _AreaRepository.GetSingleByCode(code);
+            var Area = _repository.GetSingleByCode(code);
             if (Area == null)
             {
                 return ApiNotFound();
@@ -82,7 +82,7 @@ namespace TD.QLDC.API.Controllers
             {
                 return ApiBadRequest();
             }
-            _AreaRepository.Update(change);
+            _repository.Update(change);
             return ApiNoContent();
         }
 
@@ -94,7 +94,7 @@ namespace TD.QLDC.API.Controllers
             {
                 return ApiBadRequest(null, ModelState);
             }
-            var Area = _AreaRepository.Add(entity);
+            var Area = _repository.Add(entity);
             return ApiCreated(Area);
         }
 
@@ -102,9 +102,9 @@ namespace TD.QLDC.API.Controllers
         [HttpDelete]
         public IHttpActionResult DeleteArea(int id)
         {
-            var area = _AreaRepository.GetById(id);
+            var area = _repository.GetById(id);
 
-            _AreaRepository.Delete(area);
+            _repository.Delete(area);
             return ApiOk();
         }
 
@@ -112,7 +112,7 @@ namespace TD.QLDC.API.Controllers
         [HttpGet]
         public IHttpActionResult GetCountArea()
         {
-            var count = _AreaRepository.Count();
+            var count = _repository.Count();
             return ApiOk(count);
         }
     }
