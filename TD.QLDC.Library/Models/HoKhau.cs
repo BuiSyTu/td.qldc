@@ -25,20 +25,35 @@ namespace TD.QLDC.Library.Models
         public string TenChuHo { get { return tenChuHo; } set { tenChuHo = value; NotifyPropertyChanged(); } }
 
         #region Nơi ở, địa chỉ
-        private string tinh;
-        public string Tinh { get { return tinh; } set { tinh = value; NotifyPropertyChanged(); } }
+        private string maTinhThanh;
+        public string MaTinhThanh { get { return maTinhThanh; } set { maTinhThanh = value; NotifyPropertyChanged(); } }
 
-        private string quanhuyen;
-        public string QuanHuyen { get { return quanhuyen; } set { quanhuyen = value; NotifyPropertyChanged(); } }
+        private string tenTinhThanh;
+        public string TenTinhThanh { get { return tenTinhThanh; } set { tenTinhThanh = value; NotifyPropertyChanged(); } }
 
-        private string phuongxa;
-        public string PhuongXa { get { return phuongxa; } set { phuongxa = value; NotifyPropertyChanged(); } }
+        private string maQuanHuyen;
+        public string MaQuanHuyen { get { return maQuanHuyen; } set { maQuanHuyen = value; NotifyPropertyChanged(); } }
 
-        private string thon;
-        public string Thon { get { return thon; } set { thon = value; NotifyPropertyChanged(); } }
+        private string tenQuanHuyen;
+        public string TenQuanHuyen { get { return tenQuanHuyen; } set { tenQuanHuyen = value; NotifyPropertyChanged(); } }
 
-        private string xom;
-        public string Xom { get { return xom; } set { xom = value; NotifyPropertyChanged(); } }
+        private string maXaPhuong;
+        public string MaXaPhuong { get { return maXaPhuong; } set { maXaPhuong = value; NotifyPropertyChanged(); } }
+
+        private string tenXaPhuong;
+        public string TenXaPhuong { get { return tenXaPhuong; } set { tenXaPhuong = value; NotifyPropertyChanged(); } }
+
+        private string maThon;
+        public string MaThon { get { return maThon; } set { maThon = value; NotifyPropertyChanged(); } }
+
+        private string tenThon;
+        public string TenThon { get { return tenThon; } set { tenThon = value; NotifyPropertyChanged(); } }
+
+        private string maXom;
+        public string MaXom { get { return maXom; } set { maXom = value; NotifyPropertyChanged(); } }
+
+        private string tenXom;
+        public string TenXom { get { return tenXom; } set { tenXom = value; NotifyPropertyChanged(); } }
 
         private string soNha;
         public string SoNha { get { return soNha; } set { soNha = value; NotifyPropertyChanged(); } }

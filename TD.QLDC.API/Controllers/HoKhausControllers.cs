@@ -25,24 +25,19 @@ namespace TD.QLDC.API.Controllers
             return ApiOk(data);
         }
 
-        [Route("QLDCapi/HoKhaus/GetSHKByID/{id:int:min(1)}")]
-        [HttpGet]
-        public IHttpActionResult GetSHKByID(int id)
-        {
-            var data = _HoKhauRepository.GetSHKByID(id);
-            return ApiOk(data);
-        }
-
         [Route("QLDCapi/HoKhaus")]
         [HttpGet]
-        public IHttpActionResult GetHoKhaus(int skip = 0, int top = 100, string q = null, string orderBy = null, bool count = false)
+        public IHttpActionResult GetHoKhaus(
+            int skip = 0,
+            int top = 100,
+            string q = null,
+            string orderBy = null,
+            string includes = null,
+            bool count = false
+        )
         {
-            ICollection<string> collecionOrderBy = null;
-            if (!string.IsNullOrEmpty(orderBy))
-            {
-                collecionOrderBy = new Regex(@"\s*,\s*").Split(orderBy);
-            }
-            var data = _HoKhauRepository.Get(skip, top, q, collecionOrderBy, null);
+            var data = _HoKhauRepository.Get(skip, top, q, orderBy, includes);
+
             return ApiOk(data,
                         null,
                         (result) =>
@@ -51,7 +46,7 @@ namespace TD.QLDC.API.Controllers
                             {
                                 result.ExtensionData["count"] = skip == 0 && top == 0
                                     ? data.Count
-                                    : _HoKhauRepository.Count(q, collecionOrderBy, null);
+                                    : _HoKhauRepository.Count(q);
                             }
                         });
         }
@@ -111,10 +106,6 @@ namespace TD.QLDC.API.Controllers
         public IHttpActionResult GetCountHoKhau()
         {
             var count = _HoKhauRepository.Count();
-            if (count == 0)
-            {
-                return ApiNotFound();
-            }
             return ApiOk(count);
         }
     }

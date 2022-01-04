@@ -20,21 +20,18 @@ namespace TD.QLDC.API.Controllers
 
         [Route("QLDCapi/Areas")]
         [HttpGet]
-        public IHttpActionResult GetAreas(int skip = 0, int top = 100,
-            string q = null, string orderBy = null, bool count = false,
-            string include = null)
+        public IHttpActionResult GetAreas(
+            int skip = 0,
+            int top = 100,
+            string q = null,
+            string orderBy = null,
+            bool count = false,
+            string includes = null,
+            string areaCode = null,
+            int? type = null,
+            string parentCode = null)
         {
-            ICollection<string> collecionInclude = null;
-            if (!string.IsNullOrEmpty(include))
-            {
-                collecionInclude = new Regex(@"\s*,\s*").Split(include);
-            }
-            ICollection<string> collecionOrderBy = null;
-            if (!string.IsNullOrEmpty(orderBy))
-            {
-                collecionOrderBy = new Regex(@"\s*,\s*").Split(orderBy);
-            }
-            var data = _AreaRepository.Get(skip, top, q);
+            var data = _AreaRepository.Get(skip, top, q, includes, orderBy, areaCode, type, parentCode);
             return ApiOk(data,
                         null,
                         (result) =>
@@ -43,7 +40,7 @@ namespace TD.QLDC.API.Controllers
                             {
                                 result.ExtensionData["count"] = skip == 0 && top == 0
                                     ? data.Count
-                                    : _AreaRepository.Count();
+                                    : _AreaRepository.Count(q, areaCode, type, parentCode);
                             }
                         });
         }
@@ -53,6 +50,18 @@ namespace TD.QLDC.API.Controllers
         public IHttpActionResult GetArea(int id)
         {
             var Area = _AreaRepository.GetById(id);
+            if (Area == null)
+            {
+                return ApiNotFound();
+            }
+            return ApiOk(Area);
+        }
+
+        [Route("QLDCapi/Areas/code/{code}")]
+        [HttpGet]
+        public IHttpActionResult GetSingleByCode(string code)
+        {
+            var Area = _AreaRepository.GetSingleByCode(code);
             if (Area == null)
             {
                 return ApiNotFound();
@@ -104,10 +113,6 @@ namespace TD.QLDC.API.Controllers
         public IHttpActionResult GetCountArea()
         {
             var count = _AreaRepository.Count();
-            if (count == 0)
-            {
-                return ApiNotFound();
-            }
             return ApiOk(count);
         }
     }

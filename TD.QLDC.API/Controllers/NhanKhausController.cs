@@ -18,33 +18,20 @@ namespace TD.QLDC.API.Controllers
             _NhanKhauRepository = NhanKhauRepository;
         }
 
-        
-        [Route("QLDCapi/NhanKhaus/UpdateTheoSHK")]
-        [HttpGet]
-        public IHttpActionResult UpdateTheoSHK(string shkc, string shk)
-        {
-            var data = _NhanKhauRepository.UpdateTheoSHK(shkc, shk);
-            return ApiOk(data);
-        }
-
         [Route("QLDCapi/NhanKhaus")]
         [HttpGet]
-        public IHttpActionResult GetNhanKhaus(int skip = 0, int top = 100,
-            string q = null, string orderBy = null, bool count = false,
-            string include = null, string shk = null, int? hoKhauId = null)
+        public IHttpActionResult GetNhanKhaus(
+            int skip = 0,
+            int top = 100,
+            string q = null,
+            string orderBy = null,
+            bool count = false,
+            string includes = null,
+            string shk = null,
+            int? hoKhauId = null)
         {
-            ICollection<string> collecionInclude = null;
-            if (!string.IsNullOrEmpty(include))
-            {
-                collecionInclude = new Regex(@"\s*,\s*").Split(include);
-            }
-            ICollection<string> collecionOrderBy = null;
-            if (!string.IsNullOrEmpty(orderBy))
-            {
-                collecionOrderBy = new Regex(@"\s*,\s*").Split(orderBy);
-            }
-            var data = _NhanKhauRepository.Get(
-                skip, top, q, collecionOrderBy, collecionInclude, shk, hoKhauId);
+
+            var data = _NhanKhauRepository.Get(skip, top, q, orderBy, includes, shk, hoKhauId);
             return ApiOk(data,
                         null,
                         (result) =>
@@ -53,17 +40,9 @@ namespace TD.QLDC.API.Controllers
                             {
                                 result.ExtensionData["count"] = skip == 0 && top == 0
                                     ? data.Count
-                                    : _NhanKhauRepository.Count(q, collecionOrderBy, collecionInclude, shk, hoKhauId);
+                                    : _NhanKhauRepository.Count(q, shk, hoKhauId);
                             }
                         });
-        }
-
-        [Route("QLDCapi/NhanKhaus/GetBySoHoKhau/{SoHoKhau}")]
-        [HttpGet]
-        public IHttpActionResult GetBySoHoKhau(string SoHoKhau)
-        {
-            var NhanKhau = _NhanKhauRepository.GetBySoHoKhau(SoHoKhau);
-            return ApiOk(NhanKhau);
         }
 
         [Route("QLDCapi/NhanKhaus/{id:int:min(1)}")]

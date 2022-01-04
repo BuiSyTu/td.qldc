@@ -1,6 +1,7 @@
 ﻿using Microsoft.SharePoint;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Data.Entity;
 using System.Linq;
 using TD.Core.Api.Mvc;
@@ -15,17 +16,17 @@ namespace TD.QLDC.Library.Repositories
 
     public interface IHoKhauRepository : IRepository<HoKhau>
     {
-        List<HoKhau> Get(
-            int skip = 0, int take = 100,
+        ICollection<HoKhau> Get(
+            int skip = 0,
+            int take = 100,
             string search = null,
-            ICollection<string> orderBy = null,
-            ICollection<string> include = null);
-        int Count(
-           string search = null,
-           ICollection<string> orderBy = null,
-           ICollection<string> include = null
-       );
+            string orderBy = null,
+            string includes = null);
+
+        int Count(string search = null);
+
         int CheckMa(string shk);
+
         string GetSHKByID(int id);
 
         HoKhau GetBySoHoKhauAndCreateIfNotExist(string soHoKhau, int? loaiHoGiaDinhId = null);
@@ -34,7 +35,7 @@ namespace TD.QLDC.Library.Repositories
 
     public class HoKhauRepository : EFRepository<HoKhau>, IHoKhauRepository
     {
-        private QLDCDbContext _dbContext;
+        private readonly QLDCDbContext _dbContext;
 
         public HoKhauRepository(
             QLDCDbContext dbContext,
@@ -43,71 +44,67 @@ namespace TD.QLDC.Library.Repositories
         {
             _dbContext = dbContext;
         }
-        
-        private IQueryable<HoKhau> CreateQuery(
-            string search,
-            ICollection<string> orderBy,
-            ICollection<string> include
-        )
+
+        public override void Update(HoKhau model)
         {
-            var query = _dbContext.HoKhaus.AsQueryable();
+            SetDefaultArea(model);
+            base.Update(model);
+        }
 
-            // includes
-            if (include != null && include.Count > 0)
+        public override HoKhau Add(HoKhau model)
+        {
+            SetDefaultArea(model);
+            return base.Add(model);
+        }
+
+        private void SetDefaultArea(HoKhau model)
+        {
+            if (string.IsNullOrEmpty(model.MaTinhThanh))
             {
-                foreach (var item in include)
-                {
-                    query = query.Include(item);
-                }
+                model.MaTinhThanh = ConfigurationManager.AppSettings["ProvinceCode"] ?? "";
             }
 
-            // sort
-            if (orderBy == null || orderBy.Count == 0)
+            if (string.IsNullOrEmpty(model.TenTinhThanh))
             {
-                orderBy = new string[] { "ID" };
+                model.TenTinhThanh = ConfigurationManager.AppSettings["ProvinceName"] ?? "";
             }
-          
 
-        query = query.OrderBySQL(orderBy);
-
-
-            // search
-            if (!string.IsNullOrEmpty(search))
+            if (string.IsNullOrEmpty(model.MaQuanHuyen))
             {
-                //var ids = CreateSearchQuery(_dbContext.HoKhaus, search).Select(x => x.ID).ToList();
-                //query = query.Where(x => ids.Contains(x.ID));
-                query = query.Where(x => x.SoHoKhau.Contains(search)
-                    || x.SoNha.Contains(search)
-                    || x.Thon.Contains(search)
-                    || x.Xom.Contains(search)
-                    || x.TenChuHo.Contains(search));
-            }        
-            // return result
-            return query;
+                model.MaQuanHuyen = ConfigurationManager.AppSettings["DistrictCode"] ?? "";
+            }
+
+            if (string.IsNullOrEmpty(model.TenQuanHuyen))
+            {
+                model.TenQuanHuyen = ConfigurationManager.AppSettings["DistrictName"] ?? "";
+            }
+
+            if (string.IsNullOrEmpty(model.MaXaPhuong))
+            {
+                model.MaXaPhuong = ConfigurationManager.AppSettings["WardCode"] ?? "";
+            }
+
+            if (string.IsNullOrEmpty(model.TenXaPhuong))
+            {
+                model.TenXaPhuong = ConfigurationManager.AppSettings["WardName"] ?? "";
+            }
         }
 
         public int Count(
-           string search = null,
-           ICollection<string> orderBy = null,
-           ICollection<string> include = null
-       )
+           string search = null
+        )
         {
-            return CreateQuery(
-                search,
-                orderBy,
-                include
-                ).Count();
+            return _dbContext.HoKhaus
+                .FilterSearchValue(search)
+                .Count();
         }
 
         public int CheckMa(string shk)
         {
-            if (!string.IsNullOrEmpty(shk))
-            {
-                var data = _dbContext.HoKhaus.FirstOrDefault(HoKhau => HoKhau.SoHoKhau == shk);
-                if (data == null) return 0;
-                else return 1;
-            }
-             return 0;           
+            if (string.IsNullOrEmpty(shk)) return 0;
+
+            var data = _dbContext.HoKhaus.FirstOrDefault(HoKhau => HoKhau.SoHoKhau == shk);
+            return data == null ? 0 : 1;
         }
 
         public string GetSHKByID(int id)
@@ -115,25 +112,21 @@ namespace TD.QLDC.Library.Repositories
             var query = _dbContext.HoKhaus.FirstOrDefault(HoKhau => HoKhau.ID == id);
             return query.SoHoKhau;
         }
-        public List<HoKhau> Get(
-            int skip = 0, int take = 100,
+
+        public ICollection<HoKhau> Get(
+            int skip = 0,
+            int take = 100,
             string search = null,
-            ICollection<string> orderBy = null,
-            ICollection<string> include = null)
+            string orderBy = null,
+            string includes = null)
         {
-            // load data
-            var query = CreateQuery(
-                search,
-                orderBy,
-                include
-                );
-
-            if (skip > 0)
-                query = query.Skip(skip);
-            if (take > 0)
-                query = query.Take(take);
-
-            return query.ToList();
+            return _dbContext.HoKhaus
+                .IncludeMany(includes)
+                .FilterSearchValue(search)
+                .OrderByMany(orderBy)
+                .Skip(skip)
+                .Take(take)
+                .ToList();
         }
 
         public HoKhau GetBySoHoKhauAndCreateIfNotExist(string soHoKhau, int? loaiHoGiaDinhId = null)
@@ -158,13 +151,29 @@ namespace TD.QLDC.Library.Repositories
         public ICollection<ChartItem> GroupByXom()
         {
             return _dbContext.HoKhaus
-                .GroupBy(x => x.Xom)
+                .GroupBy(x => x.TenXom)
                 .Select(g => new ChartItem
                 {
                     Text = g.Key,
                     Value = g.Count().ToString()
                 })
                 .ToList();
+        }
+    }
+
+    public static class QueryableHoKhauExtension
+    {
+        public static IQueryable<HoKhau> FilterSearchValue(this IQueryable<HoKhau> query, string searchValue = null)
+        {
+            if (string.IsNullOrEmpty(searchValue)) return query;
+
+            var newQuery = query.Where(x => x.SoHoKhau.Contains(searchValue)
+                    || x.SoNha.Contains(searchValue)
+                    || x.TenThon.Contains(searchValue)
+                    || x.TenXom.Contains(searchValue)
+                    || x.TenChuHo.Contains(searchValue));
+
+            return newQuery;
         }
     }
 }

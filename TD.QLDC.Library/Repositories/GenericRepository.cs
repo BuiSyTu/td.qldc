@@ -112,8 +112,7 @@ namespace TD.QLDC.Library.Repositories
         {
             try
             {
-                var query = CreateSearchQuery(_context.Set<T>(), search, searchIsQuery);
-                query = query.OrderBySQL(orderBy);
+                var query = _context.Set<T>().OrderBySQL(orderBy);
                 if (skip > 0)
                     query = query.Skip(skip);
                 if (take > 0)
@@ -125,18 +124,111 @@ namespace TD.QLDC.Library.Repositories
                 throw new ApiException("Error getting items", ex);
             }
         }
+    }
 
-        protected IQueryable<T> CreateSearchQuery(IQueryable<T> query, string search, bool searchIsQuery)
+    public static class QueryableExtension
+    {
+        public static IQueryable<T> IncludeMany<T>(this IQueryable<T> queryable, string include)
         {
+            ICollection<string> includeCollection = null;
+            if (!string.IsNullOrEmpty(include))
+            {
+                includeCollection = new Regex(@"\s*,\s*").Split(include);
+            }
+
+            if (includeCollection != null && includeCollection.Count > 0)
+            {
+                foreach (var item in includeCollection)
+                {
+                    queryable = queryable.Include(item);
+                }
+            }
+            return queryable;
+        }
+
+        public static IQueryable<T> OrderByMany<T>(this IQueryable<T> queryable, string orderBy)
+        {
+            if (string.IsNullOrEmpty(orderBy))
+            {
+                queryable = queryable.OrderByDynamic(x => "x.ID");
+                return queryable;
+            }
+
+            var splitChars = new char[] { '|' };
+
+            ICollection<string> orderByCollection = null;
+            if (!string.IsNullOrEmpty(orderBy))
+            {
+                orderByCollection = new Regex(@"\s*,\s*").Split(orderBy);
+            }
+
+            var checkOrdered = false;
+            foreach (string str in orderByCollection)
+            {
+                if (string.IsNullOrEmpty(str))
+                {
+                    continue;
+                }
+
+                var spl = str.Split(splitChars);
+
+                var field = spl[0];
+                var desc = spl.Length > 1 && spl[1].ToUpper() == "DESC";
+
+                if (!checkOrdered)
+                {
+                    if (desc)
+                    {
+                        queryable = queryable.OrderByDescendingDynamic(x => $"x.{field}");
+                    }
+                    else
+                    {
+                        queryable = queryable.OrderByDynamic(x => $"x.{field}");
+                    }
+                    checkOrdered = true;
+                }
+                else
+                {
+                    if (desc)
+                    {
+                        queryable = ((IOrderedQueryable<T>)queryable).ThenByDescendingDynamic(x => $"x.{field}");
+                    }
+                    else
+                    {
+                        queryable = ((IOrderedQueryable<T>)queryable).ThenByDynamic(x => $"x.{field}");
+                    }
+                }
+
+            }
+
+            return queryable;
+        }
+
+        public static IQueryable<T> CreateSearchQuery<T>(this IQueryable<T> query, string search) where T : Entity<int>, new()
+        {
+            var FreetextFields = EfSpecificationEvaluator<T>.GetFreeTextFields();
             if (!string.IsNullOrEmpty(search))
             {
-
-                if (searchIsQuery)
+                if (FreetextFields == null)
                 {
-                    throw new NotSupportedException("query is not supported");
+                    throw new NotSupportedException("This modal type does not support text search");
                 }
+
+                var fieldList = string.Join(",", FreetextFields);
+                if (fieldList.Length == 0)
+                {
+                    throw new NotSupportedException("This modal type does not support text search");
+                }
+                query = query.FullTextSearch(fieldList, search, EfSpecificationEvaluator<T>.GetSearchAlgorithm());
                 return query;
             }
+            return query;
+        }
+
+        public static IQueryable<T> Search<T>(this IQueryable<T> query, string search) where T : Entity<int>, new()
+        {
+            var ids = CreateSearchQuery(query, search).Select(x => x.ID).ToList();
+            query = query.Where(x => ids.Contains(x.ID));
             return query;
         }
     }

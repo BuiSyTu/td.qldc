@@ -38,6 +38,7 @@ namespace TD.QLDC.API.Integration
             container.RegisterType<IHoKhauRepository, HoKhauRepository>();
             container.RegisterType<INhanKhauRepository, NhanKhauRepository>();
             container.RegisterType<INhomDanhMucRepository, NhomDanhMucRepository>();
+            container.RegisterType<IAreaRepository, AreaRepository>();
             container.RegisterFactory<QLDCDbContext>(c => new QLDCDbContext());
 
             container.RegisterType<IDashboardService, DashboardService>();

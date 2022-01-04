@@ -18,21 +18,18 @@ namespace TD.QLDC.API.Controllers
 
         [Route("QLDCapi/categories")]
         [HttpGet]
-        public IHttpActionResult GetCategories(int skip = 0, int top = 100,
-            string q = null, string orderBy = null, bool count = false,
-            string include = null, int? nhomid  = null, bool? active = null)
+        public IHttpActionResult GetCategories(
+            int skip = 0,
+            int top = 100,
+            string q = null,
+            string orderBy = null,
+            bool count = false,
+            string includes = null,
+            int? nhomId  = null,
+            bool? active = null
+        )
         {
-            ICollection<string> collecionInclude = null;
-            if (!string.IsNullOrEmpty(include))
-            {
-                collecionInclude = new Regex(@"\s*,\s*").Split(include);
-            }
-            ICollection<string> collecionOrderBy = null;
-            if (!string.IsNullOrEmpty(orderBy))
-            {
-                collecionOrderBy = new Regex(@"\s*,\s*").Split(orderBy);
-            }
-            var data = _categoryRepository.Get(skip, top, q, collecionOrderBy, collecionInclude, nhomid, active);
+            var data = _categoryRepository.Get(skip, top, q, orderBy, includes, nhomId, active);
             return ApiOk(data,
                         null,
                         (result) =>
@@ -41,7 +38,7 @@ namespace TD.QLDC.API.Controllers
                             {
                                 result.ExtensionData["count"] = skip == 0 && top == 0
                                     ? data.Count
-                                    : _categoryRepository.Count(q, collecionOrderBy, collecionInclude, nhomid, active);
+                                    : _categoryRepository.Count(q, nhomId, active);
                             }
                         });
         }
@@ -100,10 +97,6 @@ namespace TD.QLDC.API.Controllers
         public IHttpActionResult GetCountCategory()
         {
             var count = _categoryRepository.Count();
-            if (count == 0)
-            {
-                return ApiNotFound();
-            }
             return ApiOk(count);
         }
     }

@@ -95,7 +95,7 @@ namespace TD.QLDC.Library.Models
         public string NoiLamViec { get { return noiLamViec; } set { noiLamViec = value; NotifyPropertyChanged(); } }
         #endregion
 
-        #region Giấy tờ
+        #region CCCD/ CMND
         private string soCCCD;
         public string SoCCCD { get { return soCCCD; } set { soCCCD = value; NotifyPropertyChanged(); } }
 
@@ -107,7 +107,9 @@ namespace TD.QLDC.Library.Models
 
         private string hanSuDungCCCD;
         public string HanSuDungCCCD { get { return hanSuDungCCCD; } set { hanSuDungCCCD = value; NotifyPropertyChanged(); } }
+        #endregion
 
+        #region Hộ chiếu
         private string soHC;
         public string SoHC { get { return soHC; } set { soHC = value; NotifyPropertyChanged(); } }
 
@@ -116,7 +118,9 @@ namespace TD.QLDC.Library.Models
 
         private string noicapHC;
         public string NoiCapHC { get { return noicapHC; } set { noicapHC = value; NotifyPropertyChanged(); } }
+        #endregion
 
+        #region BHYT
         private string soBHYT;
         public string SoBHYT { get { return soBHYT; } set { soBHYT = value; NotifyPropertyChanged(); } }
 
@@ -133,35 +137,18 @@ namespace TD.QLDC.Library.Models
         public string MaSoThue { get { return maSoThue; } set { maSoThue = value; NotifyPropertyChanged(); } }
         #endregion
 
-        #region Cha, mẹ, thân nhân
-        private string tenCha;
-        public string TenCha { get { return tenCha; } set { tenCha = value; NotifyPropertyChanged(); } }
-
-        private string tenMe;
-        public string TenMe { get { return tenMe; } set { tenMe = value; NotifyPropertyChanged(); } }
-
-        private string thanNhan;
-        public string ThanNhan { get { return thanNhan; } set { thanNhan = value; NotifyPropertyChanged(); } }
-        #endregion
-
         #region Địa chỉ, nơi cư trú
-        private string tinh;
-        public string Tinh { get { return tinh; } set { tinh = value; NotifyPropertyChanged(); } }
+        private string maTinhThanhTamTru;
+        public string MaTinhThanhTamTru { get { return maTinhThanhTamTru; } set { maTinhThanhTamTru = value; NotifyPropertyChanged(); } }
 
-        private string huyen;
-        public string Huyen { get { return huyen; } set { huyen = value; NotifyPropertyChanged(); } }
+        private string maQuanHuyenTamTru;
+        public string MaQuanHuyenTamTru { get { return maQuanHuyenTamTru; } set { maQuanHuyenTamTru = value; NotifyPropertyChanged(); } }
 
-        private string xa;
-        public string Xa { get { return xa; } set { xa = value; NotifyPropertyChanged(); } }
+        private string maXaPhuongTamTru;
+        public string MaXaPhuongTamTru { get { return maXaPhuongTamTru; } set { maXaPhuongTamTru = value; NotifyPropertyChanged(); } }
 
-        private string noiOHienTai;
-        public string NoiOHienTai { get { return noiOHienTai; } set { noiOHienTai = value; NotifyPropertyChanged(); } }
-
-        private string noiSinh;
-        public string NoiSinh { get { return noiSinh; } set { noiSinh = value; NotifyPropertyChanged(); } }
-
-        private string noiThuongTru;
-        public string NoiThuongTru { get { return noiThuongTru; } set { noiThuongTru = value; NotifyPropertyChanged(); } }
+        private string diaChiTamTru;
+        public string DiaChiTamTru { get { return diaChiTamTru; } set { diaChiTamTru = value; NotifyPropertyChanged(); } }
         #endregion
 
         #region Nhà ở, hộ kinh doanh

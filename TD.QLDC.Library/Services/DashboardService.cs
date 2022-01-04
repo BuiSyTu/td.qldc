@@ -51,7 +51,7 @@ namespace TD.QLDC.Library.Services
             return new Chart
             {
                 Title = "Số lượng nhân khẩu theo xóm",
-                Data = _nhanKhauRepository.GroupByNoiThuongTru()
+                Data = _nhanKhauRepository.GroupByXom()
             };
         }
 
