@@ -15,19 +15,13 @@ namespace TD.QLDC.Library.Repositories
 
     public interface INhomDanhMucRepository : IRepository<NhomDanhMuc>
     {
-
-        List<NhomDanhMuc> Get(
-            int skip = 0, int take = 100,
+        ICollection<NhomDanhMuc> Get(
+            int skip = 0,
+            int take = 100,
             string search = null,
-            ICollection<string> orderBy = null,
-            ICollection<string> include = null);
-            //int? nhomid = null
-        NhomDanhMuc Get(NhomDanhMuc entity);
-        int Count(
-           string search = null,
-           ICollection<string> orderBy = null,
-           ICollection<string> include = null
-       );
+            string orderBy = null,
+            string includes = null);
+        int Count(string search = null);
     }
 
     public class NhomDanhMucRepository : EFRepository<NhomDanhMuc>, INhomDanhMucRepository
@@ -42,83 +36,43 @@ namespace TD.QLDC.Library.Repositories
             _dbContext = dbContext;
         }
 
-        public NhomDanhMuc Get(NhomDanhMuc entity)
-        {
-            var item = _dbContext.NhomDanhMucs.FirstOrDefault(i => i.ID == entity.ID);
-            return item;
-        }
-        private IQueryable<NhomDanhMuc> CreateQuery(
-            string search,
-            ICollection<string> orderBy,
-            ICollection<string> include
-            )
-        {
-            var query = _dbContext.NhomDanhMucs.AsQueryable();
-
-            // includes
-            if (include != null && include.Count > 0)
-            {
-                foreach (var item in include)
-                {
-                    query = query.Include(item);
-                }
-            }
-
-            // sort
-            if (orderBy == null || orderBy.Count == 0)
-            {
-                orderBy = new string[] { "ID" };
-            }
-
-            query = query.OrderBySQL(orderBy);
-
-            // search
-            //if (!string.IsNullOrEmpty(search))
-            //{
-            //    var ids = CreateSearchQuery(_dbContext.NhomDanhMucs, search).Select(x => x.ID).ToList();
-            //    query = query.Where(x => ids.Contains(x.ID));
-            //}
-
-            // return result
-            return query;
-        }
 
         public int Count(
-           string search = null,
-           ICollection<string> orderBy = null,
-           ICollection<string> include = null
+           string search = null
 
-       )
+        )
         {
-            return CreateQuery(
-                search,
-                orderBy,
-                include
-                ).Count();
+            return _dbContext.NhomDanhMucs
+                .FilterSearchValue(search)
+                .Count();
         }
 
-        public List<NhomDanhMuc> Get(
+        public ICollection<NhomDanhMuc> Get(
             int skip = 0, int take = 100,
             string search = null,
-            ICollection<string> orderBy = null,
-            ICollection<string> include = null
+            string orderBy = null,
+            string includes = null
             )
         {
-            // load data
-            var query = CreateQuery(
-                search,
-                orderBy,
-                include
-                );
-
-            if (skip > 0)
-                query = query.Skip(skip);
-            if (take > 0)
-                query = query.Take(take);
-
-            return query.ToList();
+            return _dbContext.NhomDanhMucs
+                .IncludeMany(includes)
+                .FilterSearchValue(search)
+                .OrderByMany(orderBy)
+                .Skip(skip)
+                .Take(take)
+                .ToList();
         }
+    }
 
+    public static class QueryableNhomDanhMucExtension
+    {
+        public static IQueryable<NhomDanhMuc> FilterSearchValue(this IQueryable<NhomDanhMuc> query, string searchValue = null)
+        {
+            if (string.IsNullOrEmpty(searchValue)) return query;
+
+            var newQuery = query.Where(x => x.Name.Contains(searchValue));
+            return newQuery;
+        }
     }
 }
 

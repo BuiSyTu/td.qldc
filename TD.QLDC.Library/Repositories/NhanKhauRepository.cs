@@ -97,6 +97,7 @@ namespace TD.QLDC.Library.Repositories
         public ICollection<ChartItem> GroupByXom()
         {
             return _dbContext.NhanKhaus
+                .FilterCurrentAreaCode()
                 .GroupBy(x => x.HoKhau.TenXom)
                 .Select(g => new ChartItem
                 {
@@ -109,6 +110,7 @@ namespace TD.QLDC.Library.Repositories
         public int CountDoiTuong()
         {
             return _dbContext.NhanKhaus
+                .FilterCurrentAreaCode()
                 .GroupBy(x => x.DMDoiTuongID)
                 .Count();
         }
@@ -116,6 +118,7 @@ namespace TD.QLDC.Library.Repositories
         public int CountTonGiao()
         {
             return _dbContext.NhanKhaus
+                .FilterCurrentAreaCode()
                 .GroupBy(x => x.DMTonGiaoID)
                 .Count();
         }
@@ -123,6 +126,7 @@ namespace TD.QLDC.Library.Repositories
         public int CountDanToc()
         {
             return _dbContext.NhanKhaus
+                .FilterCurrentAreaCode()
                 .GroupBy(x => x.DMDanTocID)
                 .Count();
         }
@@ -131,6 +135,7 @@ namespace TD.QLDC.Library.Repositories
         {
             return _dbContext.NhanKhaus
                 .Include(x => x.DMDoiTuong)
+                .FilterCurrentAreaCode()
                 .GroupBy(x => x.DMDoiTuong.Name)
                 .Select(g => new ChartItem
                 {
@@ -144,6 +149,7 @@ namespace TD.QLDC.Library.Repositories
         {
             return _dbContext.NhanKhaus
                 .Include(x => x.DMTonGiao)
+                .FilterCurrentAreaCode()
                 .GroupBy(x => x.DMTonGiao.Name)
                 .Select(g => new ChartItem
                 {
@@ -157,6 +163,7 @@ namespace TD.QLDC.Library.Repositories
         {
             return _dbContext.NhanKhaus
                 .Include(x => x.DMDanToc)
+                .FilterCurrentAreaCode()
                 .GroupBy(x => x.DMDanToc.Name)
                 .Select(g => new ChartItem
                 {

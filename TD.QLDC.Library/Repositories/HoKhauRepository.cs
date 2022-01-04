@@ -28,9 +28,9 @@ namespace TD.QLDC.Library.Repositories
 
         int CheckMa(string shk);
 
-        string GetSHKByID(int id);
 
         HoKhau GetBySoHoKhauAndCreateIfNotExist(string soHoKhau, int? loaiHoGiaDinhId = null);
+
         ICollection<ChartItem> GroupByXom();
     }
 
@@ -109,12 +109,6 @@ namespace TD.QLDC.Library.Repositories
             return data == null ? 0 : 1;
         }
 
-        public string GetSHKByID(int id)
-        {
-            var query = _dbContext.HoKhaus.FirstOrDefault(HoKhau => HoKhau.ID == id);
-            return query.SoHoKhau;
-        }
-
         public ICollection<HoKhau> Get(
             int skip = 0,
             int take = 100,
@@ -154,6 +148,7 @@ namespace TD.QLDC.Library.Repositories
         public ICollection<ChartItem> GroupByXom()
         {
             return _dbContext.HoKhaus
+                .FilterCurrentAreaCode()
                 .GroupBy(x => x.TenXom)
                 .Select(g => new ChartItem
                 {

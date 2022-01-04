@@ -15,7 +15,7 @@ namespace TD.QLDC.Library.Repositories
 
     public interface ICategoryRepository : IRepository<Category>
     {
-        List<Category> Get(
+        ICollection<Category> Get(
             int skip = 0,
             int take = 100,
             string search = null,
@@ -49,7 +49,7 @@ namespace TD.QLDC.Library.Repositories
            string search = null,
            int? nhomId = null,
            bool? active = null
-       )
+        )
         {
             return _dbContext.Categories
                 .FilterNhomId(nhomId)
@@ -58,13 +58,15 @@ namespace TD.QLDC.Library.Repositories
                 .Count();
         }
 
-        public List<Category> Get(
-            int skip = 0, int take = 100,
+        public ICollection<Category> Get(
+            int skip = 0,
+            int take = 100,
             string search = null,
             string orderBy = null,
             string includes = null,
             int? nhomId = null,
-            bool? active = null)
+            bool? active = null
+        )
         {
             return _dbContext.Categories
                 .IncludeMany(includes)

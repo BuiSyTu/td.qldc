@@ -20,21 +20,16 @@ namespace TD.QLDC.API.Controllers
 
         [Route("QLDCapi/NhomDanhMucs")]
         [HttpGet]
-        public IHttpActionResult GetNhomDanhMucs(int skip = 0, int top = 100,
-            string q = null, string orderBy = null, bool count = false,
-            string include = null)
+        public IHttpActionResult GetNhomDanhMucs(
+            int skip = 0,
+            int top = 100,
+            string q = null,
+            string orderBy = null,
+            bool count = false,
+            string includes = null
+        )
         {
-            ICollection<string> collecionInclude = null;
-            if (!string.IsNullOrEmpty(include))
-            {
-                collecionInclude = new Regex(@"\s*,\s*").Split(include);
-            }
-            ICollection<string> collecionOrderBy = null;
-            if (!string.IsNullOrEmpty(orderBy))
-            {
-                collecionOrderBy = new Regex(@"\s*,\s*").Split(orderBy);
-            }
-            var data = _repository.Get(skip, top, q, collecionOrderBy, collecionInclude);
+            var data = _repository.Get(skip, top, q, orderBy, includes);
             return ApiOk(data,
                         null,
                         (result) =>
@@ -43,7 +38,7 @@ namespace TD.QLDC.API.Controllers
                             {
                                 result.ExtensionData["count"] = skip == 0 && top == 0
                                     ? data.Count
-                                    : _repository.Count(q, collecionOrderBy, collecionInclude);
+                                    : _repository.Count(q);
                             }
                         });
         }
