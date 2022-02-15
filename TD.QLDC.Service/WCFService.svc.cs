@@ -54,7 +54,6 @@ namespace TD.QLDC.Service
                             _user.email = obj.Email;
                             _user.avartar = obj.AnhDaiDien;
                             _user.address = obj.DiaChiTamTru;
-                            //_user.soHoKhau = obj.SoHoKhau;
                         }
                         else
                         {
@@ -247,7 +246,6 @@ namespace TD.QLDC.Service
                 return result;
             }
 
-            //string user = acc.user;
             _dbContext = new QLDCDbContext();
             if (!string.IsNullOrEmpty(user))
             {
@@ -279,13 +277,7 @@ namespace TD.QLDC.Service
                                 {
                                     NhanKhau obj = query.First();
                                     DateTime now = DateTime.Now;
-                                    //obj.HanXacThuc = DateTime.Now.AddMinutes(2);
-                                    //obj.MaXacThuc = APICommon.GenerateRandomNo().ToString();
                                     _dbContext.SaveChanges();
-
-                                    //Thực hiện gửi mã qua SMS
-                                    //TimeSpan time = (obj.HanXacThuc.Value - now);
-                                    //result.data = int.Parse(time.TotalSeconds.ToString());
                                 }
                             }
                         }
@@ -482,7 +474,6 @@ namespace TD.QLDC.Service
                 };
             }
 
-            //return APICommon.ObjectToJson(result);
             return result;
         }
 
@@ -602,7 +593,6 @@ namespace TD.QLDC.Service
                     userMessage = "Có lỗi trong quá trình tạo tài khoản!"
                 };
             }
-            //return APICommon.ObjectToJson(result);
             return result;
         }
 
@@ -622,7 +612,6 @@ namespace TD.QLDC.Service
                             email = nk.Email,
                             avartar = nk.AnhDaiDien,
                             address = nk.DiaChiTamTru,
-                            //soHoKhau = nk.SoHoKhau,
                         };
             if (query != null && query.Count() > 0)
             {
@@ -637,7 +626,6 @@ namespace TD.QLDC.Service
                                    email = qr.email,
                                    avartar = qr.avartar,
                                    address = qr.address,
-                                   //soHoKhau = qr.soHoKhau,
                                }
                                ).First();
             }
@@ -653,11 +641,6 @@ namespace TD.QLDC.Service
             return result;
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="user"></param>
-        /// <returns></returns>
         public APIResult GetTokenDevices(string token)
         {
             string tokenDecryp = APICommon.DecryptString(token);
@@ -697,7 +680,7 @@ namespace TD.QLDC.Service
                 }
 
             }
-            catch (Exception ex)
+            catch (Exception)
             {
             }
 

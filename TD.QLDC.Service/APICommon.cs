@@ -131,7 +131,7 @@ namespace TD.QLDC.Service
         public static String doDecryptAES(String encryptedText)
         {
             if (string.IsNullOrEmpty(keyAES))
-                keyAES = ConfigurationManager.AppSettings["keyAES"] != null ? ConfigurationManager.AppSettings["keyAES"] : "TanDan123!@#456789";
+                keyAES = ConfigurationManager.AppSettings["keyAES"] ?? "TanDan123!@#456789";
             var encryptedBytes = Convert.FromBase64String(encryptedText);
             return Encoding.UTF8.GetString(Decrypt(encryptedBytes, getRijndaelManaged(keyAES)));
         }
