@@ -53,7 +53,7 @@ namespace TD.QLDC.Service
                             _user.phoneNumber = obj.SoDienThoai;
                             _user.email = obj.Email;
                             _user.avartar = obj.AnhDaiDien;
-                            _user.address = obj.NoiOHienTai;
+                            _user.address = obj.DiaChiTamTru;
                             //_user.soHoKhau = obj.SoHoKhau;
                         }
                         else
@@ -523,7 +523,7 @@ namespace TD.QLDC.Service
                                 var zone = oSite.Zone;
                                 UserProfileController userProfileCtrlr = new UserProfileController(webApp, zone);
                                 userProfile.Account = user;
-                                userProfile.Address = obj.NoiOHienTai;
+                                userProfile.Address = obj.DiaChiTamTru;
                                 userProfile.FullName = obj.HoTen;
                                 //userProfile.Birthday = obj.NgaySinh;
                                 if (!string.IsNullOrEmpty(obj.NgaySinh))
@@ -563,7 +563,7 @@ namespace TD.QLDC.Service
                     _user.phoneNumber = obj.SoDienThoai;
                     _user.email = obj.Email;
                     _user.avartar = obj.AnhDaiDien;
-                    _user.address = obj.NoiOHienTai;
+                    _user.address = obj.DiaChiTamTru;
                     //_user.soHoKhau = obj.SoHoKhau;
 
                     PayloadJWT token = new PayloadJWT()
@@ -621,7 +621,7 @@ namespace TD.QLDC.Service
                             phoneNumber = nk.SoDienThoai,
                             email = nk.Email,
                             avartar = nk.AnhDaiDien,
-                            address = nk.NoiOHienTai,
+                            address = nk.DiaChiTamTru,
                             //soHoKhau = nk.SoHoKhau,
                         };
             if (query != null && query.Count() > 0)
