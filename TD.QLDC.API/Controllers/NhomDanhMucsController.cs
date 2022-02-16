@@ -1,11 +1,7 @@
-﻿using System.Collections.Generic;
-using System.Text.RegularExpressions;
-using System.Web.Http;
+﻿using System.Web.Http;
 using TD.Core.Api.Mvc;
 using TD.QLDC.Library.Models;
-using TD.QLDC.Library.Repositories;
-using System.Linq;
-using Newtonsoft.Json;
+using TD.QLDC.Library.Repositories.Interfaces;
 
 namespace TD.QLDC.API.Controllers
 {
@@ -88,7 +84,14 @@ namespace TD.QLDC.API.Controllers
         [HttpDelete]
         public IHttpActionResult DeleteNhomDanhMuc(int id)
         {
-            var NhomDanhMuc = _repository.Delete(id);
+            var nhomDanhMuc = _repository.GetById(id);
+
+            if (nhomDanhMuc is null)
+            {
+                return NotFound();
+            }
+
+            _repository.Delete(nhomDanhMuc);
             return ApiOk();
         }
 

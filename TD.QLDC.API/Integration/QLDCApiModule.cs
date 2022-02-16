@@ -4,8 +4,10 @@ using System.Web.Http;
 using TD.Core.Api.Mvc;
 using TD.Core.Api.Mvc.Integration;
 using TD.QLDC.Library.Models;
-using TD.QLDC.Library.Repositories;
-using TD.QLDC.Library.Services;
+using TD.QLDC.Library.Repositories.Implementations;
+using TD.QLDC.Library.Repositories.Interfaces;
+using TD.QLDC.Library.Services.Implementations;
+using TD.QLDC.Library.Services.Interfaces;
 using Unity;
 
 namespace TD.QLDC.API.Integration
@@ -33,19 +35,24 @@ namespace TD.QLDC.API.Integration
 
         public void RegisterDIConfig(UnityContainer container)
         {
-            // repositories
+            // Data
+            container.RegisterFactory<QLDCDbContext>(c => new QLDCDbContext());
+
+            // Repositories
+            container.RegisterType<IAreaRepository, AreaRepository>();
             container.RegisterType<ICategoryRepository, CategoryRepository>();
             container.RegisterType<IHoKhauRepository, HoKhauRepository>();
             container.RegisterType<INhanKhauRepository, NhanKhauRepository>();
             container.RegisterType<INhomDanhMucRepository, NhomDanhMucRepository>();
-            container.RegisterType<IAreaRepository, AreaRepository>();
-            container.RegisterFactory<QLDCDbContext>(c => new QLDCDbContext());
 
+            // Services
             container.RegisterType<IDashboardService, DashboardService>();
-            // services
+            container.RegisterType<IUploadService, UploadService>();
+            container.RegisterType<IUserService, UserService>();
+
+            // Others
             container.RegisterFactory<ICoreServicesProvider>(c => new DefaultContextCoreServicesProvider());
-            container.RegisterType<ICoreContextAccessor, AspNetCoreContextAccessor>();
-            
+            container.RegisterType<ICoreContextAccessor, AspNetCoreContextAccessor>();        
         }
     }
 }

@@ -1,39 +1,14 @@
-﻿using Microsoft.SharePoint;
-using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
-using System.Reflection;
 using TD.Core.Api.Mvc;
-using TD.Core.Api.Mvc.Extensions;
-using TD.QLDC.Library.Interfaces;
 using TD.QLDC.Library.Models;
+using TD.QLDC.Library.Repositories.Interfaces;
 using TD.QLGD.Library;
 
-namespace TD.QLDC.Library.Repositories
+namespace TD.QLDC.Library.Repositories.Implementations
 {
-
-    public interface ICategoryRepository : IRepository<Category>
-    {
-        ICollection<Category> Get(
-            int skip = 0,
-            int take = 100,
-            string search = null,
-            string orderBy = null,
-            string includes = null,
-            int? nhomId = null,
-            bool? active = null);
-
-        int Count(
-           string search = null,
-           int? nhomId = null,
-           bool? active = null
-       );
-
-        Category GetByNameAndCreateIfNotExist(int nhomDanhMucId, string name);
-    }
-
-    public class CategoryRepository : EFRepository<Category>, ICategoryRepository
+    public class CategoryRepository : GenericRepository<Category>, ICategoryRepository
     {
         private QLDCDbContext _dbContext;
         

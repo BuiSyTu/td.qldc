@@ -4,20 +4,12 @@ using JWT.Serializers;
 using Microsoft.SharePoint;
 using Microsoft.SharePoint.IdentityModel;
 using System;
-using System.Collections.Generic;
 using System.Configuration;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using TD.QLDC.Library.Services.Interfaces;
 using TD.QLDC.Library.ViewModels;
 
-namespace TD.QLDC.Library.Services
+namespace TD.QLDC.Library.Services.Implementations
 {
-    public interface IUserService
-    {
-        string CreateJWT(PayLoadJWT payload);
-    }
-
     public class UserService : IUserService
     {
         private string secretJWT = "TanDan123!@#456789";

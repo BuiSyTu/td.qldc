@@ -201,6 +201,7 @@
     <Compile Include="Controllers\NhanKhausController.cs" />
     <Compile Include="Controllers\AreasController.cs" />
     <Compile Include="Controllers\NhomDanhMucsController.cs" />
+    <Compile Include="Controllers\UploadController.cs" />
     <Compile Include="Integration\QLDCApiModule.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

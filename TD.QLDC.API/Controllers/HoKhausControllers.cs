@@ -1,10 +1,7 @@
-﻿using System.Collections.Generic;
-using System.Text.RegularExpressions;
-using System.Web.Http;
+﻿using System.Web.Http;
 using TD.Core.Api.Mvc;
 using TD.QLDC.Library.Models;
-using TD.QLDC.Library.Repositories;
-
+using TD.QLDC.Library.Repositories.Interfaces;
 
 namespace TD.QLDC.API.Controllers
 {
@@ -96,8 +93,15 @@ namespace TD.QLDC.API.Controllers
         [HttpDelete]
         public IHttpActionResult DeleteHoKhau(int id)
         {
-            var HoKhau = _repository.Delete(id);
-            return ApiOk();
+            var hoKhau = _repository.GetById(id);
+
+            if (hoKhau is null)
+            {
+                return NotFound();
+            }
+
+            _repository.Delete(hoKhau);
+            return ApiNoContent();
         }
 
 

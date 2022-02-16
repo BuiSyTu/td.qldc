@@ -1,40 +1,16 @@
-﻿using Microsoft.SharePoint;
-using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Configuration;
 using System.Data.Entity;
 using System.Linq;
 using TD.Core.Api.Mvc;
-using TD.Core.Api.Mvc.Extensions;
-using TD.QLDC.Library.Interfaces;
+using TD.QLDC.Library.Common;
 using TD.QLDC.Library.Models;
-using TD.QLDC.Library.Services;
+using TD.QLDC.Library.Repositories.Interfaces;
 using TD.QLDC.Library.ViewModels.Dashboard;
-using TD.QLGD.Library;
 
-namespace TD.QLDC.Library.Repositories
+namespace TD.QLDC.Library.Repositories.Implementations
 {
-
-    public interface IHoKhauRepository : IRepository<HoKhau>
-    {
-        ICollection<HoKhau> Get(
-            int skip = 0,
-            int take = 100,
-            string search = null,
-            string orderBy = null,
-            string includes = null);
-
-        int Count(string search = null);
-
-        int CheckMa(string shk);
-
-
-        HoKhau GetBySoHoKhauAndCreateIfNotExist(string soHoKhau, int? loaiHoGiaDinhId = null);
-
-        ICollection<ChartItem> GroupByXom();
-    }
-
-    public class HoKhauRepository : EFRepository<HoKhau>, IHoKhauRepository
+    public class HoKhauRepository : GenericRepository<HoKhau>, IHoKhauRepository
     {
         private readonly QLDCDbContext _dbContext;
 
@@ -176,7 +152,7 @@ namespace TD.QLDC.Library.Repositories
 
         public static IQueryable<HoKhau> FilterCurrentAreaCode(this IQueryable<HoKhau> query)
         {
-            var areaCode = AreaService.GetCurrentAreaCode();
+            var areaCode = CommonService.GetCurrentAreaCode();
 
             if (string.IsNullOrEmpty(areaCode)) return query;
 

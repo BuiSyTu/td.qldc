@@ -1,25 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using TD.QLDC.Library.Models;
 using TD.QLDC.Library.Repositories;
+using TD.QLDC.Library.Repositories.Interfaces;
+using TD.QLDC.Library.Services.Interfaces;
 using TD.QLDC.Library.ViewModels.Dashboard;
 
-namespace TD.QLDC.Library.Services
+namespace TD.QLDC.Library.Services.Implementations
 {
-    public interface IDashboardService
-    {
-        Widget GetWidget();
-        Chart GetChart1();
-        Chart GetChart2();
-        Chart GetChart3();
-        Chart GetChartDanToc();
-        Chart GetChartTonGiao();
-        Chart GetChartDoiTuong();
-    }
-
     public class DashboardService : IDashboardService
     {
         private readonly IHoKhauRepository _hoKhauRepository;

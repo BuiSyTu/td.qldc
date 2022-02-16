@@ -1,16 +1,14 @@
 ﻿using Syncfusion.XlsIO;
 using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using TD.QLDC.Library.Models;
 using TD.QLDC.Library.Repositories;
+using TD.QLDC.Library.Repositories.Interfaces;
+using TD.QLDC.Library.Services.Interfaces;
 
-namespace TD.QLDC.Library.Services
+namespace TD.QLDC.Library.Services.Implementations
 {
-    public class UploadService
+    public class UploadService : IUploadService
     {
         private readonly QLDCDbContext _context;
         private readonly ICategoryRepository _categoryRepository;

@@ -1,7 +1,4 @@
-﻿using System;
-using System.ComponentModel;
-using System.ComponentModel.DataAnnotations.Schema;
-using TD.Core.Api.Mvc;
+﻿using System.ComponentModel;
 
 namespace TD.QLDC.Library.Models
 {

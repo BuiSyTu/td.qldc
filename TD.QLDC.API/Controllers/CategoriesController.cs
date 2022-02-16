@@ -1,9 +1,7 @@
-﻿using System.Collections.Generic;
-using System.Text.RegularExpressions;
-using System.Web.Http;
+﻿using System.Web.Http;
 using TD.Core.Api.Mvc;
 using TD.QLDC.Library.Models;
-using TD.QLDC.Library.Repositories;
+using TD.QLDC.Library.Repositories.Interfaces;
 
 namespace TD.QLDC.API.Controllers
 {
@@ -88,8 +86,15 @@ namespace TD.QLDC.API.Controllers
         [HttpDelete]
         public IHttpActionResult DeleteCategory(int id)
         {
-            var Category = _repository.Delete(id);
-            return ApiOk();
+            var category = _repository.GetById(id);
+
+            if (category is null)
+            {
+                return NotFound();
+            }
+
+            _repository.Delete(category);
+            return ApiNoContent();
         }
 
         [Route("QLDCapi/categories/count")]
