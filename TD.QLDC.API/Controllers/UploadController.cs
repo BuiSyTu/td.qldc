@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
@@ -24,6 +25,9 @@ namespace TD.QLDC.API.Controllers
         [HttpGet]
         public async Task<IHttpActionResult> UploadBieu1()
         {
+            if (!Request.Content.IsMimeMultipartContent())
+                throw new HttpResponseException(HttpStatusCode.UnsupportedMediaType);
+
             // Lấy 3 tham số sheet, rowStart, rowEnd
             int sheet = int.TryParse(HttpContext.Current.Request.Params["sheet"], out int sheetCV)
                 ? sheetCV

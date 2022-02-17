@@ -1,11 +1,15 @@
-﻿using System;
+﻿using FluentValidation;
+using FluentValidation.Attributes;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TD.QLDC.Library.Validations;
 
 namespace TD.QLDC.Library.Models
 {
+    [Validator(typeof(AreaValidator))]
     public class Area : ModelBaseExt
     {
         public string Type { get; set; }
