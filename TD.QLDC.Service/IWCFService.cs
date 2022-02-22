@@ -1,7 +1,7 @@
 ﻿using System.IO;
 using System.ServiceModel;
 using System.ServiceModel.Web;
-using TD.QLDC.Service.Common;
+using TD.QLDC.Service.ViewModels;
 
 namespace TD.QLDC.Service
 {
@@ -11,6 +11,14 @@ namespace TD.QLDC.Service
         [WebGet(UriTemplate = "helloworld", ResponseFormat = WebMessageFormat.Json)]
         [OperationContract]
         Stream HelloWorld();
+
+        [WebInvoke(
+            Method = "POST",
+            UriTemplate = "CheckValidNhanKhau",
+            ResponseFormat = WebMessageFormat.Json,
+            BodyStyle = WebMessageBodyStyle.Bare)]
+        [OperationContract]
+        Stream CheckValidNhanKhau(CheckValidNhanKhauInput input);
 
         #region old
         [WebInvoke(Method = "POST", ResponseFormat = WebMessageFormat.Json, BodyStyle = WebMessageBodyStyle.WrappedRequest)]

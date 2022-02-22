@@ -1,8 +1,4 @@
-﻿using System;
-using System.Linq;
-using System.Linq.Expressions;
-
-namespace TD.QLDC.Library.Extensions.Queryable
+﻿namespace System.Linq.Expressions
 {
     public static class QueryableExtension
     {

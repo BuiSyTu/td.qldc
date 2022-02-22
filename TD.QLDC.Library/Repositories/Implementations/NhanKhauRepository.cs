@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
+using System.Linq.Expressions;
 using TD.Core.Api.Mvc;
 using TD.QLDC.Library.Common;
 using TD.QLDC.Library.Models;
@@ -134,6 +135,21 @@ namespace TD.QLDC.Library.Repositories.Implementations
                     Value = g.Count().ToString()
                 })
                 .ToList();
+        }
+
+        public bool CheckExist(string hoTen, string cCCD, string ngaySinh)
+        {
+            return _dbContext.NhanKhaus
+                .Filter(
+                    !string.IsNullOrEmpty(hoTen),
+                    x => x.HoTen.ToUpper() == hoTen.ToUpper()
+                ).Filter(
+                    !string.IsNullOrEmpty(cCCD),
+                    x => x.SoCCCD == cCCD
+                ).Filter(
+                    !string.IsNullOrEmpty(ngaySinh),
+                    x => x.NgaySinh == ngaySinh
+                ).Any();
         }
     }
 
