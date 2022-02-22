@@ -55,14 +55,22 @@ namespace TD.QLDC.API.Controllers
 
         [Route("QLDCapi/Areas/code/{code}")]
         [HttpGet]
-        public IHttpActionResult GetSingleByCode(string code)
+        public IHttpActionResult GetSingleByCode(string code, string includes = null)
         {
-            var Area = _repository.GetSingleByCode(code);
+            var Area = _repository.GetSingleByCode(code, includes);
             if (Area == null)
             {
                 return ApiNotFound();
             }
             return ApiOk(Area);
+        }
+
+        [Route("QLDCapi/Areas/name/{name}")]
+        [HttpGet]
+        public IHttpActionResult GetMultipleByName(string name, string includes = null)
+        {
+            var areas = _repository.GetMultipleByName(name, includes);
+            return ApiOk(areas);
         }
 
         [Route("QLDCapi/Areas/{id:int:min(1)}")]

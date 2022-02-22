@@ -3,6 +3,7 @@ using System;
 using System.IO;
 using TD.QLDC.Library.Models;
 using TD.QLDC.Library.Repositories;
+using TD.QLDC.Library.Common;
 using TD.QLDC.Library.Repositories.Interfaces;
 using TD.QLDC.Library.Services.Interfaces;
 
@@ -13,16 +14,109 @@ namespace TD.QLDC.Library.Services.Implementations
         private readonly QLDCDbContext _context;
         private readonly ICategoryRepository _categoryRepository;
         private readonly IHoKhauRepository _hoKhauRepository;
+        private readonly INhanKhauRepository _nhanKhauRepository;
 
         public UploadService(
             QLDCDbContext context,
             ICategoryRepository categoryRepository,
-            IHoKhauRepository hoKhauRepository
+            IHoKhauRepository hoKhauRepository,
+            INhanKhauRepository nhanKhauRepository
         )
         {
             _context = context;
             _categoryRepository = categoryRepository;
             _hoKhauRepository = hoKhauRepository;
+            _nhanKhauRepository = nhanKhauRepository;
+        }
+
+        public int UploadBieu4(
+            byte[] buffer, int sheet, int rowStart, int rowEnd,
+            string maTinh, string tenTinh,
+            string maHuyen, string tenHuyen,
+            string maXa, string tenXa,
+            string maThon, string tenThon,
+            string maXom, string tenXom)
+        {
+            // Instantiate the spreadsheet creation engine.
+            ExcelEngine excelEngine = new();
+
+            // Instantiate the Excel application object.
+            IApplication application = excelEngine.Excel;
+            application.DefaultVersion = ExcelVersion.Xlsx;
+
+
+            Stream stream = new MemoryStream(buffer);
+            IWorkbook book = application.Workbooks.Open(stream);
+            stream.Close();
+
+            // Access first worksheet.
+            IWorksheet worksheet = book.Worksheets[sheet];
+
+            // Access a range.
+            IRange usedRange = worksheet.UsedRange;
+
+            int lastRow = usedRange.LastRow;
+
+            if (rowEnd == 0) rowEnd = lastRow;
+
+            int count = 0;
+            int hoKhauId = 0;
+
+            for (int row = rowStart; row <= rowEnd; row++)
+            {
+                try
+                {
+                    // Chủ hộ
+                    if (worksheet[row, 8].Value.Trim() == "CH")
+                    {
+                        HoKhau hoKhau = new()
+                        {
+                            SoHoKhau = Guid.NewGuid().ToString(),
+                            MaTinhThanh = maTinh,
+                            TenTinhThanh = tenTinh,
+                            MaQuanHuyen = maHuyen,
+                            TenQuanHuyen = tenHuyen,
+                            MaXaPhuong = maXa,
+                            TenXaPhuong = tenXa,
+                            MaThon = maThon,
+                            TenThon = tenThon,
+                            MaXom = maXom,
+                            TenXom = tenXom,
+                            TenChuHo = worksheet[row, 2].Value,
+                            CCCDCHuHo = worksheet[row, 4].Value
+                        };
+
+                        var hoKhauEntity = _hoKhauRepository.Add(hoKhau);
+                        hoKhauId = hoKhauEntity.ID > 0
+                            ? hoKhauEntity.ID
+                            : throw new Exception("ID must greater than 0!");
+                    }
+
+                    var dmQuanHeID = CommonService.GhiChuBieu4ToDMQuanHeID(worksheet[row, 8].Value.Trim());
+                    if (dmQuanHeID == 0) dmQuanHeID = 84; // Khác
+
+                    NhanKhau nhanKhau = new()
+                    {
+                        HoKhauID = hoKhauId,
+                        HoTen = worksheet[row, 2].Value,
+                        NgaySinh = worksheet[row, 3].Value,
+                        SoCCCD = worksheet[row, 4].Value,
+                        HoTenBo = worksheet[row, 5].Value,
+                        HoTenMe = worksheet[row, 6].Value,
+                        GhiChu = worksheet[row, 7].Value,
+                        DMQuanHeID = dmQuanHeID,
+                    };
+
+                    _nhanKhauRepository.Add(nhanKhau);
+                    count++;
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
+            }
+
+            return count;
         }
 
         public int UploadNhanKhau(

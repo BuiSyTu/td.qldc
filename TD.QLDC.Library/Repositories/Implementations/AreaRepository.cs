@@ -81,9 +81,24 @@ namespace TD.QLDC.Library.Repositories.Implementations
                 .ToList();
         }
 
-        public Area GetSingleByCode(string code)
+        public ICollection<Area> GetMultipleByName(string name, string includes = null)
         {
-            return _dbContext.Areas.FirstOrDefault(x => x.Code == code);
+            return _dbContext.Areas
+                .IncludeMany(includes)
+                .Where(x => x.Name == name)
+                .ToList();
+        }
+
+        public Area GetSingleByCode(string code, string includes = null)
+        {
+            return _dbContext.Areas
+                .IncludeMany(includes)
+                .FirstOrDefault(x => x.Code == code);
+        }
+
+        public Area GetSingleByName(string name)
+        {
+            return _dbContext.Areas.FirstOrDefault(x => x.Name == name);
         }
     }
 

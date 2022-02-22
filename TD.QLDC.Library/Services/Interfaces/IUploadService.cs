@@ -8,10 +8,14 @@ namespace TD.QLDC.Library.Services.Interfaces
 {
     public interface IUploadService
     {
-        int UploadNhanKhau(
-            byte[] buffer,
-            int sheet,
-            int rowStart,
-            int rowEnd);
+        int UploadBieu4(
+            byte[] buffer, int sheet, int rowStart, int rowEnd,
+            string maTinh, string tenTinh,
+            string maHuyen, string tenHuyen,
+            string maXa, string tenXa,
+            string maThon, string tenThon,
+            string maXom, string tenXom);
+
+        int UploadNhanKhau(byte[] buffer, int sheet, int rowStart, int rowEnd);
     }
 }

@@ -26,6 +26,10 @@ namespace TD.QLDC.Library.Repositories.Interfaces
             string parentCode = null
         );
 
-        Area GetSingleByCode(string code);
+        Area GetSingleByCode(string code, string includes = null);
+
+        Area GetSingleByName(string name);
+
+        ICollection<Area> GetMultipleByName(string name, string includes = null);
     }
 }

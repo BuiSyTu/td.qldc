@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using FluentValidation;
+using System.Collections.Generic;
 using System.Reflection;
 using System.Web.Http;
 using TD.Core.Api.Mvc;
@@ -8,7 +9,9 @@ using TD.QLDC.Library.Repositories.Implementations;
 using TD.QLDC.Library.Repositories.Interfaces;
 using TD.QLDC.Library.Services.Implementations;
 using TD.QLDC.Library.Services.Interfaces;
+using TD.QLDC.Library.Validations;
 using Unity;
+using Unity.Lifetime;
 
 namespace TD.QLDC.API.Integration
 {

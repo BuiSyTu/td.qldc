@@ -20,5 +20,27 @@ namespace TD.QLDC.Library.Common
 
             return currentAreaCode;
         }
+
+        public static int GhiChuBieu4ToDMQuanHeID(string ghiChuBieu4)
+        {
+            return ghiChuBieu4.ToUpper() switch
+            {
+                "CH" => 25,
+                "CHỦ HỘ" => 25,
+                "VỢ" => 41,
+                "CHỒNG" => 42,
+                "CON" => 43,
+                "CHA" => 44,
+                "BỐ" => 44,
+                "MẸ" => 45,
+                "ANH" => 58,
+                "CHỊ" => 59,
+                "EM" => 60,
+                "CHÁU" => 81,
+                "CON DÂU" => 82,
+                "CON RỂ" => 83,
+                _ => 0
+            };
+        }
     }
 }

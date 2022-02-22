@@ -21,6 +21,9 @@ namespace TD.QLDC.Library.Models
         private string tenChuHo;
         public string TenChuHo { get { return tenChuHo; } set { tenChuHo = value; NotifyPropertyChanged(); } }
 
+        private string cCCDChuHo;
+        public string CCCDCHuHo { get { return cCCDChuHo; } set { cCCDChuHo = value; NotifyPropertyChanged(); } }
+
         #region Nơi ở, địa chỉ
         private string maTinhThanh;
         public string MaTinhThanh { get { return maTinhThanh; } set { maTinhThanh = value; NotifyPropertyChanged(); } }

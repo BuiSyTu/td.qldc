@@ -21,8 +21,8 @@ namespace TD.QLDC.API.Controllers
             _uploadService = uploadService;
         }
 
-        [Route("QLDCapi/Upload/Bieu1")]
-        [HttpGet]
+        [Route("QLDCapi/Upload/Bieu4")]
+        [HttpPost]
         public async Task<IHttpActionResult> UploadBieu1()
         {
             if (!Request.Content.IsMimeMultipartContent())
@@ -41,6 +41,21 @@ namespace TD.QLDC.API.Controllers
                 ? rowEndCV
                 : 0;
 
+            string maTinh = HttpContext.Current.Request.Params["maTinh"];
+            string tenTinh = HttpContext.Current.Request.Params["tenTinh"];
+
+            string maHuyen = HttpContext.Current.Request.Params["maHuyen"];
+            string tenHuyen = HttpContext.Current.Request.Params["tenHuyen"];
+
+            string maXa = HttpContext.Current.Request.Params["maXa"];
+            string tenXa = HttpContext.Current.Request.Params["tenXa"];
+
+            string maThon = HttpContext.Current.Request.Params["maThon"];
+            string tenThon = HttpContext.Current.Request.Params["tenThon"];
+
+            string maXom = HttpContext.Current.Request.Params["maXom"];
+            string tenXom = HttpContext.Current.Request.Params["tenXom"];
+
             // Lấy file
             var provider = new MultipartMemoryStreamProvider();
             await Request.Content.ReadAsMultipartAsync(provider);
@@ -50,8 +65,16 @@ namespace TD.QLDC.API.Controllers
             var buffer = await file.ReadAsByteArrayAsync();
 
             // Xử lý phần còn lại
-            return Ok();
+            var count = _uploadService.UploadBieu4(
+                buffer, sheet, rowStart, rowEnd,
+                maTinh, tenTinh,
+                maHuyen, tenHuyen,
+                maXa, tenXa,
+                maThon, tenThon,
+                maXom, tenXom
+            );
 
+            return Ok(count);
         }
     }
 }

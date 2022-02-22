@@ -185,6 +185,14 @@
     <Compile Include="Migrations\202112310812537_update8.Designer.cs">
       <DependentUpon>202112310812537_update8.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202202210138029_Update9.cs" />
+    <Compile Include="Migrations\202202210138029_Update9.Designer.cs">
+      <DependentUpon>202202210138029_Update9.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202202210244181_Update10.cs" />
+    <Compile Include="Migrations\202202210244181_Update10.Designer.cs">
+      <DependentUpon>202202210244181_Update10.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Area.cs" />
     <Compile Include="Models\Category.cs" />
@@ -254,6 +262,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202112310812537_update8.resx">
       <DependentUpon>202112310812537_update8.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202202210138029_Update9.resx">
+      <DependentUpon>202202210138029_Update9.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202202210244181_Update10.resx">
+      <DependentUpon>202202210244181_Update10.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup />

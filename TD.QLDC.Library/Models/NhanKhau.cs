@@ -78,6 +78,14 @@ namespace TD.QLDC.Library.Models
         public bool? DaMat { get { return daMat; } set { daMat = value; NotifyPropertyChanged(); } }
         #endregion
 
+        #region Thông tin bố, mẹ
+        private string hoTenBo;
+        public string HoTenBo { get { return hoTenBo; } set { hoTenBo = value; NotifyPropertyChanged(); } }
+
+        private string hoTenMe;
+        public string HoTenMe { get { return hoTenMe; } set { hoTenMe = value; NotifyPropertyChanged(); } }
+        #endregion
+
         #region Học vấn, nghề nghiệp
         private string trinhDoVanHoa;
         public string TrinhDoVanHoa { get { return trinhDoVanHoa; } set { trinhDoVanHoa = value; NotifyPropertyChanged(); } }

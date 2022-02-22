@@ -9,7 +9,6 @@ using TD.QLDC.Library.Validations;
 
 namespace TD.QLDC.Library.Models
 {
-    [Validator(typeof(AreaValidator))]
     public class Area : ModelBaseExt
     {
         public string Type { get; set; }
