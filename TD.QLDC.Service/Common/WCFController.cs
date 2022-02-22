@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using TD.QLDC.Service.Common;
 
-namespace TD.QLDC.Service
+namespace TD.QLDC.Service.Common
 {
     public class WCFController
     {

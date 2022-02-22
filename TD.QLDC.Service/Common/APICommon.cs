@@ -10,7 +10,7 @@ using JWT.Builder;
 using JWT.Exceptions;
 using System.Configuration;
 
-namespace TD.QLDC.Service
+namespace TD.QLDC.Service.Common
 {
     public class APICommon
     {

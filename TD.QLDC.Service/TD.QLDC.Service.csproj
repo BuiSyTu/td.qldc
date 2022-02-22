@@ -108,8 +108,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="APICommon.cs" />
+    <Compile Include="Common\APICommon.cs" />
+    <Compile Include="Common\ApiResult.cs" />
+    <Compile Include="Common\WCFController.cs" />
     <Compile Include="IWCFService.cs" />
+    <Compile Include="WCFService.old.cs" />
     <Compile Include="WCFService.svc.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
