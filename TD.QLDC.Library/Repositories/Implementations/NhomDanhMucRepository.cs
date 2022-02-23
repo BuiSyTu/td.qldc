@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
+using System.Linq.Expressions;
 using TD.Core.Api.Mvc;
-using TD.QLDC.Library.Extensions.Queryable;
 using TD.QLDC.Library.Models;
 using TD.QLDC.Library.Repositories.Interfaces;
 

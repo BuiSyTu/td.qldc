@@ -1,10 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Linq.Expressions;
 using TD.Core.Api.Mvc;
-using TD.QLDC.Library.Extensions.Queryable;
 using TD.QLDC.Library.Models;
 using TD.QLDC.Library.Repositories.Interfaces;
 
