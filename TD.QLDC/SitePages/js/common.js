@@ -3,6 +3,7 @@ $(document).ready(async function () {
         $.fn.dataTable.ext.errMode = 'none';
     } catch (e) { }
 });
+
 // lấy text của combobox
 function GetComboxTextByName(name){
     return $("[name='" + name + "']").parent().find(".select2-selection__rendered").attr("title");
@@ -11,9 +12,11 @@ function GetComboxTextByName(name){
 function GUIDString() {
     return S4() + "-" + S4() + "-" + S4() + "-" + S4();
 }
+
 function S4() {
     return (((1 + Math.random()) * 0x10000) | 0).toString(16).substring(1);
 }
+
 // set cookie
 function setCookie(name, value, days) {
     var expires = "";
@@ -24,6 +27,7 @@ function setCookie(name, value, days) {
     }
     document.cookie = name + "=" + (value || "") + expires + "; path=/";
 }
+
 // get cookie
 function getCookie(name) {
     var nameEQ = name + "=";
@@ -35,10 +39,11 @@ function getCookie(name) {
     }
     return null;
 }
+
 function eraseCookie(name) {
     document.cookie = name + '=; Max-Age=-99999999;';
 }
-//
+
 function createFileData(file) {
     var arr = [file.url];
     if (file.name) {
@@ -47,6 +52,7 @@ function createFileData(file) {
 
     return arr.join(',');
 }
+
 // chỉ cho nhập số
 $('.number-field').keypress(function (event) {
     var keycode = event.which;
@@ -61,6 +67,7 @@ $('.number-field').change(function () {
     value = formatMoney(value, 2, ",", ".");
     $(this).val(value);
 });
+
 // định dạng tiền tệ
 function formatMoney(amount, decimalCount = 2, decimal = ".", thousands = ",") {
     try {
@@ -76,12 +83,14 @@ function formatMoney(amount, decimalCount = 2, decimal = ".", thousands = ",") {
         console.log(e)
     }
 };
+
 //Get trạng thái của 1 promise
 function promiseState(p) {
     const t = {};
     return Promise.race([p, t])
         .then(v => (v === t) ? "pending" : "fulfilled", () => "rejected");
 }
+
 // hàm upload file chung
 var UploadFile = function (id) {
     //var allpms = [];
@@ -125,26 +134,33 @@ var UploadFile = function (id) {
                     });
             });
         }, Promise.resolve());
-        //return Promise.resolve();
     }
-    //return Promise.all(allpms)
-    //.then(function(){
-    //	return Promise.resolve();
-    //})
+
     return Promise.resolve();
 }
+
 //Chọn tỉnh huyện xã set lại url cho cấp dưới
-function ChooseArea(name,childName){
-    var code = $("[name=" + name+"]").val();
-    var wgs = tdcore.forms.findFormWidgets($('[name="' + childName + '"]').parent()[0], true, tdcore.forms.Select);
-    if (wgs && wgs.length > 0) {
-        var wgUsingOffice = wgs[0];
-        if (code) {
-            wgUsingOffice.setOptions({ 'ajax': {"url": "/_vti_bin/tdcore/areas.svc/areas/code/" + code + "/children" }});
-        }
-        else {
-            wgUsingOffice.setOptions({ 'ajax': { "url": '' } });
-        }
-        $('[name = "' + childName + '"]').empty();
+function ChooseArea(name, childName){
+    var code = $(`[name=${name}]`).val();
+
+    var wgs = tdcore.forms.findFormWidgets(
+        $(`[name=${childName}]`).parent()[0],
+        true,
+        tdcore.forms.Select
+    );
+
+    if (wgs && wgs.length <= 0) return;
+
+    var wgUsingOffice = wgs[0];
+
+    if (code) {
+        wgUsingOffice.setOptions(
+        {
+            ajax: { url: `/qldcapi/areas?parentCode=${code}` }
+        });
+    } else {
+        wgUsingOffice.setOptions({ ajax: { url: '' } });
     }
+    
+    $(`[name=${childName}]`).empty();
 }

@@ -67,7 +67,7 @@
                 headerTitle: "Thêm danh mục"
             })
             .iframe('modal/adddanhmuc.aspx')
-            .size(500, 400)
+            .size(500, 300)
             .okCancel().show()
             .then(function (returnData) {
                 if (returnData.result == 'OK') {
@@ -91,7 +91,7 @@
                 headerTitle: "Sửa danh mục"
             })
             .iframe('modal/adddanhmuc.aspx?aid=' + id)
-            .size(1200, 550).maximize()
+            .size(500, 300)
             .okCancel().show()
             .then(function (returnData) {
                 if (returnData.result == 'OK') {

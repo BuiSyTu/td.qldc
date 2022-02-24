@@ -22,7 +22,7 @@
                             <div class="col-4">
                                 <i class="icon {{this.iconClass}}"></i>
                             </div>
-                            <a href="{{this.link}}" class="small-box-footer col-12">Thông tin thêm <i class="fas fa-arrow-circle-right"></i></a>
+                            <!-- <a href="{{this.link}}" class="small-box-footer col-12">Thông tin thêm <i class="fas fa-arrow-circle-right"></i></a> -->
                         </div>
                     </div>
                 {{/each}}
@@ -94,13 +94,13 @@
                         <div class="m-portlet__head-caption">
                             <div class="m-portlet__head-title">    
                                 <h3 class="m-portlet__head-text">
-                                    Các loại chi trả
+                                    Số hộ theo xóm
                                 </h3>
                             </div>
                         </div>					
                     </div>
                     <div class="m-portlet__body">
-                        <div class='chart3'
+                        <div class='chart1'
                             style="width:640px;height:400px;">
                         </div>
                     </div>
@@ -113,14 +113,14 @@
                         <div class="m-portlet__head-caption">
                             <div class="m-portlet__head-title">    
                                 <h3 class="m-portlet__head-text">
-                                    Danh sách đối tượng trong khu vực
+                                    Số nhân khẩu theo xóm
                                 </h3>
                             </div>
                         </div>					
                     </div>
                     <div class="m-portlet__body">
-                        <div class='chart1'
-                            style="width:100%;height:500px;">
+                        <div class='chart2'
+                            style="width:100%;height:400px;">
                         </div>
                     </div>
                 </div>
