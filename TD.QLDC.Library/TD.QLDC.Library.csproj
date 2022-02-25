@@ -46,12 +46,6 @@
       <HintPath>..\packages\DocumentFormat.OpenXml.2.9.1\lib\net40\DocumentFormat.OpenXml.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="FluentValidation, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7de548da2fbae0f0, processorArchitecture=MSIL">
-      <HintPath>..\packages\FluentValidation.8.6.3\lib\net45\FluentValidation.dll</HintPath>
-    </Reference>
-    <Reference Include="FluentValidation.ValidatorAttribute, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7de548da2fbae0f0, processorArchitecture=MSIL">
-      <HintPath>..\packages\FluentValidation.ValidatorAttribute.8.6.1\lib\net45\FluentValidation.ValidatorAttribute.dll</HintPath>
-    </Reference>
     <Reference Include="JWT, Version=7.0.0.0, Culture=neutral, PublicKeyToken=6f98bca0f40f2ecf, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Libs\JWT.dll</HintPath>
@@ -219,7 +213,6 @@
     <Compile Include="Services\Interfaces\IDashboardService.cs" />
     <Compile Include="Services\Interfaces\IUploadService.cs" />
     <Compile Include="Services\Interfaces\IUserService.cs" />
-    <Compile Include="Validations\AreaValidator.cs" />
     <Compile Include="ViewModels\Dashboard\Chart.cs" />
     <Compile Include="ViewModels\Dashboard\ChartColor.cs" />
     <Compile Include="ViewModels\Dashboard\ChartItem.cs" />

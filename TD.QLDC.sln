@@ -1,13 +1,18 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.32002.261
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TD.QLDC.API", "TD.QLDC.API\TD.QLDC.API.csproj", "{14D619AD-C5DA-4C27-8B0A-59F7E7DCC537}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TD.QLDC.Library", "TD.QLDC.Library\TD.QLDC.Library.csproj", "{CC837F67-485A-4D01-A992-ED7CF6323584}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TD.QLDC", "TD.QLDC\TD.QLDC.csproj", "{B916092E-B62A-43AB-B438-293C594BAEED}"
+	ProjectSection(ProjectDependencies) = postProject
+		{BD9F6631-778B-4CCB-9E7A-A4282C428282} = {BD9F6631-778B-4CCB-9E7A-A4282C428282}
+		{CC837F67-485A-4D01-A992-ED7CF6323584} = {CC837F67-485A-4D01-A992-ED7CF6323584}
+		{14D619AD-C5DA-4C27-8B0A-59F7E7DCC537} = {14D619AD-C5DA-4C27-8B0A-59F7E7DCC537}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TD.QLDC.Service", "TD.QLDC.Service\TD.QLDC.Service.csproj", "{BD9F6631-778B-4CCB-9E7A-A4282C428282}"
 EndProject
@@ -41,22 +46,7 @@ Global
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
-	GlobalSection(TeamFoundationVersionControl) = preSolution
-		SccNumberOfProjects = 5
-		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
-		SccTeamFoundationServer = http://113.160.53.62:8080/tfs/tdcollection
-		SccLocalPath0 = .
-		SccProjectUniqueName1 = TD.QLDC.API\\TD.QLDC.API.csproj
-		SccProjectName1 = TD.QLDC.API
-		SccLocalPath1 = TD.QLDC.API
-		SccProjectUniqueName2 = TD.QLDC.Library\\TD.QLDC.Library.csproj
-		SccProjectName2 = TD.QLDC.Library
-		SccLocalPath2 = TD.QLDC.Library
-		SccProjectUniqueName3 = TD.QLDC\\TD.QLDC.csproj
-		SccProjectName3 = TD.QLDC
-		SccLocalPath3 = TD.QLDC
-		SccProjectUniqueName4 = TD.QLDC.Service\\TD.QLDC.Service.csproj
-		SccProjectName4 = TD.QLDC.Service
-		SccLocalPath4 = TD.QLDC.Service
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {0913067D-C773-44B7-B1FD-A5998F4B4C18}
 	EndGlobalSection
 EndGlobal

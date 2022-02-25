@@ -9,7 +9,6 @@ using TD.QLDC.Library.Repositories.Implementations;
 using TD.QLDC.Library.Repositories.Interfaces;
 using TD.QLDC.Library.Services.Implementations;
 using TD.QLDC.Library.Services.Interfaces;
-using TD.QLDC.Library.Validations;
 using Unity;
 using Unity.Lifetime;
 

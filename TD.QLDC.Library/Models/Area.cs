@@ -1,13 +1,4 @@
-﻿using FluentValidation;
-using FluentValidation.Attributes;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using TD.QLDC.Library.Validations;
-
-namespace TD.QLDC.Library.Models
+﻿namespace TD.QLDC.Library.Models
 {
     public class Area : ModelBaseExt
     {

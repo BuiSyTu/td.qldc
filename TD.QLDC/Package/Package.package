@@ -1,5 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <package xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" dslVersion="1.0.0.0" Id="07a09678-1336-462b-a9b6-72da25accb76" solutionId="07a09678-1336-462b-a9b6-72da25accb76" resetWebServer="false" sharePointProductVersion="15.0" name="TD.QLDC" xmlns="http://schemas.microsoft.com/VisualStudio/2008/SharePointTools/PackageModel">
+  <assemblies>
+    <customAssembly location="Syncfusion.Licensing.dll" deploymentTarget="WebApplication" sourcePath="..\bin\Syncfusion.Licensing.dll" />
+    <customAssembly location="Syncfusion.Compression.Base.dll" deploymentTarget="WebApplication" sourcePath="..\bin\Syncfusion.Compression.Base.dll" />
+    <customAssembly location="Syncfusion.XlsIO.Base.dll" deploymentTarget="WebApplication" sourcePath="..\bin\Syncfusion.XlsIO.Base.dll" />
+    <projectOutputAssembly location="TD.QLDC.Library.dll" deploymentTarget="WebApplication" projectPath="..\TD.QLDC.Library\TD.QLDC.Library.csproj" />
+    <projectOutputAssembly location="TD.QLDC.API.dll" deploymentTarget="WebApplication" projectPath="..\TD.QLDC.API\TD.QLDC.API.csproj" />
+    <projectOutputAssembly location="TD.QLDC.Service.dll" deploymentTarget="WebApplication" projectPath="..\TD.QLDC.Service\TD.QLDC.Service.csproj" />
+  </assemblies>
   <features>
     <featureReference itemId="e68a8edf-752c-424e-a02b-525e6e714623" />
     <featureReference itemId="24d0b35c-fbcc-4634-af5f-dd84fec7574e" />
