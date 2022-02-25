@@ -32,11 +32,75 @@ namespace TD.QLDC.API.Controllers
             return ApiOk(widget);
         }
 
+        [Route("qldcapi/dashboard/hogiadinhtheoxom")]
+        [HttpGet]
+        public IHttpActionResult GetChartHoGiaDinhTheoXom()
+        {
+            var widget = _service.GetChartHoGiaDinhTheoXom();
+            return ApiOk(widget);
+        }
+
         [Route("qldcapi/dashboard/chart2")]
         [HttpGet]
         public IHttpActionResult GetChart2()
         {
             var widget = _service.GetChart2();
+            return ApiOk(widget);
+        }
+
+        [Route("qldcapi/dashboard/nhankhautheoxom")]
+        [HttpGet]
+        public IHttpActionResult GetChartNhanKhauTheoXom()
+        {
+            var widget = _service.GetChartNhanKhauTheoXom();
+            return ApiOk(widget);
+        }
+
+        [Route("qldcapi/dashboard/dantoc")]
+        [HttpGet]
+        public IHttpActionResult GetChartDanToc()
+        {
+            var widget = _service.GetChartDanToc();
+            return ApiOk(widget);
+        }
+
+        [Route("qldcapi/dashboard/tongiao")]
+        [HttpGet]
+        public IHttpActionResult GetChartTonGiao()
+        {
+            var widget = _service.GetChartTonGiao();
+            return ApiOk(widget);
+        }
+
+        [Route("qldcapi/dashboard/nganhnghelaodong")]
+        [HttpGet]
+        public IHttpActionResult GetChartNganhNgheLaoDong()
+        {
+            var widget = _service.GetChartNganhNgheLaoDong();
+            return ApiOk(widget);
+        }
+
+        [Route("qldcapi/dashboard/trinhdohocvan")]
+        [HttpGet]
+        public IHttpActionResult GetChartTrinhDoHocVan()
+        {
+            var widget = _service.GetChartTrinhDoHocVan();
+            return ApiOk(widget);
+        }
+
+        [Route("qldcapi/dashboard/gioitinh")]
+        [HttpGet]
+        public IHttpActionResult GetChartGioiTinh()
+        {
+            var widget = _service.GetChartGioiTinh();
+            return ApiOk(widget);
+        }
+
+        [Route("qldcapi/dashboard/dotuoi")]
+        [HttpGet]
+        public IHttpActionResult GetChartDoTuoi()
+        {
+            var widget = _service.GetChartDoTuoi();
             return ApiOk(widget);
         }
     }

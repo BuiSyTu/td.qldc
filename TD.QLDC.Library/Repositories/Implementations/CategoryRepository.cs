@@ -4,7 +4,6 @@ using System.Linq;
 using TD.Core.Api.Mvc;
 using TD.QLDC.Library.Models;
 using TD.QLDC.Library.Repositories.Interfaces;
-using TD.QLGD.Library;
 
 namespace TD.QLDC.Library.Repositories.Implementations
 {

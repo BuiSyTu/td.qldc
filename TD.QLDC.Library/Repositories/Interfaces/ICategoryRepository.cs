@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using TD.QLDC.Library.Interfaces;
 using TD.QLDC.Library.Models;
 
 namespace TD.QLDC.Library.Repositories.Interfaces

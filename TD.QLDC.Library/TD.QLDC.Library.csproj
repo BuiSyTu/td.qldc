@@ -143,10 +143,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Common\CommonService.cs" />
-    <Compile Include="Data\EFRepository.cs" />
     <Compile Include="Data\QLDCDbContext.cs" />
     <Compile Include="Extensions\Queryable\QueryableExtension.cs" />
-    <Compile Include="interfaces\IRepository.cs" />
     <Compile Include="Migrations\202112100209485_update1.cs" />
     <Compile Include="Migrations\202112100209485_update1.Designer.cs">
       <DependentUpon>202112100209485_update1.cs</DependentUpon>

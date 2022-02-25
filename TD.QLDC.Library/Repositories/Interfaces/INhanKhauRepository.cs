@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using TD.QLDC.Library.Interfaces;
 using TD.QLDC.Library.Models;
 using TD.QLDC.Library.ViewModels.Dashboard;
 
@@ -30,6 +29,14 @@ namespace TD.QLDC.Library.Repositories.Interfaces
         ICollection<ChartItem> GroupByTonGiao();
 
         ICollection<ChartItem> GroupByDanToc();
+
+        ICollection<ChartItem> GroupByTrinhDoHocVan();
+
+        ICollection<ChartItem> GroupByNgheNghiep();
+
+        ICollection<ChartItem> GroupByGioiTinh();
+
+        ICollection<ChartItem> GroupByNgaySinh();
 
         int CountDoiTuong();
         int CountTonGiao();

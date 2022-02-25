@@ -1,5 +1,4 @@
-﻿using FluentValidation;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Reflection;
 using System.Web.Http;
 using TD.Core.Api.Mvc;

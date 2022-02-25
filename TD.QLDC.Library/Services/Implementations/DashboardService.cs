@@ -33,7 +33,25 @@ namespace TD.QLDC.Library.Services.Implementations
             };
         }
 
+        public Chart GetChartHoGiaDinhTheoXom()
+        {
+            return new Chart
+            {
+                Title = "Số lượng hộ gia đình theo xóm",
+                Data = _hoKhauRepository.GroupByXom()
+            };
+        }
+
         public Chart GetChart2()
+        {
+            return new Chart
+            {
+                Title = "Số lượng nhân khẩu theo xóm",
+                Data = _nhanKhauRepository.GroupByXom()
+            };
+        }
+
+        public Chart GetChartNhanKhauTheoXom()
         {
             return new Chart
             {
@@ -47,9 +65,18 @@ namespace TD.QLDC.Library.Services.Implementations
             throw new NotImplementedException();
         }
 
-        public Chart GetChartDanToc()
+        public Chart GetChartBaoHiemYTe()
         {
             throw new NotImplementedException();
+        }
+
+        public Chart GetChartDanToc()
+        {
+            return new Chart
+            {
+                Title = "Số lượng nhân khẩu theo dân tộc",
+                Data = _nhanKhauRepository.GroupByDanToc()
+            };
         }
 
         public Chart GetChartDoiTuong()
@@ -57,9 +84,63 @@ namespace TD.QLDC.Library.Services.Implementations
             throw new NotImplementedException();
         }
 
-        public Chart GetChartTonGiao()
+        public Chart GetChartDoTuoi()
+        {
+            return new Chart
+            {
+                Data = _nhanKhauRepository.GroupByNgaySinh(),
+                Title = "Số lượng nhân khẩu theo độ tuổi"
+            };
+        }
+
+        public Chart GetChartGioiTinh()
+        {
+            return new Chart
+            {
+                Data = _nhanKhauRepository.GroupByGioiTinh(),
+                Title = "Số lượng nhân khẩu theo giới tính"
+            };
+;        }
+
+        public Chart GetChartLoaiDoiTuong()
+        {
+            return new Chart
+            {
+                Data = _nhanKhauRepository.GroupByDoiTuong(),
+                Title = "Số lượng nhân khẩu theo loại đối tượng"
+            };
+        }
+
+        public Chart GetChartNganhNgheLaoDong()
+        {
+            return new Chart
+            {
+                Data = _nhanKhauRepository.GroupByNgheNghiep(),
+                Title = "Số lượng nhân khẩu theo ngành nghề lao động"
+            };
+        }
+
+        public Chart GetChartTinhTrangHonNhan()
         {
             throw new NotImplementedException();
+        }
+
+        public Chart GetChartTonGiao()
+        {
+            return new Chart
+            {
+                Title = "Số lượng nhân khẩu theo tôn giáo",
+                Data = _nhanKhauRepository.GroupByTonGiao()
+            };
+        }
+
+        public Chart GetChartTrinhDoHocVan()
+        {
+            return new Chart
+            {
+                Data = _nhanKhauRepository.GroupByTrinhDoHocVan(),
+                Title = "Số lượng nhân khẩu theo trình độ học vấn"
+            };
         }
 
         public Widget GetWidget()
