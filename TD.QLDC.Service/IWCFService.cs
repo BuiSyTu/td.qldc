@@ -20,6 +20,10 @@ namespace TD.QLDC.Service
         [OperationContract]
         Stream CheckValidNhanKhau(CheckValidNhanKhauInput input);
 
+        [WebGet(UriTemplate = "hokhaus/nhankhaucccd/{cccd}", ResponseFormat = WebMessageFormat.Json)]
+        [OperationContract]
+        Stream GetInformation(string cccd =  null);
+
         #region old
         [WebInvoke(Method = "POST", ResponseFormat = WebMessageFormat.Json, BodyStyle = WebMessageBodyStyle.WrappedRequest)]
         [OperationContract]
@@ -60,6 +64,6 @@ namespace TD.QLDC.Service
         [OperationContract]
         [WebInvoke(Method = "POST", ResponseFormat = WebMessageFormat.Json, BodyStyle = WebMessageBodyStyle.WrappedRequest)]
         APIResult CreateNhanKhau(string hoten, string hktt, string birthday, string phone, string sex, string mqh, string nghenghiep, string dantoc);
-#endregion
+        #endregion
     }
 }

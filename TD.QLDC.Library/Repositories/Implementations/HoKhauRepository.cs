@@ -133,6 +133,31 @@ namespace TD.QLDC.Library.Repositories.Implementations
                 })
                 .ToList();
         }
+
+        public HoKhau GetSingleByNhanKhauCccd(string nhanKhauCccd)
+        {
+            if (string.IsNullOrEmpty(nhanKhauCccd)) return null;
+
+            var nhanKhau = _dbContext.NhanKhaus
+                .Include(x => x.HoKhau)
+                .FirstOrDefault(x => x.SoCCCD == nhanKhauCccd);
+
+            if (nhanKhau is null) return null;
+
+            var hoKhau = nhanKhau.HoKhau;
+            var nhanKhausInHoKhau = _dbContext.NhanKhaus
+                .Where(x => x.HoKhauID == hoKhau.ID)
+                .ToList();
+
+            foreach (var item in nhanKhausInHoKhau)
+            {
+                nhanKhau.HoKhau = null;
+            }
+
+            hoKhau.ExtensionData["NhanKhaus"] = nhanKhausInHoKhau;
+
+            return hoKhau;
+        }
     }
 
     public static class QueryableHoKhauExtension

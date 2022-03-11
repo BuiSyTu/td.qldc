@@ -25,5 +25,6 @@ namespace TD.QLDC.Library.Repositories.Interfaces
         HoKhau GetBySoHoKhauAndCreateIfNotExist(string soHoKhau, int? loaiHoGiaDinhId = null);
 
         ICollection<ChartItem> GroupByXom();
+        HoKhau GetSingleByNhanKhauCccd(string nhanKhauCccd);
     }
 }

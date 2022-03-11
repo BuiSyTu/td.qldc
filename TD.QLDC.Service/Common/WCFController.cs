@@ -1,12 +1,6 @@
 ﻿using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.ServiceModel.Web;
-using System.Text;
-using System.Threading.Tasks;
-using TD.QLDC.Service.Common;
 
 namespace TD.QLDC.Service.Common
 {
@@ -126,7 +120,8 @@ namespace TD.QLDC.Service.Common
                     }
             };
 
-            string resultString = JsonConvert.SerializeObject(apiResult);
+            var serializerSettings = new JsonSerializerSettings { ReferenceLoopHandling = ReferenceLoopHandling.Ignore };
+            string resultString = JsonConvert.SerializeObject(apiResult, Formatting.Indented, serializerSettings);
             var resultStream = GenerateStreamFromString(resultString);
             return resultStream;
         }

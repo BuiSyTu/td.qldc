@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
 using System.ServiceModel.Activation;
 using TD.QLDC.Library.Repositories.Interfaces;
 using TD.QLDC.Service.Common;
@@ -12,6 +13,7 @@ namespace TD.QLDC.Service
     {
         private readonly IUnityContainer _unityContainer;
         private readonly INhanKhauRepository _nhanKhauRepository;
+        private readonly IHoKhauRepository _hoKhauRepository;
 
         public WCFService()
         {
@@ -20,6 +22,7 @@ namespace TD.QLDC.Service
             integration.ConfigureContainer(_unityContainer);
 
             _nhanKhauRepository = _unityContainer.Resolve<INhanKhauRepository>();
+            _hoKhauRepository = _unityContainer.Resolve<IHoKhauRepository>();
         }
 
         public Stream CheckValidNhanKhau(CheckValidNhanKhauInput input)
@@ -30,6 +33,20 @@ namespace TD.QLDC.Service
                 ngaySinh: input.NgaySinh
             );
             return ApiOk(isValid);
+        }
+
+        public Stream GetInformation(string cccd = null)
+        {
+            try
+            {
+                var hoKhau = _hoKhauRepository.GetSingleByNhanKhauCccd(cccd);
+                return ApiOk(hoKhau);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
         }
 
         public Stream HelloWorld()

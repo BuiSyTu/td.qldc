@@ -9,7 +9,6 @@ using TD.QLDC.Library.Repositories.Interfaces;
 using TD.QLDC.Library.Services.Implementations;
 using TD.QLDC.Library.Services.Interfaces;
 using Unity;
-using Unity.Lifetime;
 
 namespace TD.QLDC.API.Integration
 {

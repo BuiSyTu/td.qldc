@@ -60,6 +60,18 @@ namespace TD.QLDC.API.Controllers
             return ApiOk(HoKhau);
         }
 
+        [Route("QLDCapi/HoKhaus/NhanKhauCCCD/{cccd}")]
+        [HttpGet]
+        public IHttpActionResult GetHoKhauByNhanKhauCccd(string cccd)
+        {
+            var HoKhau = _repository.GetSingleByNhanKhauCccd(cccd);
+            if (HoKhau == null)
+            {
+                return ApiNotFound();
+            }
+            return ApiOk(HoKhau);
+        }
+
         [Route("QLDCapi/HoKhaus/{id:int:min(1)}")]
         [HttpPut]
         public IHttpActionResult PutHoKhau(int id, HoKhau change)

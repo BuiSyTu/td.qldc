@@ -1,6 +1,5 @@
 ﻿using System.Web.Http;
 using TD.Core.Api.Mvc;
-using TD.QLDC.Library.Services;
 using TD.QLDC.Library.Services.Interfaces;
 
 namespace TD.QLDC.API.Controllers
