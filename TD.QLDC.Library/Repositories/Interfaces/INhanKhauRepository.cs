@@ -43,5 +43,7 @@ namespace TD.QLDC.Library.Repositories.Interfaces
         int CountDanToc();
 
         bool CheckExist(string hoTen, string cCCD, string ngaySinh);
+
+        NhanKhau GetByCccd(string cccd, string includes);
     }
 }

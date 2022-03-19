@@ -34,9 +34,11 @@ namespace TD.QLDC.Service.Common
 
         private static string passPhraseStatic = "Tandan@16";
         private const string initVector = "TanDan123!@#456789";
+
         // This constant is used to determine the keysize of the encryption algorithm
         private const int keysize = 256;
-        //Encrypt
+
+        // Encrypt
         public static string EncryptString(string plainText)
         {
             byte[] initVectorBytes = Encoding.UTF8.GetBytes(initVector);
@@ -56,7 +58,7 @@ namespace TD.QLDC.Service.Common
             return Convert.ToBase64String(cipherTextBytes);
         }
 
-        //Decrypt
+        // Decrypt
         public static string DecryptString(string cipherText)
         {
             byte[] initVectorBytes = Encoding.UTF8.GetBytes(initVector);
@@ -101,7 +103,7 @@ namespace TD.QLDC.Service.Common
             try
             {
                 if (string.IsNullOrEmpty(secretJWT))
-                    secretJWT = ConfigurationManager.AppSettings["secretJWT"] != null ? ConfigurationManager.AppSettings["secretJWT"] : "TanDan123!@#456789";
+                    secretJWT = ConfigurationManager.AppSettings["secretJWT"] ?? "TanDan123!@#456789";
                 var json = new JwtBuilder()
                   .WithAlgorithm(new HMACSHA256Algorithm()) // symmetric
                   .WithSecret(secretJWT)
@@ -173,6 +175,7 @@ namespace TD.QLDC.Service.Common
         public string hashpwd { get; set; }
         public UserContext context { get; set; }
     }
+
     public class UserContext
     {
         public UserAPI user { get; set; }

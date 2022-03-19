@@ -185,7 +185,12 @@
     <Compile Include="Migrations\202202210244181_Update10.Designer.cs">
       <DependentUpon>202202210244181_Update10.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202203140753548_Update11.cs" />
+    <Compile Include="Migrations\202203140753548_Update11.Designer.cs">
+      <DependentUpon>202203140753548_Update11.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\Account.cs" />
     <Compile Include="Models\Area.cs" />
     <Compile Include="Models\Category.cs" />
     <Compile Include="Models\HoKhau.cs" />
@@ -193,6 +198,7 @@
     <Compile Include="Models\NhanKhau.cs" />
     <Compile Include="Models\NhomDanhMuc.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\Implementations\AccountRepository.cs" />
     <Compile Include="Repositories\Implementations\AreaRepository.cs" />
     <Compile Include="Repositories\Implementations\CategoryRepository.cs" />
     <Compile Include="Repositories\GenericRepository.cs" />
@@ -200,6 +206,7 @@
     <Compile Include="Repositories\IGenericRepository.cs" />
     <Compile Include="Repositories\Implementations\NhanKhauRepository.cs" />
     <Compile Include="Repositories\Implementations\NhomDanhMucRepository.cs" />
+    <Compile Include="Repositories\Interfaces\IAccountRepository.cs" />
     <Compile Include="Repositories\Interfaces\IAreaRepository.cs" />
     <Compile Include="Repositories\Interfaces\ICategoryRepository.cs" />
     <Compile Include="Repositories\Interfaces\IHoKhauRepository.cs" />
@@ -259,6 +266,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202202210244181_Update10.resx">
       <DependentUpon>202202210244181_Update10.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202203140753548_Update11.resx">
+      <DependentUpon>202203140753548_Update11.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup />

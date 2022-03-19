@@ -12,6 +12,10 @@ namespace TD.QLDC.Service
         [OperationContract]
         Stream HelloWorld();
 
+        [WebGet(UriTemplate = "areas/codes?codes={codes}", ResponseFormat = WebMessageFormat.Json)]
+        [OperationContract]
+        Stream GetAreaByCodes(string codes);
+
         [WebInvoke(
             Method = "POST",
             UriTemplate = "CheckValidNhanKhau",
@@ -23,6 +27,31 @@ namespace TD.QLDC.Service
         [WebGet(UriTemplate = "hokhaus/nhankhaucccd/{cccd}", ResponseFormat = WebMessageFormat.Json)]
         [OperationContract]
         Stream GetInformation(string cccd =  null);
+
+        [WebInvoke(
+            Method = "POST",
+            UriTemplate = "Registration",
+            ResponseFormat = WebMessageFormat.Json,
+            BodyStyle = WebMessageBodyStyle.WrappedRequest)]
+        [OperationContract]
+        Stream Register(string name, string username, string password);
+
+        [WebInvoke(
+            Method = "POST",
+            UriTemplate = "Login",
+            ResponseFormat = WebMessageFormat.Json,
+            BodyStyle = WebMessageBodyStyle.WrappedRequest)]
+        [OperationContract]
+        Stream Login(string username, string password);
+
+        [WebGet(UriTemplate = "Logout", ResponseFormat = WebMessageFormat.Json)]
+        [OperationContract]
+        Stream Logout();
+
+        [WebGet(UriTemplate = "nhankhaus/cccd/{cccd}?includes={includes}", ResponseFormat = WebMessageFormat.Json)]
+        [OperationContract]
+        Stream GetNhanKhauByCccd(string cccd = null, string includes = null);
+
 
         #region old
         [WebInvoke(Method = "POST", ResponseFormat = WebMessageFormat.Json, BodyStyle = WebMessageBodyStyle.WrappedRequest)]

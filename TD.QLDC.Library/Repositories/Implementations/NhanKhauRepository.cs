@@ -338,6 +338,14 @@ namespace TD.QLDC.Library.Repositories.Implementations
 
             return doTuois;
         }
+
+        public NhanKhau GetByCccd(string cccd, string includes)
+        {
+            return _dbContext.NhanKhaus
+                .IncludeMany(includes)
+                .Where(x => x.SoCCCD == cccd)
+                .FirstOrDefault();
+        }
     }
 
     public static class QueryableNhanKhauExtension

@@ -11,6 +11,7 @@ namespace TD.QLDC.Library.Models
         }
 
         #region Dbset
+        public DbSet<Account> Accounts { get; set; }
         public DbSet<Category> Categories { get; set; }
         public DbSet<HoKhau> HoKhaus { get; set; }
         public DbSet<NhanKhau> NhanKhaus { get; set; }
@@ -20,6 +21,9 @@ namespace TD.QLDC.Library.Models
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<Account>()
+                .ToTable("Account");
+
             modelBuilder.Entity<Area>()
                 .ToTable("Areas");
 

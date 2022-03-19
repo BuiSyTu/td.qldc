@@ -102,6 +102,13 @@ namespace TD.QLDC.Service.Common
             return resultStream;
         }
 
+        public Stream NoContent()
+        {
+            WebOperationContext.Current.OutgoingResponse.StatusCode = System.Net.HttpStatusCode.NoContent;
+            WebOperationContext.Current.OutgoingResponse.ContentType = "application/json; charset=utf-8";
+            return null;
+        }
+
         public Stream ApiOk(object data = null, int total = 0, string message = null)
         {
             WebOperationContext.Current.OutgoingResponse.ContentType = "application/json; charset=utf-8";

@@ -78,6 +78,15 @@ namespace TD.QLDC.Library.Repositories.Implementations
                 .ToList();
         }
 
+        public ICollection<Area> GetByCodes(string codes, string includes = null)
+        {
+            var codeList = codes.Split(',').ToList();
+            return _dbContext.Areas
+                .IncludeMany(includes)
+                .Filter(codeList.Count > 0, x => codeList.Contains(x.Code))
+                .ToList();
+        }
+
         public ICollection<Area> GetMultipleByName(string name, string includes = null)
         {
             return _dbContext.Areas

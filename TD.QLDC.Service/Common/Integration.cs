@@ -22,6 +22,7 @@ namespace TD.QLDC.Service.Common
             container.RegisterType<IHoKhauRepository, HoKhauRepository>();
             container.RegisterType<INhanKhauRepository, NhanKhauRepository>();
             container.RegisterType<INhomDanhMucRepository, NhomDanhMucRepository>();
+            container.RegisterType<IAccountRepository, AccountRepository>();
 
             // Services
             container.RegisterType<IDashboardService, DashboardService>();
