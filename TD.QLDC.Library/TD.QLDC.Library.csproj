@@ -51,9 +51,11 @@
       <HintPath>..\Libs\JWT.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.SharePoint">
-      <HintPath>C:\Program Files\Common Files\microsoft shared\web server extensions\15\isapi\Microsoft.SharePoint.dll</HintPath>
+      <HintPath>..\Libs\Microsoft.SharePoint.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.SharePoint.IdentityModel, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.SharePoint.IdentityModel">
+      <HintPath>..\Libs\Microsoft.SharePoint.IdentityModel.dll</HintPath>
+    </Reference>
     <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.11.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>

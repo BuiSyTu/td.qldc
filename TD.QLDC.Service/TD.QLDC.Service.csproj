@@ -50,9 +50,14 @@
     <Reference Include="JWT">
       <HintPath>..\Libs\JWT.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.SharePoint.IdentityModel, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\..\Program Files\Common Files\microsoft shared\Web Server Extensions\15\ISAPI\Microsoft.SharePoint.IdentityModel.dll</HintPath>
+    <Reference Include="Microsoft.SharePoint">
+      <HintPath>..\Libs\Microsoft.SharePoint.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.SharePoint.Client.ServerRuntime">
+      <HintPath>..\Libs\Microsoft.SharePoint.Client.ServerRuntime.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.SharePoint.IdentityModel">
+      <HintPath>..\Libs\Microsoft.SharePoint.IdentityModel.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.11.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
@@ -82,8 +87,6 @@
     <Reference Include="System.Web.Services" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Xml.Linq" />
-    <Reference Include="Microsoft.SharePoint" />
-    <Reference Include="Microsoft.SharePoint.Client.ServerRuntime" />
     <Reference Include="TD.Core.Api.Common">
       <HintPath>C:\inetpub\wwwroot\wss\VirtualDirectories\8107\bin\TD.Core.Api.Common.dll</HintPath>
     </Reference>
