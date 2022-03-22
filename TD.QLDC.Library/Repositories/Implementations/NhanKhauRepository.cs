@@ -63,10 +63,11 @@ namespace TD.QLDC.Library.Repositories.Implementations
         {
             return _dbContext.NhanKhaus
                 .FilterCurrentAreaCode()
-                .GroupBy(x => x.HoKhau.TenXom)
+                .GroupBy(x => new { x.HoKhau.TenXom, x.HoKhau.MaXom })
+                .OrderBy(x => x.Key.MaXom)
                 .Select(g => new ChartItem
                 {
-                    Text = g.Key,
+                    Text = g.Key.TenXom,
                     Value = g.Count().ToString()
                 })
                 .ToList();

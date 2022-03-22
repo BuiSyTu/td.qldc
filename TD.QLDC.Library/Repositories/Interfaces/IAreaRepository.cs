@@ -33,5 +33,7 @@ namespace TD.QLDC.Library.Repositories.Interfaces
         ICollection<Area> GetMultipleByName(string name, string includes = null);
 
         ICollection<Area> GetByCodes(string codes, string includes = null);
+
+        Dictionary<string, string> GetCurrentArea();
     }
 }

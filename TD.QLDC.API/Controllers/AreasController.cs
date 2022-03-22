@@ -119,5 +119,13 @@ namespace TD.QLDC.API.Controllers
             var count = _repository.Count();
             return ApiOk(count);
         }
+
+        [Route("QLDCapi/areas/currentuser")]
+        [HttpGet]
+        public IHttpActionResult GetByCurrentUser()
+        {
+            var entities = _repository.GetCurrentArea();
+            return ApiOk(entities);
+        }
     }
 }
