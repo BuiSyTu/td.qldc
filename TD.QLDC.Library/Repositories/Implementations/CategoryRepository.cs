@@ -93,6 +93,11 @@ namespace TD.QLDC.Library.Repositories.Implementations
             var entity = Add(newCategory);
             return entity;
         }
+
+        public Category GetSingleByTags(string tags)
+        {
+            return _dbContext.Categories.FirstOrDefault(x => x.Tags == tags);
+        }
     }
 
     public static class QueryableCategoryExtension

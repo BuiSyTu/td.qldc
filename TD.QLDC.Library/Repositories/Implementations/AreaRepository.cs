@@ -182,6 +182,11 @@ namespace TD.QLDC.Library.Repositories.Implementations
         {
             return _dbContext.Areas.FirstOrDefault(x => x.Name == name);
         }
+
+        public Area GetSingleByTags(string tags)
+        {
+            return _dbContext.Areas.FirstOrDefault(x => x.Tags == tags);
+        }
     }
 
     public static class QueryableAreaExtension

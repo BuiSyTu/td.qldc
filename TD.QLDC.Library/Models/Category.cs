@@ -10,6 +10,9 @@ namespace TD.QLDC.Library.Models
         [JsonIgnore]
         public string FullTextSearch { get { return fullTextSearch; } set { fullTextSearch = value; NotifyPropertyChanged(); } }
 
+        private string tags;
+        public string Tags { get { return tags; } set { tags = value; NotifyPropertyChanged(); } }
+
         private string name;
         [MaxLength(256)]
         public string Name { get { return name; } set { name = value; NotifyPropertyChanged(); } }

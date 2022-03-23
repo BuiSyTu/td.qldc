@@ -35,5 +35,7 @@ namespace TD.QLDC.Library.Repositories.Interfaces
         ICollection<Area> GetByCodes(string codes, string includes = null);
 
         Dictionary<string, string> GetCurrentArea();
+
+        Area GetSingleByTags(string tags);
     }
 }
