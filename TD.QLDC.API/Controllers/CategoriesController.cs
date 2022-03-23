@@ -66,6 +66,7 @@ namespace TD.QLDC.API.Controllers
             {
                 return ApiBadRequest();
             }
+
             _repository.Update(change);
             return ApiNoContent();
         }

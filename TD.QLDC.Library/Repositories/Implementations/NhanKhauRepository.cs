@@ -29,8 +29,8 @@ namespace TD.QLDC.Library.Repositories.Implementations
             {
                 model.DiaChiTamTru,
                 model.Email,
-                model.HoKhau.TenChuHo,
-                model.HoKhau.CCCDCHuHo,
+                model?.HoKhau?.TenChuHo ?? string.Empty,
+                model?.HoKhau?.CCCDCHuHo ?? string.Empty,
                 model.HoTen,
                 model.SoDienThoai,
                 model.SoBHYT,
@@ -49,8 +49,8 @@ namespace TD.QLDC.Library.Repositories.Implementations
             {
                 model.DiaChiTamTru,
                 model.Email,
-                model.HoKhau.TenChuHo,
-                model.HoKhau.CCCDCHuHo,
+                model?.HoKhau?.TenChuHo ?? string.Empty,
+                model?.HoKhau?.CCCDCHuHo ?? string.Empty,
                 model.HoTen,
                 model.SoDienThoai,
                 model.SoBHYT,

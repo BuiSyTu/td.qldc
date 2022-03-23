@@ -25,7 +25,8 @@ namespace TD.QLDC.Library.Repositories.Implementations
             model.FullTextSearch = CommonService.GenerateFullTextSearch(new List<string>
             {
                 model.Name,
-                model.Nhom.Name,
+                model?.Nhom?.Name ?? string.Empty,
+                model.Tags
             });
             return base.Add(model);
         }
@@ -35,7 +36,7 @@ namespace TD.QLDC.Library.Repositories.Implementations
             model.FullTextSearch = CommonService.GenerateFullTextSearch(new List<string>
             {
                 model.Name,
-                model.Nhom.Name,
+                model?.Nhom?.Name ?? string.Empty,
             });
 
             base.Update(model);
