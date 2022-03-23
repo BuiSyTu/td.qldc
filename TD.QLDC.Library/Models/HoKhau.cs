@@ -1,9 +1,14 @@
-﻿using System.ComponentModel;
+﻿using Newtonsoft.Json;
+using System.ComponentModel;
 
 namespace TD.QLDC.Library.Models
 {
     public class HoKhau : ModelBaseExt
     {
+        private string fullTextSearch;
+        [JsonIgnore]
+        public string FullTextSearch { get { return fullTextSearch; } set { fullTextSearch = value; NotifyPropertyChanged(); } }
+
         private int? dmLoaiHoID;
         public int? DMLoaiHoID { get { return dmLoaiHoID; } set { dmLoaiHoID = value; NotifyPropertyChanged(); } }
         public Category DMLoaiHo { get; set; }
@@ -57,6 +62,23 @@ namespace TD.QLDC.Library.Models
 
         private string soNha;
         public string SoNha { get { return soNha; } set { soNha = value; NotifyPropertyChanged(); } }
+        #endregion
+
+        #region Nhà ở, hộ kinh doanh
+        private string loaiNhaO;
+        public string LoaiNhaO { get { return loaiNhaO; } set { loaiNhaO = value; NotifyPropertyChanged(); } }
+
+        private string datO;
+        public string DatO { get { return datO; } set { datO = value; NotifyPropertyChanged(); } }
+
+        private string datSXNN;
+        public string DatSXNN { get { return datSXNN; } set { datSXNN = value; NotifyPropertyChanged(); } }
+
+        private string datChuyenDoi;
+        public string DatChuyenDoi { get { return datChuyenDoi; } set { datChuyenDoi = value; NotifyPropertyChanged(); } }
+
+        private string hoKinhDoanh;
+        public string HoKinhDoanh { get { return hoKinhDoanh; } set { hoKinhDoanh = value; NotifyPropertyChanged(); } }
         #endregion
     }
 }

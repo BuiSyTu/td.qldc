@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
@@ -10,6 +11,10 @@ namespace TD.QLDC.Library.Models
    
     public class NhomDanhMuc : ModelBaseExt
     {
+        private string fullTextSearch;
+        [JsonIgnore]
+        public string FullTextSearch { get { return fullTextSearch; } set { fullTextSearch = value; NotifyPropertyChanged(); } }
+
         private string name;
         public string Name { get { return name; } set { name = value; NotifyPropertyChanged(); } }
 

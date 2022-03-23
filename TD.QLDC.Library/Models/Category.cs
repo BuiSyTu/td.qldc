@@ -1,10 +1,15 @@
-﻿using System.ComponentModel;
+﻿using Newtonsoft.Json;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 
 namespace TD.QLDC.Library.Models
 {
     public class Category : ModelBaseExt
     {
+        private string fullTextSearch;
+        [JsonIgnore]
+        public string FullTextSearch { get { return fullTextSearch; } set { fullTextSearch = value; NotifyPropertyChanged(); } }
+
         private string name;
         [MaxLength(256)]
         public string Name { get { return name; } set { name = value; NotifyPropertyChanged(); } }

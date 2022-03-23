@@ -147,6 +147,7 @@
     <Compile Include="Common\CommonService.cs" />
     <Compile Include="Data\QLDCDbContext.cs" />
     <Compile Include="Extensions\Queryable\QueryableExtension.cs" />
+    <Compile Include="Extensions\StringExtension.cs" />
     <Compile Include="Migrations\202112100209485_update1.cs" />
     <Compile Include="Migrations\202112100209485_update1.Designer.cs">
       <DependentUpon>202112100209485_update1.cs</DependentUpon>
@@ -190,6 +191,14 @@
     <Compile Include="Migrations\202203140753548_Update11.cs" />
     <Compile Include="Migrations\202203140753548_Update11.Designer.cs">
       <DependentUpon>202203140753548_Update11.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202203230230585_Update12.cs" />
+    <Compile Include="Migrations\202203230230585_Update12.Designer.cs">
+      <DependentUpon>202203230230585_Update12.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202203230408175_Update13.cs" />
+    <Compile Include="Migrations\202203230408175_Update13.Designer.cs">
+      <DependentUpon>202203230408175_Update13.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Account.cs" />
@@ -271,6 +280,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202203140753548_Update11.resx">
       <DependentUpon>202203140753548_Update11.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202203230230585_Update12.resx">
+      <DependentUpon>202203230230585_Update12.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202203230408175_Update13.resx">
+      <DependentUpon>202203230408175_Update13.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup />

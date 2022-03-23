@@ -23,6 +23,46 @@ namespace TD.QLDC.Library.Repositories.Implementations
             _dbContext = dbContext;
         }
 
+        public override NhanKhau Add(NhanKhau model)
+        {
+            model.FullTextSearch = CommonService.GenerateFullTextSearch(new List<string>
+            {
+                model.DiaChiTamTru,
+                model.Email,
+                model.HoKhau.TenChuHo,
+                model.HoKhau.CCCDCHuHo,
+                model.HoTen,
+                model.SoDienThoai,
+                model.SoBHYT,
+                model.SoCCCD,
+                model.SoDienThoai,
+                model.SoHC,
+                model.TenGoiKhac,
+            });
+
+            return base.Add(model);
+        }
+
+        public override void Update(NhanKhau model)
+        {
+            model.FullTextSearch = CommonService.GenerateFullTextSearch(new List<string>
+            {
+                model.DiaChiTamTru,
+                model.Email,
+                model.HoKhau.TenChuHo,
+                model.HoKhau.CCCDCHuHo,
+                model.HoTen,
+                model.SoDienThoai,
+                model.SoBHYT,
+                model.SoCCCD,
+                model.SoDienThoai,
+                model.SoHC,
+                model.TenGoiKhac,
+            });
+
+            base.Update(model);
+        }
+
         public int Count(
             string search = null,
             string shk = null,

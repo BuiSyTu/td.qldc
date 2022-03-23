@@ -24,12 +24,34 @@ namespace TD.QLDC.Library.Repositories.Implementations
 
         public override void Update(HoKhau model)
         {
+            model.FullTextSearch = CommonService.GenerateFullTextSearch(new List<string>
+            {
+                model.CCCDCHuHo,
+                model.TenChuHo,
+                model.SoHoKhau,
+                model.TenTinhThanh,
+                model.TenQuanHuyen,
+                model.TenXaPhuong,
+                model.TenThon,
+                model.TenXom
+            });
             SetDefaultArea(model);
             base.Update(model);
         }
 
         public override HoKhau Add(HoKhau model)
         {
+            model.FullTextSearch = CommonService.GenerateFullTextSearch(new List<string>
+            {
+                model.CCCDCHuHo,
+                model.TenChuHo,
+                model.SoHoKhau,
+                model.TenTinhThanh,
+                model.TenQuanHuyen,
+                model.TenXaPhuong,
+                model.TenThon,
+                model.TenXom
+            });
             SetDefaultArea(model);
             return base.Add(model);
         }

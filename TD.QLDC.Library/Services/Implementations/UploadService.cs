@@ -175,11 +175,11 @@ namespace TD.QLDC.Library.Services.Implementations
                         DMDoiTuongID = _categoryRepository.GetByNameAndCreateIfNotExist(NhomDanhMucId.DoiTuong, worksheet[row, 17].Value).ID,
                         SoBHYT = worksheet[row, 18].Value,
                         HanSuDungBHYT = DateTime.TryParse(worksheet[row, 19].Value, out DateTime hanSuDungBHYT) ? hanSuDungBHYT : null,
-                        LoaiNhaO = worksheet[row, 20].Value,
-                        DatO = worksheet[row, 21].Value,
-                        DatSXNN = worksheet[row, 22].Value,
-                        DatChuyenDoi = worksheet[row, 23].Value,
-                        HoKinhDoanh = worksheet[row, 24].Value,
+                        //LoaiNhaO = worksheet[row, 20].Value,
+                        //DatO = worksheet[row, 21].Value,
+                        //DatSXNN = worksheet[row, 22].Value,
+                        //DatChuyenDoi = worksheet[row, 23].Value,
+                        //HoKinhDoanh = worksheet[row, 24].Value,
                         GhiChu = worksheet[row, 25].Value
                     };
 

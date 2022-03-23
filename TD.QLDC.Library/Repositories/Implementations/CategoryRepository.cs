@@ -2,6 +2,7 @@
 using System.Data.Entity;
 using System.Linq;
 using TD.Core.Api.Mvc;
+using TD.QLDC.Library.Common;
 using TD.QLDC.Library.Models;
 using TD.QLDC.Library.Repositories.Interfaces;
 
@@ -17,6 +18,27 @@ namespace TD.QLDC.Library.Repositories.Implementations
         ) : base(dbContext, contextAccessor)
         {
             _dbContext = dbContext;
+        }
+
+        public override Category Add(Category model)
+        {
+            model.FullTextSearch = CommonService.GenerateFullTextSearch(new List<string>
+            {
+                model.Name,
+                model.Nhom.Name,
+            });
+            return base.Add(model);
+        }
+
+        public override void Update(Category model)
+        {
+            model.FullTextSearch = CommonService.GenerateFullTextSearch(new List<string>
+            {
+                model.Name,
+                model.Nhom.Name,
+            });
+
+            base.Update(model);
         }
 
         public int Count(
