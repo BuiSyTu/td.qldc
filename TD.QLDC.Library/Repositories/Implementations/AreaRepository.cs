@@ -185,7 +185,7 @@ namespace TD.QLDC.Library.Repositories.Implementations
 
         public Area GetSingleByTags(string tags)
         {
-            return _dbContext.Areas.FirstOrDefault(x => x.Tags == tags);
+            return _dbContext.Areas.FirstOrDefault(x => x.Tags.Contains(tags));
         }
     }
 

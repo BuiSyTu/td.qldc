@@ -146,7 +146,10 @@
   <ItemGroup>
     <Compile Include="Common\CommonService.cs" />
     <Compile Include="Data\QLDCDbContext.cs" />
+    <Compile Include="Extensions\Queryable\QueryableCategoryExtension.cs" />
     <Compile Include="Extensions\Queryable\QueryableExtension.cs" />
+    <Compile Include="Extensions\Queryable\QueryableHoKhauExtension.cs" />
+    <Compile Include="Extensions\Queryable\QueryableNhanKhauExtension.cs" />
     <Compile Include="Extensions\StringExtension.cs" />
     <Compile Include="Migrations\202112100209485_update1.cs" />
     <Compile Include="Migrations\202112100209485_update1.Designer.cs">
