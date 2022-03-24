@@ -166,15 +166,15 @@ namespace TD.QLDC.Library.Services.Implementations
                     },
                     new WidgetItem
                     {
-                        Text = "Dân tộc",
-                        Value = _nhanKhauRepository.CountDanToc(),
+                        Text = "Đối tượng chính sách",
+                        Value = _nhanKhauRepository.CountDoiTuong(),
                         BackgroundColor = WidgetColor.Warning,
                         IconClass = "flaticon-twitter-logo"
                     },
                     new WidgetItem
                     {
-                        Text = "Tôn giáo",
-                        Value = _nhanKhauRepository.CountTonGiao(),
+                        Text = "Loại hộ gia đình",
+                        Value = _hoKhauRepository.CountLoaiHo(),
                         BackgroundColor = WidgetColor.Danger,
                         IconClass = "flaticon-gift"
                     }

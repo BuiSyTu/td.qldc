@@ -181,5 +181,13 @@ namespace TD.QLDC.Library.Repositories.Implementations
 
             return hoKhau;
         }
+
+        public int CountLoaiHo()
+        {
+            return _dbContext.HoKhaus
+                .FilterCurrentAreaCode()
+                .GroupBy(x => x.DMLoaiHoID)
+                .Count();
+        }
     }
 }

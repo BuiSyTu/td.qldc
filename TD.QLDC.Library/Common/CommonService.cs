@@ -46,6 +46,42 @@ namespace TD.QLDC.Library.Common
             };
         }
 
+        public static int ToDMQuanHeID(string text)
+        {
+            return text.ToUpper() switch
+            {
+                "CH" => 25,
+                "CHỦ HỘ" => 25,
+                "VỢ" => 41,
+                "CHỒNG" => 42,
+                "CON" => 43,
+                "CHA" => 44,
+                "BỐ" => 44,
+                "MẸ" => 45,
+                "ANH" => 58,
+                "CHỊ" => 59,
+                "EM" => 60,
+                "CHÁU" => 81,
+                "CON DÂU" => 82,
+                "CON RỂ" => 83,
+                _ => 0
+            };
+        }
+
+        public static int ToDMDanTocID(string text)
+        {
+            return text.ToUpper() switch
+            {
+                "KINH" => 1,
+                "TÀY" => 2,
+                "MÔNG" => 3,
+                "THÁI" => 47,
+                "KHƠ-ME" => 48,
+                "MƯỜNG" => 49,
+                _ => 0
+            };
+        }
+
         public static string CreateMD5(string input)
         {
             // Use input string to calculate MD5 hash

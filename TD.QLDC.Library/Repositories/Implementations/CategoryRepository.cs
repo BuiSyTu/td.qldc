@@ -99,5 +99,25 @@ namespace TD.QLDC.Library.Repositories.Implementations
         {
             return _dbContext.Categories.FirstOrDefault(x => x.Tags.Contains(tags));
         }
+
+        public Category GetByTagsAndCreateIfNotExist(int nhomDanhMucId, string tags)
+        {
+            var query = _dbContext.Categories.Where(x => x.NhomID == nhomDanhMucId && x.Tags.Contains(tags));
+
+            if (query.Count() > 0)
+            {
+                return query.First();
+            }
+
+            Category newCategory = new()
+            {
+                NhomID = nhomDanhMucId,
+                Name = tags,
+                Tags = tags
+            };
+
+            var entity = Add(newCategory);
+            return entity;
+        }
     }
 }

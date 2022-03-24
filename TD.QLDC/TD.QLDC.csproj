@@ -144,6 +144,7 @@
     <None Include="ts\vendors\handsontable\numbro\LICENSE" />
     <None Include="ts\vendors\handsontable\numbro\LICENSE-Numeraljs" />
     <None Include="ts\vendors\handsontable\pikaday\LICENSE" />
+    <TypeScriptCompile Include="ts\src\apis\Areas.ts" />
     <TypeScriptCompile Include="ts\src\apis\NhomDanhMucs.ts" />
     <TypeScriptCompile Include="ts\src\apis\NhanKhaus.ts" />
     <TypeScriptCompile Include="ts\src\apis\HoKhaus.ts" />

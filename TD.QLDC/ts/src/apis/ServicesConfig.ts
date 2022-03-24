@@ -8,7 +8,8 @@ export class ServicesConfig {
     public categoryPath = 'QLDCapi/Categories';
     public hoKhauPath = 'QLDCapi/HoKhaus';
     public nhanKhauPath = 'QLDCapi/NhanKhaus';
-    public nhomDanhMucPath = 'QLDCapi/NhomDanhMucs';
+	public nhomDanhMucPath = 'QLDCapi/NhomDanhMucs';
+	public areaPath = 'QLDCapi/areas';
 
 
 	static get globalConfig(): ServicesConfig {

@@ -98,7 +98,10 @@ namespace TD.QLDC.Service
             response.Cookies.Add(new HttpCookie("token", token));
             response.Cookies.Add(new HttpCookie("expiredTime", payloadJWT.exp.ToString()));
 
-            return ApiOk(token);
+            return ApiOk(new {
+                token = token,
+                expiredTime = payloadJWT.exp.ToString()
+            });
         }
 
         public Stream Logout()

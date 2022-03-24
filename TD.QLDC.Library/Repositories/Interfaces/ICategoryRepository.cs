@@ -26,6 +26,8 @@ namespace TD.QLDC.Library.Repositories.Interfaces
 
         Category GetByNameAndCreateIfNotExist(int nhomDanhMucId, string name);
 
+        Category GetByTagsAndCreateIfNotExist(int nhomDanhMucId, string tags);
+
         Category GetSingleByTags(string tags);
     }
 }
