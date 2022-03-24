@@ -215,9 +215,11 @@
     <Compile Include="Repositories\Interfaces\INhanKhauRepository.cs" />
     <Compile Include="Repositories\Interfaces\INhomDanhMucRepository.cs" />
     <Compile Include="Services\Implementations\DashboardService.cs" />
+    <Compile Include="Services\Implementations\NhanKhauService.cs" />
     <Compile Include="Services\Implementations\UploadService.cs" />
     <Compile Include="Services\Implementations\UserService.cs" />
     <Compile Include="Services\Interfaces\IDashboardService.cs" />
+    <Compile Include="Services\Interfaces\INhanKhauService.cs" />
     <Compile Include="Services\Interfaces\IUploadService.cs" />
     <Compile Include="Services\Interfaces\IUserService.cs" />
     <Compile Include="ViewModels\Dashboard\Chart.cs" />

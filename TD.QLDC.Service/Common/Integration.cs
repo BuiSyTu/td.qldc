@@ -28,6 +28,7 @@ namespace TD.QLDC.Service.Common
             container.RegisterType<IDashboardService, DashboardService>();
             container.RegisterType<IUploadService, UploadService>();
             container.RegisterType<IUserService, UserService>();
+            container.RegisterType<INhanKhauService, NhanKhauService>();
 
             // Others
             container.RegisterFactory<ICoreServicesProvider>(c => new DefaultContextCoreServicesProvider());
