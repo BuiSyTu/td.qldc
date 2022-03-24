@@ -19,6 +19,8 @@ namespace TD.QLDC.Library.Repositories.Interfaces
 
         int Count(string search = null);
 
+        int CountLoaiHo();
+
         int CheckMa(string shk);
 
 

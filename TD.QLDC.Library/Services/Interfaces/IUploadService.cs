@@ -16,6 +16,14 @@ namespace TD.QLDC.Library.Services.Interfaces
             string maThon, string tenThon,
             string maXom, string tenXom);
 
+        int UploadBieuDemo(
+            byte[] buffer, int sheet, int rowStart, int rowEnd,
+            string maTinh, string tenTinh,
+            string maHuyen, string tenHuyen,
+            string maXa, string tenXa,
+            string maThon, string tenThon,
+            string maXom, string tenXom);
+
         int UploadNhanKhau(byte[] buffer, int sheet, int rowStart, int rowEnd);
     }
 }

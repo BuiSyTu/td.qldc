@@ -2,6 +2,8 @@
 {
     public class Area : ModelBaseExt
     {
+        public string Tags { get; set; }
+
         public string Type { get; set; }
 
         public string Description { get; set; }

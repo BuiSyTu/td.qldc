@@ -23,6 +23,46 @@ namespace TD.QLDC.Library.Repositories.Implementations
             _dbContext = dbContext;
         }
 
+        public override NhanKhau Add(NhanKhau model)
+        {
+            model.FullTextSearch = CommonService.GenerateFullTextSearch(new List<string>
+            {
+                model.DiaChiTamTru,
+                model.Email,
+                model?.HoKhau?.TenChuHo ?? string.Empty,
+                model?.HoKhau?.CCCDCHuHo ?? string.Empty,
+                model.HoTen,
+                model.SoDienThoai,
+                model.SoBHYT,
+                model.SoCCCD,
+                model.SoDienThoai,
+                model.SoHC,
+                model.TenGoiKhac,
+            });
+
+            return base.Add(model);
+        }
+
+        public override void Update(NhanKhau model)
+        {
+            model.FullTextSearch = CommonService.GenerateFullTextSearch(new List<string>
+            {
+                model.DiaChiTamTru,
+                model.Email,
+                model?.HoKhau?.TenChuHo ?? string.Empty,
+                model?.HoKhau?.CCCDCHuHo ?? string.Empty,
+                model.HoTen,
+                model.SoDienThoai,
+                model.SoBHYT,
+                model.SoCCCD,
+                model.SoDienThoai,
+                model.SoHC,
+                model.TenGoiKhac,
+            });
+
+            base.Update(model);
+        }
+
         public int Count(
             string search = null,
             string shk = null,
@@ -63,10 +103,11 @@ namespace TD.QLDC.Library.Repositories.Implementations
         {
             return _dbContext.NhanKhaus
                 .FilterCurrentAreaCode()
-                .GroupBy(x => x.HoKhau.TenXom)
+                .GroupBy(x => new { x.HoKhau.TenXom, x.HoKhau.MaXom })
+                .OrderBy(x => x.Key.MaXom)
                 .Select(g => new ChartItem
                 {
-                    Text = g.Key,
+                    Text = g.Key.TenXom,
                     Value = g.Count().ToString()
                 })
                 .ToList();
@@ -345,53 +386,6 @@ namespace TD.QLDC.Library.Repositories.Implementations
                 .IncludeMany(includes)
                 .Where(x => x.SoCCCD == cccd)
                 .FirstOrDefault();
-        }
-    }
-
-    public static class QueryableNhanKhauExtension
-    {
-        public static IQueryable<NhanKhau> FilterSearchValue(this IQueryable<NhanKhau> query, string searchValue = null)
-        {
-            if (string.IsNullOrEmpty(searchValue)) return query;
-
-            var newQuery = query.Where(x =>
-                    x.HoTen.Contains(searchValue)
-                    || x.SoCCCD.Contains(searchValue)
-                    || x.NgheNghiep.Contains(searchValue)
-                    || x.SoBHYT.Contains(searchValue));
-
-            return newQuery;
-        }
-
-        public static IQueryable<NhanKhau> FilterHoKhauId(this IQueryable<NhanKhau> query, int? hoKhauId = null)
-        {
-            if (hoKhauId is null) return query;
-
-            var newQuery = query.Where(x => x.HoKhauID == hoKhauId);
-            return newQuery;
-        }
-
-        public static IQueryable<NhanKhau> FilterSoHoKhau(this IQueryable<NhanKhau> query, string soHoKhau = null)
-        {
-            if (string.IsNullOrEmpty(soHoKhau)) return query;
-
-            var newQuery = query.Where(x => x.HoKhau.SoHoKhau == soHoKhau);
-
-            return newQuery;
-        }
-
-        public static IQueryable<NhanKhau> FilterCurrentAreaCode(this IQueryable<NhanKhau> query)
-        {
-            var areaCode = CommonService.GetCurrentAreaCode();
-            if (string.IsNullOrEmpty(areaCode)) return query;
-
-            var newQuery = query.Where(x =>
-                x.HoKhau.MaTinhThanh == areaCode
-                || x.HoKhau.MaQuanHuyen == areaCode
-                || x.HoKhau.MaXaPhuong == areaCode
-                || x.HoKhau.MaThon == areaCode
-                || x.HoKhau.MaXom == areaCode);
-            return newQuery;
         }
     }
 }

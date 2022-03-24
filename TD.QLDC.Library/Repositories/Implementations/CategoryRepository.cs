@@ -2,6 +2,7 @@
 using System.Data.Entity;
 using System.Linq;
 using TD.Core.Api.Mvc;
+using TD.QLDC.Library.Common;
 using TD.QLDC.Library.Models;
 using TD.QLDC.Library.Repositories.Interfaces;
 
@@ -17,6 +18,28 @@ namespace TD.QLDC.Library.Repositories.Implementations
         ) : base(dbContext, contextAccessor)
         {
             _dbContext = dbContext;
+        }
+
+        public override Category Add(Category model)
+        {
+            model.FullTextSearch = CommonService.GenerateFullTextSearch(new List<string>
+            {
+                model.Name,
+                model?.Nhom?.Name ?? string.Empty,
+                model.Tags
+            });
+            return base.Add(model);
+        }
+
+        public override void Update(Category model)
+        {
+            model.FullTextSearch = CommonService.GenerateFullTextSearch(new List<string>
+            {
+                model.Name,
+                model?.Nhom?.Name ?? string.Empty,
+            });
+
+            base.Update(model);
         }
 
         public int Count(
@@ -71,34 +94,30 @@ namespace TD.QLDC.Library.Repositories.Implementations
             var entity = Add(newCategory);
             return entity;
         }
-    }
 
-    public static class QueryableCategoryExtension
-    {
-        public static IQueryable<Category> FilterSearchValue(this IQueryable<Category> query, string searchValue = null)
+        public Category GetSingleByTags(string tags)
         {
-            if (string.IsNullOrEmpty(searchValue)) return query;
-
-            var newQuery = query.Where(x =>
-                x.Name.Contains(searchValue)
-                || x.Nhom.Name.Contains(searchValue));
-            return newQuery;
+            return _dbContext.Categories.FirstOrDefault(x => x.Tags.Contains(tags));
         }
 
-        public static IQueryable<Category> FilterNhomId(this IQueryable<Category> query, int? nhomId = null)
+        public Category GetByTagsAndCreateIfNotExist(int nhomDanhMucId, string tags)
         {
-            if (nhomId is null) return query;
+            var query = _dbContext.Categories.Where(x => x.NhomID == nhomDanhMucId && x.Tags.Contains(tags));
 
-            var newQuery = query.Where(x => x.NhomID == nhomId);
-            return newQuery;
-        }
+            if (query.Count() > 0)
+            {
+                return query.First();
+            }
 
-        public static IQueryable<Category> FilterActive(this IQueryable<Category> query, bool? active)
-        {
-            if (active is null) return query;
+            Category newCategory = new()
+            {
+                NhomID = nhomDanhMucId,
+                Name = tags,
+                Tags = tags
+            };
 
-            var newQuery = query.Where(x => x.Active == active);
-            return newQuery;
+            var entity = Add(newCategory);
+            return entity;
         }
     }
 }
