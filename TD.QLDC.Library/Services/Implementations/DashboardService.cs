@@ -155,28 +155,32 @@ namespace TD.QLDC.Library.Services.Implementations
                         Text = "Hộ gia đình",
                         Value = _hoKhauRepository.Count(),
                         BackgroundColor = WidgetColor.Info,
-                        IconClass = "flaticon-imac"
+                        IconClass = "flaticon-imac",
+                        Link = "/sites/qldc/SitePages/hokhau/default.aspx"
                     },
                     new WidgetItem
                     {
                         Text = "Nhân khẩu",
                         Value = _nhanKhauRepository.Count(),
                         BackgroundColor = WidgetColor.Success,
-                        IconClass = "flaticon-warning-2"
+                        IconClass = "flaticon-warning-2",
+                        Link = "/sites/qldc/SitePages/hokhau/default.aspx"
                     },
                     new WidgetItem
                     {
                         Text = "Đối tượng chính sách",
                         Value = _nhanKhauRepository.CountDoiTuong(),
                         BackgroundColor = WidgetColor.Warning,
-                        IconClass = "flaticon-twitter-logo"
+                        IconClass = "flaticon-twitter-logo",
+                        Link = "/sites/qldc/SitePages/nhom-danh-muc/doi-tuong.aspx"
                     },
                     new WidgetItem
                     {
                         Text = "Loại hộ gia đình",
                         Value = _hoKhauRepository.CountLoaiHo(),
                         BackgroundColor = WidgetColor.Danger,
-                        IconClass = "flaticon-gift"
+                        IconClass = "flaticon-gift",
+                        Link = "/sites/qldc/SitePages/nhom-danh-muc/loai-ho.aspx"
                     }
                 }
             };
