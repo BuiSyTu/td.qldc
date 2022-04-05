@@ -151,6 +151,7 @@
     <Compile Include="Extensions\Queryable\QueryableHoKhauExtension.cs" />
     <Compile Include="Extensions\Queryable\QueryableNhanKhauExtension.cs" />
     <Compile Include="Extensions\StringExtension.cs" />
+    <Compile Include="FilterModels\AreaFilterModel.cs" />
     <Compile Include="FilterModels\BaseFilterModel.cs" />
     <Compile Include="FilterModels\CategoryFilterModel.cs" />
     <Compile Include="FilterModels\HoKhauFilterModel.cs" />

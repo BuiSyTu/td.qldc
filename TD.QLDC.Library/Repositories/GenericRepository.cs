@@ -203,33 +203,5 @@ namespace TD.QLDC.Library.Repositories
 
             return queryable;
         }
-
-        public static IQueryable<T> CreateSearchQuery<T>(this IQueryable<T> query, string search) where T : Entity<int>, new()
-        {
-            var FreetextFields = EfSpecificationEvaluator<T>.GetFreeTextFields();
-            if (!string.IsNullOrEmpty(search))
-            {
-                if (FreetextFields == null)
-                {
-                    throw new NotSupportedException("This modal type does not support text search");
-                }
-
-                var fieldList = string.Join(",", FreetextFields);
-                if (fieldList.Length == 0)
-                {
-                    throw new NotSupportedException("This modal type does not support text search");
-                }
-                query = query.FullTextSearch(fieldList, search, EfSpecificationEvaluator<T>.GetSearchAlgorithm());
-                return query;
-            }
-            return query;
-        }
-
-        public static IQueryable<T> Search<T>(this IQueryable<T> query, string search) where T : Entity<int>, new()
-        {
-            var ids = CreateSearchQuery(query, search).Select(x => x.ID).ToList();
-            query = query.Where(x => ids.Contains(x.ID));
-            return query;
-        }
     }
 }
