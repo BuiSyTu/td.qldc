@@ -5,6 +5,7 @@ using System.Linq;
 using System.Linq.Expressions;
 using TD.Core.Api.Mvc;
 using TD.QLDC.Library.Common;
+using TD.QLDC.Library.FilterModels;
 using TD.QLDC.Library.Models;
 using TD.QLDC.Library.Repositories.Interfaces;
 using TD.QLDC.Library.ViewModels.Dashboard;
@@ -63,39 +64,27 @@ namespace TD.QLDC.Library.Repositories.Implementations
             base.Update(model);
         }
 
-        public int Count(
-            string search = null,
-            string shk = null,
-            int? hoKhauId = null
-        )
+        public int Count(NhanKhauFilterModel filterModel)
         {
             return _dbContext.NhanKhaus
-                .FilterSoHoKhau(shk)
-                .FilterHoKhauId(hoKhauId)
+                .FilterSoHoKhau(filterModel.SoHoKhau)
+                .FilterHoKhauId(filterModel.HoKhauID)
                 .FilterCurrentAreaCode()
-                .FilterSearchValue(search)
+                .FilterSearchValue(filterModel.Q)
                 .Count();
         }
 
-        public ICollection<NhanKhau> Get(
-            int skip = 0,
-            int take = 100,
-            string search = null,
-            string orderBy = null,
-            string includes = null,
-            string shk = null,
-            int? hoKhauId = null
-        )
+        public ICollection<NhanKhau> Get(NhanKhauFilterModel filterModel)
         {
             return _dbContext.NhanKhaus
-                .IncludeMany(includes)
-                .FilterHoKhauId(hoKhauId)
-                .FilterSoHoKhau(shk)
+                .IncludeMany(filterModel.Includes)
+                .FilterHoKhauId(filterModel.HoKhauID)
+                .FilterSoHoKhau(filterModel.SoHoKhau)
                 .FilterCurrentAreaCode()
-                .FilterSearchValue(search)
-                .OrderByMany(orderBy)
-                .Skip(skip)
-                .Take(take)
+                .FilterSearchValue(filterModel.Q)
+                .OrderByMany(filterModel.OrderBy)
+                .Skip(filterModel.Skip)
+                .Take(filterModel.Top)
                 .ToList();
         }
 

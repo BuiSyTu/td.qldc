@@ -4,6 +4,7 @@ using System.Data.Entity;
 using System.Linq;
 using TD.Core.Api.Mvc;
 using TD.QLDC.Library.Common;
+using TD.QLDC.Library.FilterModels;
 using TD.QLDC.Library.Models;
 using TD.QLDC.Library.Repositories.Interfaces;
 using TD.QLDC.Library.ViewModels.Dashboard;
@@ -89,38 +90,23 @@ namespace TD.QLDC.Library.Repositories.Implementations
             }
         }
 
-        public int Count(
-           string search = null
-        )
+        public int Count(HoKhauFilterModel filterModel)
         {
             return _dbContext.HoKhaus
                 .FilterCurrentAreaCode()
-                .FilterSearchValue(search)
+                .FilterSearchValue(filterModel.Q)
                 .Count();
         }
 
-        public int CheckMa(string shk)
-        {
-            if (string.IsNullOrEmpty(shk)) return 0;
-
-            var data = _dbContext.HoKhaus.FirstOrDefault(HoKhau => HoKhau.SoHoKhau == shk);
-            return data == null ? 0 : 1;
-        }
-
-        public ICollection<HoKhau> Get(
-            int skip = 0,
-            int take = 100,
-            string search = null,
-            string orderBy = null,
-            string includes = null)
+        public ICollection<HoKhau> Get(HoKhauFilterModel filterModel)
         {
             return _dbContext.HoKhaus
-                .IncludeMany(includes)
+                .IncludeMany(filterModel.Includes)
                 .FilterCurrentAreaCode()
-                .FilterSearchValue(search)
-                .OrderByMany(orderBy)
-                .Skip(skip)
-                .Take(take)
+                .FilterSearchValue(filterModel.Q)
+                .OrderByMany(filterModel.OrderBy)
+                .Skip(filterModel.Skip)
+                .Take(filterModel.Top)
                 .ToList();
         }
 

@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using TD.QLDC.Library.FilterModels;
 using TD.QLDC.Library.Models;
 using TD.QLDC.Library.ViewModels.Dashboard;
 
@@ -6,21 +7,9 @@ namespace TD.QLDC.Library.Repositories.Interfaces
 {
     public interface INhanKhauRepository : IGenericRepository<NhanKhau>
     {
-        ICollection<NhanKhau> Get(
-            int skip = 0,
-            int take = 100,
-            string search = null,
-            string orderBy = null,
-            string includes = null,
-            string shk = null,
-            int? hoKhauId = null
-        );
+        ICollection<NhanKhau> Get(NhanKhauFilterModel filterModel);
 
-        int Count(
-           string search = null,
-           string shk = null,
-           int? hoKhauId = null
-       );
+        int Count(NhanKhauFilterModel filterModel);
 
         ICollection<ChartItem> GroupByXom();
 

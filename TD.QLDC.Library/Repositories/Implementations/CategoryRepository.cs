@@ -3,6 +3,7 @@ using System.Data.Entity;
 using System.Linq;
 using TD.Core.Api.Mvc;
 using TD.QLDC.Library.Common;
+using TD.QLDC.Library.FilterModels;
 using TD.QLDC.Library.Models;
 using TD.QLDC.Library.Repositories.Interfaces;
 
@@ -10,7 +11,7 @@ namespace TD.QLDC.Library.Repositories.Implementations
 {
     public class CategoryRepository : GenericRepository<Category>, ICategoryRepository
     {
-        private QLDCDbContext _dbContext;
+        private readonly QLDCDbContext _dbContext;
         
         public CategoryRepository(
             QLDCDbContext dbContext,
@@ -42,37 +43,25 @@ namespace TD.QLDC.Library.Repositories.Implementations
             base.Update(model);
         }
 
-        public int Count(
-           string search = null,
-           int? nhomId = null,
-           bool? active = null
-        )
+        public int Count(CategoryFilterModel filterModel)
         {
             return _dbContext.Categories
-                .FilterNhomId(nhomId)
-                .FilterSearchValue(search)
-                .FilterActive(active)
+                .FilterNhomId(filterModel.NhomID)
+                .FilterSearchValue(filterModel.Q)
+                .FilterActive(filterModel.Active)
                 .Count();
         }
 
-        public ICollection<Category> Get(
-            int skip = 0,
-            int take = 100,
-            string search = null,
-            string orderBy = null,
-            string includes = null,
-            int? nhomId = null,
-            bool? active = null
-        )
+        public ICollection<Category> Get(CategoryFilterModel filterModel)
         {
             return _dbContext.Categories
-                .IncludeMany(includes)
-                .FilterNhomId(nhomId)
-                .FilterSearchValue(search)
-                .FilterActive(active)
-                .OrderByMany(orderBy)
-                .Skip(skip)
-                .Take(take)
+                .IncludeMany(filterModel.Includes)
+                .FilterNhomId(filterModel.NhomID)
+                .FilterSearchValue(filterModel.Q)
+                .FilterActive(filterModel.Active)
+                .OrderByMany(filterModel.OrderBy)
+                .Skip(filterModel.Skip)
+                .Take(filterModel.Top)
                 .ToList();
         }
 

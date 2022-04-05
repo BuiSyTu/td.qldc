@@ -151,6 +151,11 @@
     <Compile Include="Extensions\Queryable\QueryableHoKhauExtension.cs" />
     <Compile Include="Extensions\Queryable\QueryableNhanKhauExtension.cs" />
     <Compile Include="Extensions\StringExtension.cs" />
+    <Compile Include="FilterModels\BaseFilterModel.cs" />
+    <Compile Include="FilterModels\CategoryFilterModel.cs" />
+    <Compile Include="FilterModels\HoKhauFilterModel.cs" />
+    <Compile Include="FilterModels\NhanKhauFilterModel.cs" />
+    <Compile Include="FilterModels\NhomDanhMucFilterModel.cs" />
     <Compile Include="Migrations\202112100209485_update1.cs" />
     <Compile Include="Migrations\202112100209485_update1.Designer.cs">
       <DependentUpon>202112100209485_update1.cs</DependentUpon>

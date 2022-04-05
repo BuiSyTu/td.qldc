@@ -1,5 +1,6 @@
 ﻿using System.Web.Http;
 using TD.Core.Api.Mvc;
+using TD.QLDC.Library.FilterModels;
 using TD.QLDC.Library.Models;
 using TD.QLDC.Library.Repositories.Interfaces;
 
@@ -13,37 +14,22 @@ namespace TD.QLDC.API.Controllers
             _repository = repository;
 
         }
-  
-        [Route("QLDCapi/HoKhaus/CheckMa/{shk}")]
-        [HttpGet]
-        public IHttpActionResult CheckMa(string shk)
-        {
-            var data = _repository.CheckMa(shk);
-            return ApiOk(data);
-        }
 
         [Route("QLDCapi/HoKhaus")]
         [HttpGet]
-        public IHttpActionResult GetHoKhaus(
-            int skip = 0,
-            int top = 100,
-            string q = null,
-            string orderBy = null,
-            string includes = null,
-            bool count = false
-        )
+        public IHttpActionResult GetHoKhaus([FromUri] HoKhauFilterModel filterModel)
         {
-            var data = _repository.Get(skip, top, q, orderBy, includes);
+            var data = _repository.Get(filterModel);
 
             return ApiOk(data,
                         null,
                         (result) =>
                         {
-                            if (count)
+                            if (filterModel.Count)
                             {
-                                result.ExtensionData["count"] = skip == 0 && top == 0
+                                result.ExtensionData["count"] = filterModel.Skip == 0 && filterModel.Top == 0
                                     ? data.Count
-                                    : _repository.Count(q);
+                                    : _repository.Count(filterModel);
                             }
                         });
         }

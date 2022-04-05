@@ -4,6 +4,7 @@ using System.Linq;
 using System.Linq.Expressions;
 using TD.Core.Api.Mvc;
 using TD.QLDC.Library.Common;
+using TD.QLDC.Library.FilterModels;
 using TD.QLDC.Library.Models;
 using TD.QLDC.Library.Repositories.Interfaces;
 
@@ -41,34 +42,27 @@ namespace TD.QLDC.Library.Repositories.Implementations
             base.Update(model);
         }
 
-        public int Count(
-           string search = null
-        )
+        public int Count(NhomDanhMucFilterModel filterModel)
         {
             return _dbContext.NhomDanhMucs
                 .Filter(
-                    !string.IsNullOrEmpty(search),
-                    x => x.Name.Contains(search)
+                    !string.IsNullOrEmpty(filterModel.Q),
+                    x => x.Name.Contains(filterModel.Q)
                 )
                 .Count();
         }
 
-        public ICollection<NhomDanhMuc> Get(
-            int skip = 0, int take = 100,
-            string search = null,
-            string orderBy = null,
-            string includes = null
-            )
+        public ICollection<NhomDanhMuc> Get(NhomDanhMucFilterModel filterModel)
         {
             return _dbContext.NhomDanhMucs
-                .IncludeMany(includes)
+                .IncludeMany(filterModel.Includes)
                 .Filter(
-                    !string.IsNullOrEmpty(search),
-                    x => x.Name.Contains(search)
+                    !string.IsNullOrEmpty(filterModel.Q),
+                    x => x.Name.Contains(filterModel.Q)
                 )
-                .OrderByMany(orderBy)
-                .Skip(skip)
-                .Take(take)
+                .OrderByMany(filterModel.OrderBy)
+                .Skip(filterModel.Skip)
+                .Take(filterModel.Top)
                 .ToList();
         }
     }
