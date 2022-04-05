@@ -185,5 +185,6 @@ namespace TD.QLDC.Service.Common
     {
         public string userName { get; set; }
         public string displayName { get; set; }
+        public string cccd { get; set; }
     }
 }

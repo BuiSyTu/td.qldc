@@ -6,6 +6,7 @@ using System.ServiceModel.Web;
 using System.Web;
 using TD.QLDC.Library.Models;
 using TD.QLDC.Library.Repositories.Interfaces;
+using TD.QLDC.Library.Services.Interfaces;
 using TD.QLDC.Service.Common;
 using TD.QLDC.Service.ViewModels;
 using Unity;
@@ -21,6 +22,8 @@ namespace TD.QLDC.Service
         private readonly IAccountRepository _accountRepository;
         private readonly IAreaRepository _areaRepository;
 
+        private readonly INhanKhauService _nhanKhauService;
+
         public WCFService()
         {
             _unityContainer = new UnityContainer().EnableDiagnostic();
@@ -31,6 +34,8 @@ namespace TD.QLDC.Service
             _hoKhauRepository = _unityContainer.Resolve<IHoKhauRepository>();
             _accountRepository  = _unityContainer.Resolve<IAccountRepository>();
             _areaRepository = _unityContainer.Resolve<IAreaRepository>();
+
+            _nhanKhauService = _unityContainer.Resolve<INhanKhauService>();
         }
 
         public Stream CheckValidNhanKhau(CheckValidNhanKhauInput input)
@@ -77,7 +82,7 @@ namespace TD.QLDC.Service
             }
             if (!login) return Forbidden();
 
-            var nhanKhau = _nhanKhauRepository.GetByCccd(cccd, includes);
+            var nhanKhau = _nhanKhauService.GetByCccd(cccd, includes);
             return ApiOk(nhanKhau);
         }
 
@@ -98,8 +103,9 @@ namespace TD.QLDC.Service
             response.Cookies.Add(new HttpCookie("token", token));
             response.Cookies.Add(new HttpCookie("expiredTime", payloadJWT.exp.ToString()));
 
-            return ApiOk(new {
-                token = token,
+            return ApiOk(new
+            {
+                token,
                 expiredTime = payloadJWT.exp.ToString()
             });
         }
