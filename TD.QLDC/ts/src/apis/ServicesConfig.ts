@@ -1,6 +1,4 @@
-﻿import { urlCombine, normalizePath } from '@tdcore/http';
-
-// tslint:disable-next-line:variable-name
+﻿// tslint:disable-next-line:variable-name
 let _globalConf: ServicesConfig;
 
 export class ServicesConfig {
@@ -8,8 +6,8 @@ export class ServicesConfig {
     public categoryPath = 'QLDCapi/Categories';
     public hoKhauPath = 'QLDCapi/HoKhaus';
     public nhanKhauPath = 'QLDCapi/NhanKhaus';
-	public nhomDanhMucPath = 'QLDCapi/NhomDanhMucs';
-	public areaPath = 'QLDCapi/areas';
+		public nhomDanhMucPath = 'QLDCapi/NhomDanhMucs';
+		public areaPath = 'QLDCapi/areas';
 
 
 	static get globalConfig(): ServicesConfig {

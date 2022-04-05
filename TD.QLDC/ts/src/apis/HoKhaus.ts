@@ -1,7 +1,7 @@
-﻿import { DataService } from './DataService';
+﻿import { DataQuery } from '@tdcore/api-client';
+import { DataService } from './DataService';
 import { ServicesConfig } from './ServicesConfig';
-import { urlCombine, HttpResponse } from '@tdcore/http';
-import { DataQuery } from '@tdcore/api-client';
+import { urlCombine } from '@tdcore/http';
 
 const gconf = ServicesConfig.globalConfig;
 export class HoKhaus extends DataService {
@@ -12,14 +12,9 @@ export class HoKhaus extends DataService {
 
 		super(gconf.hoKhauPath, opts);
     }
-    CheckMa() {
-        return new DataQuery(
-            this.http,
-            this.processUrl(urlCombine(this.actionUrl, "CheckMa")));
-    }
-    GetSHKByID() {
-        return new DataQuery(
-            this.http,
-            this.processUrl(urlCombine(this.actionUrl, "GetSHKByID")));
-    }
+    //checkCode() {
+    //    return new DataQuery(
+    //        this.http,
+    //        this.processUrl(urlCombine(this.actionUrl, "checkCode")));
+    //}
 }

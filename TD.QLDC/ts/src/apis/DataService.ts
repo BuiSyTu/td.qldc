@@ -1,12 +1,16 @@
-﻿import { DataServiceBase, DataQuery } from '@tdcore/api-client';
-import { urlCombine, HttpResponse } from '@tdcore/http';
+﻿import { DataQuery, DataServiceBase } from '@tdcore/api-client';
+import { HttpResponse, urlCombine } from '@tdcore/http';
 
 export class DataService extends DataServiceBase {
 	constructor(url: any, opts?: any) {
 		super(url, typeof opts === 'string' ? { serverUrl: opts } : opts);
 	}
 
-	// post:bcttapi/data/list
+	/**
+	 * add list item
+	 * @param items list to add
+	 * @returns 
+	 */
 	addRange(items: any): Promise<HttpResponse> {
 		return this.http.post(urlCombine(this.actionUrl, 'list'), JSON.stringify(items));
 	}
@@ -18,6 +22,4 @@ export class DataService extends DataServiceBase {
 		const url = this.processUrl(urlCombine(this.actionUrl, 'active', active ? 'true' : 'false'));
 		return new DataQuery(this.http, url);
 	}
-
-	// TODO: Implement Areas Api Extend
 }

@@ -1,9 +1,9 @@
 /*! ****************************************************************************
 * @td/QLDC - Hệ thông quản lý thông tin dân cư
 *
-* v0.0.0-alpha.0 - 2020-03-27
+* v0.0.0-alpha.0 - 2022-04-04
 *
-* Copyright (c) 2020 Tandan JSC
+* Copyright (c) 2022 Tandan JSC
 * tandan.com.vn
 * License: UNLICENSED
 * Author: Team 3 SharePoint
@@ -49,6 +49,7 @@
             this.hoKhauPath = 'QLDCapi/HoKhaus';
             this.nhanKhauPath = 'QLDCapi/NhanKhaus';
             this.nhomDanhMucPath = 'QLDCapi/NhomDanhMucs';
+            this.areaPath = 'QLDCapi/areas';
         }
         Object.defineProperty(ServicesConfig, "globalConfig", {
             get: function get() {
@@ -60,13 +61,27 @@
             set: function set(val) {
                 _globalConf = val;
             },
-            enumerable: true,
+            enumerable: false,
             configurable: true
         });
         return ServicesConfig;
     }();
 
     var gconf = ServicesConfig.globalConfig;
+    var Areas = /** @class */function (_super) {
+        __extends(Areas, _super);
+        function Areas(opts) {
+            var _this = this;
+            if (typeof opts === 'string') {
+                opts = { serverUrl: opts };
+            }
+            _this = _super.call(this, gconf.areaPath, opts) || this;
+            return _this;
+        }
+        return Areas;
+    }(DataService);
+
+    var gconf$1 = ServicesConfig.globalConfig;
     var Categories = /** @class */function (_super) {
         __extends(Categories, _super);
         function Categories(opts) {
@@ -74,13 +89,13 @@
             if (typeof opts === 'string') {
                 opts = { serverUrl: opts };
             }
-            _this = _super.call(this, gconf.categoryPath, opts) || this;
+            _this = _super.call(this, gconf$1.categoryPath, opts) || this;
             return _this;
         }
         return Categories;
     }(DataService);
 
-    var gconf$1 = ServicesConfig.globalConfig;
+    var gconf$2 = ServicesConfig.globalConfig;
     var HoKhaus = /** @class */function (_super) {
         __extends(HoKhaus, _super);
         function HoKhaus(opts) {
@@ -88,19 +103,13 @@
             if (typeof opts === 'string') {
                 opts = { serverUrl: opts };
             }
-            _this = _super.call(this, gconf$1.hoKhauPath, opts) || this;
+            _this = _super.call(this, gconf$2.hoKhauPath, opts) || this;
             return _this;
         }
-        HoKhaus.prototype.CheckMa = function () {
-            return new apiClient.DataQuery(this.http, this.processUrl(http.urlCombine(this.actionUrl, "CheckMa")));
-        };
-        HoKhaus.prototype.GetSHKByID = function () {
-            return new apiClient.DataQuery(this.http, this.processUrl(http.urlCombine(this.actionUrl, "GetSHKByID")));
-        };
         return HoKhaus;
     }(DataService);
 
-    var gconf$2 = ServicesConfig.globalConfig;
+    var gconf$3 = ServicesConfig.globalConfig;
     var NhanKhaus = /** @class */function (_super) {
         __extends(NhanKhaus, _super);
         function NhanKhaus(opts) {
@@ -108,7 +117,7 @@
             if (typeof opts === 'string') {
                 opts = { serverUrl: opts };
             }
-            _this = _super.call(this, gconf$2.nhanKhauPath, opts) || this;
+            _this = _super.call(this, gconf$3.nhanKhauPath, opts) || this;
             return _this;
         }
         NhanKhaus.prototype.UpdateTheoSHK = function () {
@@ -117,7 +126,7 @@
         return NhanKhaus;
     }(DataService);
 
-    var gconf$3 = ServicesConfig.globalConfig;
+    var gconf$4 = ServicesConfig.globalConfig;
     var NhomDanhMucs = /** @class */function (_super) {
         __extends(NhomDanhMucs, _super);
         function NhomDanhMucs(opts) {
@@ -125,16 +134,23 @@
             if (typeof opts === 'string') {
                 opts = { serverUrl: opts };
             }
-            _this = _super.call(this, gconf$3.nhomDanhMucPath, opts) || this;
+            _this = _super.call(this, gconf$4.nhomDanhMucPath, opts) || this;
             return _this;
         }
         return NhomDanhMucs;
     }(DataService);
 
-    exports.Categories = Categories;
-    exports.HoKhaus = HoKhaus;
-    exports.NhanKhaus = NhanKhaus;
-    exports.NhomDanhMucs = NhomDanhMucs;
+
+
+    var index = /*#__PURE__*/Object.freeze({
+        Areas: Areas,
+        Categories: Categories,
+        HoKhaus: HoKhaus,
+        NhanKhaus: NhanKhaus,
+        NhomDanhMucs: NhomDanhMucs
+    });
+
+    exports.apis = index;
 
     Object.defineProperty(exports, '__esModule', { value: true });
 

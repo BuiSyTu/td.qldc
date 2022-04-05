@@ -4,23 +4,23 @@
 		concat:{
 			css: {
 				src: [
-					'vendors/handsontable/handsontable.full.min.css',
-					// 'node_modules/chosen-js/chosen.min.css',
-					'node_modules/codemirror/lib/codemirror.css',
+					//'vendors/handsontable/handsontable.full.min.css',
+					//'node_modules/chosen-js/chosen.min.css',
+					//'node_modules/codemirror/lib/codemirror.css',
 				],
 				dest: '../Layouts/TD.QLDC/assets/css/vendors.css'
 			},
 			js: {
 				src: [
 					// 'node_modules/chosen-js/chosen.jquery.min.js',
-					'vendors/handsontable/numbro/numbro.js',
-					'vendors/handsontable/hot-formula-parser/formula-parser.js',
-					'vendors/handsontable/handsontable.js',
-					'vendors/amcharts3/amcharts/amcharts.js',
-					'vendors/amcharts3/amcharts/serial.js',
-					'vendors/amcharts3/amcharts/pie.js',
-					'vendors/amcharts3/amcharts/plugins/animate/animate.min.js',
-					'vendors/amcharts3/amcharts/themes/light.js',
+					//'vendors/handsontable/numbro/numbro.js',
+					//'vendors/handsontable/hot-formula-parser/formula-parser.js',
+					//'vendors/handsontable/handsontable.js',
+					//'vendors/amcharts3/amcharts/amcharts.js',
+					//'vendors/amcharts3/amcharts/serial.js',
+					//'vendors/amcharts3/amcharts/pie.js',
+					//'vendors/amcharts3/amcharts/plugins/animate/animate.min.js',
+					//'vendors/amcharts3/amcharts/themes/light.js',
 					// 'vendors/handsontable-chosen-editor/handsontable-chosen-editor.js',
 					//'node_modules/codemirror/lib/codemirror.js',
 					//'node_modules/codemirror/addon/edit/matchbrackets.js',

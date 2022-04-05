@@ -1,7 +1,7 @@
-﻿import { DataService } from './DataService';
+﻿import { DataQuery } from '@tdcore/api-client';
+import { DataService } from './DataService';
 import { ServicesConfig } from './ServicesConfig';
-import { urlCombine, HttpResponse } from '@tdcore/http';
-import { DataQuery } from '@tdcore/api-client';
+import { urlCombine } from '@tdcore/http';
 
 const gconf = ServicesConfig.globalConfig;
 export class NhanKhaus extends DataService {

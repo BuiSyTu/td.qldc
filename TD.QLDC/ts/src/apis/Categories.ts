@@ -1,6 +1,5 @@
 ﻿import { DataService } from './DataService';
 import { ServicesConfig } from './ServicesConfig';
-import { urlCombine, HttpResponse } from '@tdcore/http';
 
 const gconf = ServicesConfig.globalConfig;
 export class Categories extends DataService {

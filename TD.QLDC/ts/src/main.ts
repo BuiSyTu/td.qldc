@@ -1,7 +1,6 @@
-﻿export { Categories } from './apis/Categories';
-export { HoKhaus } from './apis/HoKhaus';
-export { NhanKhaus } from './apis/NhanKhaus';
-export { NhomDanhMucs } from './apis/NhomDanhMucs';
+﻿import * as apis from './apis'
 
-//export * from './apis/DashboardApi';
+export {
+  apis
+}
 

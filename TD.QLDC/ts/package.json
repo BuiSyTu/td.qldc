@@ -60,19 +60,7 @@
   },
   "dependencies": {
     "@tdcore/api-client": "git+http://113.160.53.62:8080/tfs/TDCollection/_git/tdcore.api-client#master",
-    "@tdcore/forms": "git+http://113.160.53.62:8080/tfs/TDCollection/_git/tdcore.forms",
-    "@tdcore/forms-sp": "git+http://113.160.53.62:8080/tfs/TDCollection/_git/tdcore.forms-sp",
     "@tdcore/http": "git+http://113.160.53.62:8080/tfs/TDCollection/_git/tdcore-http-js#master",
-    "@tdcore/modals": "git+http://113.160.53.62:8080/tfs/TDCollection/_git/tdcore.modals",
-    "@tdcore/permissions": "git+http://113.160.53.62:8080/tfs/TDCollection/_git/tdcore-permissions",
-    "@tdcore/views": "git+http://113.160.53.62:8080/tfs/TDCollection/_git/tdcore.views",
-    "amcharts3": "^3.21.14",
-    "codemirror": "^5.45.0",
-    "file-saver": "^2.0.1",
-    "handsontable": "^6.1.1",
-    "sortablejs": "^1.8.0-rc1",
-    "split.js": "^1.5.10",
-    "toastr": "^2.1.4",
     "urijs": "^1.19.1"
   }
 }
