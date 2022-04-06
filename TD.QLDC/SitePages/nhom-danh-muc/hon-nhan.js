@@ -12,7 +12,7 @@
 			})
             .useDataLoader(
                 new views.TDApiDataLoader(
-                    new td.qldc.Categories().items.query({
+                    new td.qldc.apis.Categories().items.query({
                      
                       nhomid: 7
                     })
@@ -36,9 +36,7 @@
                 orderable: false,
                 className: "text-center",
                 render: function (data, type, row) {
-                    var checked = null;
-                    if (data)
-                        checked = "checked";
+                    var checked = data ? 'checked' : null;
                     return '<label class="m-checkbox m-checkbox--single  m-checkbox--success m-checkbox--disabled">' +
                         '<input type="checkbox" name="checkbox" ' + checked + ' value="true" disabled>' +
                         '<span></span>' +
@@ -99,7 +97,7 @@
                 var dm = data;
                 dm.Active = data.Active[0]||false;
                 delete dm.ID;
-                var dmService = new td.qldc.Categories();
+                var dmService = new td.qldc.apis.Categories();
                 dmService.add(dm).then(function () {
                     toastr.success("Thá»±c hiá»‡n thÃ nh cÃ´ng");
                     var table = $('.td-datatable').DataTable();
@@ -122,7 +120,7 @@ hn.Edit = function (id,name,url) {
                 // TODO: some thing with dialog result
                 var dm = data;
                 dm.Active = data.Active[0]||false;
-                var dmService = new td.qldc.Categories();
+                var dmService = new td.qldc.apis.Categories();
                 dmService.update(dm.ID, dm).then(function () {
                     toastr.success("Thá»±c hiá»‡n thÃ nh cÃ´ng");
                     var table = $('.td-datatable').DataTable();
@@ -132,7 +130,7 @@ hn.Edit = function (id,name,url) {
         });
 };
     hn.Delete = function (id) {
-    var danhmucApi = new td.qldc.Categories();
+    var danhmucApi = new td.qldc.apis.Categories();
     if (id) {
         if (confirm("Báº¡n thá»±c sá»± muá»‘n xÃ³a má»¥c nÃ y?")) {
             danhmucApi.delete(id).then(function (data) {

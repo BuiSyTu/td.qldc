@@ -77,7 +77,7 @@
 					var form;
 					// set id cho input #ID
 					$('#ID').val(id);
-					var unitService = new td.qldc.Categories();
+					var unitService = new td.qldc.apis.Categories();
 					return unitService.getSingle(id)
 						.then((data) => {
 							var temp = data.json();

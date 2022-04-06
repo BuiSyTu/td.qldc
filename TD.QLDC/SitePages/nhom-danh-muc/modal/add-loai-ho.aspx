@@ -7,12 +7,6 @@
             <input type="hidden" id="ID" name="ID" />
             <input type="hidden" id="NhomID" name="NhomID" value="11" />
 
-            <!--<div class="form-group m-form__group row">
-			<label class="col-form-label col-sm-4">Thuộc nhóm</label>
-			<div class="col-sm-8 col-md-6 col-lg-5">
-				<input type="text" name="NhomID" class="form-control " placeholder="Nhóm">
-			</div>
-		</div>-->
             <div class="form-group m-form__group row">
                 <label class="col-form-label col-sm-4">Tên loại hộ</label>
                 <div class="col-sm-8 col-md-6 col-lg-5">
@@ -23,6 +17,12 @@
                 <label class="col-form-label col-sm-4">Thứ tự</label>
                 <div class="col-sm-8 col-md-6 col-lg-5">
                     <input type="text" name="Order" class="form-control " placeholder="Thứ tự">
+                </div>
+            </div>
+            <div class="form-group m-form__group row">
+                <label class="col-form-label col-sm-4">Tags</label>
+                <div class="col-sm-8 col-md-6 col-lg-5">
+                    <input type="text" name="Tags" class="form-control " placeholder="Thêm tag">
                 </div>
             </div>
             <div class="form-group m-form__group row">
@@ -80,7 +80,7 @@
                         var form;
                         // set id cho input #ID
                         $('#ID').val(id);
-                        var unitService = new td.qldc.Categories();
+                        var unitService = new td.qldc.apis.Categories();
                         return unitService.getSingle(id)
                             .then((data) => {
                                 var temp = data.json();

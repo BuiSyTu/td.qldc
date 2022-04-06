@@ -12,9 +12,9 @@
 			})
             .useDataLoader(
                 new views.TDApiDataLoader(
-                    new td.qldc.Categories().items.query({
-                      //  group: "Danh mục quốc tịch"
-                      nhomid: 9
+                    new td.qldc.apis.Categories().items.query({
+                      nhomid: 9,
+                      orderBy: 'Order'
                     })
                 )
             )

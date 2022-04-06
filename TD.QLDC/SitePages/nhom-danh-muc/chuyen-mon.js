@@ -12,8 +12,7 @@
 			})
             .useDataLoader(
                 new views.TDApiDataLoader(
-                    new td.qldc.Categories().items.query({
-                      //  group: "Danh mục quốc tịch"
+                    new td.qldc.apis.Categories().items.query({
                       nhomid: 10
                     })
                 )
@@ -71,7 +70,7 @@
         };
     }();
 
-    jQuery(document).ready(function () {
+    $(document).ready(function () {
         AreaRemoteAjax.init();
         $('[add]').click(function () {
             danhmuc.Add("Thêm trình độ chuyên môn",'modal/add-chuyen-mon.aspx');

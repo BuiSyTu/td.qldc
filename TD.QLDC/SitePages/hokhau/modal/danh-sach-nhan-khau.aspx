@@ -5,7 +5,11 @@
 		<div class="m-portlet mb-0">
 			<div class="m-portlet__head">
 				<div class="m-portlet__head-caption">
-
+					<div class="m-portlet__head-title">
+						<h3 class="m-portlet__head-text">
+							Danh sách nhân khẩu
+						</h3>
+					</div>
 				</div>
 				<div class="m-portlet__head-tools" td-permission visible-only-permissions=QLDC-HK-Full>
 					<ul class="m-portlet__nav">
@@ -40,10 +44,12 @@
 				<table class="td-datatable table table-bordered m-table display" style="width:100%">
 				</table>
 				<script id="action-template" type="text/x-handlebars-template">
-				<a href="javascript:void(0)" edit td-permission visible-only-permissions=QLDC-HK-Full data-id="{{ID}}" class="m-portlet__nav-link btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill" data-toggle="m-tooltip" title="Sửa">
+				<a href="javascript:void(0)" edit td-permission visible-only-permissions=QLDC-HK-Full data-id="{{ID}}"
+					class="btn btn-light-success m-btn m-btn--icon btn-sm m-btn--icon-only" data-toggle="m-tooltip" title="Sửa">
 					<i class="la la-edit"></i>
 				</a>
-				<a href="javascript:void(0)" delete td-permission visible-only-permissions=QLDC-HK-Full data-id="{{ID}}" class="m-portlet__nav-link btn m-btn m-btn--hover-danger m-btn--icon m-btn--icon-only m-btn--pill" data-toggle="m-tooltip" title="Xóa">
+				<a href="javascript:void(0)" delete td-permission visible-only-permissions=QLDC-HK-Full data-id="{{ID}}"
+					class="btn btn-light-danger m-btn m-btn--icon btn-sm m-btn--icon-only" data-toggle="m-tooltip" title="Xóa">
 					<i class="la la-trash"></i>
 				</a>
 			</script>

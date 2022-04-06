@@ -5,7 +5,7 @@ danhmuc.Add = function (name,url) {
             headerTitle: name
         })
         .iframe(url)
-        .size(450, 350)
+        .size(500, 400)
         .okCancel().show()
         .then(function (returnData) {
             if (returnData.result == 'OK') {
@@ -14,7 +14,7 @@ danhmuc.Add = function (name,url) {
                 var dm = data;
                 dm.Active = data.Active[0]||false;
                 delete dm.ID;
-                var dmService = new td.qldc.Categories();
+                var dmService = new td.qldc.apis.Categories();
                 dmService.add(dm).then(function () {
                     toastr.success("Thực hiện thành công");
                     var table = $('.td-datatable').DataTable();
@@ -23,6 +23,7 @@ danhmuc.Add = function (name,url) {
             }
         });
 };
+
 danhmuc.Edit = function (id,name,url) {
     tdcore.modals // khởi tạo modal dialog
         .modal({
@@ -37,7 +38,7 @@ danhmuc.Edit = function (id,name,url) {
                 // TODO: some thing with dialog result
                 var dm = data;
                 dm.Active = data.Active[0]||false;
-                var dmService = new td.qldc.Categories();
+                var dmService = new td.qldc.apis.Categories();
                 dmService.update(dm.ID, dm).then(function () {
                     toastr.success("Thực hiện thành công");
                     var table = $('.td-datatable').DataTable();
@@ -46,12 +47,13 @@ danhmuc.Edit = function (id,name,url) {
             }
         });
 };
+
 danhmuc.Delete = function (id) {
-    var danhmucApi = new td.qldc.Categories();
+    var danhmucApi = new td.qldc.apis.Categories();
     if (id) {
         if (confirm("Bạn thực sự muốn xóa mục này?")) {
             danhmucApi.delete(id).then(function (data) {
-                if (data.status == 200) {
+                if (data.status == 204) {
                     toastr.success("Thực hiện thành công");
                     var table = $('.td-datatable').DataTable();
                     table.ajax.reload();
@@ -70,7 +72,7 @@ danhmuc.Delete = function (id) {
             if (confirm("Bạn thực sự muốn xóa mục này?")) {
                 for (var i = 0; i < length; i++) {
                     danhmucApi.delete(selected[i].ID).then(function (data) {
-                        if (data.status == 200) {
+                        if (data.status == 204) {
                             toastr.success("Thực hiện thành công");
                             var table = $('.td-datatable').DataTable();
                             table.ajax.reload();

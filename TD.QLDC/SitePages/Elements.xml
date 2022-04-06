@@ -44,5 +44,26 @@
   <File Path="SitePages\nhom-danh-muc\modal\add-ton-giao.aspx" Url="nhom-danh-muc/modal/add-ton-giao.aspx" Type="GhostableInLibrary" IgnoreIfAlreadyExists="false" ReplaceContent="true" />
   <File Path="SitePages\nhom-danh-muc\modal\add-van-hoa.aspx" Url="nhom-danh-muc/modal/add-van-hoa.aspx" Type="GhostableInLibrary" IgnoreIfAlreadyExists="false" ReplaceContent="true" />
   <File Path="SitePages\nhom-danh-muc\modal\adddanhmuc.aspx" Url="nhom-danh-muc/modal/adddanhmuc.aspx" Type="GhostableInLibrary" IgnoreIfAlreadyExists="false" ReplaceContent="true" />
- </Module>
+    <File Path="SitePages\nhom-danh-muc\modal\add-loai-ho.aspx" Url="nhom-danh-muc/modal/add-loai-ho.aspx" />
+    <File Path="SitePages\nhom-danh-muc\modal\add-nghe-nghiep.aspx" Url="nhom-danh-muc/modal/add-nghe-nghiep.aspx" />
+    <File Path="SitePages\nhankhau\default.aspx" Url="nhankhau/default.aspx" />
+    <File Path="SitePages\nhankhau\default.js" Url="nhankhau/default.js" />
+    <File Path="SitePages\nhankhau\modal\add-nhan-khau.aspx" Url="nhankhau/modal/add-nhan-khau.aspx" />
+    <File Path="SitePages\nhapngu\default.aspx" Url="nhapngu/default.aspx" />
+    <File Path="SitePages\nhapngu\default.js" Url="nhapngu/default.js" />
+    <File Path="SitePages\diaban\thon.aspx" Url="diaban/thon.aspx" />
+    <File Path="SitePages\diaban\thon.js" Url="diaban/thon.js" />
+    <File Path="SitePages\diaban\xom.aspx" Url="diaban/xom.aspx" />
+    <File Path="SitePages\diaban\xom.js" Url="diaban/xom.js" />
+    <File Path="SitePages\bhyt\default.aspx" Url="bhyt/default.aspx" />
+    <File Path="SitePages\bhyt\default.js" Url="bhyt/default.js" />
+    <File Path="SitePages\nhom-danh-muc\loai-ho.aspx" Url="nhom-danh-muc/loai-ho.aspx" />
+    <File Path="SitePages\nhom-danh-muc\loai-ho.js" Url="nhom-danh-muc/loai-ho.js" />
+    <File Path="SitePages\nhom-danh-muc\nghe-nghiep.aspx" Url="nhom-danh-muc/nghe-nghiep.aspx" />
+    <File Path="SitePages\nhom-danh-muc\nghe-nghiep.js" Url="nhom-danh-muc/nghe-nghiep.js" />
+    <File Path="SitePages\thongke\thuongtru.aspx" Url="thongke/thuongtru.aspx" />
+    <File Path="SitePages\thongke\thuongtru.js" Url="thongke/thuongtru.js" />
+    <File Path="SitePages\default.css" Url="default.css" />
+    <File Path="SitePages\default.js" Url="default.js" />
+  </Module>
 </Elements>

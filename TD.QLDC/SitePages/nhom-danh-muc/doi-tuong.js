@@ -12,8 +12,7 @@
 			})
             .useDataLoader(
                 new views.TDApiDataLoader(
-                    new td.qldc.Categories().items.query({
-                      //  group: "Danh mục quốc tịch"
+                    new td.qldc.apis.Categories().items.query({
                       nhomid: 4
                     })
                 )
@@ -35,9 +34,7 @@
                 orderable: false,
                 className: "text-center",
                 render: function (data, type, row) {
-                    var checked = null;
-                    if (data)
-                        checked = "checked";
+                    var checked = data ? 'checked' : null;
                     return '<label class="m-checkbox m-checkbox--single  m-checkbox--success m-checkbox--disabled">' +
                         '<input type="checkbox" name="checkbox" ' + checked + ' value="true" disabled>' +
                         '<span></span>' +

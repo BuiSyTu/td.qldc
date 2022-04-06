@@ -43,23 +43,25 @@
 					</div>
 				</div>
 				<!--begin::Form-->
-
+			<div class="m-portlet__body">
 				<!--begin: Datatable -->
 				<table class="td-datatable table table-bordered m-table display" style="width:100%">
 				</table>
 				<script id="action-template" type="text/x-handlebars-template">
-				<a href="javascript:void(0)" nhankhau sohokhau-id="{{SoHoKhau}}" hoKhauId="{{ID}}"
-					class="m-portlet__nav-link btn m-btn m-btn--hover-info m-btn--icon m-btn--icon-only m-btn--pill"
-					data-toggle="m-tooltip" title="Danh sách nhân khẩu">
-					<i class="flaticon-users"></i>
-				</a>
-				<a href="javascript:void(0)" edit td-permission visible-only-permissions=QLDC-HK-Full data-id="{{ID}}" class="m-portlet__nav-link btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill" data-toggle="m-tooltip" title="Sửa">
-					<i class="la la-edit"></i>
-				</a>
-				<a href="javascript:void(0)" delete td-permission visible-only-permissions=QLDC-HK-Full data-id="{{ID}}" class="m-portlet__nav-link btn m-btn m-btn--hover-danger m-btn--icon m-btn--icon-only m-btn--pill" data-toggle="m-tooltip" title="Xóa">
-					<i class="la la-trash"></i>
-				</a>
-			</script>
+					<a href="javascript:void(0)" nhankhau sohokhau-id="{{SoHoKhau}}" hoKhauId="{{ID}}"
+						class="btn btn-light-info m-btn m-btn--icon btn-sm m-btn--icon-only" data-container="body"
+						data-toggle="m-tooltip" title="Danh sách nhân khẩu">
+						<i class="flaticon-users"></i>
+					</a>
+					<a href="javascript:void(0)" edit td-permission visible-only-permissions=QLDC-HK-Full
+						data-id="{{ID}}" class="btn btn-light-success m-btn m-btn--icon btn-sm m-btn--icon-only" data-toggle="m-tooltip" title="Sửa">
+						<i class="la la-edit"></i>
+					</a>
+					<a href="javascript:void(0)" delete td-permission visible-only-permissions=QLDC-HK-Full data-id="{{ID}}"
+						class="btn btn-light-danger m-btn m-btn--icon btn-sm m-btn--icon-only" data-toggle="m-tooltip" title="Xóa">
+						<i class="la la-trash"></i>
+					</a>
+				</script>
 				<!--end: Datatable -->
 			</div>
 			<!--end::Form-->

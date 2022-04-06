@@ -171,8 +171,16 @@
     </Content>
     <Content Include="Permissions\Elements.xml" />
     <Content Include="Roles\Elements.xml" />
+    <Content Include="SitePages\bhyt\default.aspx" />
+    <Content Include="SitePages\bhyt\default.js" />
     <Content Include="SitePages\css\fix.css" />
     <Content Include="SitePages\default.aspx" />
+    <Content Include="SitePages\default.css" />
+    <Content Include="SitePages\default.js" />
+    <Content Include="SitePages\diaban\thon.aspx" />
+    <Content Include="SitePages\diaban\thon.js" />
+    <Content Include="SitePages\diaban\xom.aspx" />
+    <Content Include="SitePages\diaban\xom.js" />
     <Content Include="SitePages\Elements.xml" />
     <Content Include="SitePages\hokhau\default.aspx" />
     <Content Include="SitePages\hokhau\default.js" />
@@ -181,6 +189,11 @@
     <Content Include="SitePages\hokhau\modal\danh-sach-nhan-khau.aspx" />
     <Content Include="SitePages\hokhau\modal\danh-sach-nhan-khau.js" />
     <Content Include="SitePages\js\common.js" />
+    <Content Include="SitePages\nhankhau\default.aspx" />
+    <Content Include="SitePages\nhankhau\default.js" />
+    <Content Include="SitePages\nhankhau\modal\add-nhan-khau.aspx" />
+    <Content Include="SitePages\nhapngu\default.aspx" />
+    <Content Include="SitePages\nhapngu\default.js" />
     <Content Include="SitePages\nhom-danh-muc\chuyen-mon.aspx" />
     <Content Include="SitePages\nhom-danh-muc\chuyen-mon.js" />
     <Content Include="SitePages\nhom-danh-muc\common.js" />
@@ -193,17 +206,23 @@
     <Content Include="SitePages\nhom-danh-muc\hon-nhan.js" />
     <Content Include="SitePages\nhom-danh-muc\loai-doi-tuong.aspx" />
     <Content Include="SitePages\nhom-danh-muc\loai-doi-tuong.js" />
+    <Content Include="SitePages\nhom-danh-muc\loai-ho.aspx" />
+    <Content Include="SitePages\nhom-danh-muc\loai-ho.js" />
     <Content Include="SitePages\nhom-danh-muc\modal\add-chuyen-mon.aspx" />
     <Content Include="SitePages\nhom-danh-muc\modal\add-dan-toc.aspx" />
     <Content Include="SitePages\nhom-danh-muc\modal\add-doi-tuong.aspx" />
     <Content Include="SitePages\nhom-danh-muc\modal\add-hon-nhan.aspx" />
     <Content Include="SitePages\nhom-danh-muc\modal\add-loai-doi-tuong.aspx" />
+    <Content Include="SitePages\nhom-danh-muc\modal\add-loai-ho.aspx" />
+    <Content Include="SitePages\nhom-danh-muc\modal\add-nghe-nghiep.aspx" />
     <Content Include="SitePages\nhom-danh-muc\modal\add-quan-he.aspx" />
     <Content Include="SitePages\nhom-danh-muc\modal\add-quoc-tich.aspx" />
     <Content Include="SitePages\nhom-danh-muc\modal\add-tinh-trang-cu-tru.aspx" />
     <Content Include="SitePages\nhom-danh-muc\modal\add-ton-giao.aspx" />
     <Content Include="SitePages\nhom-danh-muc\modal\add-van-hoa.aspx" />
     <Content Include="SitePages\nhom-danh-muc\modal\adddanhmuc.aspx" />
+    <Content Include="SitePages\nhom-danh-muc\nghe-nghiep.aspx" />
+    <Content Include="SitePages\nhom-danh-muc\nghe-nghiep.js" />
     <Content Include="SitePages\nhom-danh-muc\quan-he-voi-chu-ho.aspx" />
     <Content Include="SitePages\nhom-danh-muc\quan-he-voi-chu-ho.js" />
     <Content Include="SitePages\nhom-danh-muc\quoc-tich.aspx" />
@@ -215,6 +234,8 @@
     <Content Include="SitePages\nhom-danh-muc\ton-giao.js" />
     <Content Include="SitePages\nhom-danh-muc\van-hoa.aspx" />
     <Content Include="SitePages\nhom-danh-muc\van-hoa.js" />
+    <Content Include="SitePages\thongke\thuongtru.aspx" />
+    <Content Include="SitePages\thongke\thuongtru.js" />
     <Content Include="ts\gruntfile.js" />
     <Content Include="ts\rollup.config.js" />
   </ItemGroup>

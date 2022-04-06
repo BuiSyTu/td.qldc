@@ -12,7 +12,7 @@
 			})
             .useDataLoader(
                 new views.TDApiDataLoader(
-                    new td.qldc.NhomDanhMucs().items
+                    new td.qldc.apis.NhomDanhMucs().items
                 )
             )
             .addCheckColumn()
@@ -76,7 +76,7 @@
                     var dt = data;
                     delete dt.ID;
                     debugger
-                    var dtService = new td.qldc.NhomDanhMucs();
+                    var dtService = new td.qldc.apis.NhomDanhMucs();
                     dtService.add(dt).then(function () {
                         toastr.success("Thực hiện thành công");
                         var table = $('.td-datatable').DataTable();
@@ -98,7 +98,7 @@
                     var data = returnData.data;
                     // TODO: some thing with dialog result
                     var dt = data;
-                    var dtService = new td.qldc.NhomDanhMucs();
+                    var dtService = new td.qldc.apis.NhomDanhMucs();
                     dtService.update(dt.ID, dt).then(function () {
                         toastr.success("Thực hiện thành công");
                         var table = $('.td-datatable').DataTable();
@@ -108,7 +108,7 @@
             });
     };
     hdv.Delete = function (id) {
-        var dtApi = new td.qldc.NhomDanhMucs();
+        var dtApi = new td.qldc.apis.NhomDanhMucs();
         if (id) {
             if (confirm("Bạn thực sự muốn xóa mục này?")) {
                 dtApi.delete(id).then(function (data) {

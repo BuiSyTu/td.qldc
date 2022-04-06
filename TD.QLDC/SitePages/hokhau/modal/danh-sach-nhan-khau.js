@@ -12,9 +12,9 @@
 			})
             .useDataLoader(
                 new views.TDApiDataLoader(
-                    new td.qldc.NhanKhaus().items.query({
+                    new td.qldc.apis.NhanKhaus().items.query({
                         hoKhauId: parseInt(Url.queryString('hoKhauId')),
-                        includes: 'DMQuanHe,DMHonNhan'
+                        includes: 'DMQuanHe,DMHonNhan,DMDoiTuong'
                     })
                 )
             )
@@ -27,43 +27,66 @@
               
             },
             {
+                title: 'Giới tính',
+                data: 'GioiTinh'
+              
+            },
+            {
                 title: 'Quan Hệ',
                 data: 'DMQuanHe.Name',
             },
-           
             {
-                title: 'Ngày sinh',
-                data: 'NgaySinh',
+                title: 'Đối tượng chính sách',
+                data: 'DMDoiTuong.Name',
             },
             {
-                title: 'Hôn Nhân',
-                data: 'DMHonNhan.Name',
+                title: 'Ngày sinh',
+                data: null,
+                render: function(data, type, row) {
+                    var date = new Date(data.NgaySinh)
+                    return date.ddMMyyyy()
+                }
             },
             {
                 title: 'CMND/CCCD',
                 data: 'SoCCCD'
             },
             {
+                title: 'Thẻ BHYT',
+                data: 'SoBHYT'
+
+            },
+            {
+                title: 'Hạn BHYT',
+                data: null,
+                render: function(data, type, row) {
+                    if (!data.HanSuDungBHYT) return '';
+
+                    var date = new Date(data.HanSuDungBHYT)
+                    return date.ddMMyyyy()
+                }
+            },
+            {
                 title: 'Nghề Nghiệp',
                 data: 'NgheNghiep'
             },
-            {
-                title: 'Khai tử',
-                data: null,
-                render: function (data, type, row) {
-                    return data.DaMat
-                    ? `
-                    <label class="m-checkbox m-checkbox--single  m-checkbox--success m-checkbox--disabled">
-                        <input type="checkbox" value="true" checked="" disabled>
-                        <span></span>
-                     </label>` : 
-                    `
-                     <label class="m-checkbox m-checkbox--single  m-checkbox--success m-checkbox--disabled">
-                        <input type="checkbox" value="false" disabled>
-                        <span></span>
-                    </label>`;
-                },
-            },
+            // {
+            //     title: 'Khai tử',
+            //     data: null,
+            //     render: function (data, type, row) {
+            //         return data.DaMat
+            //         ? `
+            //         <label class="m-checkbox m-checkbox--single  m-checkbox--success m-checkbox--disabled">
+            //             <input type="checkbox" value="true" checked="" disabled>
+            //             <span></span>
+            //          </label>` : 
+            //         `
+            //          <label class="m-checkbox m-checkbox--single  m-checkbox--success m-checkbox--disabled">
+            //             <input type="checkbox" value="false" disabled>
+            //             <span></span>
+            //         </label>`;
+            //     },
+            // },
             {
                 title: 'Thao tác',
                 render: function (data, type, row, meta) {
@@ -126,7 +149,7 @@
                 if (returnData.result == 'OK') {
                     var dt = returnData.data;
                     delete dt.ID;
-                    var api = new td.qldc.NhanKhaus();
+                    var api = new td.qldc.apis.NhanKhaus();
                     api.add(dt).then(function () {
                         toastr.success('Thực hiện thành công');
                         var table = $('.td-datatable').DataTable();
@@ -148,7 +171,7 @@
                 if (returnData.result == 'OK') {
                     //try validate or getdata and close form
                     var dt = returnData.data;
-                    var api = new td.qldc.NhanKhaus();
+                    var api = new td.qldc.apis.NhanKhaus();
                     api.update(dt.ID, dt).then(function () {
                         toastr.success('Thực hiện thành công');
                         var table = $('.td-datatable').DataTable();
@@ -171,7 +194,7 @@
     }
 
     nk.Delete = function (id) {
-        var api = new td.qldc.NhanKhaus();
+        var api = new td.qldc.apis.NhanKhaus();
         if (id) {
             if (confirm('Bạn thực sự muốn xóa mục này?')) {
                 api.delete(id).then(function (data) {
@@ -194,7 +217,7 @@
                 if (confirm('Bạn thực sự muốn xóa mục này?')) {
                     for (var i = 0; i < length; i++) {
                         api.delete(selected[i].ID).then(function (data) {
-                            if (data.status == 200) {
+                            if (data.status == 204) {
                                 toastr.success('Thực hiện thành công');
                                 var table = $('.td-datatable').DataTable();
                                 table.ajax.reload();

@@ -5,7 +5,7 @@ $(document).ready(async function () {
 });
 
 // lấy text của combobox
-function GetComboxTextByName(name){
+function GetComboxTextByName(name) {
     return $("[name='" + name + "']").parent().find(".select2-selection__rendered").attr("title");
 }
 // tạo GUID 16 có -
@@ -140,7 +140,7 @@ var UploadFile = function (id) {
 }
 
 //Chọn tỉnh huyện xã set lại url cho cấp dưới
-function ChooseArea(name, childName){
+function ChooseArea(name, childName) {
     var code = $(`[name=${name}]`).val();
 
     var wgs = tdcore.forms.findFormWidgets(
@@ -155,12 +155,47 @@ function ChooseArea(name, childName){
 
     if (code) {
         wgUsingOffice.setOptions(
-        {
-            ajax: { url: `/qldcapi/areas?parentCode=${code}` }
-        });
+            {
+                ajax: { url: `/qldcapi/areas?parentCode=${code}` }
+            });
     } else {
         wgUsingOffice.setOptions({ ajax: { url: '' } });
     }
-    
+
     $(`[name=${childName}]`).empty();
+}
+
+Date.prototype.ddMMyyyy = function () {
+    var mm = this.getMonth() + 1; // getMonth() is zero-based
+    var dd = this.getDate();
+
+    return [(dd > 9 ? '' : '0') + dd,
+    (mm > 9 ? '' : '0') + mm,
+    this.getFullYear(),
+    ].join('/');
+};
+
+function fillSelect({ selector, element, value, dataProvider, dataValueField, dataTextField, placeholder, dataWidth, dataHeight, allowClear }) {
+    var $element = element ? $(element) : $(selector);
+
+    $element.select2({
+        placeholder,
+        allowClear,
+        width: dataWidth,
+    });
+
+    if (dataProvider) {
+        dataProvider.get().then(function(data) {
+            var tmp = data.json();
+            var items = tmp.result;
+
+            items.forEach(function (item) {
+                var option = `<option value=${item[dataValueField]}>${item[dataTextField]}</option>`;
+                $element.append(option);
+            });
+
+            if (value) $element.val(value);
+        });
+    }
+
 }

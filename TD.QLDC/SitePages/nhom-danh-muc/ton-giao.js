@@ -12,7 +12,7 @@
 			})
             .useDataLoader(
                 new views.TDApiDataLoader(
-                    new td.qldc.Categories().items.query({
+                    new td.qldc.apis.Categories().items.query({
                       //  group: "Danh mục quốc tịch"
                       nhomid: 3
                     })

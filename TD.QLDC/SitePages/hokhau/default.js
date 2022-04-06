@@ -1,30 +1,23 @@
 ﻿(function (factor) {
     factor(window, tdcore.views, jQuery);
 })(function (exports, views, $) {
-    'use strict'
+    'use strict'    
     //== Class definition
     var AreaRemoteAjax = function () {
         //== Private functions
         var loadDatatable = function () {
                 views.table('.td-datatable', {
                     'serverSide': true,
-                    filter: true
+                    filter: true,
                 })
                     .useDataLoader(
-                        new views.TDApiDataLoader(new td.qldc.HoKhaus().items)
+                        new views.TDApiDataLoader(new td.qldc.apis.HoKhaus().items.query({
+                            includes: 'DMLoaiHo'
+                        }))
                     )
                     .addCheckColumn()
                     .addIndexColumn('STT')
                     .addColumn(
-                        {
-                            title: 'Số Hộ Khẩu',
-                            data: 'SoHoKhau'
-                        },
-                        {
-                            title: 'Số Nhà',
-                            data: 'SoNha'
-                        },
-                       
                         {
                             title: 'Thôn',
                             data: 'TenThon',
@@ -33,10 +26,25 @@
                             title: 'Xóm',
                             data: 'TenXom',
                         },
-    
                         {
                             title: 'Tên chủ hộ',
                             data: 'TenChuHo',
+                        },
+                        {
+                            title: 'CCCD chủ hộ',
+                            data: 'CCCDCHuHo',
+                        },
+                        {
+                            title: 'Loại hộ',
+                            data: 'DMLoaiHo.Name',
+                        },
+                        {
+                            title: 'Loại nhà ở',
+                            data: 'LoaiNhaO',
+                        },
+                        {
+                            title: 'Hộ kinh doanh',
+                            data: 'HoKinhDoanh',
                         }
                     )
                     .addTemplateColumn({
@@ -65,7 +73,6 @@
 
                         if (!processing) {
                             tdcore.permissions.updateUi('td')
-
                         }
 
                     });
@@ -105,7 +112,7 @@
                     // TODO: some thing with dialog result
                     var dt = data;
                     delete dt.ID;
-                    var dtService = new td.qldc.HoKhaus();
+                    var dtService = new td.qldc.apis.HoKhaus();
                     dtService.add(dt).then(function () {
                         toastr.success('Thực hiện thành công');
                         var table = $('.td-datatable').DataTable();
@@ -129,7 +136,7 @@
                     var data = returnData.data;
                     // TODO: some thing with dialog result
                     var dt = data;
-                    var dtService = new td.qldc.HoKhaus();
+                    var dtService = new td.qldc.apis.HoKhaus();
                     dtService.update(dt.ID, dt).then(function () {
                         toastr.success('Thực hiện thành công');
                         var table = $('.td-datatable').DataTable();
@@ -152,7 +159,7 @@
     };
 
     hokhau.Delete = function (id) {
-        var dtApi = new td.qldc.HoKhaus();
+        var dtApi = new td.qldc.apis.HoKhaus();
         if (id) {
             if (confirm('Bạn thực sự muốn xóa mục này?')) {
                 dtApi.delete(id).then(function (data) {
@@ -175,7 +182,7 @@
                 if (confirm('Bạn thực sự muốn xóa mục này?')) {
                     for (var i = 0; i < length; i++) {
                         dtApi.delete(selected[i].ID).then(function (data) {
-                            if (data.status === 200) {
+                            if (data.status === 204) {
                                 toastr.success('Thực hiện thành công');
                                 var table = $('.td-datatable').DataTable();
                                 table.ajax.reload();

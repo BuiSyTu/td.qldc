@@ -45,6 +45,27 @@
     <ProjectItemFile Source="nhom-danh-muc\modal\add-ton-giao.aspx" Target="SitePages\nhom-danh-muc\modal\" Type="ElementFile" />
     <ProjectItemFile Source="nhom-danh-muc\modal\add-van-hoa.aspx" Target="SitePages\nhom-danh-muc\modal\" Type="ElementFile" />
     <ProjectItemFile Source="nhom-danh-muc\modal\adddanhmuc.aspx" Target="SitePages\nhom-danh-muc\modal\" Type="ElementFile" />
+    <ProjectItemFile Source="nhom-danh-muc\modal\add-loai-ho.aspx" Target="SitePages\nhom-danh-muc\modal\" Type="ElementFile" />
+    <ProjectItemFile Source="nhom-danh-muc\modal\add-nghe-nghiep.aspx" Target="SitePages\nhom-danh-muc\modal\" Type="ElementFile" />
+    <ProjectItemFile Source="nhankhau\default.aspx" Target="SitePages\nhankhau\" Type="ElementFile" />
+    <ProjectItemFile Source="nhankhau\default.js" Target="SitePages\nhankhau\" Type="ElementFile" />
+    <ProjectItemFile Source="nhankhau\modal\add-nhan-khau.aspx" Target="SitePages\nhankhau\modal\" Type="ElementFile" />
+    <ProjectItemFile Source="nhapngu\default.aspx" Target="SitePages\nhapngu\" Type="ElementFile" />
+    <ProjectItemFile Source="nhapngu\default.js" Target="SitePages\nhapngu\" Type="ElementFile" />
+    <ProjectItemFile Source="diaban\thon.aspx" Target="SitePages\diaban\" Type="ElementFile" />
+    <ProjectItemFile Source="diaban\thon.js" Target="SitePages\diaban\" Type="ElementFile" />
+    <ProjectItemFile Source="diaban\xom.aspx" Target="SitePages\diaban\" Type="ElementFile" />
+    <ProjectItemFile Source="diaban\xom.js" Target="SitePages\diaban\" Type="ElementFile" />
+    <ProjectItemFile Source="bhyt\default.aspx" Target="SitePages\bhyt\" Type="ElementFile" />
+    <ProjectItemFile Source="bhyt\default.js" Target="SitePages\bhyt\" Type="ElementFile" />
+    <ProjectItemFile Source="nhom-danh-muc\loai-ho.aspx" Target="SitePages\nhom-danh-muc\" Type="ElementFile" />
+    <ProjectItemFile Source="nhom-danh-muc\loai-ho.js" Target="SitePages\nhom-danh-muc\" Type="ElementFile" />
+    <ProjectItemFile Source="nhom-danh-muc\nghe-nghiep.aspx" Target="SitePages\nhom-danh-muc\" Type="ElementFile" />
+    <ProjectItemFile Source="nhom-danh-muc\nghe-nghiep.js" Target="SitePages\nhom-danh-muc\" Type="ElementFile" />
+    <ProjectItemFile Source="thongke\thuongtru.aspx" Target="SitePages\thongke\" Type="ElementFile" />
+    <ProjectItemFile Source="thongke\thuongtru.js" Target="SitePages\thongke\" Type="ElementFile" />
+    <ProjectItemFile Source="default.css" Target="SitePages\" Type="ElementFile" />
+    <ProjectItemFile Source="default.js" Target="SitePages\" Type="ElementFile" />
   </Files>
   <ExtensionData>
     <ExtensionDataItem Key="DeploymentConflictResolutionBehavior" Value="None" />
