@@ -58,8 +58,8 @@ namespace TD.QLDC.Library.Models
         private string tenGoiKhac;
         public string TenGoiKhac { get { return tenGoiKhac; } set { tenGoiKhac = value; NotifyPropertyChanged(); } }
 
-        private string ngaySinh;
-        public string NgaySinh { get { return ngaySinh; } set { ngaySinh = value; NotifyPropertyChanged(); } }
+        private DateTime? ngaySinh;
+        public DateTime? NgaySinh { get { return ngaySinh; } set { ngaySinh = value; NotifyPropertyChanged(); } }
 
         private string gioiTinh;
         public string GioiTinh { get { return gioiTinh; } set { gioiTinh = value; NotifyPropertyChanged(); } }
@@ -118,8 +118,8 @@ namespace TD.QLDC.Library.Models
         private string noicapCCCD;
         public string NoiCapCCCD { get { return noicapCCCD; } set { noicapCCCD = value; NotifyPropertyChanged(); } }
 
-        private string hanSuDungCCCD;
-        public string HanSuDungCCCD { get { return hanSuDungCCCD; } set { hanSuDungCCCD = value; NotifyPropertyChanged(); } }
+        private DateTime? hanSuDungCCCD;
+        public DateTime? HanSuDungCCCD { get { return hanSuDungCCCD; } set { hanSuDungCCCD = value; NotifyPropertyChanged(); } }
         #endregion
 
         #region Hộ chiếu

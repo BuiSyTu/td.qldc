@@ -31,6 +31,15 @@ namespace TD.QLDC.Library.Repositories.Implementations
             return newQuery;
         }
 
+        public static IQueryable<NhanKhau> FilterTrongDoTuoiNhapNgu(this IQueryable<NhanKhau> query, bool? trongDoTuoiNhapNgu = null)
+        {
+            if (trongDoTuoiNhapNgu is null || !trongDoTuoiNhapNgu.Value) return query;
+
+            var curYear = DateTime.Now.Year;
+            var newQuery = query.Where(x => x.NgaySinh.HasValue && (curYear - x.NgaySinh.Value.Year) >= 18 && (curYear - x.NgaySinh.Value.Year <= 27));
+            return newQuery;
+        }
+
         public static IQueryable<NhanKhau> FilterSoHoKhau(this IQueryable<NhanKhau> query, string soHoKhau = null)
         {
             if (string.IsNullOrEmpty(soHoKhau)) return query;

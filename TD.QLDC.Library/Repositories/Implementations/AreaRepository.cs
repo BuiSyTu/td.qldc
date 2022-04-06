@@ -6,6 +6,7 @@ using System.Linq.Expressions;
 using TD.Core.Api.Mvc;
 using TD.Core.UserProfiles.Controllers;
 using TD.Core.UserProfiles.Models;
+using TD.QLDC.Library.FilterModels;
 using TD.QLDC.Library.Models;
 using TD.QLDC.Library.Repositories.Interfaces;
 
@@ -13,7 +14,7 @@ namespace TD.QLDC.Library.Repositories.Implementations
 {
     public class AreaRepository : GenericRepository<Area>, IAreaRepository
     {
-        private QLDCDbContext _dbContext;
+        private readonly QLDCDbContext _dbContext;
 
         public AreaRepository(
             QLDCDbContext dbContext,
@@ -23,8 +24,13 @@ namespace TD.QLDC.Library.Repositories.Implementations
             _dbContext = dbContext;
         }
 
-        public int Count(string q = null, string areaCode = null, int? type = null, string parentCode = null)
+        public int Count(AreaFilterModel filterModel)
         {
+            var q = filterModel.Q;
+            var areaCode = filterModel.AreaCode;
+            var parentCode = filterModel.ParentCode;
+            var type = filterModel.Type;
+
             return _dbContext.Areas
                 .Filter(
                     !string.IsNullOrEmpty(q),
@@ -46,17 +52,17 @@ namespace TD.QLDC.Library.Repositories.Implementations
                 .Count();
         }
 
-        public ICollection<Area> Get(
-            int skip = 0,
-            int top = 20,
-            string q = null,
-            string includes = null,
-            string orderBy = null,
-            string areaCode = null,
-            int? type = null,
-            string parentCode = null
-        )
+        public ICollection<Area> Get(AreaFilterModel filterModel)
         {
+            var includes = filterModel.Includes;
+            var q = filterModel.Q;
+            var orderBy = filterModel.OrderBy;
+            var skip = filterModel.Skip;
+            var top = filterModel.Top;
+            var areaCode = filterModel.AreaCode;
+            var parentCode = filterModel.ParentCode;
+            var type = filterModel.Type;
+
             return _dbContext.Areas
                 .IncludeMany(includes)
                 .Filter(

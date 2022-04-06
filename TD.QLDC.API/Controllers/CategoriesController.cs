@@ -17,7 +17,7 @@ namespace TD.QLDC.API.Controllers
 
         [Route("QLDCapi/categories")]
         [HttpGet]
-        public IHttpActionResult GetCategories(CategoryFilterModel filterModel)
+        public IHttpActionResult GetCategories([FromUri] CategoryFilterModel filterModel)
         {
             var data = _repository.Get(filterModel);
             return ApiOk(data,

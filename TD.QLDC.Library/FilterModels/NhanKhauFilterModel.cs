@@ -29,5 +29,11 @@ namespace TD.QLDC.Library.FilterModels
         public int? DMDoiTuongID { get; set; } = null;
 
         public int? HoKhauID { get; set; } = null;
+
+        public string GioiTinh { get; set; } = string.Empty;
+
+        public bool? DongBHYT { get; set; } = null;
+
+        public bool? TrongDoTuoiNhapNgu { get; set; } = null;
     }
 }

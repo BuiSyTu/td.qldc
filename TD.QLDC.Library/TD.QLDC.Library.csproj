@@ -213,6 +213,14 @@
     <Compile Include="Migrations\202203230724559_Update14.Designer.cs">
       <DependentUpon>202203230724559_Update14.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202204060253231_Update15.cs" />
+    <Compile Include="Migrations\202204060253231_Update15.Designer.cs">
+      <DependentUpon>202204060253231_Update15.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202204060258456_Update16.cs" />
+    <Compile Include="Migrations\202204060258456_Update16.Designer.cs">
+      <DependentUpon>202204060258456_Update16.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Account.cs" />
     <Compile Include="Models\Area.cs" />
@@ -304,6 +312,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202203230724559_Update14.resx">
       <DependentUpon>202203230724559_Update14.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202204060253231_Update15.resx">
+      <DependentUpon>202204060253231_Update15.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202204060258456_Update16.resx">
+      <DependentUpon>202204060258456_Update16.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup />

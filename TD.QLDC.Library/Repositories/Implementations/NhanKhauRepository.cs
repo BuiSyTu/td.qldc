@@ -69,6 +69,18 @@ namespace TD.QLDC.Library.Repositories.Implementations
             return _dbContext.NhanKhaus
                 .FilterSoHoKhau(filterModel.SoHoKhau)
                 .FilterHoKhauId(filterModel.HoKhauID)
+                .Filter(filterModel.DMHonNhanID != null, x => x.DMHonNhanID == filterModel.DMHonNhanID)
+                .Filter(filterModel.DMQuanHeID != null, x => x.DMQuanHeID == filterModel.DMQuanHeID)
+                .Filter(filterModel.DMDanTocID != null, x => x.DMDanTocID == filterModel.DMDanTocID)
+                .Filter(filterModel.DMQuocTichID != null, x => x.DMQuocTichID == filterModel.DMQuocTichID)
+                .Filter(filterModel.DMTonGiaoID != null, x => x.DMTonGiaoID == filterModel.DMTonGiaoID)
+                .Filter(filterModel.DMTinhTrangCuTruID != null, x => x.DMTinhTrangCuTruID == filterModel.DMTinhTrangCuTruID)
+                .Filter(filterModel.DMChuyenMonID != null, x => x.DMChuyenMonID == filterModel.DMChuyenMonID)
+                .Filter(filterModel.DMDoiTuongID != null, x => x.DMDoiTuongID == filterModel.DMDoiTuongID)
+                .Filter(filterModel.DMVanHoaID != null, x => x.DMVanHoaID == filterModel.DMVanHoaID)
+                .Filter(filterModel.DongBHYT != null, x => !string.IsNullOrEmpty(x.SoBHYT))
+                .FilterTrongDoTuoiNhapNgu(filterModel.TrongDoTuoiNhapNgu)
+                .Filter(!string.IsNullOrEmpty(filterModel.GioiTinh), x => x.GioiTinh == filterModel.GioiTinh)
                 .FilterCurrentAreaCode()
                 .FilterSearchValue(filterModel.Q)
                 .Count();
@@ -80,6 +92,18 @@ namespace TD.QLDC.Library.Repositories.Implementations
                 .IncludeMany(filterModel.Includes)
                 .FilterHoKhauId(filterModel.HoKhauID)
                 .FilterSoHoKhau(filterModel.SoHoKhau)
+                .Filter(filterModel.DMHonNhanID != null, x => x.DMHonNhanID == filterModel.DMHonNhanID)
+                .Filter(filterModel.DMQuanHeID != null, x => x.DMQuanHeID == filterModel.DMQuanHeID)
+                .Filter(filterModel.DMDanTocID != null, x => x.DMDanTocID == filterModel.DMDanTocID)
+                .Filter(filterModel.DMQuocTichID != null, x => x.DMQuocTichID == filterModel.DMQuocTichID)
+                .Filter(filterModel.DMTonGiaoID != null, x => x.DMTonGiaoID == filterModel.DMTonGiaoID)
+                .Filter(filterModel.DMTinhTrangCuTruID != null, x => x.DMTinhTrangCuTruID == filterModel.DMTinhTrangCuTruID)
+                .Filter(filterModel.DMChuyenMonID != null, x => x.DMChuyenMonID == filterModel.DMChuyenMonID)
+                .Filter(filterModel.DMDoiTuongID != null, x => x.DMDoiTuongID == filterModel.DMDoiTuongID)
+                .Filter(filterModel.DMVanHoaID != null, x => x.DMVanHoaID == filterModel.DMVanHoaID)
+                .Filter(filterModel.DongBHYT != null, x => !string.IsNullOrEmpty(x.SoBHYT))
+                .FilterTrongDoTuoiNhapNgu(filterModel.TrongDoTuoiNhapNgu)
+                .Filter(!string.IsNullOrEmpty(filterModel.GioiTinh), x => x.GioiTinh == filterModel.GioiTinh)
                 .FilterCurrentAreaCode()
                 .FilterSearchValue(filterModel.Q)
                 .OrderByMany(filterModel.OrderBy)
@@ -199,14 +223,14 @@ namespace TD.QLDC.Library.Repositories.Implementations
             return _dbContext.NhanKhaus
                 .Filter(
                     !string.IsNullOrEmpty(hoTen),
-                    x => x.HoTen.ToUpper() == hoTen.ToUpper()
-                ).Filter(
+                    x => x.HoTen.ToUpper() == hoTen.ToUpper())
+                .Filter(
                     !string.IsNullOrEmpty(cCCD),
-                    x => x.SoCCCD == cCCD
-                ).Filter(
-                    !string.IsNullOrEmpty(ngaySinh),
-                    x => x.NgaySinh == ngaySinh
-                ).Any();
+                    x => x.SoCCCD == cCCD)
+                .Filter(
+                    DateTime.TryParse(ngaySinh, out DateTime ngaySinhOut),
+                    x => x.NgaySinh == ngaySinhOut)
+                .Any();
         }
 
         public ICollection<ChartItem> GroupByGioiTinh()
@@ -229,7 +253,7 @@ namespace TD.QLDC.Library.Repositories.Implementations
                 .GroupBy(x => x.NgaySinh)
                 .Select(g => new ChartItem
                 {
-                    Text = string.IsNullOrEmpty(g.Key) ? "Chưa rõ" : g.Key,
+                    Text = g.Key == null ? "Chưa rõ" : g.Key.ToString(),
                     Value = g.Count().ToString()
                 })
                 .ToList();

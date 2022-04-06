@@ -1,5 +1,6 @@
 ﻿using System.Web.Http;
 using TD.Core.Api.Mvc;
+using TD.QLDC.Library.FilterModels;
 using TD.QLDC.Library.Models;
 using TD.QLDC.Library.Repositories.Interfaces;
 
@@ -16,27 +17,18 @@ namespace TD.QLDC.API.Controllers
 
         [Route("QLDCapi/Areas")]
         [HttpGet]
-        public IHttpActionResult GetAreas(
-            int skip = 0,
-            int top = 100,
-            string q = null,
-            string orderBy = null,
-            bool count = false,
-            string includes = null,
-            string areaCode = null,
-            int? type = null,
-            string parentCode = null)
+        public IHttpActionResult GetAreas([FromUri] AreaFilterModel filterModel)
         {
-            var data = _repository.Get(skip, top, q, includes, orderBy, areaCode, type, parentCode);
+            var data = _repository.Get(filterModel);
             return ApiOk(data,
                         null,
                         (result) =>
                         {
-                            if (count)
+                            if (filterModel.Count)
                             {
-                                result.ExtensionData["count"] = skip == 0 && top == 0
+                                result.ExtensionData["count"] = filterModel.Skip == 0 && filterModel.Top == 0
                                     ? data.Count
-                                    : _repository.Count(q, areaCode, type, parentCode);
+                                    : _repository.Count(filterModel);
                             }
                         });
         }
