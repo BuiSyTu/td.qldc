@@ -66,27 +66,21 @@ namespace TD.QLDC.Library.Repositories.Implementations
 
         public int Count(NhanKhauFilterModel filterModel)
         {
-            return _dbContext.NhanKhaus
-                .FilterSoHoKhau(filterModel.SoHoKhau)
-                .FilterHoKhauId(filterModel.HoKhauID)
-                .Filter(filterModel.DMHonNhanID != null, x => x.DMHonNhanID == filterModel.DMHonNhanID)
-                .Filter(filterModel.DMQuanHeID != null, x => x.DMQuanHeID == filterModel.DMQuanHeID)
-                .Filter(filterModel.DMDanTocID != null, x => x.DMDanTocID == filterModel.DMDanTocID)
-                .Filter(filterModel.DMQuocTichID != null, x => x.DMQuocTichID == filterModel.DMQuocTichID)
-                .Filter(filterModel.DMTonGiaoID != null, x => x.DMTonGiaoID == filterModel.DMTonGiaoID)
-                .Filter(filterModel.DMTinhTrangCuTruID != null, x => x.DMTinhTrangCuTruID == filterModel.DMTinhTrangCuTruID)
-                .Filter(filterModel.DMChuyenMonID != null, x => x.DMChuyenMonID == filterModel.DMChuyenMonID)
-                .Filter(filterModel.DMDoiTuongID != null, x => x.DMDoiTuongID == filterModel.DMDoiTuongID)
-                .Filter(filterModel.DMVanHoaID != null, x => x.DMVanHoaID == filterModel.DMVanHoaID)
-                .Filter(filterModel.DongBHYT != null, x => !string.IsNullOrEmpty(x.SoBHYT))
-                .FilterTrongDoTuoiNhapNgu(filterModel.TrongDoTuoiNhapNgu)
-                .Filter(!string.IsNullOrEmpty(filterModel.GioiTinh), x => x.GioiTinh == filterModel.GioiTinh)
-                .FilterCurrentAreaCode()
-                .FilterSearchValue(filterModel.Q)
-                .Count();
+            var query = CreateQuery(filterModel);
+            return query.Count();
         }
 
         public ICollection<NhanKhau> Get(NhanKhauFilterModel filterModel)
+        {
+            var query = CreateQuery(filterModel);
+            return query
+                .OrderByMany(filterModel.OrderBy)
+                .Skip(filterModel.Skip)
+                .Take(filterModel.Top)
+                .ToList();
+        }
+
+        private IQueryable<NhanKhau> CreateQuery(NhanKhauFilterModel filterModel)
         {
             return _dbContext.NhanKhaus
                 .IncludeMany(filterModel.Includes)
@@ -104,12 +98,11 @@ namespace TD.QLDC.Library.Repositories.Implementations
                 .Filter(filterModel.DongBHYT != null, x => !string.IsNullOrEmpty(x.SoBHYT))
                 .FilterTrongDoTuoiNhapNgu(filterModel.TrongDoTuoiNhapNgu)
                 .Filter(!string.IsNullOrEmpty(filterModel.GioiTinh), x => x.GioiTinh == filterModel.GioiTinh)
+                .FilterBHYTStatus(filterModel.BHYTStatus)
+                .FilterTuTuoi(filterModel.TuTuoi)
+                .FilterDenTuoi(filterModel.DenTuoi)
                 .FilterCurrentAreaCode()
-                .FilterSearchValue(filterModel.Q)
-                .OrderByMany(filterModel.OrderBy)
-                .Skip(filterModel.Skip)
-                .Take(filterModel.Top)
-                .ToList();
+                .FilterSearchValue(filterModel.Q);
         }
 
         public ICollection<ChartItem> GroupByXom()

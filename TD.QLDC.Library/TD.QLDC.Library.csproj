@@ -145,6 +145,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Common\CommonService.cs" />
+    <Compile Include="Constant\BHYTStatus.cs" />
     <Compile Include="Data\QLDCDbContext.cs" />
     <Compile Include="Extensions\Queryable\QueryableCategoryExtension.cs" />
     <Compile Include="Extensions\Queryable\QueryableExtension.cs" />
@@ -220,6 +221,10 @@
     <Compile Include="Migrations\202204060258456_Update16.cs" />
     <Compile Include="Migrations\202204060258456_Update16.Designer.cs">
       <DependentUpon>202204060258456_Update16.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202204120221585_Update17.cs" />
+    <Compile Include="Migrations\202204120221585_Update17.Designer.cs">
+      <DependentUpon>202204120221585_Update17.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Account.cs" />
@@ -318,6 +323,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202204060258456_Update16.resx">
       <DependentUpon>202204060258456_Update16.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202204120221585_Update17.resx">
+      <DependentUpon>202204120221585_Update17.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup />

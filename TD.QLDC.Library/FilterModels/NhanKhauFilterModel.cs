@@ -35,5 +35,14 @@ namespace TD.QLDC.Library.FilterModels
         public bool? DongBHYT { get; set; } = null;
 
         public bool? TrongDoTuoiNhapNgu { get; set; } = null;
+
+        // 1 - Sắp đến hạn
+        // 2 - Quá hạn
+        // 3 - Được miễn
+        public int? BHYTStatus { get; set; } = null;
+
+        public int? TuTuoi { get; set; } = null;
+
+        public int? DenTuoi { get; set; } = null;
     }
 }

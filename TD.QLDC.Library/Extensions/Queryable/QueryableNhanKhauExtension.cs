@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using TD.QLDC.Library.Common;
+using TD.QLDC.Library.Constant;
 using TD.QLDC.Library.Models;
 
 namespace TD.QLDC.Library.Repositories.Implementations
@@ -60,6 +61,60 @@ namespace TD.QLDC.Library.Repositories.Implementations
                 || x.HoKhau.MaXaPhuong == areaCode
                 || x.HoKhau.MaThon == areaCode
                 || x.HoKhau.MaXom == areaCode);
+            return newQuery;
+        }
+
+        public static IQueryable<NhanKhau> FilterBHYTStatus(this IQueryable<NhanKhau> query, int? bhytStatus)
+        {
+            if (bhytStatus is null) return query;
+
+            if (bhytStatus == BHYTStatus.DuocMien)
+            {
+                var newQuery = query.Where(x => x.DuocMienBHYT.HasValue && x.DuocMienBHYT.Value);
+                return newQuery;
+            }
+
+            if (bhytStatus == BHYTStatus.SapDenHan)
+            {
+                var tmpCheckDate = DateTime.Now.AddMonths(1);
+
+                var newQuery = query.Where(x =>
+                    x.HanSuDungBHYT.HasValue
+                    && x.HanSuDungBHYT.Value >= DateTime.Now
+                    && x.HanSuDungBHYT.Value <= tmpCheckDate
+                );
+
+                return newQuery;
+            }
+
+            if (bhytStatus == BHYTStatus.QuaHan)
+            {
+                var newQuery = query.Where(x =>
+                    x.HanSuDungBHYT.HasValue
+                    && x.HanSuDungBHYT.Value <= DateTime.Now
+                );
+
+                return newQuery;
+            }
+
+            return query;
+        }
+
+        public static IQueryable<NhanKhau> FilterTuTuoi(this IQueryable<NhanKhau> query, int? tuTuoi = null)
+        {
+            if (tuTuoi is null) return query;
+
+            var curYear = DateTime.Now.Year;
+            var newQuery = query.Where(x => x.NgaySinh.HasValue && (curYear - x.NgaySinh.Value.Year) >= tuTuoi.Value);
+            return newQuery;
+        }
+
+        public static IQueryable<NhanKhau> FilterDenTuoi(this IQueryable<NhanKhau> query, int? denTuoi = null)
+        {
+            if (denTuoi is null) return query;
+
+            var curYear = DateTime.Now.Year;
+            var newQuery = query.Where(x => x.NgaySinh.HasValue && (curYear - x.NgaySinh.Value.Year) <= denTuoi.Value);
             return newQuery;
         }
     }

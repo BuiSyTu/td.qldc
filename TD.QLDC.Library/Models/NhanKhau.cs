@@ -151,6 +151,9 @@ namespace TD.QLDC.Library.Models
 
         private string maSoThue;
         public string MaSoThue { get { return maSoThue; } set { maSoThue = value; NotifyPropertyChanged(); } }
+
+        private bool? duocMienBHYT;
+        public bool? DuocMienBHYT { get { return duocMienBHYT; } set { duocMienBHYT = value; NotifyPropertyChanged(); } }
         #endregion
 
         #region Địa chỉ, nơi cư trú
