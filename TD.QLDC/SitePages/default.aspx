@@ -22,7 +22,7 @@
                             <div class="col-4">
                                 <i class="icon {{this.iconClass}}"></i>
                             </div>
-                            <a href="{{this.link}}" class="small-box-footer col-12">Thông tin thêm <i class="fas fa-arrow-circle-right"></i></a>
+                            <!-- <a href="{{this.link}}" class="small-box-footer col-12">Thông tin thêm <i class="fas fa-arrow-circle-right"></i></a> -->
                         </div>
                     </div>
                 {{/each}}

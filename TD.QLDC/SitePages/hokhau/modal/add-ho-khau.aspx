@@ -40,16 +40,6 @@
 					<option value=""></option>
 				</select>
 			</div>
-			<!-- <div class="form-group m-form__group row">
-				<label class="col-form-label">Thôn</label>
-				<input type="hidden" name="MaThon" class="form-control" placeholder="" readonly>
-				<input type="text" name="TenThon" class="form-control" placeholder="" readonly>
-			</div>
-			<div class="form-group m-form__group row">
-				<label class="col-form-label">Xóm</label>
-				<input type="hidden" name="MaXom" class="form-control" placeholder="" readonly>
-				<input type="text" name="TenXom" class="form-control" placeholder="" readonly>
-			</div> -->
 			<div class="form-group m-form__group row">
 				<label class="col-form-label">Tên chủ hộ</label>
 				<input type="text" name="TenChuHo" class="form-control" placeholder="">

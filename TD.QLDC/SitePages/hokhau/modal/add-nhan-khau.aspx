@@ -11,7 +11,7 @@
                 <h5>Thông tin cơ bản</h5>
             </div>
             <div class="form-group m-form__group row">
-                <div class="col-4">
+                <div class="col-lg-4 col-md-12">
                     <label class="col-form-label">Họ và Tên</label>
                     <input type="text" name="HoTen" class="form-control" placeholder="">
 
@@ -27,7 +27,7 @@
                     </div>
                 </div>
 
-                <div class="col-4">
+                <div class="col-lg-4 col-md-12">
                     <label class="col-form-label">Tên gọi khác</label>
                     <input type="text" name="TenGoiKhac" class="form-control" placeholder="">
 
@@ -38,7 +38,7 @@
                     </select>
                 </div>
 
-                <div class="col-4 file">
+                <div class="col-lg-4 col-md-12 file">
                     <label class="col-form-label">Ảnh</label>
                     <div class="m-dropzone m-dropzone--primary dz-icon-compact" tdf-type="dropzone"
                         data-field="AnhDaiDien" data-plugins="spdoclibupload" data-sp-list-title="Documents"
@@ -57,7 +57,7 @@
             </div>
 
             <div class="form-group m-form__group row">
-                <div class="col-4">
+                <div class="col-lg-4 col-md-12">
                     <label class="col-form-label">Tình trạng hôn nhân <b class="text-danger">*</b></label>
 
                     <select name="DMHonNhanID" class="form-control m-select2" tdf-type="select" data-width="100%"
@@ -67,19 +67,19 @@
                     <div class="form-control-feedback" data-valmsg-for="DMHonNhanID" data-valmsg-replace="true"></div>
                 </div>
 
-                <div class="col-4">
+                <div class="col-lg-4 col-md-12">
                     <label class="col-form-label">Mã Số Thuế</label>
                     <input type="text" name="MaSoThue" class="form-control" placeholder="">
                 </div>
 
-                <div class="col-4">
+                <div class="col-lg-4 col-md-12">
                     <label class="col-form-label">Số điện thoại</label>
                     <input type="text" name="SoDienThoai" class="form-control" placeholder="">
                 </div>
             </div>
 
             <div class="form-group m-form__group row">
-                <div class="col-4">
+                <div class="col-lg-4 col-md-12">
                     <label class="col-form-label required">Dân tộc</label>
                     <select name="DMDanTocID" class="form-control m-select2" tdf-type="select" data-width="100%"
                         data-placeholder="Chọn dân tộc" data-ajax-url="/qldcapi/categories?active=true&nhomid=1"
@@ -88,7 +88,7 @@
                     <div class="form-control-feedback" data-valmsg-for="DMDanTocID" data-valmsg-replace="true"></div>
                 </div>
 
-                <div class="col-4">
+                <div class="col-lg-4 col-md-12">
                     <label class="col-form-label required">Quốc tịch</label>
                     <select name="DMQuocTichID" class="form-control m-select2" tdf-type="select" data-width="100%"
                         data-placeholder="Chọn quốc tịch" data-ajax-url="/qldcapi/categories?active=true&nhomid=2"
@@ -97,7 +97,7 @@
                     <div class="form-control-feedback" data-valmsg-for="DMQuocTichID" data-valmsg-replace="true"></div>
                 </div>
 
-                <div class="col-4">
+                <div class="col-lg-4 col-md-12">
                     <label class="col-form-label required">Tôn giáo</label>
                     <select name="DMTonGiaoID" class="form-control m-select2" tdf-type="select" data-width="100%"
                         data-placeholder="Chọn tôn giáo" data-ajax-url="/qldcapi/categories?active=true&nhomid=3"
@@ -108,7 +108,7 @@
             </div>
 
             <div class="form-group m-form__group row">
-                <div class="col-4">
+                <div class="col-lg-4 col-md-12">
                     <label class="col-form-label required">Quan hệ với chủ hộ</label>
                     <select name="DMQuanHeID" class="form-control m-select2" tdf-type="select" data-width="100%"
                         data-placeholder="Chọn quan hệ" data-ajax-url="/qldcapi/categories?active=true&nhomid=8"
@@ -117,7 +117,7 @@
                     <div class="form-control-feedback" data-valmsg-for="DMQuanHeID" data-valmsg-replace="true"></div>
                 </div>
 
-                <div class="col-4">
+                <div class="col-lg-4 col-md-12">
                     <label class="col-form-label required">Đối tượng</label>
                     <select name="DMDoiTuongID" class="form-control m-select2" tdf-type="select" data-width="100%"
                         data-placeholder="Chọn đối tượng" data-ajax-url="/qldcapi/categories?nhomid=4"
@@ -129,7 +129,7 @@
             </div>
 
             <div class="form-group m-form__group row">
-                <div class="col-8">
+                <div class="col-lg-8 col-md-12">
                     <label class="col-form-label"> Ghi chú </label>
                     <textarea type="text" tdf-type="textarea" data-maxlength-threshold="10" maxlength="1000"
                         name="GhiChu"
@@ -146,7 +146,7 @@
             </div>
 
             <div class="form-group m-form__group row">
-                <div class="col-4">
+                <div class="col-lg-4 col-md-12">
                     <label class="col-form-label">Trình độ văn hóa <b class="text-danger">*</b></label>
                     <select name="DMVanHoaID" class="form-control m-select2" tdf-type="select" data-width="100%"
                         data-placeholder="Chọn trình độ" data-ajax-url="/qldcapi/categories?active=true&nhomid=9"
@@ -156,7 +156,7 @@
                     <div class="form-control-feedback" data-valmsg-for="DMVanHoaID" data-valmsg-replace="true"></div>
                 </div>
 
-                <div class="col-4">
+                <div class="col-lg-4 col-md-12">
                     <label class="col-form-label">Trình độ chuyên môn <b class="text-danger">*</b></label>
                     <select name="DMChuyenMonID" class="form-control m-select2" tdf-type="select" data-width="100%"
                         data-placeholder="Chọn trình độ" data-ajax-url="/qldcapi/categories?nhomid=10"
@@ -166,14 +166,14 @@
                     <div class="form-control-feedback" data-valmsg-for="DMChuyenMonID" data-valmsg-replace="true"></div>
                 </div>
 
-                <div class="col-4">
+                <div class="col-lg-4 col-md-12">
                     <label class="col-form-label">Nghề Nghiệp</label>
                     <input type="text" name="NgheNghiep" class="form-control" placeholder="">
                 </div>
             </div>
 
             <div class="form-group m-form__group row">
-                <div class="col-8">
+                <div class="col-lg-8 col-md-12">
                     <label class="col-form-label">Nơi Làm Việc</label>
                     <input type="text" name="NoiLamViec" class="form-control" placeholder="">
                 </div>
@@ -184,7 +184,7 @@
             </div>
 
             <div class="form-group m-form__group row">
-                <div class="col-4">
+                <div class="col-lg-4 col-md-12">
                     <label class="col-form-label">Tỉnh thành</label>
 
                     <select name="MaTinhThanhTamTru" class="form-control m-select2" tdf-type="select" data-width="100%"
@@ -198,7 +198,7 @@
                     <div class="form-control-feedback" data-valmsg-for="Tinh" data-valmsg-replace="true"></div>
                 </div>
 
-                <div class="col-4">
+                <div class="col-lg-4 col-md-12">
                     <label class="col-form-label">Quận, huyện</label>
 
                     <select name="MaQuanHuyenTamTru" class="form-control m-select2" tdf-type="select" data-width="100%"
@@ -210,7 +210,7 @@
                     <div class="form-control-feedback" data-valmsg-for="Huyen" data-valmsg-replace="true"></div>
                 </div>
 
-                <div class="col-4">
+                <div class="col-lg-4 col-md-12">
                     <label class="col-form-label">Phường, xã</label>
                     <select name="Xa" class="form-control m-select2" tdf-type="select" data-width="100%"
                         data-placeholder="Chọn xã" data-ajax-url="    " data-ajax-page-size=-1 data-result-field=result
@@ -222,7 +222,7 @@
             </div>
 
             <div class="form-group m-form__group row">
-                <div class="col-8">
+                <div class="col-lg-8 col-md-12">
                     <label class="col-form-label">Địa chỉ tạm trú</label>
                     <input type="text" name="DiaChiTamTru" class="form-control" placeholder="">
                 </div>
@@ -232,11 +232,11 @@
                 <h5>CMND/CCCD</h5>
             </div>
             <div class="form-group m-form__group row">
-                <div class="col-4">
+                <div class="col-lg-4 col-md-12">
                     <label class="col-form-label">Số thẻ</label>
                     <input type="text" name="SoCCCD" class="form-control" placeholder="">
                 </div>
-                <div class="col-4">
+                <div class="col-lg-4 col-md-12">
                     <label class="col-form-label">Ngày cấp</label>
 
                     <input type="hidden" id="NgayCapCCCD" name="NgayCapCCCD" tdf-type="datepicker"
@@ -249,7 +249,7 @@
                         <input type="text" class="form-control m-input" placeholder="Chọn ngày" />
                     </div>
                 </div>
-                <div class="col-4">
+                <div class="col-lg-4 col-md-12">
                     <label class="col-form-label">Hạn sử dụng</label>
                     <input type="hidden" id="HanSuDungCCCD" name="HanSuDungCCCD" tdf-type="datepicker"
                         data-ui-element="+div>input" data-output-format="YYYY-MM-DDTHH:mm:ssZ"
@@ -263,7 +263,7 @@
                 </div>
             </div>
             <div class="form-group m-form__group row">
-                <div class="col-8">
+                <div class="col-lg-8 col-md-12">
                     <label class="col-form-label">Nơi Cấp</label>
                     <input type="text" name="NoiCapCCCD" class="form-control" placeholder="">
                 </div>
@@ -273,12 +273,21 @@
                 <h5>Thẻ bảo hiểm y tế</h5>
             </div>
             <div class="form-group m-form__group row">
-                <div class="col-4">
+                <label class="col-form-label m--font-bolder col-lg-1 col-md-12">Được miễn BHYT</label>
+                <div class="col-sm-1">
+                    <label class="m-checkbox m-checkbox--state-success">
+                        <input type="checkbox" name="DuocMienBHYT" checked="" value="false">
+                        <span></span>
+                    </label>
+                </div>
+            </div>
+            <div class="form-group m-form__group row">
+                <div class="col-lg-4 col-md-12">
                     <label class="col-form-label">Số thẻ</label>
                     <input type="text" name="SoBHYT" class="form-control" placeholder="">
                 </div>
 
-                <!-- <div class="col-4">
+                <!-- <div class="col-lg-4 col-md-12">
                     <label class="col-form-label">Ngày cấp</label>
                     <input
                         type="hidden"
@@ -296,7 +305,7 @@
                         <input type="text" class="form-control m-input" placeholder="Chọn ngày" />
                     </div>
                 </div> -->
-                <div class="col-4">
+                <div class="col-lg-4 col-md-12">
                     <label class="col-form-label">Hạn sử dụng</label>
                     <input type="hidden" name="HanSuDungBHYT" tdf-type="datepicker" data-ui-element="+div>input"
                         data-output-format="YYYY-MM-DDTHH:mm:ssZ" data-input-format="DD/MM/YYYY" data-autoclose="true"
@@ -320,12 +329,12 @@
                 <h5>Hộ chiếu</h5>
             </div>
             <div class="form-group m-form__group row">
-                <div class="col-4">
+                <div class="col-lg-4 col-md-12">
                     <label class="col-form-label">Số hộ chiếu</label>
                     <input type="text" name="SoHC" class="form-control" placeholder="">
                 </div>
 
-                <div class="col-4">
+                <div class="col-lg-4 col-md-12">
                     <label class="col-form-label">Ngày cấp</label>
                     <input type="hidden" id="NgayCapHC" name="NgayCapHC" tdf-type="datepicker"
                         data-ui-element="+div>input" data-output-format="YYYY-MM-DDTHH:mm:ssZ"
@@ -338,7 +347,7 @@
                     </div>
                 </div>
 
-                <div class="col-4">
+                <div class="col-lg-4 col-md-12">
                     <label class="col-form-label">Nơi Cấp</label>
                     <input type="text" name="NoiCapHC" class="form-control" placeholder="">
                 </div>
@@ -373,6 +382,7 @@
                                 var form = forms.Widget.ofElement($("#form")[0]);
                                 return form.tryValidate().then(function () {
                                     var val = form.getData();
+                                    val.DuocMienBHYT = val.DuocMienBHYT[0] || false;
                                     if (val) {
                                         dlg.data = val;
                                     } else {

@@ -39,10 +39,6 @@
                             data: 'DMLoaiHo.Name',
                         },
                         {
-                            title: 'Loại nhà ở',
-                            data: 'LoaiNhaO',
-                        },
-                        {
                             title: 'Hộ kinh doanh',
                             data: 'HoKinhDoanh',
                         }

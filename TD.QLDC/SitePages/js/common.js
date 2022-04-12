@@ -173,9 +173,9 @@ Date.prototype.ddMMyyyy = function () {
     (mm > 9 ? '' : '0') + mm,
     this.getFullYear(),
     ].join('/');
-};
+}
 
-function fillSelect({ selector, element, value, dataProvider, dataValueField, dataTextField, placeholder, dataWidth, dataHeight, allowClear }) {
+function fillSelect({ selector, element, value, dataProvider, dataValueField, dataTextField, placeholder, dataWidth, dataHeight, allowClear, data }) {
     var $element = element ? $(element) : $(selector);
 
     $element.select2({
@@ -196,6 +196,13 @@ function fillSelect({ selector, element, value, dataProvider, dataValueField, da
 
             if (value) $element.val(value);
         });
+    } else if (data) {
+        if (Array.isArray(data) && data.length > 0) {
+            data.forEach(function (item) {
+                var option = `<option value=${item[dataValueField]}>${item[dataTextField]}</option>`;
+                $element.append(option);
+            });
+        } 
     }
 
 }

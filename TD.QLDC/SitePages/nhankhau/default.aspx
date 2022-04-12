@@ -70,6 +70,18 @@
               <option value=""></option>
             </select>
           </div>
+					<div class="my-1 pr-1 max-width-300 d-flex flex-column">
+						<label class="col-form-label">Từ tuổi</label>
+            <select class="filter select-tutuoi bs-select form-control m-select2" data-width="200px">
+              <option value=""></option>
+            </select>
+          </div>
+					<div class="my-1 pr-1 max-width-300 d-flex flex-column">
+						<label class="col-form-label">Đến tuổi</label>
+            <select class="filter select-dentuoi bs-select form-control m-select2" data-width="200px">
+              <option value=""></option>
+            </select>
+          </div>
         </div>
 				<!--begin: Datatable -->
 				<table class="td-datatable table table-bordered m-table display" style="width:100%">

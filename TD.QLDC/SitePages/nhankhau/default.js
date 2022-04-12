@@ -7,6 +7,8 @@
     var dmVanHoaId = null;
     var dmQuanHeId = null;
     var gioiTinh = null;
+    var tuTuoi = null;
+    var denTuoi = null;
 
     var AreaRemoteAjax = function () {
         //== Private functions
@@ -15,6 +17,8 @@
             dmVanHoaId,
             dmQuanHeId,
             gioiTinh,
+            tuTuoi,
+            denTuoi,
             includes: 'DMQuanHe,DMHonNhan,DMDoiTuong',
         })
 
@@ -44,10 +48,10 @@
                         data: 'GioiTinh'
 
                     },
-                    {
-                        title: 'Quan Hệ',
-                        data: 'DMQuanHe.Name',
-                    },
+                    // {
+                    //     title: 'Quan Hệ',
+                    //     data: 'DMQuanHe.Name',
+                    // },
                     {
                         title: 'Đối tượng chính sách',
                         data: 'DMDoiTuong.Name',
@@ -122,6 +126,8 @@
                     dmVanHoaId,
                     dmQuanHeId,
                     gioiTinh,
+                    tuTuoi,
+                    denTuoi,
                     includes: 'DMQuanHe,DMHonNhan,DMDoiTuong',
                 })
 
@@ -202,6 +208,34 @@
 
         $('.select-gioitinh.filter').on('change', function() {
             gioiTinh = $(this).val();
+            AreaRemoteAjax.reload();
+        })
+
+        fillSelect({
+            selector: '.select-tutuoi.filter',
+            placeholder: 'Tất cả',
+            data: tuoi1Den100(),
+            dataTextField: 'text',
+            dataValueField: 'value',
+            allowClear: true,
+        })
+
+        $('.select-tutuoi.filter').on('change', function() {
+            tuTuoi = $(this).val();
+            AreaRemoteAjax.reload();
+        })
+
+        fillSelect({
+            selector: '.select-dentuoi.filter',
+            placeholder: 'Tất cả',
+            data: tuoi1Den100(),
+            dataTextField: 'text',
+            dataValueField: 'value',
+            allowClear: true,
+        })
+
+        $('.select-dentuoi.filter').on('change', function() {
+            denTuoi = $(this).val();
             AreaRemoteAjax.reload();
         })
     });
@@ -302,4 +336,16 @@
         }
     };
 
+    function tuoi1Den100() {
+        var items = []
+    
+        for (var i = 1; i <= 100; i++) {
+            items.push({
+                text: i,
+                value: i,
+            })
+        }
+    
+        return items
+    }
 });
