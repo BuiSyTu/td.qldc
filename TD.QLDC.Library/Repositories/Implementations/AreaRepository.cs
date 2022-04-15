@@ -193,6 +193,16 @@ namespace TD.QLDC.Library.Repositories.Implementations
         {
             return _dbContext.Areas.FirstOrDefault(x => x.Tags.Contains(tags));
         }
+
+        public Area GetByCode(string code, string includes)
+        {
+            return _dbContext.Areas
+                .IncludeMany(includes)
+                .ToList()
+                .CheckIncludeChildren(includes)
+                .CheckIncludeParent(includes)
+                .FirstOrDefault(x => x.Code == code);
+        }
     }
 
     public static class QueryableAreaExtension
@@ -203,6 +213,38 @@ namespace TD.QLDC.Library.Repositories.Implementations
 
             var newQuery = query.Where(x => x.Parent.Code == parentCode);
             return newQuery;
+        }
+
+        public static ICollection<Area> CheckIncludeChildren(this ICollection<Area> data, string includes)
+        {
+            if (string.IsNullOrEmpty(includes) || !includes.Contains("Children"))
+            {
+                foreach (var item in data)
+                {
+                    if (item.Children != null)
+                    {
+                        item.Children = null;
+                    }
+                }
+            }
+
+            return data;
+        }
+
+        public static ICollection<Area> CheckIncludeParent(this ICollection<Area> data, string includes)
+        {
+            if (string.IsNullOrEmpty(includes) || !includes.Contains("Parent"))
+            {
+                foreach (var item in data)
+                {
+                    if (item.Parent != null)
+                    {
+                        item.Parent = null;
+                    }
+                }
+            }
+
+            return data;
         }
     }
 }
