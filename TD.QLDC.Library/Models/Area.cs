@@ -1,4 +1,6 @@
-﻿namespace TD.QLDC.Library.Models
+﻿using System.Collections.Generic;
+
+namespace TD.QLDC.Library.Models
 {
     public class Area : ModelBaseExt
     {
@@ -19,5 +21,7 @@
         public int? ParentId { get; set; }
 
         public Area Parent { get; set; }
+
+        public List<Area> Children { get; set; }
     }
 }

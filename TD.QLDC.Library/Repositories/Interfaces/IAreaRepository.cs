@@ -25,5 +25,8 @@ namespace TD.QLDC.Library.Repositories.Interfaces
         Dictionary<string, string> GetCurrentArea();
 
         Area GetSingleByTags(string tags);
+
+
+        Area GetByCode(string code, string includes);
     }
 }
