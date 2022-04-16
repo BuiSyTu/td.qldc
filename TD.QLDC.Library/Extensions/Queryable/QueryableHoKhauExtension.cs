@@ -37,5 +37,19 @@ namespace TD.QLDC.Library.Repositories.Implementations
                 || x.MaXom == areaCode);
             return newQuery;
         }
+
+        public static IQueryable<HoKhau> FilterAreaCode(this IQueryable<HoKhau> query, string areaCode = null)
+        {
+            if (string.IsNullOrEmpty(areaCode)) return query;
+
+            var newQuery = query.Where(x =>
+                x.MaTinhThanh == areaCode
+                || x.MaQuanHuyen == areaCode
+                || x.MaXaPhuong == areaCode
+                || x.MaThon == areaCode
+                || x.MaXom == areaCode);
+
+            return newQuery;
+        }
     }
 }

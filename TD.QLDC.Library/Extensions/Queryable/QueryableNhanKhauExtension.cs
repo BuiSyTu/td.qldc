@@ -117,5 +117,18 @@ namespace TD.QLDC.Library.Repositories.Implementations
             var newQuery = query.Where(x => x.NgaySinh.HasValue && (curYear - x.NgaySinh.Value.Year) <= denTuoi.Value);
             return newQuery;
         }
+
+        public static IQueryable<NhanKhau> FilterAreaCode(this IQueryable<NhanKhau> query, string areaCode = null)
+        {
+            if (string.IsNullOrEmpty(areaCode)) return query;
+
+            var newQuery = query.Where(x =>
+                x.HoKhau.MaTinhThanh == areaCode
+                || x.HoKhau.MaQuanHuyen == areaCode
+                || x.HoKhau.MaXaPhuong == areaCode
+                || x.HoKhau.MaThon == areaCode
+                || x.HoKhau.MaXom == areaCode);
+            return newQuery;
+        }
     }
 }

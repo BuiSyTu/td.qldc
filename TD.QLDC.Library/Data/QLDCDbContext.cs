@@ -26,6 +26,11 @@ namespace TD.QLDC.Library.Models
 
             modelBuilder.Entity<Area>()
                 .ToTable("Areas");
+            modelBuilder.Entity<Area>()
+                .HasOptional(p => p.Parent)
+                .WithMany(e => e.Children)
+                .HasForeignKey(o => o.ParentId)
+                .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<Category>()
                 .ToTable("Categories");

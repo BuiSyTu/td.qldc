@@ -1,5 +1,6 @@
 ﻿using System.Web.Http;
 using TD.Core.Api.Mvc;
+using TD.QLDC.Library.Common;
 using TD.QLDC.Library.FilterModels;
 using TD.QLDC.Library.Models;
 using TD.QLDC.Library.Repositories.Interfaces;
@@ -118,6 +119,19 @@ namespace TD.QLDC.API.Controllers
         {
             var entities = _repository.GetCurrentArea();
             return ApiOk(entities);
+        }
+
+        [Route("QLDCapi/areas/currentTree")]
+        [HttpGet]
+        public IHttpActionResult GetCurrentTree(string areaCode = null)
+        {
+            if (string.IsNullOrEmpty(areaCode))
+            {
+                areaCode = CommonService.GetCurrentAreaCode();
+            }
+
+            var area = _repository.GetByCode(areaCode, includes: "Children");
+            return ApiOk(area);
         }
     }
 }

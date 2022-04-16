@@ -9,5 +9,7 @@ namespace TD.QLDC.Library.FilterModels
     public class HoKhauFilterModel : BaseFilterModel
     {
         public int? DMLoaiHoID { get; set; } = null;
+
+        public string AreaCode { get; set; } = null;
     }
 }

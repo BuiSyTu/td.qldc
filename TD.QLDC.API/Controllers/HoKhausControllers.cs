@@ -3,16 +3,19 @@ using TD.Core.Api.Mvc;
 using TD.QLDC.Library.FilterModels;
 using TD.QLDC.Library.Models;
 using TD.QLDC.Library.Repositories.Interfaces;
+using TD.QLDC.Library.Services.Interfaces;
 
 namespace TD.QLDC.API.Controllers
 {
     public class HoKhausController : TDApiController
     {
         private readonly IHoKhauRepository _repository;
-        public HoKhausController(IHoKhauRepository repository)
+        private readonly IHoKhauService _service;
+
+        public HoKhausController(IHoKhauRepository repository, IHoKhauService service)
         {
             _repository = repository;
-
+            _service = service;
         }
 
         [Route("QLDCapi/HoKhaus")]
@@ -109,6 +112,14 @@ namespace TD.QLDC.API.Controllers
         {
             var count = _repository.Count();
             return ApiOk(count);
+        }
+
+        [Route("QLDCapi/HoKhaus/currentTree")]
+        [HttpGet]
+        public IHttpActionResult GetCurrentTree()
+        {
+            var result = _service.GetCurrentTree();
+            return ApiOk(result);
         }
     }
 }

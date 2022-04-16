@@ -94,6 +94,7 @@ namespace TD.QLDC.Library.Repositories.Implementations
         {
             return _dbContext.HoKhaus
                 .FilterCurrentAreaCode()
+                .FilterAreaCode(filterModel.AreaCode)
                 .FilterSearchValue(filterModel.Q)
                 .Count();
         }
@@ -103,6 +104,7 @@ namespace TD.QLDC.Library.Repositories.Implementations
             return _dbContext.HoKhaus
                 .IncludeMany(filterModel.Includes)
                 .FilterCurrentAreaCode()
+                .FilterAreaCode(filterModel.AreaCode)
                 .FilterSearchValue(filterModel.Q)
                 .OrderByMany(filterModel.OrderBy)
                 .Skip(filterModel.Skip)

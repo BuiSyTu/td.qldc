@@ -44,5 +44,7 @@ namespace TD.QLDC.Library.FilterModels
         public int? TuTuoi { get; set; } = null;
 
         public int? DenTuoi { get; set; } = null;
+
+        public string AreaCode { get; set; } = null;
     }
 }
