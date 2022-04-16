@@ -50,6 +50,8 @@ namespace TD.QLDC.API.Integration
             container.RegisterType<IDashboardService, DashboardService>();
             container.RegisterType<IUploadService, UploadService>();
             container.RegisterType<IUserService, UserService>();
+            container.RegisterType<IHoKhauService, HoKhauService>();
+            container.RegisterType<INhanKhauService, NhanKhauService>();
 
             // Others
             container.RegisterFactory<ICoreServicesProvider>(c => new DefaultContextCoreServicesProvider());

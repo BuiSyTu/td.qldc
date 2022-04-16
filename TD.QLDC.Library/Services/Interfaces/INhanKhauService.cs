@@ -10,5 +10,7 @@ namespace TD.QLDC.Library.Services.Interfaces
     public interface INhanKhauService
     {
         NhanKhau GetByCccd(string cccd, string includes);
+
+        Area GetCurrentTree(string areaCode = null);
     }
 }

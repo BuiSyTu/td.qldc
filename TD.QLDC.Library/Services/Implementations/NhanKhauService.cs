@@ -1,4 +1,5 @@
-﻿using TD.QLDC.Library.Models;
+﻿using TD.QLDC.Library.Common;
+using TD.QLDC.Library.Models;
 using TD.QLDC.Library.Repositories.Interfaces;
 using TD.QLDC.Library.Services.Interfaces;
 
@@ -32,6 +33,35 @@ namespace TD.QLDC.Library.Services.Implementations
                 : string.Empty;
 
             return nhanKhau;
+        }
+
+        public Area GetCurrentTree(string areaCode = null)
+        {
+            if (string.IsNullOrEmpty(areaCode))
+            {
+                areaCode = CommonService.GetCurrentAreaCode();
+            }
+
+            var area = _areaRepository.GetByCode(areaCode, includes: "Children");
+
+            SetCount(area);
+
+            return area;
+        }
+
+        private void SetCount(Area area)
+        {
+            area.ExtensionData["Count"] = _repository.Count(new FilterModels.NhanKhauFilterModel
+            {
+                AreaCode = area.Code
+            });
+
+            if (area.Children is null) return;
+
+            foreach (var item in area.Children)
+            {
+                SetCount(item);
+            }
         }
     }
 }

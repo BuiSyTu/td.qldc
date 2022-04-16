@@ -3,16 +3,19 @@ using TD.Core.Api.Mvc;
 using TD.QLDC.Library.FilterModels;
 using TD.QLDC.Library.Models;
 using TD.QLDC.Library.Repositories.Interfaces;
+using TD.QLDC.Library.Services.Interfaces;
 
 namespace TD.QLDC.API.Controllers
 {
     public class NhanKhausController : TDApiController
     {
         private readonly INhanKhauRepository _repository;
+        private readonly INhanKhauService _service;
 
-        public NhanKhausController(INhanKhauRepository repository)
+        public NhanKhausController(INhanKhauRepository repository, INhanKhauService service)
         {
             _repository = repository;
+            _service = service;
         }
 
         [Route("QLDCapi/NhanKhaus")]
@@ -100,6 +103,14 @@ namespace TD.QLDC.API.Controllers
                 return ApiNotFound();
             }
             return ApiOk(count);
+        }
+
+        [Route("QLDCapi/NhanKhaus/currentTree")]
+        [HttpGet]
+        public IHttpActionResult GetCurrentTree()
+        {
+            var result = _service.GetCurrentTree();
+            return ApiOk(result);
         }
     }
 }
