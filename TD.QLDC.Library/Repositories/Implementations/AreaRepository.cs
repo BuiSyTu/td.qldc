@@ -146,7 +146,7 @@ namespace TD.QLDC.Library.Repositories.Implementations
                     dictionary.Add("VillageCode", areaCode);
                     dictionary.Add("VillageName", village7.Name);
                     dictionary.Add("AreaCode", areaCode);
-                    dictionary.Add("ProvinceName", village7.Name);
+                    dictionary.Add("AreaName", village7.Name);
                     break;
                 case 9:
                     var hamlet = GetByCode(areaCode);
