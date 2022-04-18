@@ -2,6 +2,7 @@
 using System.Configuration;
 using System.Data.Entity;
 using System.Linq;
+using System.Linq.Expressions;
 using TD.Core.Api.Mvc;
 using TD.QLDC.Library.Common;
 using TD.QLDC.Library.FilterModels;
@@ -92,24 +93,27 @@ namespace TD.QLDC.Library.Repositories.Implementations
 
         public int Count(HoKhauFilterModel filterModel)
         {
-            return _dbContext.HoKhaus
-                .FilterCurrentAreaCode()
-                .FilterAreaCode(filterModel.AreaCode)
-                .FilterSearchValue(filterModel.Q)
-                .Count();
+            var query = CreateQuery(filterModel);
+            return query.Count();
         }
 
         public ICollection<HoKhau> Get(HoKhauFilterModel filterModel)
         {
-            return _dbContext.HoKhaus
-                .IncludeMany(filterModel.Includes)
-                .FilterCurrentAreaCode()
-                .FilterAreaCode(filterModel.AreaCode)
-                .FilterSearchValue(filterModel.Q)
+            var query = CreateQuery(filterModel);
+            return query
                 .OrderByMany(filterModel.OrderBy)
                 .Skip(filterModel.Skip)
                 .Take(filterModel.Top)
                 .ToList();
+        }
+
+        private IQueryable<HoKhau> CreateQuery(HoKhauFilterModel filterModel)
+        {
+            return _dbContext.HoKhaus
+                .FilterCurrentAreaCode()
+                .FilterAreaCode(filterModel.AreaCode)
+                .Filter(filterModel.DMLoaiHoID != null, x => x.DMLoaiHoID == filterModel.DMLoaiHoID.Value)
+                .FilterSearchValue(filterModel.Q);
         }
 
         public HoKhau GetBySoHoKhauAndCreateIfNotExist(string soHoKhau, int? loaiHoGiaDinhId = null)

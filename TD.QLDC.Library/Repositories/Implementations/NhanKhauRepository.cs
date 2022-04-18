@@ -103,6 +103,7 @@ namespace TD.QLDC.Library.Repositories.Implementations
                 .FilterDenTuoi(filterModel.DenTuoi)
                 .FilterCurrentAreaCode()
                 .FilterAreaCode(filterModel.AreaCode)
+                .FilterLaDoiTuongChinhSach(filterModel.LaDoiTuongChinhSach)
                 .FilterSearchValue(filterModel.Q);
         }
 

@@ -108,9 +108,9 @@ namespace TD.QLDC.API.Controllers
 
         [Route("QLDCapi/HoKhaus/count")]
         [HttpGet]
-        public IHttpActionResult GetCountHoKhau()
+        public IHttpActionResult GetCountHoKhau([FromUri]HoKhauFilterModel filterModel)
         {
-            var count = _repository.Count();
+            var count = _repository.Count(filterModel);
             return ApiOk(count);
         }
 

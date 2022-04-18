@@ -95,9 +95,9 @@ namespace TD.QLDC.API.Controllers
 
         [Route("QLDCapi/NhanKhaus/count")]
         [HttpGet]
-        public IHttpActionResult GetCountNhanKhau()
+        public IHttpActionResult GetCountNhanKhau([FromUri]NhanKhauFilterModel filterModel)
         {
-            var count = _repository.Count();
+            var count = _repository.Count(filterModel);
             if (count == 0)
             {
                 return ApiNotFound();
@@ -107,9 +107,9 @@ namespace TD.QLDC.API.Controllers
 
         [Route("QLDCapi/NhanKhaus/currentTree")]
         [HttpGet]
-        public IHttpActionResult GetCurrentTree()
+        public IHttpActionResult GetCurrentTree([FromUri] NhanKhauFilterModel filterModel)
         {
-            var result = _service.GetCurrentTree();
+            var result = _service.GetCurrentTree(filterModel);
             return ApiOk(result);
         }
     }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TD.QLDC.Library.FilterModels;
 using TD.QLDC.Library.Models;
 
 namespace TD.QLDC.Library.Services.Interfaces
@@ -11,6 +12,6 @@ namespace TD.QLDC.Library.Services.Interfaces
     {
         NhanKhau GetByCccd(string cccd, string includes);
 
-        Area GetCurrentTree(string areaCode = null);
+        Area GetCurrentTree(NhanKhauFilterModel filterModel);
     }
 }

@@ -130,5 +130,18 @@ namespace TD.QLDC.Library.Repositories.Implementations
                 || x.HoKhau.MaXom == areaCode);
             return newQuery;
         }
+
+        public static IQueryable<NhanKhau> FilterLaDoiTuongChinhSach(this IQueryable<NhanKhau> query, bool? LaDoiTuongChinhSach = null)
+        {
+            if (!LaDoiTuongChinhSach.HasValue || !LaDoiTuongChinhSach.Value) return query;
+
+            var newQuery = query.Where(x =>
+                x.DMDoiTuongID != null
+                && x.DMDoiTuongID != 34 // Khong
+                && x.DMDoiTuongID != 51 // Doi tuong khac
+            );
+
+            return newQuery;
+        }
     }
 }
