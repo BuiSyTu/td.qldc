@@ -12,7 +12,7 @@ namespace TD.QLDC.Library.Repositories.Implementations
 {
     public class NhomDanhMucRepository : GenericRepository<NhomDanhMuc>, INhomDanhMucRepository
     {
-        private QLDCDbContext _dbContext;
+        private readonly QLDCDbContext _dbContext;
 
         public NhomDanhMucRepository(
             QLDCDbContext dbContext,

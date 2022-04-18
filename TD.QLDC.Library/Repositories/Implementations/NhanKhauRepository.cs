@@ -14,7 +14,7 @@ namespace TD.QLDC.Library.Repositories.Implementations
 {
     public class NhanKhauRepository : GenericRepository<NhanKhau>, INhanKhauRepository
     {
-        private QLDCDbContext _dbContext;
+        private readonly QLDCDbContext _dbContext;
 
         public NhanKhauRepository(
             QLDCDbContext dbContext,
