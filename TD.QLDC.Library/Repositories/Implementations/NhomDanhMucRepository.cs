@@ -44,6 +44,8 @@ namespace TD.QLDC.Library.Repositories.Implementations
 
         public int Count(NhomDanhMucFilterModel filterModel)
         {
+            if (filterModel is null) filterModel = new NhomDanhMucFilterModel();
+
             return _dbContext.NhomDanhMucs
                 .Filter(
                     !string.IsNullOrEmpty(filterModel.Q),
@@ -54,6 +56,8 @@ namespace TD.QLDC.Library.Repositories.Implementations
 
         public ICollection<NhomDanhMuc> Get(NhomDanhMucFilterModel filterModel)
         {
+            if (filterModel is null) filterModel = new NhomDanhMucFilterModel();
+
             return _dbContext.NhomDanhMucs
                 .IncludeMany(filterModel.Includes)
                 .Filter(

@@ -38,6 +38,11 @@ namespace TD.QLDC.Library.Services.Implementations
 
         public Area GetCurrentTree(NhanKhauFilterModel filterModel)
         {
+            if (filterModel is null)
+            {
+                filterModel = new NhanKhauFilterModel();
+            }
+
             string areaCode = filterModel.AreaCode;
 
             if (string.IsNullOrEmpty(areaCode))

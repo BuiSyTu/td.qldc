@@ -93,12 +93,16 @@ namespace TD.QLDC.Library.Repositories.Implementations
 
         public int Count(HoKhauFilterModel filterModel)
         {
+            if (filterModel is null) filterModel = new HoKhauFilterModel();
+
             var query = CreateQuery(filterModel);
             return query.Count();
         }
 
         public ICollection<HoKhau> Get(HoKhauFilterModel filterModel)
         {
+            if (filterModel is null) filterModel = new HoKhauFilterModel();
+
             var query = CreateQuery(filterModel);
             return query
                 .OrderByMany(filterModel.OrderBy)

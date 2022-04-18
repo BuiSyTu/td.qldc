@@ -66,12 +66,16 @@ namespace TD.QLDC.Library.Repositories.Implementations
 
         public int Count(NhanKhauFilterModel filterModel)
         {
+            if (filterModel is null) filterModel = new NhanKhauFilterModel();
+
             var query = CreateQuery(filterModel);
             return query.Count();
         }
 
         public ICollection<NhanKhau> Get(NhanKhauFilterModel filterModel)
         {
+            if (filterModel is null) filterModel = new NhanKhauFilterModel();
+
             var query = CreateQuery(filterModel);
             return query
                 .OrderByMany(filterModel.OrderBy)
