@@ -46,28 +46,29 @@ namespace TD.QLDC.Library.Repositories.Implementations
         {
             if (filterModel is null) filterModel = new NhomDanhMucFilterModel();
 
-            return _dbContext.NhomDanhMucs
-                .Filter(
-                    !string.IsNullOrEmpty(filterModel.Q),
-                    x => x.Name.Contains(filterModel.Q)
-                )
-                .Count();
+            var initQuery = _dbContext.NhomDanhMucs.AsQueryable();
+            return CreateQuery(initQuery, filterModel).Count();
         }
 
         public ICollection<NhomDanhMuc> Get(NhomDanhMucFilterModel filterModel)
         {
             if (filterModel is null) filterModel = new NhomDanhMucFilterModel();
 
-            return _dbContext.NhomDanhMucs
-                .IncludeMany(filterModel.Includes)
-                .Filter(
-                    !string.IsNullOrEmpty(filterModel.Q),
-                    x => x.Name.Contains(filterModel.Q)
-                )
+            var initQuery = _dbContext.NhomDanhMucs.IncludeMany(filterModel.Includes);
+            return CreateQuery(initQuery, filterModel)
                 .OrderByMany(filterModel.OrderBy)
                 .Skip(filterModel.Skip)
                 .Take(filterModel.Top)
                 .ToList();
+        }
+
+        private IQueryable<NhomDanhMuc> CreateQuery(IQueryable<NhomDanhMuc> initQuery, NhomDanhMucFilterModel filterModel)
+        {
+            return initQuery
+                .Filter(
+                    !string.IsNullOrEmpty(filterModel.Q),
+                    x => x.Name.Contains(filterModel.Q)
+                );
         }
     }
 }

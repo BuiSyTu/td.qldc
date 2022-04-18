@@ -68,26 +68,25 @@ namespace TD.QLDC.Library.Repositories.Implementations
         {
             if (filterModel is null) filterModel = new NhanKhauFilterModel();
 
-            var query = CreateQuery(filterModel);
-            return query.Count();
+            var initQuery = _dbContext.NhanKhaus.AsQueryable();
+            return CreateQuery(initQuery, filterModel).Count();
         }
 
         public ICollection<NhanKhau> Get(NhanKhauFilterModel filterModel)
         {
             if (filterModel is null) filterModel = new NhanKhauFilterModel();
 
-            var query = CreateQuery(filterModel);
-            return query
+            var initQuery = _dbContext.NhanKhaus.IncludeMany(filterModel.Includes);
+            return CreateQuery(initQuery, filterModel)
                 .OrderByMany(filterModel.OrderBy)
                 .Skip(filterModel.Skip)
                 .Take(filterModel.Top)
                 .ToList();
         }
 
-        private IQueryable<NhanKhau> CreateQuery(NhanKhauFilterModel filterModel)
+        private IQueryable<NhanKhau> CreateQuery(IQueryable<NhanKhau> query, NhanKhauFilterModel filterModel)
         {
-            return _dbContext.NhanKhaus
-                .IncludeMany(filterModel.Includes)
+            return query
                 .FilterHoKhauId(filterModel.HoKhauID)
                 .FilterSoHoKhau(filterModel.SoHoKhau)
                 .Filter(filterModel.DMHonNhanID != null, x => x.DMHonNhanID == filterModel.DMHonNhanID)

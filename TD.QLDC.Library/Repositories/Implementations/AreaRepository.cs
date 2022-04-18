@@ -26,45 +26,33 @@ namespace TD.QLDC.Library.Repositories.Implementations
 
         public int Count(AreaFilterModel filterModel)
         {
-            var q = filterModel.Q;
-            var areaCode = filterModel.AreaCode;
-            var parentCode = filterModel.ParentCode;
-            var type = filterModel.Type;
+            if (filterModel is null) filterModel = new AreaFilterModel();
 
-            return _dbContext.Areas
-                .Filter(
-                    !string.IsNullOrEmpty(q),
-                    x => x.Name.Contains(q)|| x.Code.Contains(q)
-                )
-                .Filter(
-                    !string.IsNullOrEmpty(areaCode),
-                    x => x.Code == areaCode
-                        || x.Parent.Code == areaCode
-                        || x.Parent.Parent.Code == areaCode
-                        || x.Parent.Parent.Parent.Code == areaCode
-                        || x.Parent.Parent.Parent.Parent.Code == areaCode
-                )
-                .Filter(
-                    type != null,
-                    x => x.Type == type.ToString()
-                )
-                .FilterParentCode(parentCode)
-                .Count();
+            var initQuery = _dbContext.Areas.AsQueryable();
+            return CreateQuery(initQuery, filterModel).Count();
         }
 
         public ICollection<Area> Get(AreaFilterModel filterModel)
         {
-            var includes = filterModel.Includes;
+            if (filterModel is null) filterModel = new AreaFilterModel();
+
+            var initQuery = _dbContext.Areas.IncludeMany(filterModel.Includes);
+            return CreateQuery(initQuery, filterModel)
+                .OrderByMany(filterModel.OrderBy)
+                .Skip(filterModel.Skip)
+                .Take(filterModel.Top)
+                .ToList();
+        }
+
+        private IQueryable<Area> CreateQuery(IQueryable<Area> query, AreaFilterModel filterModel)
+        {
             var q = filterModel.Q;
-            var orderBy = filterModel.OrderBy;
-            var skip = filterModel.Skip;
-            var top = filterModel.Top;
             var areaCode = filterModel.AreaCode;
             var parentCode = filterModel.ParentCode;
             var type = filterModel.Type;
+            var includes = filterModel.Includes;
 
-            return _dbContext.Areas
-                .IncludeMany(includes)
+            return query
                 .Filter(
                     !string.IsNullOrEmpty(q),
                     x => x.Name.Contains(q) || x.Code.Contains(q)
@@ -81,11 +69,7 @@ namespace TD.QLDC.Library.Repositories.Implementations
                     type != null,
                     x => x.Type == type.ToString()
                 )
-                .FilterParentCode(parentCode)
-                .OrderByMany(orderBy)
-                .Skip(skip)
-                .Take(top)
-                .ToList();
+                .FilterParentCode(parentCode);
         }
 
         public ICollection<Area> GetByCodes(string codes, string includes = null)

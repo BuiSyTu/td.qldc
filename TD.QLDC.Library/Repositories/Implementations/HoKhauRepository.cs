@@ -95,25 +95,26 @@ namespace TD.QLDC.Library.Repositories.Implementations
         {
             if (filterModel is null) filterModel = new HoKhauFilterModel();
 
-            var query = CreateQuery(filterModel);
-            return query.Count();
+            var initQuery = _dbContext.HoKhaus.AsQueryable();
+            return CreateQuery(initQuery, filterModel).Count();
         }
 
         public ICollection<HoKhau> Get(HoKhauFilterModel filterModel)
         {
             if (filterModel is null) filterModel = new HoKhauFilterModel();
 
-            var query = CreateQuery(filterModel);
-            return query
+            var initQuery = _dbContext.HoKhaus.IncludeMany(filterModel.Includes);
+            return CreateQuery(initQuery, filterModel)
                 .OrderByMany(filterModel.OrderBy)
                 .Skip(filterModel.Skip)
                 .Take(filterModel.Top)
                 .ToList();
         }
 
-        private IQueryable<HoKhau> CreateQuery(HoKhauFilterModel filterModel)
+        private IQueryable<HoKhau> CreateQuery(IQueryable<HoKhau> query, HoKhauFilterModel filterModel)
         {
             return _dbContext.HoKhaus
+                .IncludeMany(filterModel.Includes)
                 .FilterCurrentAreaCode()
                 .FilterAreaCode(filterModel.AreaCode)
                 .Filter(filterModel.DMLoaiHoID != null, x => x.DMLoaiHoID == filterModel.DMLoaiHoID.Value)

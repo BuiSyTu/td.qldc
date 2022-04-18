@@ -45,24 +45,31 @@ namespace TD.QLDC.Library.Repositories.Implementations
 
         public int Count(CategoryFilterModel filterModel)
         {
-            return _dbContext.Categories
-                .FilterNhomId(filterModel.NhomID)
-                .FilterSearchValue(filterModel.Q)
-                .FilterActive(filterModel.Active)
+            if (filterModel is null) filterModel = new CategoryFilterModel();
+
+            var initQuery = _dbContext.Categories.AsQueryable();
+            return CreateQuery(initQuery, filterModel)
                 .Count();
         }
 
         public ICollection<Category> Get(CategoryFilterModel filterModel)
         {
-            return _dbContext.Categories
-                .IncludeMany(filterModel.Includes)
-                .FilterNhomId(filterModel.NhomID)
-                .FilterSearchValue(filterModel.Q)
-                .FilterActive(filterModel.Active)
+            if (filterModel is null) filterModel = new CategoryFilterModel();
+
+            var initQuery = _dbContext.Categories.IncludeMany(filterModel.Includes);
+            return CreateQuery(initQuery, filterModel)
                 .OrderByMany(filterModel.OrderBy)
                 .Skip(filterModel.Skip)
                 .Take(filterModel.Top)
                 .ToList();
+        }
+
+        private IQueryable<Category> CreateQuery(IQueryable<Category> query, CategoryFilterModel filterModel)
+        {
+            return query
+                .FilterNhomId(filterModel.NhomID)
+                .FilterSearchValue(filterModel.Q)
+                .FilterActive(filterModel.Active);
         }
 
         public Category GetByNameAndCreateIfNotExist(int nhomDanhMucId, string name)
